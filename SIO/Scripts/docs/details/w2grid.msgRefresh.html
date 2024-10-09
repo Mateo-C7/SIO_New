@@ -1,0 +1,27 @@
+Message that appears when grid refreshes.
+
+<div class="definition">
+    String, default = 'Refreshing...'
+</div>
+
+If you do not like default message, you are welcome to define your own.
+
+<textarea class="javascript">
+$('#grid').w2grid({
+    name     : 'grid',
+    msgRefresh: 'Zip-Zap',
+    columns: [
+        { field: 'recid', text: 'ID', size: '50px' },
+        { field: 'lname', text: 'Last Name', size: '30%' },
+        { field: 'fname', text: 'First Name', size: '30%' },
+        { field: 'email', text: 'Email', size: '40%' },
+        { field: 'sdate', text: 'Start Date', size: '120px' },
+        { field: 'sdate', text: 'End Date', size: '120px' }
+    ]
+});
+</textarea>
+
+You can also overwrite this message in prototype, then all grids will have same message:
+<textarea class="javascript">
+w2obj.grid.prototype.msgRefresh = 'Zip-Zap';
+</textarea>

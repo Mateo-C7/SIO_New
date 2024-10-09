@@ -1,0 +1,5 @@
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Release\Interop.ASPTypeLibrary.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Release\sio.csproj.ResolveComReference.cache
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Release\SIO.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Release\SIO.pdb

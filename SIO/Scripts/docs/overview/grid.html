@@ -1,0 +1,195 @@
+<h3>Grid Overview</h3>
+
+The w2grid implements data grids with local or remote data source. The grid is the most complex and flexible control in w2ui.
+It is the most feature rich grid available.
+<div style="height: 20px"></div>
+<ul>
+    <li><a href="#ex1">Example 1</a> - local data source</li>
+    <li><a href="#ex2">Example 2</a> - remove data source</li>
+    <li><a href="#struct-request">Request Data Stracture</a></li>
+    <li><a href="#struct-response">Response Data Stracture</a></li>
+    <li><a href="#struct-delete">Delete Requestst</a></li>
+    <li><a href="#struct-save">Save Request</a></li>
+</ul>
+<div id="ex1" style="height: 20px"></div>
+
+<h4>Example 1 - Local Data Source</h4>
+
+Below is a simple example how to use the grid. This grid does not pull records from the server, but uses local data source.
+It shows the minimum HTML and JavaScript you need to have to display the grid.
+
+<textarea class="html">
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="http://w2ui.com/src/w2ui-1.5.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://w2ui.com/src/w2ui-1.5.min.js"></script>
+</head>
+<body>
+    <div id="myGrid" style="height: 450px"></div>
+</body>
+<script>
+$('#myGrid').w2grid({
+    name   : 'myGrid',
+    columns: [
+        { field: 'fname', text: 'First Name', size: '30%' },
+        { field: 'lname', text: 'Last Name', size: '30%' },
+        { field: 'email', text: 'Email', size: '40%' },
+        { field: 'sdate', text: 'Start Date', size: '120px' },
+    ],
+    records: [
+        { recid: 1, fname: 'John', lname: 'Doe', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+        { recid: 2, fname: 'Stuart', lname: 'Motzart', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+        { recid: 3, fname: 'Jin', lname: 'Franson', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+        { recid: 4, fname: 'Susan', lname: 'Ottie', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+        { recid: 5, fname: 'Kelly', lname: 'Silver', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+        { recid: 6, fname: 'Francis', lname: 'Gatos', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+        { recid: 7, fname: 'Mark', lname: 'Welldo', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+        { recid: 8, fname: 'Thomas', lname: 'Bahh', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+        { recid: 9, fname: 'Sergei', lname: 'Rachmaninov', email: 'jdoe@gmail.com', sdate: '4/3/2012' }
+    ]
+});
+</script>
+</html>
+</textarea>
+<div id="ex2" style="height: 20px"></div>
+
+<h4>Example 2 - Remote Data Source</h4>
+This example displays similar grid as the example above, but it retrieves records from the server. It assumes that you have a file
+data/records.json relative to where your example runs that returns JSON structure.
+
+<textarea class="html">
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="http://w2ui.com/src/w2ui-1.5.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://w2ui.com/src/w2ui-1.5.min.js"></script>
+</head>
+<body>
+    <div id="myGrid" style="height: 450px"></div>
+</body>
+<script>
+$('#myGrid').w2grid({
+    name   : 'myGrid',
+    url    : 'data/records.json',
+    columns: [
+        { field: 'fname', text: 'First Name', size: '30%' },
+        { field: 'lname', text: 'Last Name', size: '30%' },
+        { field: 'email', text: 'Email', size: '40%' },
+        { field: 'sdate', text: 'Start Date', size: '120px' }
+    ]
+});
+</script>
+</html>
+</textarea>
+<div id="struct-request" style="height: 20px"></div>
+
+<h4>Request Data Structure</h4>
+
+The grid communicates with the server by sending a HTTP request in the format displayed below. Keep in mind that not all of the parameters are
+sent with each requests. Parameters such as search, sort, etc. might not be submitted if user did not apply them. The grid will also submit
+all user defined parameters from the <a class="property" href="w2grid.postData">.postData</a> map.
+<div style="height: 20px"></div>
+
+If <span class="property">w2utils.settings.dataType = 'HTTPJSON'</span> (default), the request will be:
+
+<textarea class="javascript">
+request: {
+    "limit":100,
+    "offset":0,
+    "searchLogic":"AND",
+    "search":[
+        {"field":"age", "type":"int", "operator":"between", "value":[10,20]},
+        {"field":"fname", "type":"text", "operator":"begins", "value":"vit"}
+    ],
+    "sort":[
+        {"field":"fname", "direction":"asc"},
+        {"field":"lname", "direction":"asc"}
+    ]
+}
+</textarea>
+
+However, you can control how you want request data to be encoded. See <a class="property" href="w2utils.settings">w2utils.settings</a> - see dataType.
+<div id="struct-response" style="height: 20px"></div>
+
+<h4>Response Data Structure</h4>
+
+The grid expects data in the JSON format from the server as it is described below.
+
+<textarea class="javascript">
+{
+    "status": "success",
+    "total": 36,
+    "records": [
+        { "recid": 1, "field-1": "value-1", ... "field-N": "value-N" },
+        ...
+        { "recid": N, "field-1": "value-1", ... "field-N": "value-N" }
+    ]
+}
+</textarea>
+
+You can define grid's <a class="property" href="w2grid.onRequest">.onRequest</a> and <a class="property" href="w2grid.onLoad">.onLoad</a> events to do data conversion if you service returns format different from JSON (for example XML).
+<div style="height: 10px"></div>
+
+If you want to return an error and have grid display in, you can return following JSON structure:
+<textarea class="javascript">
+{
+    "status": "error",
+    "message": "Error Message"
+}
+</textarea>
+<div id="struct-delete" style="height: 20px"></div>
+
+<h4>Delete Records</h4>
+
+If user selects several records in the grid and clicks the delete button on the toolbar or if you call
+<a class="property" href="w2grid.delete">.delete()</a> method, the grid will send following request
+
+<textarea class="javascript">
+request: {
+    "action":"delete",
+    "userid": [1,2]
+}
+</textarea>
+The ressponse can be
+<textarea class="javascript">
+{
+    "status" : "success"
+}
+</textarea>
+OR
+<textarea class="javascript">
+{
+    "status": "error",
+    "message": "Error Message"
+}
+</textarea>
+<div id="struct-save" style="height: 20px"></div>
+
+<h4>Save Records</h4>
+
+As a developer you can turn on inline editing in the grid. Once user has changed data and click the Save button, the grid will send
+<textarea class="javascript">
+request: {
+    "action":"save"
+    "changes":[
+        { "userid":1, "lname":"Cruze", "fname":"Tom" }
+    ]
+}
+</textarea>
+The ressponse can be
+<textarea class="javascript">
+{
+    "status" : "success"
+}
+</textarea>
+OR
+<textarea class="javascript">
+{
+    "status": "error",
+    "message": "Error Message"
+}
+</textarea>
+<div style="height: 20px"></div>

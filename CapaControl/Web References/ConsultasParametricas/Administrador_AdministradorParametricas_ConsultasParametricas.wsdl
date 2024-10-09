@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s4="http://Mensajes.AnexosXTransaccion" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s8="http://Mensajes.TablasParametricas.DatosItem" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://Mensajes.TablasParametricas" xmlns:s5="http://Mensajes.CamposXTransaccion" xmlns:mynamespace="http://mynamespace" xmlns:s9="http://Mensajes.TablasParametricas.ResultadoDatosItem" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s6="http://Mensajes.TablasParametricas.SaldoItem" xmlns:s2="http://Mensajes.General.inHeader" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s7="http://Mensajes.TablasParametricas.ResultadoSaldoItem" xmlns:s3="http://Mensajes.FiltroTransaccionAnexo" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">BizTalk assembly "ZFB.Integrador.Base.Administrador, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d360496674692490" published web service.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://Mensajes.TablasParametricas" />
+      <s:import namespace="http://Mensajes.FiltroTransaccionAnexo" />
+      <s:import namespace="http://Mensajes.AnexosXTransaccion" />
+      <s:import namespace="http://Mensajes.CamposXTransaccion" />
+      <s:import namespace="http://Mensajes.TablasParametricas.SaldoItem" />
+      <s:import namespace="http://Mensajes.TablasParametricas.ResultadoSaldoItem" />
+      <s:import namespace="http://Mensajes.TablasParametricas.DatosItem" />
+      <s:import namespace="http://Mensajes.TablasParametricas.ResultadoDatosItem" />
+      <s:element name="TablasFormularios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:FILTROTABLAPARAMETRICA" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TablasFormulariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:TABLASPARAMETRICAS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AnexosPorTransacciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s3:FILTROTRANSACCION" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AnexosPorTransaccionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s4:ANEXOSXTRANSACCION" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CamposPorTransaccion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s5:FILTROTRANSACCION" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CamposPorTransaccionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s5:CAMPOSXTRANSACCION" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaldoPorItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s6:SALDOITEM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaldoPorItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s7:RESULTADOSALDOITEM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DatosPorItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s8:DATOSITEM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DatosPorItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s9:RESULTADODATOSITEM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.TablasParametricas">
+      <s:element name="FILTROTABLAPARAMETRICA" type="s1:typeFiltroTablaParametrica" />
+      <s:complexType name="typeFiltroTablaParametrica">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="TABLAPARAMETRICA" type="s1:typeEnumTablaParametrica" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="typeEnumTablaParametrica">
+        <s:restriction base="s:string">
+          <s:enumeration value="Todas" />
+          <s:enumeration value="TipoMercancia" />
+          <s:enumeration value="TipoItem" />
+          <s:enumeration value="UnidadMedida" />
+          <s:enumeration value="SubPartidaArancelaria" />
+          <s:enumeration value="EsMatriz" />
+          <s:enumeration value="Importador" />
+          <s:enumeration value="Sia" />
+          <s:enumeration value="Pais" />
+          <s:enumeration value="Transaccion" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="TABLASPARAMETRICAS" type="s1:typeTablasParametricas" />
+      <s:complexType name="typeTablasParametricas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTADORES" type="s1:ArrayOfTypeImportador" />
+          <s:element minOccurs="0" maxOccurs="1" name="UNIDADESMEDIDA" type="s1:ArrayOfTypeUnidadMedida" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPOSITEM" type="s1:ArrayOfTypeTipoItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUBPARTIDAS" type="s1:ArrayOfTypeSubpartida" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPOSMERCANCIAS" type="s1:ArrayOfTypeSeccionalArancelaria" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANSACCIONES" type="s1:ArrayOfTypeTransaccion" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAISES" type="s1:ArrayOfTypePais" />
+          <s:element minOccurs="0" maxOccurs="1" name="SIAS" type="s1:ArrayOfTypeSia" />
+          <s:element minOccurs="0" maxOccurs="1" name="VALORESESMATRIZ" type="s1:ArrayOfTypeEsMatriz" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTypeImportador">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="IMPORTADOR" type="s1:typeImportador" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="typeImportador">
+        <s:attribute name="CDNIT" type="s:string" />
+        <s:attribute name="DSNOMBREIMPORTADOR" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfTypeUnidadMedida">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="UNIDADMEDIDA" type="s1:typeUnidadMedida" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="typeUnidadMedida">
+        <s:attribute name="CDUNIDA" type="s:string" />
+        <s:attribute name="DSCORTA" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfTypeTipoItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="TIPOITEM" type="s1:typeTipoItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="typeTipoItem">
+        <s:attribute name="CDTIPO" type="s:string" />
+        <s:attribute name="DSTIPO" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfTypeSubpartida">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="SUBPARTIDA" type="s1:typeSubpartida" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="typeSubpartida">
+        <s:attribute name="CDSUBPARTIDA" type="s:string" />
+        <s:attribute name="DSSUBPARTIDA" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfTypeSeccionalArancelaria">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="TIPOMERCANCIA" type="s1:typeSeccionalArancelaria" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="typeSeccionalArancelaria">
+        <s:attribute name="CDTIPOMERCANCIA" type="s:int" />
+        <s:attribute name="DSTIPOMERCANCIA" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfTypeTransaccion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TRANSACCION" type="s1:typeTransaccion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="typeTransaccion">
+        <s:attribute name="CDTRANSACCION" type="s:string" />
+        <s:attribute name="DSTRANSACCION" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfTypePais">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="PAIS" type="s1:typePais" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="typePais">
+        <s:attribute name="CDPAIS" type="s:string" />
+        <s:attribute name="DSPAIS" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfTypeSia">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="SIA" type="s1:typeSia" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="typeSia">
+        <s:attribute name="CDNIT" type="s:string" />
+        <s:attribute name="DSNOMBRESIA" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfTypeEsMatriz">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="ESMATRIZ" type="s1:typeEsMatriz" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="typeEsMatriz">
+        <s:attribute name="CDESMATRIZ" type="s:string" />
+        <s:attribute name="DSESMATRIZ" type="s:string" />
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.General.inHeader">
+      <s:element name="inHeader">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDCIAUSUARIA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDZONAFRANCA" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DSUSUARIO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PWDUSUARIO" type="s:string" />
+          </s:sequence>
+          <s:anyAttribute />
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.FiltroTransaccionAnexo">
+      <s:element name="FILTROTRANSACCION">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDTRAN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.AnexosXTransaccion">
+      <s:element name="ANEXOSXTRANSACCION">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="ANEXO">
+              <s:complexType>
+                <s:attribute name="CDANEXO" type="s:string" />
+                <s:attribute name="DSANEXO" type="s:string" />
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.CamposXTransaccion">
+      <s:element name="FILTROTRANSACCION">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDTRAN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CAMPOSXTRANSACCION">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="CAMPOXTRANSACCION">
+              <s:complexType>
+                <s:attribute name="CDTRANSACCION" type="s:string" />
+                <s:attribute name="CDCAMPO" type="s:string" />
+                <s:attribute name="DSCAMPO" type="s:string" />
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.TablasParametricas.SaldoItem">
+      <s:element name="SALDOITEM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDITEM" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.TablasParametricas.ResultadoSaldoItem">
+      <s:element name="RESULTADOSALDOITEM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="NMSALDO" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.TablasParametricas.DatosItem">
+      <s:element name="DATOSITEM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDITEM" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.TablasParametricas.ResultadoDatosItem">
+      <s:element name="RESULTADODATOSITEM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="NREG" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDCIA_USUARIA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DSCIA_USUARIA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDITEM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDTIPO_MERCANCIA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DSTIPO_MERCANCIA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DSITEM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDTIPO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DSTIPO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDSUBPARTIDA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DSSUBPARTIDA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDUNIDAD_COMERCIAL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DSUNIDAD_COMERCIAL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDUNIDAD_MED" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DSUNIDAD_MED" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NMCONVERSION" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SNCOMPONENTES" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SNREEMPAQUE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FEAPROBACION" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FERETIRO" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NMSALDO_INICIAL" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NMSALDO" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ID" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CHKSELECT" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="SALDO_REAL" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TablasFormulariosSoapIn">
+    <wsdl:part name="parameters" element="tns:TablasFormularios" />
+  </wsdl:message>
+  <wsdl:message name="TablasFormulariosSoapOut">
+    <wsdl:part name="parameters" element="tns:TablasFormulariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="TablasFormulariosinHeader">
+    <wsdl:part name="inHeader" element="s2:inHeader" />
+  </wsdl:message>
+  <wsdl:message name="AnexosPorTransaccionesSoapIn">
+    <wsdl:part name="parameters" element="tns:AnexosPorTransacciones" />
+  </wsdl:message>
+  <wsdl:message name="AnexosPorTransaccionesSoapOut">
+    <wsdl:part name="parameters" element="tns:AnexosPorTransaccionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="AnexosPorTransaccionesinHeader">
+    <wsdl:part name="inHeader" element="s2:inHeader" />
+  </wsdl:message>
+  <wsdl:message name="CamposPorTransaccionSoapIn">
+    <wsdl:part name="parameters" element="tns:CamposPorTransaccion" />
+  </wsdl:message>
+  <wsdl:message name="CamposPorTransaccionSoapOut">
+    <wsdl:part name="parameters" element="tns:CamposPorTransaccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CamposPorTransaccioninHeader">
+    <wsdl:part name="inHeader" element="s2:inHeader" />
+  </wsdl:message>
+  <wsdl:message name="SaldoPorItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaldoPorItem" />
+  </wsdl:message>
+  <wsdl:message name="SaldoPorItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaldoPorItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaldoPorIteminHeader">
+    <wsdl:part name="inHeader" element="s2:inHeader" />
+  </wsdl:message>
+  <wsdl:message name="DatosPorItemSoapIn">
+    <wsdl:part name="parameters" element="tns:DatosPorItem" />
+  </wsdl:message>
+  <wsdl:message name="DatosPorItemSoapOut">
+    <wsdl:part name="parameters" element="tns:DatosPorItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="DatosPorIteminHeader">
+    <wsdl:part name="inHeader" element="s2:inHeader" />
+  </wsdl:message>
+  <wsdl:portType name="Administrador_AdministradorParametricas_ConsultasParametricasSoap">
+    <wsdl:operation name="TablasFormularios">
+      <wsdl:input message="tns:TablasFormulariosSoapIn" />
+      <wsdl:output message="tns:TablasFormulariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AnexosPorTransacciones">
+      <wsdl:input message="tns:AnexosPorTransaccionesSoapIn" />
+      <wsdl:output message="tns:AnexosPorTransaccionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CamposPorTransaccion">
+      <wsdl:input message="tns:CamposPorTransaccionSoapIn" />
+      <wsdl:output message="tns:CamposPorTransaccionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaldoPorItem">
+      <wsdl:input message="tns:SaldoPorItemSoapIn" />
+      <wsdl:output message="tns:SaldoPorItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DatosPorItem">
+      <wsdl:input message="tns:DatosPorItemSoapIn" />
+      <wsdl:output message="tns:DatosPorItemSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Administrador_AdministradorParametricas_ConsultasParametricasSoap" type="tns:Administrador_AdministradorParametricas_ConsultasParametricasSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TablasFormularios">
+      <soap:operation soapAction="http://tempuri.org/Administrador_AdministradorParametricas_ConsultasParametricas/TablasFormularios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:TablasFormulariosinHeader" part="inHeader" use="literal" />
+        <mynamespace:validation />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnexosPorTransacciones">
+      <soap:operation soapAction="http://tempuri.org/Administrador_AdministradorParametricas_ConsultasParametricas/AnexosPorTransacciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AnexosPorTransaccionesinHeader" part="inHeader" use="literal" />
+        <mynamespace:validation />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CamposPorTransaccion">
+      <soap:operation soapAction="http://tempuri.org/Administrador_AdministradorParametricas_ConsultasParametricas/CamposPorTransaccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CamposPorTransaccioninHeader" part="inHeader" use="literal" />
+        <mynamespace:validation />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaldoPorItem">
+      <soap:operation soapAction="http://tempuri.org/Administrador_AdministradorParametricas_ConsultasParametricas/SaldoPorItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaldoPorIteminHeader" part="inHeader" use="literal" />
+        <mynamespace:validation />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatosPorItem">
+      <soap:operation soapAction="http://tempuri.org/Administrador_AdministradorParametricas_ConsultasParametricas/DatosPorItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DatosPorIteminHeader" part="inHeader" use="literal" />
+        <mynamespace:validation />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Administrador_AdministradorParametricas_ConsultasParametricas">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">BizTalk assembly "ZFB.Integrador.Base.Administrador, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d360496674692490" published web service.</wsdl:documentation>
+    <wsdl:port name="Administrador_AdministradorParametricas_ConsultasParametricasSoap" binding="tns:Administrador_AdministradorParametricas_ConsultasParametricasSoap">
+      <soap:address location="https://ws.piciz.zonafrancabogota.com/IntegradorOperaciones/Administrador_AdministradorParametricas_ConsultasParametricas.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

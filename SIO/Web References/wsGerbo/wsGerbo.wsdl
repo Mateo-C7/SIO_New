@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="TestarWebService">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestarWebServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestarWebServiceResult" type="tns:ArrayOfUF" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUF">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UF" nillable="true" type="tns:UF" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UF">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseModelOfUF">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="SIG_UF" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DES_UF" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseModelOfUF" abstract="true" />
+      <s:element name="AuthHeader" type="tns:AuthHeader" />
+      <s:complexType name="AuthHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="IncluirMaterial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="produto" type="tns:RegProduto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RegProduto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CodEmpresa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipProduto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodProduto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DesProduto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SigUnidade" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipProcedencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodLinha" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodFamilia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodSubFamilia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodOriMercad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DesComplMat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumClaFiscal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumCtaEstoque" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumCtaProducao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FlgNumLote" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FlgSeriado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FlgNatureza" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValPBrutoUni" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValPliqUni" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumCtaVenda" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumCtaICMS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumCtaIPI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumCtaCustoVenda" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodTipoItem" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IncluirMaterialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncluirMaterialResult" type="tns:RetProductID" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetProductID">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COD_EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIP_PRODUTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COD_PRODUTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DES_MSGRETORNO" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IncluirOrdemProdMat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ordemProd" type="tns:RegOrdemProd" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RegOrdemProd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CodEmpresa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodDocOP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipProduto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodProduto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="QtdProduzir" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DatInicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DatNecessaria" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodDocOPPai" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumOrdemProdPai" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NomUsuarioResp" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IncluirOrdemProdMatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncluirOrdemProdMatResult" type="tns:RetOrdemProdID" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetOrdemProdID">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COD_EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COD_DOCOP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUM_ORDEMPROD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DES_MSGRETORNO" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IncluirReqPlanejada">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqPlanejada" type="tns:RegRequisicao" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RegRequisicao">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CodEmpresa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodDocOP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumOrdemProd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodMaterial" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="QtdNecessaria" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodCCustoReq" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DatNecessaria" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IncluirReqPlanejadaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncluirReqPlanejadaResult" type="tns:RetRequisicaoID" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetRequisicaoID">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COD_EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COD_DOCRQ" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUM_REQMATERIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DES_MSGRETORNO" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TestarWebServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:TestarWebService" />
+  </wsdl:message>
+  <wsdl:message name="TestarWebServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:TestarWebServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestarWebServiceAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="IncluirMaterialSoapIn">
+    <wsdl:part name="parameters" element="tns:IncluirMaterial" />
+  </wsdl:message>
+  <wsdl:message name="IncluirMaterialSoapOut">
+    <wsdl:part name="parameters" element="tns:IncluirMaterialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncluirMaterialAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="IncluirOrdemProdMatSoapIn">
+    <wsdl:part name="parameters" element="tns:IncluirOrdemProdMat" />
+  </wsdl:message>
+  <wsdl:message name="IncluirOrdemProdMatSoapOut">
+    <wsdl:part name="parameters" element="tns:IncluirOrdemProdMatResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncluirOrdemProdMatAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="IncluirReqPlanejadaSoapIn">
+    <wsdl:part name="parameters" element="tns:IncluirReqPlanejada" />
+  </wsdl:message>
+  <wsdl:message name="IncluirReqPlanejadaSoapOut">
+    <wsdl:part name="parameters" element="tns:IncluirReqPlanejadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncluirReqPlanejadaAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:portType name="WSInterfaceAppSoap">
+    <wsdl:operation name="TestarWebService">
+      <wsdl:input message="tns:TestarWebServiceSoapIn" />
+      <wsdl:output message="tns:TestarWebServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncluirMaterial">
+      <wsdl:input message="tns:IncluirMaterialSoapIn" />
+      <wsdl:output message="tns:IncluirMaterialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncluirOrdemProdMat">
+      <wsdl:input message="tns:IncluirOrdemProdMatSoapIn" />
+      <wsdl:output message="tns:IncluirOrdemProdMatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncluirReqPlanejada">
+      <wsdl:input message="tns:IncluirReqPlanejadaSoapIn" />
+      <wsdl:output message="tns:IncluirReqPlanejadaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSInterfaceAppSoap" type="tns:WSInterfaceAppSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestarWebService">
+      <soap:operation soapAction="http://tempuri.org/TestarWebService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:TestarWebServiceAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncluirMaterial">
+      <soap:operation soapAction="http://tempuri.org/IncluirMaterial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:IncluirMaterialAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncluirOrdemProdMat">
+      <soap:operation soapAction="http://tempuri.org/IncluirOrdemProdMat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:IncluirOrdemProdMatAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncluirReqPlanejada">
+      <soap:operation soapAction="http://tempuri.org/IncluirReqPlanejada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:IncluirReqPlanejadaAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSInterfaceAppSoap12" type="tns:WSInterfaceAppSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestarWebService">
+      <soap12:operation soapAction="http://tempuri.org/TestarWebService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:TestarWebServiceAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncluirMaterial">
+      <soap12:operation soapAction="http://tempuri.org/IncluirMaterial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:IncluirMaterialAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncluirOrdemProdMat">
+      <soap12:operation soapAction="http://tempuri.org/IncluirOrdemProdMat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:IncluirOrdemProdMatAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncluirReqPlanejada">
+      <soap12:operation soapAction="http://tempuri.org/IncluirReqPlanejada" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:IncluirReqPlanejadaAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSInterfaceApp">
+    <wsdl:port name="WSInterfaceAppSoap" binding="tns:WSInterfaceAppSoap">
+      <soap:address location="http://172.21.0.1/wsGerbo/wsGerbo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WSInterfaceAppSoap12" binding="tns:WSInterfaceAppSoap12">
+      <soap12:address location="http://172.21.0.1/wsGerbo/wsGerbo.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

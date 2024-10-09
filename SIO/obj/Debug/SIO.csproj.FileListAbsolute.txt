@@ -1,0 +1,306 @@
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\SIO.dll
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\SIO.pdb
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaControl.dll
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaDatos.dll
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\Oracle.DataAccess.dll
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaControl.pdb
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaDatos.pdb
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\SIO.dll
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\SIO.pdb
+C:\Documents and Settings\metrolink.FORSA\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\SIO.dll
+C:\Documents and Settings\metrolink.FORSA\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\SIO.pdb
+C:\Documents and Settings\metrolink.FORSA\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaControl.dll
+C:\Documents and Settings\metrolink.FORSA\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaDatos.dll
+C:\Documents and Settings\metrolink.FORSA\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaControl.pdb
+C:\Documents and Settings\metrolink.FORSA\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaDatos.pdb
+C:\Documents and Settings\metrolink.FORSA\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\metrolink.FORSA\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+C:\Documents and Settings\metrolink.FORSA\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Documents and Settings\metrolink.FORSA\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\SIO.dll
+C:\Documents and Settings\metrolink.FORSA\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\SIO.pdb
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIOProd\SIO\bin\SIO.dll
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIOProd\SIO\bin\SIO.pdb
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIOProd\SIO\bin\CapaControl.dll
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIOProd\SIO\bin\CapaDatos.dll
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIOProd\SIO\bin\dhtmlxConnector.NET.dll
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIOProd\SIO\bin\Oracle.DataAccess.dll
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIOProd\SIO\bin\CapaControl.pdb
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIOProd\SIO\bin\CapaDatos.pdb
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIOProd\SIO\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIOProd\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIOProd\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIOProd\SIO\obj\Debug\SIO.dll
+C:\Documents and Settings\andressuarez\My Documents\Visual Studio 2010\Projects\SIOProd\SIO\obj\Debug\SIO.pdb
+C:\Documents and Settings\andressuarez\Desktop\SIO_Marzo_2_2015\SIO\SIO\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\andressuarez\Desktop\SIO_Marzo_2_2015\SIO\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+C:\Documents and Settings\andressuarez\Desktop\SIO_Marzo_2_2015\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Documents and Settings\andressuarez\Desktop\SIO_Marzo_2_2015\SIO\SIO\bin\SIO.dll
+C:\Documents and Settings\andressuarez\Desktop\SIO_Marzo_2_2015\SIO\SIO\bin\SIO.pdb
+C:\Documents and Settings\andressuarez\Desktop\SIO_Marzo_2_2015\SIO\SIO\bin\CapaControl.dll
+C:\Documents and Settings\andressuarez\Desktop\SIO_Marzo_2_2015\SIO\SIO\bin\CapaDatos.dll
+C:\Documents and Settings\andressuarez\Desktop\SIO_Marzo_2_2015\SIO\SIO\bin\dhtmlxConnector.NET.dll
+C:\Documents and Settings\andressuarez\Desktop\SIO_Marzo_2_2015\SIO\SIO\bin\CapaControl.pdb
+C:\Documents and Settings\andressuarez\Desktop\SIO_Marzo_2_2015\SIO\SIO\bin\CapaDatos.pdb
+C:\Documents and Settings\andressuarez\Desktop\SIO_Marzo_2_2015\SIO\SIO\obj\Debug\SIO.dll
+C:\Documents and Settings\andressuarez\Desktop\SIO_Marzo_2_2015\SIO\SIO\obj\Debug\SIO.pdb
+C:\Documents and Settings\andressuarez\Desktop\Versiones SIO\Marzo 30 2015\SIO\SIO\bin\SIO.dll
+C:\Documents and Settings\andressuarez\Desktop\Versiones SIO\Marzo 30 2015\SIO\SIO\bin\SIO.pdb
+C:\Documents and Settings\andressuarez\Desktop\Versiones SIO\Marzo 30 2015\SIO\SIO\bin\CapaControl.dll
+C:\Documents and Settings\andressuarez\Desktop\Versiones SIO\Marzo 30 2015\SIO\SIO\bin\CapaDatos.dll
+C:\Documents and Settings\andressuarez\Desktop\Versiones SIO\Marzo 30 2015\SIO\SIO\bin\dhtmlxConnector.NET.dll
+C:\Documents and Settings\andressuarez\Desktop\Versiones SIO\Marzo 30 2015\SIO\SIO\bin\Oracle.DataAccess.dll
+C:\Documents and Settings\andressuarez\Desktop\Versiones SIO\Marzo 30 2015\SIO\SIO\bin\CapaControl.pdb
+C:\Documents and Settings\andressuarez\Desktop\Versiones SIO\Marzo 30 2015\SIO\SIO\bin\CapaDatos.pdb
+C:\Documents and Settings\andressuarez\Desktop\Versiones SIO\Marzo 30 2015\SIO\SIO\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\andressuarez\Desktop\Versiones SIO\Marzo 30 2015\SIO\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+C:\Documents and Settings\andressuarez\Desktop\Versiones SIO\Marzo 30 2015\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Documents and Settings\andressuarez\Desktop\Versiones SIO\Marzo 30 2015\SIO\SIO\obj\Debug\SIO.dll
+C:\Documents and Settings\andressuarez\Desktop\Versiones SIO\Marzo 30 2015\SIO\SIO\obj\Debug\SIO.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\Ultima Estable\SIO\SIO\SIO\bin\SIO.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\Ultima Estable\SIO\SIO\SIO\bin\SIO.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\Ultima Estable\SIO\SIO\SIO\bin\CapaControl.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\Ultima Estable\SIO\SIO\SIO\bin\CapaDatos.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\Ultima Estable\SIO\SIO\SIO\bin\dhtmlxConnector.NET.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\Ultima Estable\SIO\SIO\SIO\bin\CapaControl.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\Ultima Estable\SIO\SIO\SIO\bin\CapaDatos.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\Ultima Estable\SIO\SIO\SIO\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\Ultima Estable\SIO\SIO\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\Ultima Estable\SIO\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\Ultima Estable\SIO\SIO\SIO\obj\Debug\SIO.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\Ultima Estable\SIO\SIO\SIO\obj\Debug\SIO.pdb
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO_30_julio2015\SIO\SIO\bin\SIO.dll
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO_30_julio2015\SIO\SIO\bin\SIO.pdb
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO_30_julio2015\SIO\SIO\bin\CapaControl.dll
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO_30_julio2015\SIO\SIO\bin\CapaDatos.dll
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO_30_julio2015\SIO\SIO\bin\dhtmlxConnector.NET.dll
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO_30_julio2015\SIO\SIO\bin\CapaControl.pdb
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO_30_julio2015\SIO\SIO\bin\CapaDatos.pdb
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO_30_julio2015\SIO\SIO\obj\Debug\sio.csprojResolveAssemblyReference.cache
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO_30_julio2015\SIO\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO_30_julio2015\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO_30_julio2015\SIO\SIO\obj\Debug\SIO.dll
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO_30_julio2015\SIO\SIO\obj\Debug\SIO.pdb
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO actual\SIO\SIO\bin\SIO.dll
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO actual\SIO\SIO\bin\SIO.pdb
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO actual\SIO\SIO\bin\CapaControl.dll
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO actual\SIO\SIO\bin\CapaDatos.dll
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO actual\SIO\SIO\bin\dhtmlxConnector.NET.dll
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO actual\SIO\SIO\bin\CapaControl.pdb
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO actual\SIO\SIO\bin\CapaDatos.pdb
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO actual\SIO\SIO\obj\Debug\sio.csprojResolveAssemblyReference.cache
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO actual\SIO\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO actual\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO actual\SIO\SIO\obj\Debug\SIO.dll
+C:\Users\JorgeMetro\Desktop\En desarrollo FORSA\SIO actual\SIO\SIO\obj\Debug\SIO.pdb
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\SIO.dll
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\SIO.pdb
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\AjaxControlToolkit.dll
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaControl.dll
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaDatos.dll
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\dhtmlxConnector.NET.dll
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\ICSharpCode.SharpZipLib.dll
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\OnlineActiveUsers.dll
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\Trirand.Web.Mvc.dll
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\WhatsAppApi.dll
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaControl.pdb
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaDatos.pdb
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\ResolveAssemblyReference.cache
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\SIO.dll
+\\172.21.0.103\c$\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\SIO.pdb
+\\172.21.0.9\Aplicaciones\SIO\103\Septiembre19_2017\SIO\SIO\bin\SIO.dll
+\\172.21.0.9\Aplicaciones\SIO\103\Septiembre19_2017\SIO\SIO\bin\SIO.pdb
+\\172.21.0.9\Aplicaciones\SIO\103\Septiembre19_2017\SIO\SIO\bin\CapaControl.dll
+\\172.21.0.9\Aplicaciones\SIO\103\Septiembre19_2017\SIO\SIO\bin\CapaDatos.dll
+\\172.21.0.9\Aplicaciones\SIO\103\Septiembre19_2017\SIO\SIO\bin\dhtmlxConnector.NET.dll
+\\172.21.0.9\Aplicaciones\SIO\103\Septiembre19_2017\SIO\SIO\bin\CapaControl.pdb
+\\172.21.0.9\Aplicaciones\SIO\103\Septiembre19_2017\SIO\SIO\bin\CapaDatos.pdb
+\\172.21.0.9\Aplicaciones\SIO\103\Septiembre19_2017\SIO\SIO\obj\Debug\ResolveAssemblyReference.cache
+\\172.21.0.9\Aplicaciones\SIO\103\Septiembre19_2017\SIO\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+\\172.21.0.9\Aplicaciones\SIO\103\Septiembre19_2017\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+\\172.21.0.9\Aplicaciones\SIO\103\Septiembre19_2017\SIO\SIO\obj\Debug\SIO.dll
+\\172.21.0.9\Aplicaciones\SIO\103\Septiembre19_2017\SIO\SIO\obj\Debug\SIO.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\SIO.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\SIO.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaControl.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaDatos.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\dhtmlxConnector.NET.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\ICSharpCode.SharpZipLib.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\Newtonsoft.Json.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\OnlineActiveUsers.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\Trirand.Web.Mvc.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\WhatsAppApi.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaControl.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\bin\CapaDatos.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\SIO.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\SIO\obj\Debug\SIO.pdb
+C:\Documents and Settings\administrador\My Documents\Visual Studio 2010\Projects\Forsa2018\FORSA_2612\SIO\SIO\bin\SIO.dll
+C:\Documents and Settings\administrador\My Documents\Visual Studio 2010\Projects\Forsa2018\FORSA_2612\SIO\SIO\bin\SIO.pdb
+C:\Documents and Settings\administrador\My Documents\Visual Studio 2010\Projects\Forsa2018\FORSA_2612\SIO\SIO\bin\CapaControl.dll
+C:\Documents and Settings\administrador\My Documents\Visual Studio 2010\Projects\Forsa2018\FORSA_2612\SIO\SIO\bin\CapaDatos.dll
+C:\Documents and Settings\administrador\My Documents\Visual Studio 2010\Projects\Forsa2018\FORSA_2612\SIO\SIO\bin\CapaControl.pdb
+C:\Documents and Settings\administrador\My Documents\Visual Studio 2010\Projects\Forsa2018\FORSA_2612\SIO\SIO\bin\CapaDatos.pdb
+C:\Documents and Settings\administrador\My Documents\Visual Studio 2010\Projects\Forsa2018\FORSA_2612\SIO\SIO\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\administrador\My Documents\Visual Studio 2010\Projects\Forsa2018\FORSA_2612\SIO\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+C:\Documents and Settings\administrador\My Documents\Visual Studio 2010\Projects\Forsa2018\FORSA_2612\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Documents and Settings\administrador\My Documents\Visual Studio 2010\Projects\Forsa2018\FORSA_2612\SIO\SIO\obj\Debug\SIO.dll
+C:\Documents and Settings\administrador\My Documents\Visual Studio 2010\Projects\Forsa2018\FORSA_2612\SIO\SIO\obj\Debug\SIO.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_2019\SIO\SIO\bin\SIO.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_2019\SIO\SIO\bin\SIO.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_2019\SIO\SIO\bin\CapaControl.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_2019\SIO\SIO\bin\CapaDatos.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_2019\SIO\SIO\bin\CapaControl.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_2019\SIO\SIO\bin\CapaDatos.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_2019\SIO\SIO\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_2019\SIO\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_2019\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_2019\SIO\SIO\obj\Debug\SIO.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_2019\SIO\SIO\obj\Debug\SIO.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_STV\SIO\SIO\bin\SIO.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_STV\SIO\SIO\bin\SIO.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_STV\SIO\SIO\bin\CapaControl.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_STV\SIO\SIO\bin\CapaDatos.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_STV\SIO\SIO\bin\CapaControl.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_STV\SIO\SIO\bin\CapaDatos.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_STV\SIO\SIO\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_STV\SIO\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_STV\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_STV\SIO\SIO\obj\Debug\SIO.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO_STV\SIO\SIO\obj\Debug\SIO.pdb
+D:\DESARROLLO\SIO_STV\SIO\SIO\bin\SIO.dll.config
+D:\DESARROLLO\SIO_STV\SIO\SIO\bin\SIO.dll
+D:\DESARROLLO\SIO_STV\SIO\SIO\bin\SIO.pdb
+D:\DESARROLLO\SIO_STV\SIO\SIO\bin\CapaControl.dll
+D:\DESARROLLO\SIO_STV\SIO\SIO\bin\CapaDatos.dll
+D:\DESARROLLO\SIO_STV\SIO\SIO\bin\System.Web.Mvc.dll
+D:\DESARROLLO\SIO_STV\SIO\SIO\bin\CapaControl.pdb
+D:\DESARROLLO\SIO_STV\SIO\SIO\bin\CapaDatos.pdb
+D:\DESARROLLO\SIO_STV\SIO\SIO\bin\System.Web.Mvc.xml
+D:\DESARROLLO\SIO_STV\SIO\SIO\bin\es\System.Web.Mvc.resources.dll
+D:\DESARROLLO\SIO_STV\SIO\SIO\obj\Debug\sio.csprojResolveAssemblyReference.cache
+D:\DESARROLLO\SIO_STV\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+D:\DESARROLLO\SIO_STV\SIO\SIO\obj\Debug\SIO.dll
+D:\DESARROLLO\SIO_STV\SIO\SIO\obj\Debug\SIO.pdb
+C:\Users\stivenpalacios\Documents\SIO_STV_V2\SIO_STV\SIO\SIO\bin\SIO.dll.config
+C:\Users\stivenpalacios\Documents\SIO_STV_V2\SIO_STV\SIO\SIO\bin\SIO.dll
+C:\Users\stivenpalacios\Documents\SIO_STV_V2\SIO_STV\SIO\SIO\bin\SIO.pdb
+C:\Users\stivenpalacios\Documents\SIO_STV_V2\SIO_STV\SIO\SIO\bin\CapaControl.dll
+C:\Users\stivenpalacios\Documents\SIO_STV_V2\SIO_STV\SIO\SIO\bin\CapaDatos.dll
+C:\Users\stivenpalacios\Documents\SIO_STV_V2\SIO_STV\SIO\SIO\bin\CapaControl.pdb
+C:\Users\stivenpalacios\Documents\SIO_STV_V2\SIO_STV\SIO\SIO\bin\CapaDatos.pdb
+C:\Users\stivenpalacios\Documents\SIO_STV_V2\SIO_STV\SIO\SIO\obj\Debug\sio.csprojResolveAssemblyReference.cache
+C:\Users\stivenpalacios\Documents\SIO_STV_V2\SIO_STV\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Users\stivenpalacios\Documents\SIO_STV_V2\SIO_STV\SIO\SIO\obj\Debug\SIO.dll
+C:\Users\stivenpalacios\Documents\SIO_STV_V2\SIO_STV\SIO\SIO\obj\Debug\SIO.pdb
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\SIO.dll.config
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\SIO.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\SIO.pdb
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\CapaControl.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\CapaDatos.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\Microsoft.SqlServer.Types.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\CapaControl.pdb
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\CapaDatos.pdb
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\de\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\es\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\fr\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\it\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\ja\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\ko\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\pt\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\ru\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\bin\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\obj\Debug\sio.csprojResolveAssemblyReference.cache
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\obj\Debug\Interop.ASPTypeLibrary.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\obj\Debug\SIO.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO_2019\SIO\SIO\obj\Debug\SIO.pdb
+D:\Work Environment KSPI\DESA FORSA\SIO_2019_110\SIO\SIO\bin\SIO.dll.config
+D:\Work Environment KSPI\DESA FORSA\SIO_2019_110\SIO\SIO\bin\SIO.dll
+D:\Work Environment KSPI\DESA FORSA\SIO_2019_110\SIO\SIO\bin\SIO.pdb
+D:\Work Environment KSPI\DESA FORSA\SIO_2019_110\SIO\SIO\bin\CapaControl.dll
+D:\Work Environment KSPI\DESA FORSA\SIO_2019_110\SIO\SIO\bin\CapaDatos.dll
+D:\Work Environment KSPI\DESA FORSA\SIO_2019_110\SIO\SIO\bin\System.Web.Mvc.dll
+D:\Work Environment KSPI\DESA FORSA\SIO_2019_110\SIO\SIO\bin\CapaControl.pdb
+D:\Work Environment KSPI\DESA FORSA\SIO_2019_110\SIO\SIO\bin\CapaDatos.pdb
+D:\Work Environment KSPI\DESA FORSA\SIO_2019_110\SIO\SIO\obj\Debug\sio.csprojResolveAssemblyReference.cache
+D:\Work Environment KSPI\DESA FORSA\SIO_2019_110\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+D:\Work Environment KSPI\DESA FORSA\SIO_2019_110\SIO\SIO\obj\Debug\SIO.dll
+D:\Work Environment KSPI\DESA FORSA\SIO_2019_110\SIO\SIO\obj\Debug\SIO.pdb
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\obj\Debug\sio.csprojResolveAssemblyReference.cache
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\SIO.dll.config
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\SIO.dll
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\SIO.pdb
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\CapaControl.dll
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\CapaDatos.dll
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.PowerBI.Api.dll
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.PowerBI.AspNet.WebForms.dll
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.Rest.ClientRuntime.dll
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\CapaControl.pdb
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\CapaDatos.pdb
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.Rest.ClientRuntime.xml
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\System.IdentityModel.Tokens.Jwt.pdb
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\obj\Debug\SIO.dll
+C:\Users\desarrolloglobal\Documents\Visual Studio 2015\Projects\SIO\SIO\obj\Debug\SIO.pdb
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\SIO.dll.config
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\SIO.dll
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\SIO.pdb
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\CapaControl.dll
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\CapaDatos.dll
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\Microsoft.PowerBI.Api.dll
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\Microsoft.PowerBI.AspNet.WebForms.dll
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\Microsoft.Rest.ClientRuntime.dll
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\CapaControl.pdb
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\CapaDatos.pdb
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\Microsoft.Rest.ClientRuntime.xml
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\System.IdentityModel.Tokens.Jwt.pdb
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\obj\Debug\sio.csprojResolveAssemblyReference.cache
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\obj\Debug\SIO.dll
+C:\Users\stivenpalacios\Desktop\New folder\SIO\SIO\obj\Debug\SIO.pdb
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\SIO.dll.config
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\SIO.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\SIO.pdb
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\CapaControl.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\CapaDatos.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\DocumentFormat.OpenXml.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.PowerBI.AspNet.WebForms.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.Rest.ClientRuntime.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\System.Web.Mvc.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\CapaControl.pdb
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\CapaDatos.pdb
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\Microsoft.Rest.ClientRuntime.xml
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\System.IdentityModel.Tokens.Jwt.pdb
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\obj\Debug\sio.csproj.ResolveComReference.cache
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\obj\Debug\SIO.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\obj\Debug\SIO.pdb
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\bin\CapaControl.dll.config
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\obj\Debug\sio.csproj.AssemblyReference.cache
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\obj\Debug\sio.csproj.CoreCompileInputs.cache
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\SIO\obj\Debug\sio.csproj.CopyComplete

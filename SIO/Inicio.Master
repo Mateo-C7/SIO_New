@@ -1,0 +1,101 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Inicio.master.cs" Inherits="SIO.Inicio" %>
+
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+    
+    </title>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+	<script type='text/javascript' src='jquery-1.11.1.min.js'></script>
+    <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+      <style type="text/css">       
+        @import url=("styleTextBoxWater.css");</style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .nuevoEstilo1
+        {
+            background-color: #3399FF;
+        }
+        .style1
+        {
+            width: 100%;
+            height: 2px;
+        }
+        .style2
+        {
+            width: 719px;
+        }
+        .style3
+        {
+            width: 33px;
+        }
+        .style4
+        {
+            width: 280px;
+        }
+        .style5
+        {
+            width: 66px;
+        }
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server" >
+                
+         <table class="fondoazul">
+             <tr>
+                 <td >
+                     </td>
+             </tr>
+         </table>
+                
+        </asp:ContentPlaceHolder>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" ScriptMode="Release">
+        </asp:ScriptManager>
+
+        
+     
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        
+     
+        <table class="style1" width="1280">
+            <tr>
+                <td class="style5">
+                    &nbsp;</td>
+                <td class="style2">
+                    <asp:Image ID="Image1" runat="server" BorderColor="Gray" BorderStyle="None" 
+                        BorderWidth="1px" Height="300px" ImageAlign="Right" 
+                        ImageUrl="~/Imagenes/BannerSIO.png" Width="650px" />
+                    <asp:DropShadowExtender ID="Image1_DropShadowExtender" runat="server" 
+                        Enabled="True" TargetControlID="Image1">
+                    </asp:DropShadowExtender>
+                    <br />
+                    <br />
+                </td>
+                <td class="style3">
+                    &nbsp;</td>
+                <td class="style4">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+                </td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

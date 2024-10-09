@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SIO.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SIO_UNOEE_WSUNOEE" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://172.21.0.108/WSUNOEE/WSUNOEE.asmx</Value>
+    </Setting>
+    <Setting Name="SIO_WsReal_WSUNOEE" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://172.21.0.8/WSUNOEE/WSUNOEE.asmx</Value>
+    </Setting>
+    <Setting Name="SIO_wsGerbo_WSInterfaceApp" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://172.21.0.1/wsGerbo/wsGerbo.asmx</Value>
+    </Setting>
+    <Setting Name="SIO_WsGerboPRU_WSInterfaceApp" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://177.185.11.24:8081/wsGerbo/wsGerbo.asmx</Value>
+    </Setting>
+    <Setting Name="SIO_com_siesacloud_wsforsa_WSUNOEE" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://wsforsa.siesacloud.com:8043/WSUNOEE/WSUNOEE.asmx</Value>
+    </Setting>
+    <Setting Name="SIO_com_siesacloud_wsforsapru_WSUNOEE" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://wsforsapru.siesacloud.com:8043/WSUNOEE/WSUNOEE.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

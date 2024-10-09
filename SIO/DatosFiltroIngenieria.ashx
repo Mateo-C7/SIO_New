@@ -1,0 +1,1 @@
+﻿<%@ WebHandler Language="C#" CodeBehind="DatosFiltroIngenieria.ashx.cs" Class="dhtmlxConnector.Net_Samples.Combo.ComboConnector" %>

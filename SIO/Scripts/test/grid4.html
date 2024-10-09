@@ -1,0 +1,92 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="screen" href="../dist/w2ui.css" />
+<script type="text/javascript" src="../libs/jquery/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="../src/w2utils.js"></script>
+<script type="text/javascript" src="../src/w2tabs.js"></script>
+<script type="text/javascript" src="../src/w2toolbar.js"></script>
+<script type="text/javascript" src="../src/w2fields.js"></script>
+<script type="text/javascript" src="../src/w2popup.js"></script>
+<script type="text/javascript" src="../src/w2grid.js"></script>
+<script>
+//<![CDATA[
+$(function () {
+    $('#grid').w2grid({
+        name: 'grid',
+        header: 'List of Names1',
+        url: {
+            get: 'http://w2ui.com/web/pages/demo/infinite/index.php',
+            save: 's',
+            remove: 'd'
+        },
+        recid: 'userid',
+        // dataType: 'JSON',
+        // method: 'GET',
+        // limit: 2000,
+        // offset: 3690,
+        autoLoad: true,
+        show: {
+            toolbar: true,
+            footer: true,
+            header: true,
+            emptyRecords: true,
+            selectColumn: false,
+            expandColumn: false,
+            orderColumn: false,
+            columnHeaders: true,
+            lineNumbers: true,
+            toolbarDelete: true,
+            toolbarSave: true,
+            toolbarAdd: true
+        },
+        onRequest1(event) {
+            getRecords(event.url, event.postData)
+            event.preventDefault()
+        },
+        onLoad(event) {
+            this.total = 1
+            this.records = [
+                { userid: 1, age: '20', fname: 'Vitali', lname: 'Malinouski' }
+            ]
+        },
+        columns: [
+            { field: 'userid', text: 'ID', size: '80px', sortable: true, hidden: true },
+            { field: 'age', text: 'Age', size: '80px', sortable: true, searchable: 'int' },
+            { field: 'fname', text: 'First Name', size: '180px', sortable: true, searchable: 'text', resizable: true, editable: { type: 'hex' } },
+            { field: 'lname', text: 'Last Name', size: '180px', sortable: true, resizable: true, editable: { type: 'color' } },
+            { field: 'email', text: 'Email', size: '100%', sortable: true, resizable: true, editable: { type: 'text' } }
+        ]
+    });
+
+    function getRecords(url, post) {
+        $.ajax({
+            url,
+            method: 'GET',
+            data: { request: JSON.stringify(post) }
+        })
+        .done((data) => {
+            var grid = w2ui.grid
+            grid.last.xhr_offset = post.offset
+            if (grid.last.xhr_offset === 0) grid.records = []
+            if (data.total > grid.records.length) {
+                grid.last.xhr_hasMore = true
+            } else {
+                grid.last.xhr_hasMore = false
+            }
+            grid.last.pull_more    = false;
+            grid.last.pull_refresh = true;
+            grid.total = data.total
+            grid.records = grid.records.concat(data.records)
+            grid.refresh()
+        })
+    }
+});
+//]]>
+</script>
+</head>
+<body>
+    <input placeholder="before" style="margin-bottom: 5px;"/>
+    <div id="grid" style="width: 1024px; height: 568px;"></div>
+    <input placeholder="after" style="margin-top: 5px;"/>
+</body>
+</html>

@@ -1,0 +1,271 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="GeneralXX.Master.cs" Inherits="SIO.General" %>
+
+<%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+	<script type='text/javascript' src='menu_jquery.js'></script>
+    <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+ <asp:ContentPlaceHolder ID="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+
+
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+    <style type="text/css">
+        .style1
+        { 
+            text-align: left;
+            width: 1029px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+<div id="wrapper">
+
+	<div id="wrapper-bgtop">
+		<div id="header-wrapper">
+			<div id="header">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                
+<table bgcolor="#3B5998" frame="border">
+                 <tr>
+                     <td style="background-color: #FFFFFF; text-align: left;" width="150">
+                         
+                <asp:ImageButton ID="logoHome" runat="server" Height="33px" 
+                             ImageUrl="~/Imagenes/SIO.jpg" PostBackUrl="~/Home.aspx" Width="103px" />
+
+                     </td>
+                     <td style="border: 1px solid #3b5998; background-color: #3b5998; " 
+                class="style1">
+                         <asp:Menu ID="Menu1" runat="server" DynamicHorizontalOffset="1" 
+                    Font-Names="Tahoma" Font-Size="10pt" Orientation="Horizontal" 
+                    StaticSubMenuIndent="30px" Font-Bold="False" ForeColor="White" 
+                    RenderingMode="Table" style="margin-left: 0px; z-index: 1; text-align: left;" Width="16px" 
+                    Height="40px">
+                             <DynamicHoverStyle BackColor="#003366" />
+                             <DynamicMenuItemStyle HorizontalPadding="20px" />
+                             <DynamicMenuStyle BackColor="#003366" />
+                             <DynamicItemTemplate>
+                                 <%# Eval("Text") %>
+                             </DynamicItemTemplate>
+                             <Items>
+                                 <asp:MenuItem Text="Maestros" Value="Maestros">
+                                     <asp:MenuItem Text="Empresa" Value="Cliente">
+                                         <asp:MenuItem Text="Registro" Value="Registro" NavigateUrl="~/Cliente.aspx">
+                                         </asp:MenuItem>
+                                         <asp:MenuItem Text="Ver Empresas" Value="Ver Clientes" 
+                                             NavigateUrl="~/VerClientes.aspx"></asp:MenuItem>
+                                     </asp:MenuItem>
+                                     <asp:MenuItem Text="Obra" Value="Obra" NavigateUrl="~/VerObras.aspx">
+                                         <asp:MenuItem Text="Registro" Value="Registro" NavigateUrl="~/Obra.aspx"></asp:MenuItem>
+                                         <asp:MenuItem Text="Ver Obras" Value="Ver Obras" NavigateUrl="~/VerObras.aspx"></asp:MenuItem>
+                                     </asp:MenuItem>
+                                     <asp:MenuItem Text="Contacto" Value="Contacto">
+                                         <asp:MenuItem Text="Registro" Value="Registro" NavigateUrl="~/Contacto.aspx"></asp:MenuItem>
+                                         <asp:MenuItem Text="Ver Contactos" Value="Ver Contactos" 
+                                             NavigateUrl="~/VerContactos.aspx"></asp:MenuItem>
+                                         <asp:MenuItem NavigateUrl="~/VerContactosTodos.aspx" 
+                                             Text="Ver Contactos X Lista" Value="Ver Contactos X Lista"></asp:MenuItem>
+                                     </asp:MenuItem>
+                                     <asp:MenuItem NavigateUrl="~/Eventos.aspx" Text="Eventos/Ferias" 
+                                         Value="Eventos/Ferias"></asp:MenuItem>
+                                 </asp:MenuItem>
+                                 <asp:MenuItem NavigateUrl="~/Home.aspx" Text="Proyectos" Value="Proyectos" 
+                            ToolTip="Ingreso Y Consulta De Proyectos ">
+                                     <asp:MenuItem Text="Registro" Value="Registro" NavigateUrl="~/FUP.aspx"></asp:MenuItem>
+                                     <asp:MenuItem NavigateUrl="~/PlaneadorCotizaciones.aspx" 
+                                         Text="Planeador Cotizaciones" Value="Planeador Cotizaciones"></asp:MenuItem>
+                                     <asp:MenuItem NavigateUrl="~/ListaChequeo.aspx" Text="Lista De Chequeo" 
+                                         Value="Lista De Chequeo"></asp:MenuItem>
+                                     <asp:MenuItem Text="Seguimiento" Value="Seguimiento ">
+                                         <asp:MenuItem Text="Prealistamiento" Value="Prealistamiento" Enabled="False" 
+                                             NavigateUrl="~/VerPrealistamiento.aspx"></asp:MenuItem>
+                                         <asp:MenuItem Text="Acta Seguimiento" Value="Acta Seguimiento" Enabled="False" 
+                                             NavigateUrl="http://mail.forsa.com.co/acta/Acta.aspx"></asp:MenuItem>
+                                         <asp:MenuItem Text="Resumen Acta" Value="Resumen Acta" Enabled="False" 
+                                             NavigateUrl="~/VerResumenActa.aspx"></asp:MenuItem>
+                                         <asp:MenuItem NavigateUrl="~/VerInformeOrdenes.aspx" Text="Informe Ordenes" 
+                                             Value="Informe Ordenes"></asp:MenuItem>
+                                     </asp:MenuItem>
+                                     <asp:MenuItem Text="Informes" Value="Informes">
+                                         <asp:MenuItem Text="FUP" Value="FUP" NavigateUrl="~/VerFup.aspx"></asp:MenuItem>
+                                         <asp:MenuItem Text="Lista De Chequeo" Value="Lista De Chequeo" 
+                                             NavigateUrl="~/VerListaChequeo.aspx"></asp:MenuItem>
+                                     </asp:MenuItem>
+                                 </asp:MenuItem>
+                                 <asp:MenuItem Text="Pedido Venta" Value="Pedido Venta">
+                                     <asp:MenuItem Text="Registro" Value="Registro" NavigateUrl="~/PedidoVenta.aspx"></asp:MenuItem>
+                                     <asp:MenuItem NavigateUrl="~/SeguimientoPv.aspx" Text="Seguimiento" 
+                                         Value="Seguimiento"></asp:MenuItem>
+                                     <asp:MenuItem NavigateUrl="~/VerListaAccesorios.aspx" Text="Lista Accesorios" 
+                                         Value="Lista Accesorios"></asp:MenuItem>
+                                 </asp:MenuItem>
+                                 <asp:MenuItem Text="R &amp; S" ToolTip="Reclamos Y Sugerencias" Value="R&amp;S" 
+                                     Selectable="False">
+                                     <asp:MenuItem Text="Registro" Value="Registro" Enabled="False"></asp:MenuItem>
+                                     <asp:MenuItem Text="Seguimiento" Value="Seguimiento" 
+                                         NavigateUrl="~/VerReclamos.aspx"></asp:MenuItem>
+                                     <asp:MenuItem Text="Informes" Value="Informes" Enabled="False">
+                                         <asp:MenuItem Text="Resumen Reclamo" Value="Resumen Reclamo"></asp:MenuItem>
+                                     </asp:MenuItem>
+                                 </asp:MenuItem>
+                                 <asp:MenuItem Text="Facturación" Value="Facturacion" Enabled="False" 
+                                     Selectable="False">
+                                     <asp:MenuItem Text="Factura Proforma" 
+                                         Value="Factura Proforma">
+                                         <asp:MenuItem NavigateUrl="~/FacturaProforma.aspx" Text="Registro" 
+                                             Value="Registro"></asp:MenuItem>
+                                         <asp:MenuItem Text="Consulta" Value="Consulta"></asp:MenuItem>
+                                     </asp:MenuItem>
+                                     <asp:MenuItem Text="Solicitud De Facturación" Value="Solicitud De Facturacion">
+                                         <asp:MenuItem Text="Registro" Value="Registro" 
+                                             NavigateUrl="~/SolicitudFacturacion.aspx"></asp:MenuItem>
+                                         <asp:MenuItem Text="Consulta" Value="Consulta"></asp:MenuItem>
+                                     </asp:MenuItem>
+                                 </asp:MenuItem>
+                                 <asp:MenuItem Text="Planeación" Value="Planeacion" Enabled="False">
+                                     <asp:MenuItem Text="Ingenieria" Value="Ingenieria">
+                                         <asp:MenuItem Text="Cotizaciones" Value="Cotizaciones"></asp:MenuItem>
+                                         <asp:MenuItem Text="Modulacion/Planos" Value="Modulacion/Planos"></asp:MenuItem>
+                                         <asp:MenuItem Text="Internet/Telefonia" Value="Internet/Telefonia">
+                                         </asp:MenuItem>
+                                     </asp:MenuItem>
+                                     <asp:MenuItem Text="Control Gastos" Value="Control Gastos">
+                                         <asp:MenuItem Text="Registro" Value="Registro"></asp:MenuItem>
+                                         <asp:MenuItem Text="Seguimiento" Value="Seguimiento"></asp:MenuItem>
+                                     </asp:MenuItem>
+                                 </asp:MenuItem>
+                                 <asp:MenuItem Text="Logistica" Value="Logistica">
+                                     <asp:MenuItem NavigateUrl="~/CapturaPeso.aspx" Text="Captura de Peso" 
+                                         Value="Captura de Peso"></asp:MenuItem>
+                                     <asp:MenuItem NavigateUrl="~/CargaEstibas2.aspx" Text="Despacho de Carga" 
+                                         Value="Despacho de Carga"></asp:MenuItem>
+                                     <asp:MenuItem NavigateUrl="~/Reportes.aspx" Text="Reportes" Value="Reportes">
+                                     </asp:MenuItem>
+                                     <asp:MenuItem Text="Fletes" Value="Fletes">
+                                         <asp:MenuItem NavigateUrl="~/Fletes.aspx" Text="Nacionales" Value="Nacionales">
+                                         </asp:MenuItem>
+                                     </asp:MenuItem>
+                                     <asp:MenuItem Text="Itinerarios" Value="Itinerarios">
+                                         <asp:MenuItem Text="Registro" Value="Registro"></asp:MenuItem>
+                                         <asp:MenuItem NavigateUrl="~/VerItinerarios.aspx" Text="Ver Itinerarios" 
+                                             Value="Ver Itinerarios"></asp:MenuItem>
+                                     </asp:MenuItem>
+                                 </asp:MenuItem>
+                             </Items>
+                             <LevelMenuItemStyles>
+                                 <asp:MenuItemStyle BackColor="#3B5998" Font-Underline="False" Height="30px" />
+                                 <asp:MenuItemStyle BackColor="#35518A" Font-Underline="False" Height="28px" />
+                                 <asp:MenuItemStyle BackColor="#35518A" Font-Underline="False" Height="28px" />
+                             </LevelMenuItemStyles>
+                             <LevelSubMenuStyles>
+                                 <asp:SubMenuStyle Font-Underline="False" />
+                             </LevelSubMenuStyles>
+                             <StaticHoverStyle BackColor="#003366" ForeColor="White" />
+                             <StaticMenuItemStyle HorizontalPadding="5px" 
+                        ForeColor="White" ItemSpacing="0px" />
+                             <StaticMenuStyle HorizontalPadding="1px" Height="16px" VerticalPadding="0px" 
+                                 Width="16px" />
+                             <StaticSelectedStyle ForeColor="White" HorizontalPadding="0px" 
+                                 ItemSpacing="0px" VerticalPadding="0px" Width="16px" />
+                             <StaticItemTemplate>
+                                 <%# Eval("Text") %>
+                             </StaticItemTemplate>
+                         </asp:Menu>
+                     </td>
+                     <td style="border: 1px solid #3b5998; background-color: #3b5998">
+                         <asp:Menu ID="Menu2" runat="server" DynamicHorizontalOffset="1" 
+                    Font-Names="Tahoma" Font-Size="8pt" Orientation="Horizontal" 
+                    StaticSubMenuIndent="30px" Font-Bold="False" ForeColor="White" 
+                    RenderingMode="Table" style="margin-left: 13px; font-size: 6pt; text-align: left;" 
+                    Font-Overline="False" Width="57px" Font-Underline="False">
+                             <DynamicHoverStyle BackColor="#003366" />
+                             <DynamicMenuItemStyle HorizontalPadding="20px" />
+                             <DynamicMenuStyle BackColor="#003366" />
+                             <DynamicItemTemplate>
+                                 <%# Eval("Text") %>
+                             </DynamicItemTemplate>
+                             <LevelMenuItemStyles>
+                                 <asp:MenuItemStyle BackColor="#3B5998" Font-Underline="False" Height="30px" 
+                            ItemSpacing="0px" />
+                                 <asp:MenuItemStyle BackColor="#35518A" Font-Underline="False" Height="28px" />
+                                 <asp:MenuItemStyle BackColor="#35518A" Font-Underline="False" Height="28px" />
+                             </LevelMenuItemStyles>
+                             <LevelSubMenuStyles>
+                                 <asp:SubMenuStyle Font-Underline="False" />
+                             </LevelSubMenuStyles>
+                             <StaticHoverStyle BackColor="#003366" ForeColor="White" />
+                             <StaticMenuItemStyle HorizontalPadding="5px" 
+                        ForeColor="White" ItemSpacing="0px" />
+                             <StaticMenuStyle HorizontalPadding="20px" />
+                             <StaticSelectedStyle ForeColor="White" />
+                             <StaticItemTemplate>
+                                 <%# Eval("Text") %>
+                             </StaticItemTemplate>
+                         </asp:Menu>
+                     </td>
+                 </tr>
+             </table>
+
+              </asp:ContentPlaceHolder>
+            <asp:ScriptManager ID="ScriptManager1" runat="server"  >
+        </asp:ScriptManager>				
+                         
+			</div>
+		</div>
+		<div id="banner" class="container">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+		<div id="page" class="container">
+			<div id="content">
+				<div style="width: 142px">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                       
+                        &nbsp;<div id='cssmenu'>
+                            <ul>
+                                <li class='active'><a href='index.html'><span>Home</span></a></li>
+                                <li class='has-sub'><a href='#'><span>Products</span></a>
+                                    <ul>
+                                        <li class='has-sub'><a href='#'><span>Product 1</span></a>
+                                            <ul>
+                                                <li><a href='#'><span>Sub Item</span></a></li>
+                                                <li class='last'><a href='#'><span>Sub Item</span></a></li>
+                                            </ul>
+                                        </li>
+                                        <li class='has-sub'><a href='#'><span>Product 2</span></a>
+                                            <ul>
+                                                <li><a href='#'><span>Sub Item</span></a></li>
+                                                <li class='last'><a href='#'><span>Sub Item</span></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href='#'><span>About</span></a></li>
+                                <li class='last'><a href='#'><span>Contact</span></a></li>
+                            </ul>
+                        </div>
+        
+                        
+                    </asp:ContentPlaceHolder>
+                </div>
+			</div>
+            <div id="sidebar" class="alignright">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+		</div>
+	</div>
+</div>
+    </form>
+</body>
+</html>

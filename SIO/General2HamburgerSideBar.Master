@@ -1,0 +1,217 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="General2HamburgerSideBar.master.cs" Inherits="SIO.General2HamburgerSideBar" %>
+
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <script type="text/javascript">
+
+        function MantenSesion() 
+        {                
+            var CONTROLADOR = "refresh_session.ashx";
+            var head = document.getElementsByTagName('head').item(0);            
+            script = document.createElement('script');            
+            script.src = CONTROLADOR ;
+            script.setAttribute('type', 'text/javascript');
+            script.defer = true;
+            head.appendChild(script);
+        } 
+        
+        function z_metjsClick() {
+            var boton = document.getElementById('LinkButton1');
+            boton.click();
+        }
+
+        var bPreguntar = true;
+        //    window.onbeforeunload = preguntarAntesDeSalir;
+
+        function preguntarAntesDeSalir() {
+            if (bPreguntar)
+                return "¿Seguro que quieres salir?, Debe Cerrar Sesión de SIO";
+        }
+
+        function EchoSesion() {
+            var tiempo = new Date();
+            var servicio = new SIO.WSSIO;
+            servicio.Echo(tiempo);
+        }
+
+    </script>
+    <title></title>
+    <meta http-equiv='X-UA-Compatible' content='IE=EmulateIE10,chrome=1' />
+    <script type='text/javascript' src='jquery-1.11.1.min.js'></script>
+    <script type='text/javascript' src='menu_jquery.js'></script>
+    <link href="Default2GeneralNewNavbar.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/font-awesome/font-awesome.min.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style type="text/css">
+        .style1 {
+            text-align: left;
+            width: 100%;
+        }
+    </style>
+</head>
+<body onload="javascript:setInterval('EchoSesion()',50000);doOnLoad();">
+
+    <script type="text/javascript">
+        setInterval('MantenSesion()', <%= (int) (0.9 * (Session.Timeout * 60000)) %>);
+    </script>
+    <%--<body >--%>
+    <form id="form1" runat="server">
+        <!--
+                                <div class="collapse" id="submenu1" aria-expanded="false">
+                        <ul class="flex-column pl-2 nav">
+                            <li class="nav-item"><a class="nav-link py-0" href="#"><span>Orders</span></a></li>
+                            <li class="nav-item">
+                                <a class="nav-link  text-truncate collapsed py-1" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1"><span>Customers</span></a>
+                                <div class="collapse" id="submenu1sub1" aria-expanded="false">
+                                    <ul class="flex-column nav pl-4">
+                                        <li class="nav-item">
+                                            <a class="nav-link p-1 text-truncate" href="#">
+                                                <i class="fa fa-fw fa-clock-o"></i> Daily </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link p-1 text-truncate" href="#">
+                                                <i class="fa fa-fw fa-dashboard"></i> Dashboard </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link p-1 text-truncate" href="#">
+                                                <i class="fa fa-fw fa-bar-chart"></i> Charts </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link p-1 text-truncate" href="#">
+                                                <i class="fa fa-fw fa-compass"></i> Areas </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+-->
+        <div class="sidebarYt">
+                        <h3>Menu</h3>
+                         <ul id="urlcss">
+                            
+                        </ul>
+                    </div>
+        <div id="wrapper">
+
+            <div id="wrapper-bgtop">
+
+                <div id="header-wrapper">
+                    <div id="header">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+
+                            <table class="fondoazul">
+                                <tr>
+                                    <td style="border-width: 1px; text-align: center;"
+                                        width="150">
+
+                                        <asp:ImageButton ID="logoHome" runat="server" Height="33px"
+                                            ImageUrl="~/Imagenes/SIO1.png" PostBackUrl="~/Home.aspx" Width="103px" />
+
+                                    </td>
+                                    <td
+                                        class="style1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         <asp:Label ID="lblNombre" runat="server" Text="Label" Font-Names="Arial"
+                             Font-Size="8pt"></asp:Label>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         <asp:LinkButton ID="LinkButton1" runat="server" Font-Names="Arial"
+                             Font-Size="8pt" ForeColor="#D6D6D6" OnClick="LinkButton1_Click">Cerrar Sesion</asp:LinkButton>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <asp:Label ID="lblConectadoA" runat="server" Text="Label"
+                                 Font-Names="Arial" Visible="False"
+                                 Font-Size="14pt" Font-Bold="True" ForeColor="Yellow"></asp:Label>
+
+                                    </td>
+                                    <td>&nbsp;
+                         <asp:Label ID="conectados" runat="server" Text="Label" Font-Names="Arial"
+                             Font-Size="7pt"></asp:Label></td>
+                                </tr>
+                            </table>
+                        </asp:ContentPlaceHolder>
+                        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+                            <Services>
+                                <asp:ServiceReference Path="~/WSSIO.asmx" InlineScript="true" />
+                            </Services>
+                        </asp:ScriptManager>
+                    </div>
+                </div>
+                <div id="banner" class="container">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+                
+                <div id="page" class="container contenedorprincipal">
+                    
+                    <div id="sidebar" class="alignright sidebarprincipal" style="width: 100% !important;">
+                        
+                        
+
+                        
+                        <script type="text/javascript">
+                            $(document).on('click',".nav-submenu", function() {
+                                if($(this).children('a').attr("aria-expanded") == "true") {
+                                    $(this).css('background-color', '#444');
+                                    $(this).children().css('background-color', '#444');
+                                } else {
+                                    $(this).css('background-color', '#333');
+                                    $(this).children().css('background-color', '#333');
+                                }
+                            })
+                        </script>
+
+                      <!--  <div class=" overlay" id="bs-example-navbar-collapse-1">
+                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                            <nav id='cssmenu' class="overlay-content">
+                                <ul id="urlcss"></ul>
+                            </nav>
+                        </div>
+                        <style>
+                            .overlay {
+                                /* Height & width depends on how you want to reveal the overlay (see JS below) */
+                                height: 100%;
+                                width: 0;
+                                position: fixed; /* Stay in place */
+                                z-index: 1; /* Sit on top */
+                                left: 0;
+                                top: 0;
+                                background-color: rgba(0,0,0,0.5); /* Black fallback color */
+                                background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+                                overflow-x: hidden; /* Disable horizontal scroll */
+                                transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+                            }
+
+                            .overlay-content {
+                                position: relative;
+                                top: 25%; /* 25% from the top */
+                                width: 100%; /* 100% width */
+                                text-align: center; /* Centered text/links */
+                                margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+                            }
+                        </style>
+                        <script>
+                            /* Open when someone clicks on the span element */
+                            function openNav() {
+                                document.getElementById("bs-example-navbar-collapse-1").style.width = "auto";
+                            }
+
+                            /* Close when someone clicks on the "x" symbol inside the overlay */
+                            function closeNav() {
+                                document.getElementById("bs-example-navbar-collapse-1").style.width = "0%";
+                            }
+                        </script>-->
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

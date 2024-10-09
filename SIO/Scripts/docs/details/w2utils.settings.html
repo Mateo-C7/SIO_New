@@ -1,0 +1,136 @@
+Global settings for w2ui
+
+<div class="definition">
+    Object
+</div>
+
+There is a number of default settings used across w2ui library. The setting object is a map with the following structure:
+
+
+<textarea class="javascript">
+settings : {
+    locale            : "en-us",
+    dateFormat        : "mm/dd/yyyy",
+    timeFormat        : "hh:mi pm",
+    currencyPrefix    : "$",
+    currencySuffix    : "",
+    currencyPrecision : 2,
+    groupSymbol       : ",",
+    decimalSymbol     : ".",
+    shortmonths       : ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+    fullmonths        : ["January", "February", "March", "April", "May", "June", "July", "August",
+                         "September", "October", "November", "December"],
+    shortdays         : ["M", "T", "W", "T", "F", "S","S"],
+    fulldays          : ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    weekStarts        : "M",        // can be "M" for Monday or "S" for Sunday
+    dataType          : 'HTTPJSON', // can be HTTP, HTTPJSON, RESTFULL, RESTFULLJSON, JSON
+    phrases           : {}          // empty object for phrases
+    dateStartYear     : 1950,       // start year for date-picker
+    dateEndYear       : 2020        // end year for date picker
+}
+</textarea>
+
+You can define and load settings based on your locale. See <a class="method" href="w2utils.locale">.locale()</a> method
+for more information. All locale specific files are located in the /src/locale folder on github.com
+<div style="height: 20px"></div>
+
+<h4>Data Types</h4>
+
+w2utils.settings<span class="property">.dataType</span> can be one of the following.
+<div style="height: 20px"></div>
+
+<b>HTTPJSON</b> (default) - will encode params as a JSON string and will submit GET request
+<textarea class="javascript">
+request: {
+    "limit":100,
+    "offset":0,
+    "searchLogic":"AND",
+    "search":[
+        {"field":"age", "type":"int", "operator":"between", "value":[10,20]},
+        {"field":"fname", "type":"text", "operator":"begins", "value":"vitali"}
+    ],
+    "sort":[
+        {"field":"fname", "direction":"asc"},
+        {"field":"lname", "direction":"asc"}
+    ]
+}
+</textarea>
+<div style="height: 20px"></div>
+
+<b>HTTP</b> - will encode params as HTTP string and will submit GET request
+<textarea class="javascript">
+limit: 100
+&offset: 0
+&searchLogic: AND
+&search[0][field]: age
+&search[0][type]: int
+&search[0][operator]: between
+&search[0][value][]: 10
+&search[0][value][]: 20
+&search[1][field]: fname
+&search[1][type]: text
+&search[1][operator]: begins
+&search[1][value]: vitali
+&sort[0][field]: fname
+&sort[0][direction]: asc
+&sort[1][field]: lname
+&sort[1][direction]: asc
+</textarea>
+<div style="height: 20px"></div>
+
+<b>RESTFULL</b> - will encode params as HTTP string and will submit GET for list, PUT for save, DELETE for delete, POST for update actions in w2grid and w2forms. For w2grid the request will look like this:
+<textarea  class="javascript">
+limit: 100
+&offset: 0
+&searchLogic: AND
+&search[0][field]: age
+&search[0][type]: int
+&search[0][operator]: between
+&search[0][value][]: 10
+&search[0][value][]: 20
+&search[1][field]: fname
+&search[1][type]: text
+&search[1][operator]: begins
+&search[1][value]: vitali
+&sort[0][field]: fname
+&sort[0][direction]: asc
+&sort[1][field]: lname
+&sort[1][direction]: asc
+</textarea>
+<div style="height: 20px"></div>
+
+<b>RESTFULLJSON</b> - will encode params as JSON and will submit GET for list, PUT for save, DELETE for delete, POST for update actions in w2grid and w2forms. Note that often PUT and DELETE are disabled by various hosting services. For w2grid the request will look like this:
+<textarea class="javascript">
+{
+    "limit":100,
+    "offset":0,
+    "searchLogic":"AND",
+    "search":[
+        {"field":"age", "type":"int", "operator":"between", "value":[10,20]},
+        {"field":"fname", "type":"text", "operator":"begins", "value":"vitali"}
+    ],
+    "sort":[
+        {"field":"fname", "direction":"asc"},
+        {"field":"lname", "direction":"asc"}
+    ]
+}
+</textarea>
+
+<div style="height: 20px"></div>
+
+<b>JSON</b> - will encode params as JSON and submit POST request. The parameters will be submitted as HTTP payload (not HTTP POST), on the server it needs to be parsed differently.
+<textarea class="javascript">
+{
+    "limit":100,
+    "offset":0,
+    "searchLogic":"AND",
+    "search":[
+        {"field":"age", "type":"int", "operator":"between", "value":[10,20]},
+        {"field":"fname", "type":"text", "operator":"begins", "value":"vitali"}
+    ],
+    "sort":[
+        {"field":"fname", "direction":"asc"},
+        {"field":"lname", "direction":"asc"}
+    ]
+}
+</textarea>

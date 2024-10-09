@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1EBA5323-EA4D-4792-B060-F23900F02F0B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CapaControl</RootNamespace>
+    <AssemblyName>CapaControl</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>http://localhost/CapaControl/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="adodb, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>bin\Debug\adodb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\Microsoft.ReportViewer.Common\12.0.0.0__89845dcd8080cc91\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\Microsoft.ReportViewer.WebForms\12.0.0.0__89845dcd8080cc91\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminService.cs" />
+    <Compile Include="Cls_MonedaTrm.cs" />
+    <Compile Include="Consulta.cs" />
+    <Compile Include="ControlActaEntrega.cs" />
+    <Compile Include="ControlActualizaDatosEmpleado.cs" />
+    <Compile Include="ControlAlturaLibre.cs" />
+    <Compile Include="ControlBalizas.cs" />
+    <Compile Include="ControlCasino.cs" />
+    <Compile Include="ControlCostos.cs" />
+    <Compile Include="ControlCliente.cs" />
+    <Compile Include="ControlConexionBd.cs" />
+    <Compile Include="ControlConsumeGerbo.cs" />
+    <Compile Include="ControlContacto.cs" />
+    <Compile Include="ControlCostosComponentesPallet.cs" />
+    <Compile Include="ControlCotizacionPreliminar.cs" />
+    <Compile Include="ControlDatos.cs" />
+    <Compile Include="ControlDominios.cs" />
+    <Compile Include="ControlEstadoProyecto.cs" />
+    <Compile Include="ControlEvento.cs" />
+    <Compile Include="ControlFacturaProforma.cs" />
+    <Compile Include="ControlFlete.cs" />
+    <Compile Include="ControlFUP.cs" />
+    <Compile Include="ControlGrupoPais.cs" />
+    <Compile Include="ControlInicio.cs" />
+    <Compile Include="ControlItinerarios.cs" />
+    <Compile Include="ControlListaChequeo.cs" />
+    <Compile Include="ControlLogistica.cs" />
+    <Compile Include="ControlMaestroItemPlanta.cs" />
+    <Compile Include="ControlMaestroOperaciones.cs" />
+    <Compile Include="ControlMetas.cs" />
+    <Compile Include="ControlMobileGeneral.cs" />
+    <Compile Include="ControlMonedaPais.cs" />
+    <Compile Include="ControlObra.cs" />
+    <Compile Include="ControlOrden.cs" />
+    <Compile Include="ControlPais.cs" />
+    <Compile Include="ControlPedido.cs" />
+    <Compile Include="ControlPieza.cs" />
+    <Compile Include="ControlPlaneadorCotizacion.cs" />
+    <Compile Include="ControlPlantas.cs" />
+    <Compile Include="ControlPoliticas.cs" />
+    <Compile Include="ControlPQRS.cs" />
+    <Compile Include="ControlProceso.cs" />
+    <Compile Include="ControlProgramTurnoLider.cs" />
+    <Compile Include="ControlReporte.cs" />
+    <Compile Include="ControlSeguimientoDespachos.cs" />
+    <Compile Include="ControlSeguridadWS.cs" />
+    <Compile Include="ControlSIAT.cs" />
+    <Compile Include="ControlSolicitudFacturacion.cs" />
+    <Compile Include="ControlTiempoAdicional.cs" />
+    <Compile Include="ControlTiempoCapacitaxValorEquipo.cs" />
+    <Compile Include="ControlUbicacion.cs" />
+    <Compile Include="ControlVisitaComercial.cs" />
+    <Compile Include="ControlZona.cs" />
+    <Compile Include="ELogcappeso.cs" />
+    <Compile Include="Entity\AlturaLibre.cs" />
+    <Compile Include="Entity\Ciudad.cs" />
+    <Compile Include="Entity\ClaseCotizacion.cs" />
+    <Compile Include="Entity\Cliente.cs" />
+    <Compile Include="Entity\ContactoCliente.cs" />
+    <Compile Include="Entity\Dominios.cs" />
+    <Compile Include="Entity\Enumeradores.cs" />
+    <Compile Include="Entity\EstadoSocioEconomico.cs" />
+    <Compile Include="Entity\Fletes.cs" />
+    <Compile Include="Entity\fup.cs" />
+    <Compile Include="Entity\Moneda.cs" />
+    <Compile Include="Entity\ObraCliente.cs" />
+    <Compile Include="Entity\ObraInformacion.cs" />
+    <Compile Include="Entity\Pais.cs" />
+    <Compile Include="Entity\pqrs.cs" />
+    <Compile Include="Entity\ProduccionPlan.cs" />
+    <Compile Include="Entity\SimuladorCosto.cs" />
+    <Compile Include="Gn.cs" />
+    <Compile Include="InfoActaTraza.cs" />
+    <Compile Include="InfoAyudantes.cs" />
+    <Compile Include="InfoBaliza.cs" />
+    <Compile Include="InfoCasino.cs" />
+    <Compile Include="InfoContenedor.cs" />
+    <Compile Include="InfoDespacho.cs" />
+    <Compile Include="InfoEstiba.cs" />
+    <Compile Include="InfoOrden.cs" />
+    <Compile Include="InfoPacking.cs" />
+    <Compile Include="ManBd.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="SFDatos.cs" />
+    <Compile Include="Web References\ConsultasParametricas\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\MatricesItems\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
+      <Project>{284392B5-0D72-463F-9C1B-BDB8490898FD}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="bin\Debug\CapaControl.dll.config" />
+    <None Include="bin\Release\CapaControl.dll.config" />
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ConsultasParametricas\Administrador_AdministradorParametricas_ConsultasParametricas.wsdl" />
+    <None Include="Web References\ConsultasParametricas\ANEXOSXTRANSACCIONANEXO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ConsultasParametricas\CAMPOSXTRANSACCIONCAMPOXTRANSACCION.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ConsultasParametricas\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ConsultasParametricas\RESULTADODATOSITEM.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ConsultasParametricas\RESULTADOSALDOITEM.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ConsultasParametricas\typeTablasParametricas.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MatricesItems\Administrador_AdministradorMatricesItems_MatricesItems.wsdl" />
+    <None Include="Web References\MatricesItems\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\MatricesItems\typeResultadoMatricesItems.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://ws.piciz.zonafrancabogota.com/IntegradorOperaciones/Administrador_AdministradorParametricas_ConsultasParametricas.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ConsultasParametricas\</RelPath>
+      <UpdateFromURL>https://ws.piciz.zonafrancabogota.com/IntegradorOperaciones/Administrador_AdministradorParametricas_ConsultasParametricas.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>CapaControl_UNOEE_WSUNOEE</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://ws.piciz.zonafrancabogota.com/IntegradorOperaciones/Administrador_AdministradorMatricesItems_MatricesItems.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\MatricesItems\</RelPath>
+      <UpdateFromURL>https://ws.piciz.zonafrancabogota.com/IntegradorOperaciones/Administrador_AdministradorMatricesItems_MatricesItems.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>CapaControl_WsReal_WSUNOEE</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\ConsultasParametricas\Administrador_AdministradorParametricas_ConsultasParametricas.disco" />
+    <None Include="Web References\MatricesItems\Administrador_AdministradorMatricesItems_MatricesItems.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\adodb.dll" />
+    <Content Include="bin\Debug\CapaControl.dll" />
+    <Content Include="bin\Debug\CapaControl.pdb" />
+    <Content Include="bin\Debug\CapaDatos.dll" />
+    <Content Include="bin\Debug\CapaDatos.pdb" />
+    <Content Include="bin\Debug\Microsoft.ReportViewer.Common.dll" />
+    <Content Include="bin\Debug\Microsoft.ReportViewer.WebForms.dll" />
+    <Content Include="bin\Debug\Microsoft.ReportViewer.WebForms.xml" />
+    <Content Include="bin\Debug\Oracle.DataAccess.dll" />
+    <Content Include="bin\Release\CapaControl.dll" />
+    <Content Include="bin\Release\CapaControl.pdb" />
+    <Content Include="bin\Release\CapaDatos.dll" />
+    <Content Include="bin\Release\CapaDatos.pdb" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

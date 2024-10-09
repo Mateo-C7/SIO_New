@@ -1,0 +1,542 @@
+﻿import { createApp, ref, onMounted, computed } from 'vue';
+import * as Vuei18n from 'vue-i18n';
+
+// import translations
+import es from '/siomaestro/Scripts/translation/es.json' assert { type: "json" };
+import en from "/siomaestro/Scripts/translation/en.json" assert { type: "json" };
+import pt from "/siomaestro/Scripts/translation/pt.json" assert { type: "json" };
+
+const i18n = Vuei18n.createI18n({
+    locale: "es",
+    fallbackLocale: "es",
+    globalInjection: true,
+    messages: { es, en, pt },
+});
+
+
+const app = createApp({
+    data() {
+        return {
+            fuentes: [],
+            tipofuentes: [],
+            tipos: [],
+            subTipoSolicitudes: [],
+            subTipoSolicitudesTH: [],
+            subTipoQuejas: [],
+            pqrs: {},
+            selectedOrden: '',
+            fup: {},
+            error: {},
+            isDragging: false,
+            files: [],
+            listpqrss: [],
+            idCreado: null,
+            listapaises: [],
+            listaCiudades: [],
+            listaClientes: []
+        }
+    },
+    mounted() {
+        this.mostrarLoad();
+        fetch('FormPQRS.aspx/ObtenerFuentes', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json; charset=utf-8'
+            }
+        })
+            .then(res => {
+                // a non-200 response code
+                if (!res.ok) {
+                    this.ocultarLoad();
+                    // create error instance with HTTP status text
+                    const error = new Error(res.statusText);
+                    error.json = res.json();
+                    throw error;
+                }
+
+                return res.json();
+            })
+            .then(json => {
+                // set the response data
+                this.ocultarLoad();
+                var res = JSON.parse(json.d);
+                this.fuentes = res.fuentes;
+                this.tipofuentes = res.tipofuentes;
+                this.tipos = res.tipos;
+                this.subTipoQuejas = res.subTipoQuejas;
+                this.subTipoSolicitudes = res.subTipoSolicitudes;
+                this.subTipoSolicitudesTH = res.subTipoSolicitudesTH;
+                this.pqrs = { TipoPQRSId: -1 };
+            })
+            .catch(err => {
+                this.ocultarLoad();
+                this.error.value = err;
+                // In case a custom JSON error response was provided
+                if (err.json) {
+                    return err.json.then(json => {
+                        // set the JSON response message
+                        this.error.value.message = json.message;
+                    });
+                }
+            });
+
+    },
+    methods: {
+        sLoading: function () {
+            $.LoadingOverlay("show", {
+                color: "rgba(0, 0, 0, 0.3)",
+                image: "",
+                custom: "<div style='color:white; font-size: 100px;' class='fa fa-refresh fa-spin'></div>",
+                fade: false
+            });
+        },
+
+        hLoading: function () {
+            $.LoadingOverlay("hide", true);
+        },
+        mostrarLoad: function () {
+            this.sLoading();
+        },
+
+        ocultarLoad: function () {
+            this.hLoading();
+        },
+        onChangeTipo: function () {
+            debugger;
+            this.fup = {};
+            this.idCreado = null;
+            this.selectedOrden = '';
+            this.MostrarCliente();
+        },
+        ObtenerFUP: function (event) {
+            var orden = JSON.stringify({ idOrdenFabricacion: this.selectedOrden });
+            this.mostrarLoad();
+            fetch('FormPQRS.aspx/obtenerVersionPorOrdenFabricacion', {
+                method: 'POST',
+                body: orden,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-type': 'application/json; charset=utf-8'
+                }
+            })
+                .then(res => {
+                    // a non-200 response code
+                    if (!res.ok) {
+                        this.ocultarLoad();
+                        // create error instance with HTTP status text
+                        const error = new Error(res.statusText);
+                        error.json = res.json();
+                        throw error;
+                    }
+
+                    return res.json();
+                })
+                .then(json => {
+                    // set the response data
+                    this.ocultarLoad();
+                    this.fup = JSON.parse(json.d);
+                    console.log(this.fup);
+                })
+                .catch(err => {
+                    this.ocultarLoad();
+                    this.error.value = err;
+                    // In case a custom JSON error response was provided
+                    if (err.json) {
+                        return err.json.then(json => {
+                            // set the JSON response message
+                            this.error.value.message = json.message;
+                        });
+                    }
+                });
+        },
+        MostrarFUPCreacion: function () {
+            var modal = $("#ModalCreatePQRS")
+            modal.modal({ backdrop: 'static', keyboard: false }, 'show');
+        },
+        validateEmail: function () {
+            if (this.pqrs.EmailRespuesta != undefined && this.pqrs.EmailRespuesta != null) {
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.pqrs.EmailRespuesta) == false) {
+                    this.pqrs.EmailRespuesta = '';
+                }
+            }
+        },
+        GuardarPQRS: function () {
+            if (this.pqrs == undefined || this.pqrs == null) {
+                toastr.error("Debe digitar datos", "PQRS", {
+                    "timeOut": "0",
+                    "extendedTImeout": "0"
+                });
+                return false;
+            }
+
+            if ((this.pqrs.Detalle == undefined || this.pqrs.Detalle == null) || (this.pqrs.Detalle != undefined && this.pqrs.Detalle != null && this.pqrs.Detalle.length == 0)) {
+                toastr.error("Debe digitar una observación", "PQRS", {
+                    "timeOut": "0",
+                    "extendedTImeout": "0"
+                });
+                return false;
+            }
+
+            if ((this.pqrs.NombreRespuesta == undefined || this.pqrs.NombreRespuesta == null) || (this.pqrs.NombreRespuesta != undefined && this.pqrs.NombreRespuesta != null && this.pqrs.NombreRespuesta.length == 0)) {
+                toastr.error("Debe digitar un nombre", "PQRS", {
+                    "timeOut": "0",
+                    "extendedTImeout": "0"
+                });
+                return false;
+            }
+
+            if ((this.pqrs.DireccionRespuesta == undefined || this.pqrs.DireccionRespuesta == null) || (this.pqrs.DireccionRespuesta != undefined && this.pqrs.DireccionRespuesta != null && this.pqrs.DireccionRespuesta.length == 0)) {
+                toastr.error("Debe digitar una dirección", "PQRS", {
+                    "timeOut": "0",
+                    "extendedTImeout": "0"
+                });
+                return false;
+            }
+
+            if ((this.pqrs.EmailRespuesta == undefined || this.pqrs.EmailRespuesta == null) || (this.pqrs.EmailRespuesta != undefined && this.pqrs.EmailRespuesta != null && this.pqrs.EmailRespuesta.length == 0)) {
+                toastr.error("Debe digitar un email", "PQRS", {
+                    "timeOut": "0",
+                    "extendedTImeout": "0"
+                });
+                return false;
+            }
+
+            if ((this.pqrs.TelefonoRespuesta == undefined || this.pqrs.TelefonoRespuesta == null) || (this.pqrs.TelefonoRespuesta != undefined && this.pqrs.TelefonoRespuesta != null && this.pqrs.TelefonoRespuesta.length == 0)) {
+                toastr.error("Debe digitar un telefono", "PQRS", {
+                    "timeOut": "0",
+                    "extendedTImeout": "0"
+                });
+                return false;
+            }
+
+            if (this.files.length > 5) {
+                toastr.error("No elija mas de 5 archivos", "PQRS", {
+                    "timeOut": "0",
+                    "extendedTImeout": "0"
+                });
+                return false;
+            }
+
+            debugger;
+
+            if (this.pqrs.TipoPQRSId == 2) {
+
+                if (this.pqrs.IdFuenteReclamo == undefined || this.pqrs.IdFuenteReclamo == null) {
+                    toastr.error("Debe elegir la fuente", "PQRS", {
+                        "timeOut": "0",
+                        "extendedTImeout": "0"
+                    });
+                    return false;
+                }
+            }
+            if (this.fup.IdFup != undefined && this.fup.IdFup != null){
+                this.pqrs.NroOrden = this.selectedOrden;
+                this.pqrs.IdFup = this.fup.IdFup;
+                this.pqrs.IdOrden = this.fup.IdOrden;
+                this.pqrs.Version = this.fup.Version;
+                this.pqrs.IdCliente = this.fup.IdCliente;
+            }
+
+            if (this.files.length > 0) {
+                this.getFiles(this.files).then(
+                    data => {
+                        var archivosSave = [];
+                        for (var i = 0; i < data.length; i++) {
+                            var fileSave = data[i];
+                            archivosSave.push({ base64: fileSave.base64StringFile, nameFile: fileSave.fileName, type: fileSave.fileType });
+                        }
+                        this.pqrs.archivos = archivosSave;
+                        this.savePQRSFetch(this.pqrs);
+                    }
+                );
+            }
+            else {
+                this.savePQRSFetch(this.pqrs);
+            }
+        },
+        savePQRSFetch: function (pqrs) {
+            var orden = JSON.stringify({ pqrs: pqrs });
+            this.mostrarLoad();
+            fetch('FormPQRS.aspx/GuardarPQRS', {
+                method: 'POST',
+                body: orden,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-type': 'application/json; charset=utf-8'
+                }
+            })
+                .then(res => {
+                    // a non-200 response code
+                    if (!res.ok) {
+                        this.ocultarLoad();
+                        // create error instance with HTTP status text
+                        const error = new Error(res.statusText);
+                        error.json = res.json();
+                        throw error;
+                    }
+
+                    return res.json();
+                })
+                .then(json => {
+                    // set the response data
+                    this.ocultarLoad();
+                    debugger;
+                    var modal = $("#ModalCreatePQRS")
+                    modal.modal('hide');
+                    this.pqrs = { TipoPQRSId: -1 };
+                    this.selectedOrden = '';
+                    this.fup = {};
+                    this.files = [];
+                    this.idCreado = json.d;
+                    // this.fup = JSON.parse(json.d);
+                })
+                .catch(err => {
+                    this.ocultarLoad();
+                    this.error.value = err;
+                    // In case a custom JSON error response was provided
+                    if (err.json) {
+                        return err.json.then(json => {
+                            // set the JSON response message
+                            this.error.value.message = json.message;
+                        });
+                    }
+                });
+        },
+
+        //Function for drag and drop files
+        getFiles: function (files) {
+            return Promise.all(files.map(file => this.getFile(file)));
+        },
+
+        getFile: function (file) {
+            var reader = new FileReader();
+            return new Promise((resolve, reject) => {
+                reader.onerror = () => { reader.abort(); reject(new Error("Error parsing file")); }
+                reader.onload = function () {
+
+                    //This will result in an array that will be recognized by C#.NET WebApi as a byte[]
+                    let bytes = Array.from(new Uint8Array(this.result));
+
+                    //if you want the base64encoded file you would use the below line:
+                    let base64StringFile = btoa(bytes.map((item) => String.fromCharCode(item)).join(""));
+
+                    //Resolve the promise with your custom file structure
+                    resolve({
+                        bytes: bytes,
+                        base64StringFile: base64StringFile,
+                        fileName: file.name,
+                        fileType: file.type
+                    });
+                }
+                reader.readAsArrayBuffer(file);
+            });
+        },
+
+        onChange() {
+            this.files = [...this.$refs.file.files];
+        },
+
+        generateThumbnail(file) {
+            let fileSrc = URL.createObjectURL(file);
+            setTimeout(() => {
+                URL.revokeObjectURL(fileSrc);
+            }, 1000);
+            return fileSrc;
+        },
+
+        makeName(name) {
+            return (
+                name.split(".")[0].substring(0, 3) +
+                "..." +
+                name.split(".")[name.split(".").length - 1]
+            );
+        },
+
+        remove(i) {
+            this.files.splice(i, 1);
+        },
+
+        dragover(e) {
+            e.preventDefault();
+            this.isDragging = true;
+        },
+
+        dragleave() {
+            this.isDragging = false;
+        },
+
+        drop(e) {
+            e.preventDefault();
+            this.$refs.file.files = e.dataTransfer.files;
+            this.onChange();
+            this.isDragging = false;
+        },
+
+        ChangeLanguage: function (lang) {
+            window.AppPQRS.__VUE_I18N__.global.locale = lang;
+        },
+
+        TranslationCombo: function (text) {
+            return window.AppPQRS.__VUE_I18N__.global.t(text);
+        },
+        MostrarCliente: function () {
+            fetch('FormPQRS.aspx/obtenerListadoPaises', {
+                method: 'POST',
+
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-type': 'application/json; charset=utf-8'
+                }
+            })
+                .then(res => {
+                    // a non-200 response code
+                    if (!res.ok) {
+                        //this.ocultarLoad();
+                        // create error instance with HTTP status text
+                        const error = new Error(res.statusText);
+                        error.json = res.json();
+                        throw error;
+                    }
+
+                    return res.json();
+                })
+                .then(json => {
+                    // set the response data
+                   // this.ocultarLoad();
+                    this.listapaises = JSON.parse(json.d);
+                    var data = JSON.parse(json.d);
+                    data.forEach(element => {
+                        $("#cmbPaises").append($("<option />").val(element.Id).text(element.Nombre));
+                    });
+                    $("#cmbPaises").selectpicker();
+                   // var modal = $("#MostrarModalCliente");
+                   // modal.modal({ backdrop: 'static', keyboard: false }, 'show');
+
+                })
+                .catch(err => {
+                  //  this.ocultarLoad();
+                    this.error.value = err;
+                    // In case a custom JSON error response was provided
+                    if (err.json) {
+                        return err.json.then(json => {
+                            // set the JSON response message
+                            this.error.value.message = json.message;
+                        });
+                    }
+                });
+        },
+
+        onChangePais() {
+            var orden = JSON.stringify({ idPais: this.pqrs.IdPais });
+            this.mostrarLoad();
+            fetch('FormPQRS.aspx/obtenerListadoCiudadesMoneda', {
+                method: 'POST',
+                body: orden,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-type': 'application/json; charset=utf-8'
+                }
+            })
+                .then(res => {
+                    // a non-200 response code
+                    if (!res.ok) {
+                        this.ocultarLoad();
+                        // create error instance with HTTP status text
+                        const error = new Error(res.statusText);
+                        error.json = res.json();
+                        throw error;
+                    }
+
+                    return res.json();
+                })
+                .then(json => {
+                    // set the response data
+                    this.ocultarLoad();
+                    this.listaCiudades = JSON.parse(json.d);
+                    var data = JSON.parse(json.d);
+                    $("#cmbCiudad").html("");
+                    data.forEach(element => {
+                        $("#cmbCiudad").append($("<option />").val(element.Id).text(element.Nombre));
+                    });
+                    $("#cmbCiudad").selectpicker('refresh');
+                    //  var modal = $("#MostrarModalCliente");
+                    //  modal.modal({ backdrop: 'static', keyboard: false }, 'show');
+
+                })
+                .catch(err => {
+                    this.ocultarLoad();
+                    this.error.value = err;
+                    // In case a custom JSON error response was provided
+                    if (err.json) {
+                        return err.json.then(json => {
+                            // set the JSON response message
+                            this.error.value.message = json.message;
+                        });
+                    }
+                });
+        },
+
+        onChangeCiudad() {
+            var orden = JSON.stringify({ idCiudad: this.pqrs.IdCiudad });
+            this.mostrarLoad();
+            fetch('FormPQRS.aspx/obtenerListadoClientesCiudad', {
+                method: 'POST',
+                body: orden,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-type': 'application/json; charset=utf-8'
+                }
+            })
+                .then(res => {
+                    // a non-200 response code
+                    if (!res.ok) {
+                        this.ocultarLoad();
+                        // create error instance with HTTP status text
+                        const error = new Error(res.statusText);
+                        error.json = res.json();
+                        throw error;
+                    }
+
+                    return res.json();
+                })
+                .then(json => {
+                    // set the response data
+                    this.ocultarLoad();
+                    this.listaClientes = JSON.parse(json.d);
+                    var data = JSON.parse(json.d);
+                    $("#cmbEmpresa").html("");
+                    data.forEach(element => {
+                        $("#cmbEmpresa").append($("<option />").val(element.Id).text(element.Nombre));
+                    });
+                    $("#cmbEmpresa").selectpicker('refresh');
+                    //  var modal = $("#MostrarModalCliente");
+                    //  modal.modal({ backdrop: 'static', keyboard: false }, 'show');
+
+                })
+                .catch(err => {
+                    this.ocultarLoad();
+                    this.error.value = err;
+                    // In case a custom JSON error response was provided
+                    if (err.json) {
+                        return err.json.then(json => {
+                            // set the JSON response message
+                            this.error.value.message = json.message;
+                        });
+                    }
+                });
+
+
+        },        
+
+        AceptarCliente: function(){
+            var modal = $("#MostrarModalCliente")
+            modal.modal('hide');
+        }
+    }
+});
+
+window.AppPQRS = app;
+app.use(i18n);
+app.mount('#app');
+

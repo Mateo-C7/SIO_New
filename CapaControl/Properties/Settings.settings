@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CapaControl.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CapaControl_UNOEE_WSUNOEE" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ws.piciz.zonafrancabogota.com/IntegradorOperaciones/Administrador_AdministradorParametricas_ConsultasParametricas.asmx</Value>
+    </Setting>
+    <Setting Name="CapaControl_WsReal_WSUNOEE" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ws.piciz.zonafrancabogota.com/IntegradorOperaciones/Administrador_AdministradorMatricesItems_MatricesItems.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

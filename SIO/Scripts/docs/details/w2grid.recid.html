@@ -1,0 +1,25 @@
+Name for the recid field in the records array.
+
+<div class="definition">
+    String, default = null
+</div>
+
+If you server returns records structure that does not have recid, you can defined another unique field instead of it.
+<div style="height: 10px"></div>
+
+This property should be set during object creation:
+<textarea class="javascript">
+$('#grid').w2grid({
+    name    : 'grid',
+    url     : '/server/side/url',
+    recid   : 'personId',
+    columns : [
+        { field: 'personId', text: 'ID', size: '50px' },
+        { field: 'lname', text: 'Last Name', size: '30%' },
+        { field: 'fname', text: 'First Name', size: '30%' },
+        { field: 'email', text: 'Email', size: '40%' },
+        { field: 'sdate', text: 'Start Date', size: '120px' },
+        { field: 'edate', text: 'End Date', size: '120px' }
+    ]
+});
+</textarea>

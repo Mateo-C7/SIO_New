@@ -1,0 +1,165 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MobilInicioM.master.cs" Inherits="SIO.MobilInicioM" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script>
+
+    window.addEventListener('load', function () {
+        setTimeout(scrollTo, 0, 0, 1);
+    }, false);
+
+    </script>
+     <script>
+         addEventListener("load", function () { setTimeout(hideURLbar, 0); }, false);
+         function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta  name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;"  />
+   
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">        
+           .bueno
+        {
+            width: 300px; 
+            text-align:center;
+        }      
+         .menu
+        {
+            width: 0px; 
+            text-align:center;
+        }   
+            .interno
+        {
+            width: 280px; 
+            text-align:center;
+        }  
+            .arriba
+        {
+            width: 320px; 
+            text-align:center;
+        } 
+        html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
+        -webkit-text-size-adjust:none;
+            width: 298px;
+        }        
+       
+
+        @media screen and (max-width:479px) {.bueno {width: 300px;}}
+        @media screen and (max-width:479px) {.interno {width: 300px;}}
+        @media screen and (min-width:480px) and (max-width:639px) {.bueno {width: 480px;}}  
+        @media screen and (min-width:480px) and (max-width:639px) {.interno {width: 460px;}}   
+        @media screen and (min-width:768px) and (max-width:799px) {.bueno {width: 768px;}} 
+        @media screen and (min-width:768px) and (max-width:799px) {.interno {width: 748px;}} 
+        @media screen and (min-width:800px) and (max-width:854px) {.bueno {width: 854px;}} 
+        @media screen and (min-width:800px) and (max-width:854px) {.interno {width: 834px;}}      
+        @media screen and (min-width:855px) and (max-width:1025px){.bueno {width: 1024px;}}
+        @media screen and (min-width:855px) and (max-width:1025px){.interno {width: 1004px;}}
+        
+        @media screen and (max-width:479px) {.arriba {width: 330px;}}
+        @media screen and (min-width:480px) and (max-width:639px) {.arriba {width: 490px;}}   
+        @media screen and (min-width:768px) and (max-width:799px) {.arriba {width: 778px;}} 
+        @media screen and (min-width:800px) and (max-width:854px) {.arriba {width: 810px;}}     
+        @media screen and (min-width:855px) and (max-width:1025px){.arriba {width: 895px;}}
+        
+        @media screen and (max-width:479px) {.menu {width: 0px;}}
+        @media screen and (min-width:480px) and (max-width:639px) {.menu {width: 480px;}}   
+        @media screen and (min-width:768px) and (max-width:799px) {.menu {width: 480px;}} 
+        @media screen and (min-width:800px) and (max-width:854px) {.menu {width: 480px;}}     
+        @media screen and (min-width:855px) and (max-width:1025px){.menu {width: 450px;}}
+                
+        #form1
+        {
+            height: 346px;
+            width: 300px;
+        }
+        
+        
+        .style2
+        {
+            width: 300px;
+        }
+        
+        
+        .style3
+        {
+            width: 100%;
+        }
+        
+        
+    </style>
+</head>
+<body class="bueno">
+    <form id="form1" runat="server" style="width: auto; height: auto;" class="bueno">
+    <div style="width: 297px; height: 35px">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        <asp:Panel ID="Panel1" runat="server" Height="37px" HorizontalAlign="Center" 
+                style="background-color: #1C5AB6; margin-right: 0px;" CssClass="bueno">
+                <table class="bueno">
+                    <tr>
+                        <td>
+                            &nbsp;</td>
+                        <td class="style2">
+                            <table class="style3">
+                                <tr>
+                                    <td>
+                                        <asp:Menu ID="MenuMobil" runat="server" BackColor="#000048" 
+                                            Orientation="Horizontal" StaticSubMenuIndent="30px" 
+                                            
+                                            style="color: #FFFFFF; font-size: 14pt; text-align: left; font-weight: 700;" 
+                                            DynamicHorizontalOffset="1" RenderingMode="Table">
+                                            <DynamicItemTemplate>
+                                                <%# Eval("Text") %>
+                                            </DynamicItemTemplate>
+                                            <Items>
+                                                <asp:MenuItem ImageUrl="~/Imagenes/menumovil.jpg" Text="|||||">
+                                                    <asp:MenuItem NavigateUrl="~/MobilCotizacion.aspx" Text="Cotizacion" 
+                                                        Value="Cotizacion"></asp:MenuItem>
+                                                    <asp:MenuItem NavigateUrl="~/MobilGeneral.aspx" Text="Maestros" 
+                                                        Value="Maestros"></asp:MenuItem>
+                                                    <asp:MenuItem NavigateUrl="~/MobilInicio.aspx" Text="Salir" Value="Salir">
+                                                    </asp:MenuItem>
+                                                </asp:MenuItem>
+                                            </Items>
+                                            <LevelMenuItemStyles>
+                                                <asp:MenuItemStyle BackColor="#D7D7D7" Font-Underline="False" 
+                                                    ForeColor="#000051" />
+                                                <asp:MenuItemStyle BackColor="#D7D7D7" BorderColor="#D8D8D8" 
+                                                    BorderStyle="Ridge" BorderWidth="1px" Font-Bold="False" Font-Names="Arial" 
+                                                    Font-Size="14pt" Font-Underline="False" ForeColor="#003366" 
+                                                    HorizontalPadding="25px" VerticalPadding="10px" />
+                                            </LevelMenuItemStyles>
+                                            <StaticMenuItemStyle Font-Names="Arial" Font-Size="13pt" ItemSpacing="50px" />
+                                            <StaticItemTemplate>
+                                                <%# Eval("Text") %>
+                                            </StaticItemTemplate>
+                                        </asp:Menu>
+                                    </td>
+                                    <td>
+                                        <asp:Image ID="Image1" runat="server" Height="21px" ImageAlign="Right" 
+                                            ImageUrl="~/Imagenes/SIOpeq.jpg" Width="62px" />
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                </table>
+            </asp:Panel>
+        </asp:ContentPlaceHolder>
+    </div>
+     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        <asp:Panel ID="Panel2" runat="server" HorizontalAlign="Center" 
+                style="background-color: #FFFFFF; margin-right: 0px;" CssClass="bueno" 
+            BackColor="#669999" ForeColor="#006666" Height="19px" Width="293px">
+        </asp:Panel>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" ScriptMode="Release" >
+        </asp:ScriptManager>
+    </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

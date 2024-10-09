@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainReportViewer.Master.cs" Inherits="SIO.MainReportViewer" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>    
+    <asp:ContentPlaceHolder ID="head" runat="server">  </asp:ContentPlaceHolder>
+    <meta http-equiv='X-UA-Compatible' content='IE=EmulateIE10,chrome=1' />
+    <script  type="text/javascript">
+        function MantenSesion() {
+            var CONTROLADOR = "refresh_session.ashx";
+            var head = document.getElementsByTagName('head').item(0);
+            script = document.createElement('script');
+            script.src = CONTROLADOR;
+            script.setAttribute('type', 'text/javascript');
+            script.defer = true;
+            head.appendChild(script);
+        }
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+        setInterval('MantenSesion()', <%= (int) (0.9 * (Session.Timeout * 180000)) %>);
+    </script>
+    <form id="formMain" runat="server"> 
+        <div id="header">        
+            <!--====================== CONTENEDOR  ===============================-->
+                <asp:ScriptManager ID="ScriptManagerMainVisorReport" runat="server" ScriptMode="Release"></asp:ScriptManager>
+                <asp:ScriptManagerProxy ID="ScriptManagerProxyVisorReport" runat="server"></asp:ScriptManagerProxy>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderMainVisorReport" runat="server">
+                </asp:ContentPlaceHolder>
+            <!--=====================================================================-->
+        </div>
+    </form>
+</body>
+</html>

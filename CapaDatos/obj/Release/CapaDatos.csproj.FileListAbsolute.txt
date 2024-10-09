@@ -1,0 +1,5 @@
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\CapaDatos\bin\Release\CapaDatos.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\CapaDatos\bin\Release\CapaDatos.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\CapaDatos\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\CapaDatos\obj\Release\CapaDatos.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\CapaDatos\obj\Release\CapaDatos.pdb

@@ -1,0 +1,10 @@
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaControl\bin\Debug\CapaControl.dll.config
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaControl\bin\Debug\CapaControl.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaControl\bin\Debug\CapaControl.pdb
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaControl\bin\Debug\CapaDatos.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaControl\bin\Debug\CapaDatos.pdb
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaControl\obj\Debug\CapaControl.dll
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaControl\obj\Debug\CapaControl.pdb
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaControl\obj\Debug\CapaControl.csproj.AssemblyReference.cache
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaControl\obj\Debug\CapaControl.csproj.CoreCompileInputs.cache
+C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaControl\obj\Debug\CapaControl.csproj.CopyComplete

@@ -1,0 +1,28 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Contraseña.master.cs" Inherits="SIO.Contraseña" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+         <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                
+             <table class="style1" bgcolor="#1C5AB6" frame="border">
+              </table>
+                
+        </asp:ContentPlaceHolder>
+         <asp:ScriptManager ID="ScriptManager1" runat="server" ScriptMode="Release" >
+        </asp:ScriptManager>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

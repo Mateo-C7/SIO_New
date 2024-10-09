@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s4="http://Mensajes.MatricesItems.Matriz" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://Mensajes.MatricesItems.ActualizarItemsCompania" xmlns:s5="http://Mensajes.MatricesItems.InfoMatriz" xmlns:mynamespace="http://mynamespace" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s6="http://Mensajes.MatricesItems.InsertarItemsCompania" xmlns:s2="http://Mensajes.MatricesItems.ResultadoMatricesItems" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s7="http://Mensajes.MatricesItems.MatrizMasivo" xmlns:s3="http://Mensajes.General.inHeader" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">BizTalk assembly "ZFB.Integrador.Base.Administrador, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d360496674692490" published web service.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://Mensajes.MatricesItems.ActualizarItemsCompania" />
+      <s:import namespace="http://Mensajes.MatricesItems.ResultadoMatricesItems" />
+      <s:import namespace="http://Mensajes.MatricesItems.Matriz" />
+      <s:import namespace="http://Mensajes.MatricesItems.InfoMatriz" />
+      <s:import namespace="http://Mensajes.MatricesItems.InsertarItemsCompania" />
+      <s:import namespace="http://Mensajes.MatricesItems.MatrizMasivo" />
+      <s:element name="ActualizarItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:ACTUALIZARITEMSCOMPANIA" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:RESULTADOMATRICESITEMS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarComponente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s4:MATRIZ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarComponenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:RESULTADOMATRICESITEMS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarComponente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s4:MATRIZ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarComponenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:RESULTADOMATRICESITEMS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarComponente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s5:INFOMATRIZ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarComponenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:RESULTADOMATRICESITEMS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s6:INSERTARITEMSCOMPANIA" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:RESULTADOMATRICESITEMS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarComponentePorEliminacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s4:MATRIZ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarComponentePorEliminacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:RESULTADOMATRICESITEMS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarComponentePorEliminacionMasivo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s7:MATRIZ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarComponentePorEliminacionMasivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:RESULTADOMATRICESITEMS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.MatricesItems.ActualizarItemsCompania">
+      <s:element name="ACTUALIZARITEMSCOMPANIA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ITEMSCOMPANIA" type="s1:ArrayOfITEMCOMPANIAACT" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfITEMCOMPANIAACT">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ITEMCOMPANIAACT">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDITEM" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="CDTIPOMERCANCIA" type="s:decimal" />
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DSITEM" type="s:string" />
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDTIPO" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="CDSUBPARTIDA" type="s:decimal" />
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDUNIDADCOMERCIAL" type="s:string" />
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDUNIDADMEDIDA" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NMCONVERSION" type="s:decimal" />
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SNCOMPONENTES" type="s:string" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.MatricesItems.ResultadoMatricesItems">
+      <s:element name="RESULTADOMATRICESITEMS" type="s2:typeResultadoMatricesItems" />
+      <s:complexType name="typeResultadoMatricesItems">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="FGRESULTADO" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DSMENSAJE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ERRORES" type="s2:ArrayOfTypeErrorMatricesItems" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTypeErrorMatricesItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="ERRORMATRICESITEMS" type="s2:typeErrorMatricesItems" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="typeErrorMatricesItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDREGISTRO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DSCAMPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DSMENSAJE" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.General.inHeader">
+      <s:element name="inHeader">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDCIAUSUARIA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDZONAFRANCA" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DSUSUARIO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PWDUSUARIO" type="s:string" />
+          </s:sequence>
+          <s:anyAttribute />
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.MatricesItems.Matriz">
+      <s:element name="MATRIZ">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="COMPONENTE">
+              <s:complexType>
+                <s:attribute name="CDITEM" type="s:string" />
+                <s:attribute name="NMCANTIDADCONS" type="s:decimal" use="required" />
+                <s:attribute name="NMDESPERDICIO" type="s:decimal" use="required" />
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CDITEM" type="s:string" />
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.MatricesItems.InfoMatriz">
+      <s:element name="INFOMATRIZ">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="INFOCOMPONENTE">
+              <s:complexType>
+                <s:attribute name="CDITEM" type="s:string" />
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="CDITEM" type="s:string" />
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.MatricesItems.InsertarItemsCompania">
+      <s:element name="INSERTARITEMSCOMPANIA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ITEMSCOMPANIA" type="s6:ArrayOfITEMCOMPANIAINST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfITEMCOMPANIAINST">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ITEMCOMPANIAINST">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDITEM" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="CDTIPOMERCANCIA" type="s:decimal" />
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DSITEM" type="s:string" />
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDTIPO" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="CDSUBPARTIDA" type="s:decimal" />
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDUNIDADCOMERCIAL" type="s:string" />
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CDUNIDADMEDIDA" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NMCONVERSION" type="s:decimal" />
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SNCOMPONENTES" type="s:string" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Mensajes.MatricesItems.MatrizMasivo">
+      <s:element name="MATRIZ" type="s7:MATRIZ" />
+      <s:complexType name="MATRIZ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="MATRIZ">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="COMPONENTE">
+                  <s:complexType>
+                    <s:attribute name="CDITEM" type="s:string" />
+                    <s:attribute name="NMCANTIDADCONS" type="s:decimal" use="required" />
+                    <s:attribute name="NMDESPERDICIO" type="s:decimal" use="required" />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:attribute name="CDITEM" type="s:string" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ActualizarItemSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarItem" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarItemSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarIteminHeader">
+    <wsdl:part name="inHeader" element="s3:inHeader" />
+  </wsdl:message>
+  <wsdl:message name="InsertarComponenteSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarComponente" />
+  </wsdl:message>
+  <wsdl:message name="InsertarComponenteSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarComponenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarComponenteinHeader">
+    <wsdl:part name="inHeader" element="s3:inHeader" />
+  </wsdl:message>
+  <wsdl:message name="ModificarComponenteSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarComponente" />
+  </wsdl:message>
+  <wsdl:message name="ModificarComponenteSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarComponenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarComponenteinHeader">
+    <wsdl:part name="inHeader" element="s3:inHeader" />
+  </wsdl:message>
+  <wsdl:message name="EliminarComponenteSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarComponente" />
+  </wsdl:message>
+  <wsdl:message name="EliminarComponenteSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarComponenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarComponenteinHeader">
+    <wsdl:part name="inHeader" element="s3:inHeader" />
+  </wsdl:message>
+  <wsdl:message name="InsertarItemSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarItem" />
+  </wsdl:message>
+  <wsdl:message name="InsertarItemSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarIteminHeader">
+    <wsdl:part name="inHeader" element="s3:inHeader" />
+  </wsdl:message>
+  <wsdl:message name="ModificarComponentePorEliminacionSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarComponentePorEliminacion" />
+  </wsdl:message>
+  <wsdl:message name="ModificarComponentePorEliminacionSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarComponentePorEliminacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarComponentePorEliminacioninHeader">
+    <wsdl:part name="inHeader" element="s3:inHeader" />
+  </wsdl:message>
+  <wsdl:message name="ModificarComponentePorEliminacionMasivoSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarComponentePorEliminacionMasivo" />
+  </wsdl:message>
+  <wsdl:message name="ModificarComponentePorEliminacionMasivoSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarComponentePorEliminacionMasivoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarComponentePorEliminacionMasivoinHeader">
+    <wsdl:part name="inHeader" element="s3:inHeader" />
+  </wsdl:message>
+  <wsdl:portType name="Administrador_AdministradorMatricesItems_MatricesItemsSoap">
+    <wsdl:operation name="ActualizarItem">
+      <wsdl:input message="tns:ActualizarItemSoapIn" />
+      <wsdl:output message="tns:ActualizarItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarComponente">
+      <wsdl:input message="tns:InsertarComponenteSoapIn" />
+      <wsdl:output message="tns:InsertarComponenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarComponente">
+      <wsdl:input message="tns:ModificarComponenteSoapIn" />
+      <wsdl:output message="tns:ModificarComponenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarComponente">
+      <wsdl:input message="tns:EliminarComponenteSoapIn" />
+      <wsdl:output message="tns:EliminarComponenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarItem">
+      <wsdl:input message="tns:InsertarItemSoapIn" />
+      <wsdl:output message="tns:InsertarItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarComponentePorEliminacion">
+      <wsdl:input message="tns:ModificarComponentePorEliminacionSoapIn" />
+      <wsdl:output message="tns:ModificarComponentePorEliminacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarComponentePorEliminacionMasivo">
+      <wsdl:input message="tns:ModificarComponentePorEliminacionMasivoSoapIn" />
+      <wsdl:output message="tns:ModificarComponentePorEliminacionMasivoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Administrador_AdministradorMatricesItems_MatricesItemsSoap" type="tns:Administrador_AdministradorMatricesItems_MatricesItemsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ActualizarItem">
+      <soap:operation soapAction="http://tempuri.org/Administrador_AdministradorMatricesItems_MatricesItems/ActualizarItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ActualizarIteminHeader" part="inHeader" use="literal" />
+        <mynamespace:validation />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarComponente">
+      <soap:operation soapAction="http://tempuri.org/Administrador_AdministradorMatricesItems_MatricesItems/InsertarComponente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InsertarComponenteinHeader" part="inHeader" use="literal" />
+        <mynamespace:validation />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarComponente">
+      <soap:operation soapAction="http://tempuri.org/Administrador_AdministradorMatricesItems_MatricesItems/ModificarComponente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ModificarComponenteinHeader" part="inHeader" use="literal" />
+        <mynamespace:validation />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarComponente">
+      <soap:operation soapAction="http://tempuri.org/Administrador_AdministradorMatricesItems_MatricesItems/EliminarComponente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:EliminarComponenteinHeader" part="inHeader" use="literal" />
+        <mynamespace:validation />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarItem">
+      <soap:operation soapAction="http://tempuri.org/Administrador_AdministradorMatricesItems_MatricesItems/InsertarItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InsertarIteminHeader" part="inHeader" use="literal" />
+        <mynamespace:validation />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarComponentePorEliminacion">
+      <soap:operation soapAction="http://tempuri.org/Administrador_AdministradorMatricesItems_MatricesItems/ModificarComponentePorEliminacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ModificarComponentePorEliminacioninHeader" part="inHeader" use="literal" />
+        <mynamespace:validation />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarComponentePorEliminacionMasivo">
+      <soap:operation soapAction="http://tempuri.org/Administrador_AdministradorMatricesItems_MatricesItems/ModificarComponentePorEliminacionMasivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ModificarComponentePorEliminacionMasivoinHeader" part="inHeader" use="literal" />
+        <mynamespace:validation />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Administrador_AdministradorMatricesItems_MatricesItems">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">BizTalk assembly "ZFB.Integrador.Base.Administrador, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d360496674692490" published web service.</wsdl:documentation>
+    <wsdl:port name="Administrador_AdministradorMatricesItems_MatricesItemsSoap" binding="tns:Administrador_AdministradorMatricesItems_MatricesItemsSoap">
+      <soap:address location="https://ws.piciz.zonafrancabogota.com/IntegradorOperaciones/Administrador_AdministradorMatricesItems_MatricesItems.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

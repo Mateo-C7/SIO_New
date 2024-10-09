@@ -1,0 +1,34 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="../dist/w2ui.css" />
+    <script type="text/javascript" src="../libs/jquery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../src/w2utils.js"></script>
+</head>
+<body>
+    <div style="padding: 10px"> Some Input: <input id="some1" class="tags"> </div>
+    <div style="position: absolute; left: 400px; top: 40px; height: 150px; border: 1px solid red; overflow: auto">
+        <div style="padding: 10px"> Some Input: <input id="some" class="tags"> </div>
+    </div>
+    <div style="position: absolute; left: 400px; top: 250px; padding: 7px; background-color: silver; overflow: auto">
+        <button class="w2ui-btn" id="btn1">Click Me</button>
+    </div>
+    <script>
+    $(function () {
+        $('.tags')
+            .on('focus', function (event) {
+                $(this).w2tag('Some Text', { position: 'top|bottom', style: 'width: 300px'});
+            })
+            .on('blur', function (event) {
+                $(this).w2tag();
+            });
+        $('#btn1').on('click', function (event) {
+            $(this).w2tag(`
+                Some very long or not so long text. Some very long or not so long text.
+                Some very long or not so long text. Some very long or not so long text.
+                Some very long or not so long text. Some very long or not so long text.
+                `, { position: 'bottom', maxWidth: 400, className: 'w2ui-light1' });
+        })
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+﻿.MI_titulo{
+    color:#1C5AB6;
+    font-family:Tahoma;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.MI_label{
+    font-weight:normal;
+    font-family:Arial;
+    font-size:11px;
+    color:black;
+    
+}
+.label_red{
+    font-weight:normal;
+    font-family:Arial;
+    font-size:11px;
+    color:#B40404;
+    
+}
+
+
+.Mi_tbalto{
+    height:30px;
+}
+
+.Mi_tbanchoD
+{
+   text-align:right;
+   vertical-align:middle;
+}
+
+.Mi_tbanchoI
+{
+   text-align:left;
+   vertical-align:top;
+}
+
+.msgvalidar
+{
+    color: Red;
+    font-weight: bold;
+    font-size: 20px;
+}
+.msgFinal
+{
+    color: Red;
+    font-weight: bold;
+    font-size: 12px;
+}
+.Mi_botones {
+    background-color: #1C5AB6;
+    border-color: #999999;
+    font-weight: bold;
+    font-family: Arial;
+    font-size:11px;
+    color:white;
+}
+.Mi_botones:hover{
+    color: white;
+    background: blue;
+}
+.accordionHeader
+{
+    border: 2px Outset #EBEBEB;
+    color: white;
+    background-color: #1C5AB6;
+    font-family: Arial, Sans-Serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.accordionHeader a
+  {
+            color: #FFFFFF;
+            background: none;
+            text-decoration: none;
+  }
+.accordionHeader a:hover
+        {
+            background: none;
+            text-decoration: underline;
+        }
+
+ .accordionHeaderSelected
+        {
+            border: 2px Outset #EBEBEB;
+            color: white;
+            background-color: #1C5AB6;
+            font-family: Arial, Sans-Serif;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+ .accordionHeaderSelected a
+        {
+            color: #FFFFFF;
+            background: none;
+            text-decoration: none;
+        }
+ .accordionHeaderSelected a:hover
+        {
+            background: none;
+            text-decoration: underline;
+        }
+ 
+        .accordionContent
+        {
+            
+            border: 0px outset #2F4F4F;
+            border-top: none;
+            padding: 5px;
+            padding-top: 10px;
+        }
+
+.Orientacion  input{
+ 
+   float: left;
+   margin: 0px;
+   padding: 0px;
+   vertical-align: top;
+ 
+}
+.Orientacion label{
+   font-weight:normal;
+   font-family:Arial;
+   font-size:11px;
+   color:black;
+}
+
+.Agrupar {
+   padding-top: 20px;  
+}
+ .overlay
+        {
+            position: fixed;
+            z-index: 98;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: #aaa;
+            filter: alpha(opacity=80);
+            opacity: 0.8;
+        }
+        .overlayContent
+        {
+            z-index: 99;
+            margin: 250px auto;
+            width: 80px;
+            height: 80px;
+        }
+        .overlayContent h2
+        {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+        }
+        .overlayContent img
+        {
+            width: 80px;
+            height: 80px;
+        }
+.hilight {
+    background-color: yellow;
+}
+ .style22
+        {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: small;
+            text-align: center;
+        }
+        .style23
+        {
+            text-align: center;
+        }
+
+
+
+        hr {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+    width: 100%;
+}

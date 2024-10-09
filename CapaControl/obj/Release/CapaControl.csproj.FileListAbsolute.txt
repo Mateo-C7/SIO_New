@@ -1,0 +1,8 @@
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\CapaControl\bin\Release\CapaControl.dll.config
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\CapaControl\bin\Release\CapaControl.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\CapaControl\bin\Release\CapaControl.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\CapaControl\bin\Release\CapaDatos.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\CapaControl\bin\Release\CapaDatos.pdb
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\CapaControl\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\CapaControl\obj\Release\CapaControl.dll
+C:\Documents and Settings\ivanvidal\My Documents\Visual Studio 2010\Projects\SIO\CapaControl\obj\Release\CapaControl.pdb

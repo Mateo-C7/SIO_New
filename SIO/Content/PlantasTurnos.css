@@ -1,0 +1,68 @@
+﻿.contenedor_fup {
+    overflow-x: scroll !important;
+    min-height: 410px !important;
+    max-height: 1000px !important;
+}
+
+.container-date > div {
+    max-width: 170px !important;
+    min-width: 170px !important;
+    text-align: center !important;
+    border: 1px solid gainsboro !important;
+    padding: 10px 5px 10px 5px !important;
+    font-weight: bold !important;
+    font-size: 8pt !important;
+    background-color: #b4b4d9 !important;
+}
+
+.container-sem > div {
+    text-align: center !important;
+    border: 1px solid gainsboro !important;
+    padding: 10px 5px 10px 5px !important;
+    font-weight: bold !important;
+    font-size: 8pt !important;
+    background-color: #b4b4d9 !important;
+}
+
+.divProyecto.divProyectoSelected {
+    border: 1px solid blue !important;
+}
+
+.content-date {
+    height: 410px !important;
+}
+
+    .content-date > div {
+        max-width: 170px !important;
+        min-width: 170px !important;
+        text-align: center !important;
+        border: 1px solid gainsboro !important;
+        padding: 5px 5px 5px 5px !important;
+        font-weight: bold !important;
+        font-size: 8pt !important;
+        height: 100% !important;
+    }
+
+.divProyecto {
+    width: 160px !important;
+    height: 152px !important;
+    border: 1px solid gainsboro !important;
+    cursor: pointer !important;
+    padding: 2px 2px 2px 2px !important;
+}
+
+.card-text {
+    width: auto !important;
+    font-size: 7pt !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.content-total {
+    height: 600px !important;
+    overflow: auto;
+}

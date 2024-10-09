@@ -1,0 +1,32 @@
+﻿{
+  "filters": {
+    "orden": "Número Orden",
+    "nombre": "Cliente",
+    "desde": "Desde",
+    "hasta": "Hasta",
+    "fuente": "Fuente",
+    "tipo": "Tipo",
+    "idpqrs":"ID PQRS"
+  },
+  "Whatsapp": "Whatsapp",
+  "tipo": "type",
+  "resultado": "Resultadiño",
+  "create": "Crear PQRS",
+  "consultar": "Consultar PQRS",
+  "consultarbtn": "Consultar",
+
+  "seleccionarTodos": "Seleccionar todos",
+  "tablaConsultaHeaders": {
+    "acciones": "Acções",
+    "telefono": "Telefone",
+    "correo": "Email",
+    "direccion": "Endereço",
+    "estado":  "Estado"
+  },
+  "detalle": "Detalle",
+  "permisosInsuficientes": "Não tem permissões para este perfil, por favor contacte o administrador",
+  "archivosCargados": "Ficheiros carregados",
+  "procesosAsignados": "Processos atribuídos",
+  "proceso": "Processo",
+  "respuestaProceso": "Resposta do processo"
+}

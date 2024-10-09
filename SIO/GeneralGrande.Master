@@ -1,0 +1,204 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="GeneralGrande.Master.cs" Inherits="SIO.GeneralGrande" %>
+
+<%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<script   type="text/javascript">
+  function EchoSesion() {
+        var tiempo = new date();
+        var servicio = new SIO.WSSIO;
+        servicio.Echo(tiempo);
+  }
+
+  function MantenSesion() {
+      var CONTROLADOR = "refresh_session.ashx";
+      var head = document.getElementsByTagName('head').item(0);
+      script = document.createElement('script');
+      script.src = CONTROLADOR;
+      script.setAttribute('type', 'text/javascript');
+      script.defer = true;
+      head.appendChild(script);
+  }
+
+</script>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+
+        .style1
+        {
+            width: 100%;
+            height: 20px;
+        }
+        .style2
+        {
+            width: 102px;
+            height: 10px;
+        }
+        .style6
+        {
+            width: 1024px;
+            height: 28px;
+        }
+        .style8
+        {
+            font-family: Tahoma;
+            color: #FFFFFF;
+            text-align: right;
+            font-size: 8pt;
+            text-decoration: underline;
+            height: 28px;
+        }
+        .style9
+    {
+            width: 300px;
+            height: 58px;
+        }
+        .style13
+        {
+            height: 51px;
+        }
+        </style>
+</head>
+<body onload="javascript:setInterval('EchoSesion()',50000);">
+    <script  type="text/javascript">
+        setInterval('MantenSesion()', <%= (int) (0.9 * (Session.Timeout * 60000)) %>);
+    </script>
+    <form id="form1" runat="server">
+    <div>
+         <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                
+             <table class="style1" bgcolor="#1C5AB6" frame="border">
+                 <tr>
+                     <td style="background-color: #FFFFFF" class="style2">
+                         <asp:ImageButton ID="logoHome" runat="server" Height="33px" 
+                             ImageUrl="~/Imagenes/SIO.jpg" PostBackUrl="~/Home.aspx" Width="103px" />
+                     </td>
+                     <td style="border: 1px solid #1C5AB6; background-color: #1C5AB6; " 
+                class="style6">
+                 <asp:LinkButton ID="LinkButton1" runat="server" Font-Names="Arial" 
+                             Font-Size="8pt" ForeColor="#D6D6D6" onclick="LinkButton1_Click">Cerrar Sesion</asp:LinkButton>
+                         <asp:Menu ID="Menu1" runat="server" DynamicHorizontalOffset="1"  Visible ="false"
+                    Font-Names="Tahoma" Font-Size="10pt" Orientation="Horizontal" 
+                    StaticSubMenuIndent="30px" Font-Bold="False"  
+                    RenderingMode="Table" style="margin-left: 0px; z-index: 1; text-align: left;" Width="16px" 
+                    Height="40px">
+                             <DynamicHoverStyle BackColor="#003366" />
+                             <DynamicMenuItemStyle HorizontalPadding="20px" />
+                             <DynamicMenuStyle BackColor="#003366" />
+                             <DynamicItemTemplate>
+                                 <%# Eval("Text") %>
+                             </DynamicItemTemplate>
+                             <Items>
+                                 <asp:MenuItem Text="Logistica" Value="Logistica">
+                                     <asp:MenuItem NavigateUrl="~/CapturaPeso.aspx" Text="Captura de Peso" 
+                                         Value="Captura de Peso"></asp:MenuItem>
+                                     <asp:MenuItem NavigateUrl="~/CargaEstibas2.aspx" Text="Despacho de Carga" 
+                                         Value="Despacho de Carga"></asp:MenuItem>
+                                     <asp:MenuItem NavigateUrl="~/Reportes.aspx" Text="Reportes" Value="Reportes">
+                                     </asp:MenuItem>
+                                     <asp:MenuItem Value="Fletes" Enabled="False">
+                                         <asp:MenuItem NavigateUrl="~/Fletes.aspx" Text="Nacionales" Value="Nacionales">
+                                         </asp:MenuItem>
+                                     </asp:MenuItem>
+                                     <asp:MenuItem Value="Itinerarios" Enabled="False">
+                                         <asp:MenuItem Text="Registro" Value="Registro"></asp:MenuItem>
+                                         <asp:MenuItem NavigateUrl="~/VerItinerarios.aspx" Text="Ver Itinerarios" 
+                                             Value="Ver Itinerarios"></asp:MenuItem>
+                                     </asp:MenuItem>
+                                 </asp:MenuItem>
+                             </Items>
+                             <LevelMenuItemStyles>
+                                 <asp:MenuItemStyle BackColor="#1C5AB6" Font-Underline="False" Height="30px" />
+                                 <asp:MenuItemStyle BackColor="#35518A" Font-Underline="False" Height="28px" />
+                                 <asp:MenuItemStyle BackColor="#35518A" Font-Underline="False" Height="28px" />
+                             </LevelMenuItemStyles>
+                             <LevelSubMenuStyles>
+                                 <asp:SubMenuStyle Font-Underline="False" />
+                             </LevelSubMenuStyles>
+                             <StaticHoverStyle BackColor="#003366"  />
+                             <StaticMenuItemStyle HorizontalPadding="5px" 
+                         ItemSpacing="0px" />
+                             <StaticMenuStyle HorizontalPadding="1px" Height="16px" VerticalPadding="0px" 
+                                 Width="16px" />
+                             <StaticSelectedStyle  HorizontalPadding="0px" 
+                                 ItemSpacing="0px" VerticalPadding="0px" Width="16px" />
+                             <StaticItemTemplate>
+                                 <%# Eval("Text") %>
+                             </StaticItemTemplate>
+                         </asp:Menu>
+                     </td>
+                     <td style="border: 1px solid #1C5AB6; background-color: #1C5AB6" 
+                class="style8">
+                         <asp:Menu ID="Menu2" runat="server" DynamicHorizontalOffset="1" 
+                    Font-Names="Tahoma" Font-Size="8pt" Orientation="Horizontal" 
+                    StaticSubMenuIndent="30px" Font-Bold="False"  
+                    RenderingMode="Table" style="margin-left: 13px; font-size: 6pt;" 
+                    Font-Overline="False" Width="57px" Font-Underline="False">
+                             <DynamicHoverStyle BackColor="#003366" />
+                             <DynamicMenuItemStyle HorizontalPadding="20px" />
+                             <DynamicMenuStyle BackColor="#003366" />
+                             <DynamicItemTemplate>
+                                 <%# Eval("Text") %>
+                             </DynamicItemTemplate>
+                             <LevelMenuItemStyles>
+                                 <asp:MenuItemStyle BackColor="#1C5AB6" Font-Underline="False" Height="30px" 
+                            ItemSpacing="0px" />
+                                 <asp:MenuItemStyle BackColor="#35518A" Font-Underline="False" Height="28px" />
+                                 <asp:MenuItemStyle BackColor="#35518A" Font-Underline="False" Height="28px" />
+                             </LevelMenuItemStyles>
+                             <LevelSubMenuStyles>
+                                 <asp:SubMenuStyle Font-Underline="False" />
+                             </LevelSubMenuStyles>
+                             <StaticHoverStyle BackColor="#003366"  />
+                             <StaticMenuItemStyle HorizontalPadding="5px" 
+                         ItemSpacing="0px" />
+                             <StaticMenuStyle HorizontalPadding="20px" />
+                             <StaticSelectedStyle  />
+                             <StaticItemTemplate>
+                                 <%# Eval("Text") %>
+                             </StaticItemTemplate>
+                         </asp:Menu>
+                     </td>
+                 </tr>
+             </table>
+                
+        </asp:ContentPlaceHolder>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        
+         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                        <ContentTemplate>
+                            <table class="style9">
+                                <tr>
+                                    <td class="style13">
+                                        <rsweb:ReportViewer ID="ReportVerContactos0" runat="server" 
+                                            AsyncRendering="False" BackColor="#EBEBEB" BorderColor="#EBEBEB" Height="" 
+                                            SizeToReportContent="True" Width="1280px">
+                                        </rsweb:ReportViewer>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                            </table>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </ContentTemplate>
+           
+        </asp:UpdatePanel>
+         </asp:ContentPlaceHolder>
+         <br />
+    </div>
+    </form>
+</body>
+</html>

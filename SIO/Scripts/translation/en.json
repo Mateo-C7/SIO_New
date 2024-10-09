@@ -1,0 +1,31 @@
+﻿{
+  "filters": {
+    "orden": "Order Number",
+    "nombre": "Customer",
+    "desde": "Date From",
+    "hasta": "Date To",
+    "fuente": "Source",
+    "tipo": "Type",
+    "idpqrs":"PQRS ID"
+  },
+  "Whatsapp": "Whatsapp",
+  "tipo": "type",
+  "resultado": "Results",
+  "create": "Create PQRS",
+  "consultar": "Get PQRS",
+  "consultarbtn": "Find",
+  "seleccionarTodos": "Select all",
+  "tablaConsultaHeaders": {
+    "acciones": "Actions",
+    "telefono": "Phone",
+    "correo": "Email",
+    "direccion": "Address",
+    "estado":  "Status"
+  },
+  "detalle": "Detail",
+  "permisosInsuficientes": "You don't have permissions for this profile, please contact the administrator",
+  "archivosCargados": "Uploaded files",
+  "procesosAsignados": "Assigned processes",
+  "proceso": "Process",
+  "respuestaProceso": "Process response"
+}

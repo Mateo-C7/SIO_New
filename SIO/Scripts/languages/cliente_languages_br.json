@@ -1,0 +1,526 @@
+﻿{
+  "@metadata": {
+    "authors": [
+      "Alice",
+      "David",
+      "Santhosh"
+    ],
+    "last-updated": "2018-09-21",
+    "locale": "br",
+    "message-documentation": "qqq",
+    "AnotherMetadata": "AnotherMedatadataValue"
+  },
+
+  "busqueda": "Procure",
+  "empresa": "Empresa",
+  "fuente": "Fonte*:",
+  "origen": "Origem*:",
+  "nombre_empresa": "Razão social*",
+  "nit": "ID fiscal (NIT)",
+  "direccion_fiscal": "Direção fiscal",
+  "telefono2": "Telefone 2:",
+  "telefono1": "Telefone 1*:",
+  "fax": "FAX",
+  "tipo_empresa": "Tipo de empresa*",
+  "email": "Email",
+  "website": "Sitio Web",
+  "pais": "Pais*:",
+  "tipo_contribuyente": "Tipo de contribuinte",
+  "ciudad": "Cidade:",
+  "tipo_construccion": "Tipo de construção",
+  "matriz_sucursal": "Matriz / Filial",
+  "vivienda": "Habitação",
+  "infraes": "Infraestrutura",
+  "reclamo_curso": "Reivindicação em andamento",
+  "pais_matriz": "País Matriz",
+  "empresa_comp": "Empresa Concorrente",
+  "ciudad_matriz": "Cidade Matriz",
+  "cliente_matriz": "Cliente Matriz",
+  "guardar": "Salvar",
+  "nuevo": "Novo",
+  "eliminar": "remover",
+  "tipo_cliente": "Tipo de Cliente",
+  "actualiza": "Update",
+  "planta": "Planta",
+  "hoja": "Folha",
+  "contacto": "CONTATO",
+  "visita": "VISITAR",
+  "obra": "OBRA",
+  "fup": "FUP",
+  "pedido_venta": "ENCOMENDA PARA VENDA",
+  "feria": "Fair",
+
+  "sim": "SIM",
+
+  "web": "Web",
+
+  "charla_t_cnica": "Discussão Técnica",
+
+  "evento": "Evento",
+
+
+  "afganist_n": "AFGANISTÁN",
+
+  "albania": "ALBANIA",
+
+  "alemania": "ALEMANIA",
+
+  "andorra": "ANDORRA",
+
+  "angola": "ANGOLA",
+
+  "anguilla": "ANGUILLA",
+
+  "antigua_y_barbuda": "ANTIGUA Y BARBUDA",
+
+  "arabia_saudita": "ARABIA SAUDITA",
+
+  "argelia": "ARGELIA",
+
+  "argentina": "ARGENTINA",
+
+  "armenia": "ARMENIA",
+
+  "aruba": "ARUBA",
+
+  "australia": "AUSTRALIA",
+
+  "austria": "AUSTRIA",
+
+  "azerbaiy_n": "AZERBAIYÁN",
+
+  "bahamas": "BAHAMAS",
+
+  "bahrein": "BAHREIN",
+
+  "bangladesh": "BANGLADESH",
+
+  "barbados": "BARBADOS",
+
+  "belar_s": "BELARÚS",
+
+  "b_lgica": "BÉLGICA",
+
+  "belice": "BELICE",
+
+  "benin": "BENIN",
+
+  "bermudas": "BERMUDAS",
+
+  "bhut_n": "BHUTÁN",
+
+  "bolivia": "BOLIVIA",
+
+  "bonaire": "BONAIRE",
+
+  "bosnia_y_herzegovina": "BOSNIA Y HERZEGOVINA",
+
+  "botswana": "BOTSWANA",
+
+  "brasil": "BRASIL",
+
+  "brunei_darussalam": "BRUNEI DARUSSALAM",
+
+  "bulgaria": "BULGARIA",
+
+  "burkina_faso": "BURKINA FASO",
+
+  "burundi": "BURUNDI",
+
+  "cabo_verde": "CABO VERDE",
+
+  "camboya": "CAMBOYA",
+
+  "camerun": "CAMERUN",
+
+  "canada": "CANADA",
+
+  "chad": "CHAD",
+
+  "chile": "CHILE",
+
+  "china": "CHINA",
+
+  "chipre": "CHIPRE",
+
+  "colombia": "Colombia",
+
+  "comoras": "COMORAS",
+
+  "corea_del_norte": "COREA DEL NORTE",
+
+  "corea_del_sur": "COREA DEL SUR",
+
+  "costa_de_marfil": "COSTA DE MARFIL",
+
+  "costa_rica": "COSTA RICA",
+
+  "croacia": "CROACIA",
+
+  "cuba": "CUBA",
+
+  "curacao": "CURACAO",
+
+  "dinamarca": "DINAMARCA",
+
+  "djibouti": "DJIBOUTI",
+
+  "dominica": "DOMINICA",
+
+  "ecuador": "ECUADOR",
+
+  "egipto": "EGIPTO",
+
+  "el_salvador": "EL SALVADOR",
+
+  "emiratos_rabes_unidos": "EMIRATOS ÁRABES UNIDOS",
+
+  "eritrea": "ERITREA",
+
+  "eslovenia": "ESLOVENIA",
+
+  "espa_a": "ESPAÑA",
+
+  "estados_unidos": "ESTADOS UNIDOS",
+
+  "estonia": "ESTONIA",
+
+  "estrecho_de_gibraltar": "ESTRECHO DE GIBRALTAR",
+
+  "etiop_a": "ETIOPÍA",
+
+
+
+  "fiji": "FIJI",
+
+  "filipinas": "FILIPINAS",
+
+  "finlandia": "FINLANDIA",
+
+  "francia": "FRANCIA",
+
+  "gab_n": "GABÓN",
+
+  "gambia": "GAMBIA",
+
+  "georgia": "GEORGIA",
+
+  "ghana": "GHANA",
+
+  "granada": "GRANADA",
+
+  "grecia": "GRECIA",
+
+  "groenlandia": "GROENLANDIA",
+
+  "guadalupe": "GUADALUPE",
+
+  "guam": "GUAM",
+
+  "guatemala": "GUATEMALA",
+
+  "guinea": "GUINEA",
+
+  "guinea_ecuatorial": "GUINEA ECUATORIAL",
+
+  "guinea-bissau": "GUINEA-BISSAU",
+
+  "guyana": "GUYANA",
+
+  "haiti": "HAITI",
+
+  "holanda": "HOLANDA",
+
+  "honduras": "HONDURAS",
+
+  "hong_kong": "HONG KONG",
+
+  "hungr_a": "HUNGRÍA",
+
+  "ideal": "IDEAL",
+
+  "india": "INDIA",
+
+  "indonesia": "INDONESIA",
+
+  "iran": "IRAN",
+
+  "iraq": "IRAQ",
+
+  "irlanda": "IRLANDA",
+
+  "isla_de_man": "ISLA DE MAN",
+
+  "islandia": "ISLANDIA",
+
+  "islas_caiman": "ISLAS CAIMAN",
+
+  "islas_feroe": "ISLAS FEROE",
+
+  "islas_marshall": "ISLAS MARSHALL",
+
+  "islas_salom_n": "ISLAS SALOMÓN",
+
+  "islas_v_rgenes_ee_uu_": "ISLAS VÍRGENES (EE.UU.)",
+
+  "israel": "ISRAEL",
+
+  "italia": "ITALIA",
+
+  "jamaica": "JAMAICA",
+
+  "japon": "JAPON",
+
+  "jordania": "JORDANIA",
+
+  "kazajst_n": "KAZAJSTÁN",
+
+  "kenya": "KENYA",
+
+  "kirguist_n": "KIRGUISTÁN",
+
+  "kiribati": "KIRIBATI",
+
+  "kosovo": "KOSOVO",
+
+  "kuwait": "KUWAIT",
+
+  "lesotho": "LESOTHO",
+
+  "letonia": "LETONIA",
+
+  "libano": "LIBANO",
+
+  "liberia": "LIBERIA",
+
+  "libia": "LIBIA",
+
+  "liechtenstein": "LIECHTENSTEIN",
+
+  "lituania": "LITUANIA",
+
+  "luxemburgo": "LUXEMBURGO",
+
+  "madagascar": "MADAGASCAR",
+
+  "malasia": "MALASIA",
+
+  "malawi": "MALAWI",
+
+  "maldivas": "MALDIVAS",
+
+  "mal_": "MALÍ",
+
+  "malta": "MALTA",
+
+  "mariana": "MARIANA",
+
+  "marruecos": "MARRUECOS",
+
+  "martinica": "MARTINICA",
+
+  "mauricio": "MAURICIO",
+
+  "mauritania": "MAURITANIA",
+
+  "mexico": "MEXICO",
+
+  "micronesia": "MICRONESIA",
+
+  "m_naco": "MÓNACO",
+
+  "mongolia": "MONGOLIA",
+
+  "montenegro": "MONTENEGRO",
+
+  "mozambique": "MOZAMBIQUE",
+
+  "myanmar": "MYANMAR",
+
+  "namibia": "NAMIBIA",
+
+  "nepal": "NEPAL",
+
+  "nicaragua": "NICARAGUA",
+
+  "n_ger": "NÍGER",
+
+  "nigeria": "NIGERIA",
+
+  "nn": "NN",
+
+  "noruega": "NORUEGA",
+
+  "nueva_caledonia": "NUEVA CALEDONIA",
+
+  "nueva_zelanda": "NUEVA ZELANDA",
+
+  "om_n": "OMÁN",
+
+  "pakist_n": "PAKISTÁN",
+
+  "palau": "PALAU",
+
+  "panama": "PANAMA",
+
+  "papua_nueva_guinea": "PAPUA NUEVA GUINEA",
+
+  "paraguay": "PARAGUAY",
+
+  "peru": "PERU",
+
+  "polinesia_francesa": "POLINESIA FRANCESA",
+
+  "polonia": "POLONIA",
+
+  "portugal": "PORTUGAL",
+
+  "puerto_rico": "PUERTO RICO",
+
+  "qatar": "QATAR",
+
+  "regi_n_administrativa_especial_de_macao_china": "REGIÓN ADMINISTRATIVA ESPECIAL DE MACAO, CHINA",
+
+  "reino_unido": "REINO UNIDO",
+
+  "rep_blica_rabe_siria": "REPÚBLICA ÁRABE SIRIA",
+
+  "rep_blica_centroafricana": "REPÚBLICA CENTROAFRICANA",
+
+  "rep_blica_checa": "REPÚBLICA CHECA",
+
+  "rep_blica_de_macedonia": "REPÚBLICA DE MACEDONIA",
+
+  "rep_blica_de_moldova": "REPÚBLICA DE MOLDOVA",
+
+  "rep_blica_del_congo": "REPÚBLICA DEL CONGO",
+
+  "rep_blica_democr_tica_del_congo": "REPÚBLICA DEMOCRÁTICA DEL CONGO",
+
+  "rep_blica_democr_tica_popular_lao": "REPÚBLICA DEMOCRÁTICA POPULAR LAO",
+
+  "republica_dominicana": "REPUBLICA DOMINICANA",
+
+  "rep_blica_eslovaca": "REPÚBLICA ESLOVACA",
+
+  "ribera_occidental_y_gaza": "RIBERA OCCIDENTAL Y GAZA",
+
+  "rumania": "RUMANIA",
+
+  "russia": "RUSSIA",
+
+  "rwanda": "RWANDA",
+
+  "samoa": "SAMOA",
+
+  "samoa_americana": "SAMOA AMERICANA",
+
+  "san_marino": "SAN MARINO",
+
+  "san_martin": "SAN MARTIN",
+
+  "san_vicente_y_las_granadinas": "SAN VICENTE Y LAS GRANADINAS",
+
+  "santa_lucia": "SANTA LUCIA",
+
+  "santo_tom_y_pr_ncipe": "SANTO TOMÉ Y PRÍNCIPE",
+
+  "senegal": "SENEGAL",
+
+  "serbia": "SERBIA",
+
+  "seychelles": "SEYCHELLES",
+
+  "sierra_leona": "SIERRA LEONA",
+
+  "sin_pais": "SIN PAIS",
+
+  "singapur": "SINGAPUR",
+
+  "somalia": "SOMALIA",
+
+  "sri_lanka": "SRI LANKA",
+
+  "st_kitts": "ST KITTS",
+
+  "st_maarten": "ST MAARTEN",
+
+  "sudafrica": "SUDAFRICA",
+
+  "sud_n": "SUDÁN",
+
+  "sud_n_del_sur": "SUDÁN DEL SUR",
+
+  "suecia": "SUECIA",
+
+  "suiza": "SUIZA",
+
+  "suriname": "SURINAME",
+
+  "swazilandia": "SWAZILANDIA",
+
+  "tailandia": "TAILANDIA",
+
+  "tanzan_a": "TANZANÍA",
+
+  "tayikist_n": "TAYIKISTÁN",
+
+  "timor-leste": "TIMOR-LESTE",
+
+  "togo": "TOGO",
+
+  "tonga": "TONGA",
+
+  "trinidad_y_tobago": "TRINIDAD Y TOBAGO",
+
+  "t_nez": "TÚNEZ",
+
+  "turcas_y_caicos": "TURCAS Y CAICOS",
+
+  "turkmenistan": "TURKMENISTAN",
+
+  "turquia": "TURQUIA",
+
+  "tuvalu": "TUVALU",
+
+  "ucrania": "UCRANIA",
+
+  "uganda": "UGANDA",
+
+  "uruguay": "URUGUAY",
+
+  "uzbekist_n": "UZBEKISTÁN",
+
+  "vanuatu": "VANUATU",
+
+  "venezuela": "VENEZUELA",
+
+  "vietnam": "VIETNAM",
+
+  "yemen": "YEMEN",
+
+  "zambia": "ZAMBIA",
+
+  "zimbabwe": "ZIMBABWE",
+
+
+  "seleccione_el_estrato": "Selecionar Padrão",
+  "alto": "Alto",
+  "medio": "médio",
+  "bajo_vis_": "baixo (VIS)",
+  "apartamento": "Apartamento",
+  "casa": "Casa",
+  "hotel": "Hotel",
+  "carcel": "Cadeia",
+  "otro": "Otro",
+  "edificacion": "Prédio",
+  "infraestructura": "Infra-estrutura",
+  "residencial": "Residencial",
+  "bodegas": "adega",
+  "centro_comercial": "Centro Comercial",
+  "educativo": "Educacional",
+  "hospitales": "hotéis",
+  "hoteles": "Hoteles",
+  "oficinas": "Escritórios",
+  "penitenciarias": "Penitenciárias"
+}

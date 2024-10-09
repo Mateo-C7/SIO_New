@@ -1,0 +1,150 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Mobil.Master.cs" Inherits="SIO.WebGeneral" %>
+
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+<%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ <script type="text/javascript" language="JavaScript">
+
+     function MantenSesion() {
+
+         var CONTROLADOR = "refresh_session.ashx";
+
+         var head = document.getElementsByTagName('head').item(0);
+
+         script = document.createElement('script');
+
+         script.src = CONTROLADOR;
+
+         script.setAttribute('type', 'text/javascript');
+
+         script.defer = true;
+
+         head.appendChild(script);
+
+     } 
+     function maximizar() {
+         
+         resizeTo(screen.width, screen.height)
+         moveTo(0, 0);
+     }
+    
+     addEventListener("load", function () { setTimeout(hideURLbar, 0); }, false);
+     function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <meta  name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;"  />
+   
+
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">        
+           .bueno
+        {
+            margin-left : auto;
+            margin-right : auto;
+            padding : 0px;
+              
+            width: 342px; 
+            text-align:center;
+        }      
+         .menu
+        {
+            width: 0px; 
+            text-align:center;
+        }   
+            .interno
+        {
+            width: 280px; 
+            text-align:center;
+        }  
+            .arriba
+        {
+            width: 350px; 
+            text-align:center;
+        } 
+             .fondo
+        {
+            BackColor=#669999;
+        } 
+        html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
+        -webkit-text-size-adjust:none;
+        }        
+       
+
+        @media screen and (max-width:479px) {.bueno {width: 300px;}}
+        @media screen and (max-width:479px) {.interno {width: 300px;}}
+        @media screen and (min-width:480px) and (max-width:639px) {.bueno {width: 480px;}}  
+        @media screen and (min-width:480px) and (max-width:639px) {.interno {width: 460px;}}   
+        @media screen and (min-width:768px) and (max-width:799px) {.bueno {width: 768px;}} 
+        @media screen and (min-width:768px) and (max-width:799px) {.interno {width: 748px;}} 
+        @media screen and (min-width:800px) and (max-width:854px) {.bueno {width: 854px;}} 
+        @media screen and (min-width:800px) and (max-width:854px) {.interno {width: 834px;}}      
+        @media screen and (min-width:855px) and (max-width:1025px){.bueno {width: 1024px;}}
+        @media screen and (min-width:855px) and (max-width:1025px){.interno {width: 1004px;}}
+        
+        @media screen and (max-width:479px) {.arriba {width: 330px;}}
+        @media screen and (min-width:480px) and (max-width:639px) {.arriba {width: 490px;}}   
+        @media screen and (min-width:768px) and (max-width:799px) {.arriba {width: 778px;}} 
+        @media screen and (min-width:800px) and (max-width:854px) {.arriba {width: 810px;}}     
+        @media screen and (min-width:855px) and (max-width:1025px){.arriba {width: 895px;}}
+        
+        @media screen and (max-width:479px) {.menu {width: 0px;}}
+        @media screen and (min-width:480px) and (max-width:639px) {.menu {width: 480px;}}   
+        @media screen and (min-width:768px) and (max-width:799px) {.menu {width: 480px;}} 
+        @media screen and (min-width:800px) and (max-width:854px) {.menu {width: 480px;}}     
+        @media screen and (min-width:855px) and (max-width:1025px){.menu {width: 450px;}}
+                
+        #form1
+        {
+            height: 380px;
+        }
+        
+        
+        .style2
+        {
+            width: 300px;
+        }
+        
+        
+        .style3
+        {
+            width: 350px;
+        }
+        
+        
+    </style>
+</head>
+<body class="bueno" onload="window.moveTo(0,0);window.resizeTo(screen.availWidth, screen.availHeight);" alink="Silver" >  
+<script language="javascript" type="text/javascript">
+    setInterval('MantenSesion()', <%= (int) (0.9 * (Session.Timeout * 60000)) %>);
+</script>
+
+    <form id="form1" runat="server" 
+    style="height: auto; width: auto;">
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+           
+        </asp:ContentPlaceHolder>
+    </div>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        <asp:Panel ID="Panel2" runat="server" HorizontalAlign="Center" 
+                style="background-color: #FFFFFF; margin-right: 0px;" CssClass="bueno" 
+            BackColor="#669999" ForeColor="#006666">
+        </asp:Panel>
+        
+    </asp:ContentPlaceHolder>
+    <asp:ScriptManager ID="ScriptManager2" runat="server"  >
+            <Services>
+                    <asp:ServiceReference Path="~/WSSIO.asmx" InlineScript="true" />
+            </Services>
+        </asp:ScriptManager>	
+    </form>
+</body>
+</html>

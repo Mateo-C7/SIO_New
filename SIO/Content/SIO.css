@@ -1,0 +1,278 @@
+﻿.contenedorprincipal {
+    margin: 0px !important;
+    padding-top: 40px !important;
+    max-width: 1700px !important;
+}
+
+.sidebarprincipal {
+    width: 88% !important;
+    padding-top: 12px !important;
+}
+
+input[type="text"], input[type="number"] {
+    width: 100% !important;
+    font-family: Arial !important;
+    font-size: 12px !important;
+}
+
+.row {
+    margin-bottom: 2px !important;
+    font-family: Arial !important;
+    font-size: 12px !important;
+    vertical-align: middle;
+    margin-bottom: 5px !important;
+}
+
+.select {
+    width: 100% !important;
+    font-family: Arial !important;
+    font-size: 12px !important;
+}
+
+.card-link {
+    font-size: medium !important;
+}
+
+.form-control-sm, .form-control
+{
+    height: 27px;
+    font-family: Arial !important;
+    font-size: 12px !important;
+}
+
+.onoffswitch {
+    position: relative;
+    width: 72px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    font-family: Arial !important;
+    font-size: 12px !important;
+}
+
+.onoffswitch-checkbox {
+    display: none;
+}
+
+.onoffswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #999999;
+    border-radius: 20px;
+}
+
+.onoffswitch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+
+    .onoffswitch-inner:before, .onoffswitch-inner:after {
+        display: block;
+        float: left;
+        width: 50%;
+        height: 30px;
+        padding: 0;
+        line-height: 30px;
+        font-size: 12px;
+        color: white;
+        font-family: Trebuchet, Arial, sans-serif;
+        font-weight: bold;
+        box-sizing: border-box;
+    }
+
+    .onoffswitch-inner:before {
+        content: "SI";
+        padding-left: 10px;
+        background-color: #007bff;
+        color: #FFFFFF;
+    }
+
+    .onoffswitch-inner:after {
+        content: "NO";
+        padding-right: 10px;
+        background-color: #EEEEEE;
+        color: #999999;
+        text-align: right;
+    }
+
+.onoffswitch-switch {
+    display: block;
+    width: 28px;
+    margin: 1px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 38px;
+    border: 2px solid #999999;
+    border-radius: 20px;
+    transition: all 0.3s ease-in 0s;
+    height: 32.99306px;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
+}
+
+#loader {
+    background-color: white;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    /* bottom: 1px; */
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    opacity: 0.75;
+    padding-left: 40%;
+    padding-top: 10%;
+}
+
+.tooltip.tooltip-large2 > .tooltip-inner {
+    max-width: none !important;
+    font-family: Arial !important;
+    font-size: 12px !important;
+	background: #FF9900;
+}
+
+.tooltip.tooltip-large > .tooltip-inner {
+    max-width: 400px !important;
+    font-family: Arial !important;
+    font-size: 12px !important;
+}
+
+.divAyuda {
+    width: 16% !important;
+    height: 12px !important;
+    margin-left: 2px !important;
+    margin-bottom: 3px !important;
+    padding-top: 2px !important;
+    padding-left: 7px !important;
+    font-family: Arial !important;
+    font-size: 12px !important;
+}
+
+.divAyudaMod {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.modal {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.select2 {
+    width: 100% !important;
+    padding-top: 3px !important;
+    font-family: Arial !important;
+    font-size: 12px !important;
+}
+
+.contenedor_fup, .fuplist, .btn-secondary, .btn-default, .form-lista-fup, .CantAdicional, .Lista, .Observacion, .select2-results__option {
+    font-family: Arial !important;
+    font-size: 12px !important;
+}
+
+
+.card-link, .text-dark, .btn-primary, .btn-success, .box-title, .labDinamico, .fupestado{
+    font-family: Arial !important;
+    font-size: 14px;
+}
+
+
+.form-control, .Lista, .Observacion, .title , .tooltip {
+    font-family: Arial !important;
+    font-size: 12px !important;
+}
+
+.NumeroSalcot{
+    text-align: right;
+}
+
+#table-row, #table-col, #table-wrapper {
+    height: 80%;
+}
+
+.borderless table {
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+}
+
+.nopadding {
+   padding: 2px !important;
+   margin: 2px !important;   
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}

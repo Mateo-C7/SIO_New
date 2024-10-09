@@ -1,0 +1,271 @@
+﻿/*fondo cuando recarga la pagina*/
+/***Stylos de la planeacion******/
+.styleDias
+{
+    float: left;
+    margin-left: 2px;
+    width: 15px;
+    padding: 0px;
+    border: 1px solid #d0d0d0;
+    text-align: center;
+    background: -webkit-linear-gradient(#EAF0F9, #9CD0EC);
+    background: -moz-linear-gradient(#EAF0F9, #9CD0EC);
+    background: -o-linear-gradient(#EAF0F9, #9CD0EC);
+    background: -ms-linear-gradient(#EAF0F9, #9CD0EC);
+    border-radius: 8px 8px 8px 8px;
+}
+.styleTecnicos
+{
+    /*float: left;             margin-left: 3px;             width: 220px;             padding: 3px;             border: 1px solid #D0D0D8;             text-align: left;             color: white;             background: -webkit-linear-gradient(#1c5ab6, #1fa0e4);             border: 1px solid #70A5DA;             border-radius: 8px 8px 8px 8px;*/
+    float: left;
+    margin-left: 3px;
+    width: 219px;
+    height: 16px;
+    padding: 3px;
+    border: 1px solid #D0D0D8;
+    text-align: left;
+    color: white;
+    background: -webkit-linear-gradient(#1c5ab6, #1fa0e4);
+    background: -moz-linear-gradient(#1c5ab6, #1fa0e4);
+    background: -o-linear-gradient(#1c5ab6, #1fa0e4);
+    background: -ms-linear-gradient(#1c5ab6, #1fa0e4);
+    border: 1px solid #70A5DA;
+    border-radius: 8px 8px 8px 8px;
+}
+.styleTitulo
+{
+    float: left;
+    margin-left: 3px;
+    width: 192px;
+    padding: 17px;
+    border: 1px solid #D0D0D8;
+    color: white;
+    text-align: center;
+    background: -webkit-linear-gradient(#1c5ab6, #1fa0e4);
+    background: -moz-linear-gradient(#1c5ab6, #1fa0e4);
+    background: -o-linear-gradient(#1c5ab6, #1fa0e4);
+    background: -ms-linear-gradient(#1c5ab6, #1fa0e4);
+    border: 1px solid #70A5DA;
+    border-radius: 8px 8px 8px 8px;
+}
+.styleTabla
+{
+    width: 7255px;
+}
+.styleTdTecnico
+{
+    width: 130px;
+}
+.styleBarraMes
+{
+    float: left;
+    margin-left: 2px;
+    width: 0px;
+    height: 16px;
+    padding: 2px; /* border: 1px solid #D10A0A; */
+    background-color: black;
+    text-align: center;
+    border-radius: 8px 8px 8px 8px;
+}
+#planDias
+{
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: 7250px;
+    height: 58px;
+    font-family: Arial;
+    font-size: 9pt;
+    font-weight: bold;
+    color: Black;
+}
+#planTecnico
+{
+    overflow: auto;
+    overflow-x: hidden;
+    width: 7250px;
+    height: 500px;
+    font-family: Arial;
+    font-size: 9pt;
+    font-weight: bold;
+    color: Black;
+}
+#planGen
+{
+    overflow: auto;
+    overflow-y: hidden;
+    width: 1020px;
+    height: 630px;
+    font-family: Arial;
+    font-size: 9pt;
+    font-weight: bold;
+    color: Black;
+}
+.styleMeses
+{
+    float: left;
+    margin-left: 2px;
+    width: 7215px;
+    height: 40px;
+}
+.styleMesesTitulo
+{
+    float: left;
+    margin-left: 2px;
+    width: 235px;
+    height: 18px;
+}
+.styleMes
+{
+    text-align: center;
+    float: left;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 13pt;
+    color: white;
+    margin-left: 2px;
+    width: 1101px;
+    height: 18px;
+    background: -webkit-linear-gradient(#1c5ab6, #1fa0e4);
+    background: -moz-linear-gradient(#1c5ab6, #1fa0e4);
+    background: -o-linear-gradient(#1c5ab6, #1fa0e4);
+    background: -ms-linear-gradient(#1c5ab6, #1fa0e4);
+    border: 1px solid #70A5DA;
+    border-radius: 8px 8px 8px 8px;
+}
+#enero
+{
+    width: 584px;
+}
+#febrero
+{
+    width: 541px;
+}
+#marzo
+{
+    width: 584px;
+}
+#abril
+{
+    width: 561px;
+}
+#mayo
+{
+    width: 584px;
+}
+#junio
+{
+    width: 567px;
+}
+#julio
+{
+    width: 584px;
+}
+#agosto
+{
+    width: 584px;
+}
+#septiembre
+{
+    width: 567px;
+}
+#octubre
+{
+    width: 584px;
+}
+#noviembre
+{
+    width: 567px;
+}
+#diciembre
+{
+    width: 584px;
+}
+.styleTablaAct
+{
+    width: 1000px;
+    height: 65px;
+}
+.styleAct
+{
+    border: 1px solid #70A5DA;
+    border-radius: 8px 8px 8px 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 11pt;
+    font-family: arial;
+    display: inline-block;
+}
+#actividad
+{
+    height: 60px;
+    width: 1100px;
+}
+.styleBotones
+{
+    width: 1097px;
+    text-align: center;
+    font-family: arial;
+    font-size: 20pt;
+    font-weight: bold;
+}
+.styleBotonSig
+{
+    background-image: url('iconosMetro/next1.png');
+    background-repeat: no-repeat;
+    height: 31px;
+    width: 29px;
+}
+.styleBotonAtras
+{
+    background-image: url('iconosMetro/quitar1.png');
+    background-repeat: no-repeat;
+    height: 31px;
+    width: 29px;
+}
+.styleYear
+{
+    float: left;
+    width: 199px;
+    height: 28px;
+    margin-left: 400px;
+    color: white;
+    background: -webkit-linear-gradient(#6692D4, #9AD6F6);
+    background: -moz-linear-gradient(#6692D4, #9AD6F6);
+    background: -o-linear-gradient(#6692D4, #9AD6F6);
+    background: -ms-linear-gradient(#6692D4, #9AD6F6);
+    border-radius: 8px 8px 8px 8px;
+}
+/***Stylos de la planeacion******/
+
+/*-------------impromptu---------- */
+div.jqi
+{
+    width: 393px;
+}
+div.jqi .jqimessage .field
+{
+    padding: 5px 0;
+}
+div.jqi .jqimessage .field label
+{
+    display: block;
+    clear: left;
+    float: left;
+    width: 145px;
+}
+div.jqi .jqimessage .field input
+{
+    width: 150px;
+    border: solid 1px #777777;
+}
+div.jqi .jqimessage .field input.error
+{
+    width: 150px;
+    border: solid 1px #ff0000;
+}
+
+/*-------------------------------- */
+
+.FilaCamColor{
+ background: transparent;
+ }
