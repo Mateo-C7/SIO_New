@@ -8,3 +8,13 @@ C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaControl\obj\Deb
 C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaControl\obj\Debug\CapaControl.csproj.AssemblyReference.cache
 C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaControl\obj\Debug\CapaControl.csproj.CoreCompileInputs.cache
 C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaControl\obj\Debug\CapaControl.csproj.CopyComplete
+D:\DESA\SIO_git\Forsa\sio_new\CapaControl\bin\Debug\CapaControl.dll.config
+D:\DESA\SIO_git\Forsa\sio_new\CapaControl\bin\Debug\CapaControl.dll
+D:\DESA\SIO_git\Forsa\sio_new\CapaControl\bin\Debug\CapaControl.pdb
+D:\DESA\SIO_git\Forsa\sio_new\CapaControl\bin\Debug\CapaDatos.dll
+D:\DESA\SIO_git\Forsa\sio_new\CapaControl\bin\Debug\CapaDatos.pdb
+D:\DESA\SIO_git\Forsa\sio_new\CapaControl\obj\Debug\CapaControl.csproj.AssemblyReference.cache
+D:\DESA\SIO_git\Forsa\sio_new\CapaControl\obj\Debug\CapaControl.csproj.CoreCompileInputs.cache
+D:\DESA\SIO_git\Forsa\sio_new\CapaControl\obj\Debug\CapaCont.456EFDBC.Up2Date
+D:\DESA\SIO_git\Forsa\sio_new\CapaControl\obj\Debug\CapaControl.dll
+D:\DESA\SIO_git\Forsa\sio_new\CapaControl\obj\Debug\CapaControl.pdb

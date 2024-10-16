@@ -17,7 +17,7 @@ namespace CapaDatos
     public class BdDatos
     {
         public static OracleConnection m;
-        private static SqlConnection conexion;
+        private static SqlConnection conexion = new SqlConnection();
         private static SqlConnection conexion1;
         private static SqlCommand comando;
         private static DataSet ds = new DataSet();
@@ -136,7 +136,8 @@ namespace CapaDatos
             {
                 case "REAL":
                     //conex = @"data source=172.21.224.130;persist security info=False;initial catalog=Forsa; user id=sio; password=forsa2006";//REALA
-                    conex = @"data source=10.75.131.2;persist security info=False;initial catalog=Forsa; user id=sio; password=forsa2006";
+                    //Se extiende el Connection TimeOut a 60 seg para que la App espere un poco mas la respuesta de conexion de la BD
+                    conex = @"data source=10.75.131.2;persist security info=False;initial catalog=Forsa; user id=sio; password=forsa2006; Connection Timeout=60";
                     break;
                 case "FORSACAD":
                     conex = @"data source=172.21.0.38;persist security info=False;initial catalog=ForsaCad; user id=sio; password=forsa2006";//CAPACITACION APUNTA A FORSACAD

@@ -412,6 +412,26 @@
             margin-right: 142px;
         }
    
+        .auto-style5 {
+            margin-right: 142px;
+            height: 38px;
+        }
+        .auto-style6 {
+            height: 38px;
+        }
+        .auto-style7 {
+            text-align: left;
+            width: 20%;
+            height: 38px;
+        }
+        .auto-style8 {
+            margin-right: 142px;
+            height: 29px;
+        }
+        .auto-style9 {
+            height: 29px;
+        }
+   
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder4" runat="server">
@@ -438,18 +458,18 @@
                             <table>
                             <div ID="Tbl_Filtros" runat="server">                          
                                   <tr>
-                                    <td colspan="1" class="auto-style1" align="right">
+                                    <td colspan="1" class="auto-style8" align="right">
                                         <asp:Label ID="Label69" runat="server" Text="Año_Creacion:" Font-Bold="False" Font-Names="Arial"
                                             Font-Size="8pt" ForeColor="Black"></asp:Label>
                                     </td>
-                                    <td>
+                                    <td class="auto-style9">
                                         <asp:DropDownList ID="cbo_FiltroAñoCrea" runat="server" Width="80px"></asp:DropDownList>
                                     </td>
-                                    <td colspan="1" class="auto-style1" style="text-align: right">
+                                    <td colspan="1" class="auto-style8" style="text-align: right">
                                         <asp:Label ID="Label70" runat="server" Text="Mes_Creacion:" Font-Bold="False" Font-Names="Arial"
                                             Font-Size="8pt" ForeColor="Black"></asp:Label>
                                     </td>
-                                    <td>
+                                    <td class="auto-style9">
                                         <asp:DropDownList ID="cbo_FiltroMesCrea" runat="server" Width="112px"></asp:DropDownList>
                                     </td>                                  
                                 </tr>
@@ -478,15 +498,15 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="1" class="auto-style1" align="right">
+                                    <td colspan="1" class="auto-style5" align="right">
                                         <asp:Label ID="Label3" runat="server" Text="Factura:" Font-Bold="False" Font-Names="Arial"
                                             Font-Size="8pt" ForeColor="Black"></asp:Label>
                                     </td>
-                                    <td>
+                                    <td class="auto-style6">
                                         <asp:TextBox ID="txt_FiltFactura" runat="server" Font-Names="Arial" Font-Size="8pt"
                                             Style="text-align: right" Width="70px"></asp:TextBox>
                                     </td>
-                                    <td colspan="1" class="auto-style4" align="right">
+                                    <td colspan="1" class="auto-style7" align="right">
                                         <asp:Label ID="Label8" runat="server" Text="Estatus Carga:" Width="85px" Font-Bold="False" Font-Names="Arial"
                                             Font-Size="8pt" ForeColor="Black"></asp:Label>
                                     </td>
@@ -494,7 +514,7 @@
                                         <asp:DropDownList ID="cbo_FiltEstatusCarga" runat="server" Width="112px"></asp:DropDownList>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     </td>
-                                    <td colspan="1" class="auto-style4" align="right">
+                                    <td colspan="1" class="auto-style7" align="right">
                                         <asp:Label ID="Label15" runat="server" Text="Tipo Despacho:" Width="85px" Font-Bold="False" Font-Names="Arial"
                                             Font-Size="8pt" ForeColor="Black"></asp:Label>
                                     </td>

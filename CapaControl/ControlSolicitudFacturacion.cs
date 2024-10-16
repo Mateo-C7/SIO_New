@@ -2146,20 +2146,35 @@ namespace CapaControl
 		public DataSet ConsultarGrillaParte(int fup, string ver)
 		{
 			string sql;
-			sql = "SELECT Sf_num, planta_forsa.planta_descripcion as planta,Sf_parte, CONVERT(decimal(18,2),sf_m2) sf_m2, " +
-				"CONVERT(VarChar(50),cast(Sf_vlr_venta as money), 1) Sf_vlr_venta, " +
-				"CONVERT(VarChar(50),cast(Sf_vlr_comercial as money), 1) Sf_vlr_comercial, " +
-				"CONVERT(VarChar(50),cast(Sf_porcdesc as money), 1) Sf_porcdesc, " +
-				"CONVERT(VarChar(50),cast(Sf_vlr_dscto as money), 1) Sf_vlr_dscto, " +
-				"CONVERT(VarChar(50),cast(Sf_transporte as money), 1) Sf_transporte, " +
-				"CONVERT(VarChar(50),cast(Sf_iva as money), 1) Sf_iva, " +
-				"CONVERT(VarChar(50),cast(Sf_tltiva as money), 1) Sf_tltiva ,"+
-				"solicitud_fact_tipo.sf_tipo_descripcion as TipoSf " + 
-				"FROM            solicitud_facturacion INNER JOIN "+
-				"         pedido_venta ON solicitud_facturacion.pv_id = pedido_venta.pv_id INNER JOIN "+
-				"         planta_forsa ON pedido_venta.planta_id = planta_forsa.planta_id INNER JOIN "+
-				"         solicitud_fact_tipo ON solicitud_facturacion.sf_tipo_id = solicitud_fact_tipo.sf_tipo_id "+ 
-				"WHERE (Sf_fup_id = " + fup + ") AND (Sf_version = '" + ver + "') ORDER BY planta_forsa.planta_id";
+			//sql = "SELECT Sf_num, planta_forsa.planta_descripcion as planta,Sf_parte, CONVERT(decimal(18,2),sf_m2) sf_m2, " +
+			//	"CONVERT(VarChar(50),cast(Sf_vlr_venta as money), 1) Sf_vlr_venta, " +
+			//	"CONVERT(VarChar(50),cast(Sf_vlr_comercial as money), 1) Sf_vlr_comercial, " +
+			//	"CONVERT(VarChar(50),cast(Sf_porcdesc as money), 1) Sf_porcdesc, " +
+			//	"CONVERT(VarChar(50),cast(Sf_vlr_dscto as money), 1) Sf_vlr_dscto, " +
+			//	"CONVERT(VarChar(50),cast(Sf_transporte as money), 1) Sf_transporte, " +
+			//	"CONVERT(VarChar(50),cast(Sf_iva as money), 1) Sf_iva, " +
+			//	"CONVERT(VarChar(50),cast(Sf_tltiva as money), 1) Sf_tltiva ," +
+			//	"solicitud_fact_tipo.sf_tipo_descripcion as TipoSf " +
+			//	"FROM            solicitud_facturacion INNER JOIN " +
+			//	"         pedido_venta ON solicitud_facturacion.pv_id = pedido_venta.pv_id INNER JOIN " +
+			//	"         planta_forsa ON pedido_venta.planta_id = planta_forsa.planta_id INNER JOIN " +
+			//	"         solicitud_fact_tipo ON solicitud_facturacion.sf_tipo_id = solicitud_fact_tipo.sf_tipo_id " +
+			//	"WHERE (Sf_fup_id = " + fup + ") AND (Sf_version = '" + ver + "') ORDER BY planta_forsa.planta_id";
+
+			sql = "SELECT Sf_num, PF.planta_descripcion as planta,			 Sf_parte, " +
+				"CONVERT(decimal(18,2),sf_m2)									 sf_m2," +
+				"CONVERT(VarChar(50),cast(Sf_vlr_venta as money), 1)			 Sf_vlr_venta, " +
+				"CONVERT(VarChar(50),cast(Sf_vlr_comercial as money), 1)		 Sf_vlr_comercial, " +
+				"CONVERT(VarChar(50),cast(Sf_porcdesc as money), 1)				 Sf_porcdesc, " +
+				"CONVERT(VarChar(50),cast(Sf_vlr_dscto as money), 1)			 Sf_vlr_dscto, " +
+				"CONVERT(VarChar(50),cast(Sf_transporte as money), 1)			 Sf_transporte, " +
+				"CONVERT(VarChar(50),cast(Sf_iva as money), 1)				     Sf_iva," +
+				"CONVERT(VarChar(50),cast(Sf_tltiva as money), 1)				 Sf_tltiva, " +
+				"SFT.sf_tipo_descripcion as										 TipoSf " +
+				"FROM			solicitud_facturacion   SF WITH(NOLOCK) " +
+				"				INNER JOIN planta_forsa PF WITH(NOLOCK) ON PF.planta_id = SF.sf_fac_plantaforsa_id " +
+				"				INNER JOIN solicitud_fact_tipo SFT WITH(NOLOCK) ON SF.sf_tipo_id = SFT.sf_tipo_id " +
+				"WHERE (Sf_fup_id = " + fup + ") AND (Sf_version = '" + ver + "') ORDER BY PF.planta_id";
 			DataSet ds = BdDatos.consultarConDataset(sql);
 			// DataTable dt_temp = cambiarIdioma(ds_idioma.Tables[0]);
 			return ds;

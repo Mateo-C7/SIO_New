@@ -6,3 +6,10 @@ C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaDatos\obj\Debug
 C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
 C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
 C:\Users\ivanvidal\Documents\Visual Studio 2015\Projects\SIO\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+D:\DESA\SIO_git\Forsa\sio_new\CapaDatos\bin\Debug\CapaDatos.dll
+D:\DESA\SIO_git\Forsa\sio_new\CapaDatos\bin\Debug\CapaDatos.pdb
+D:\DESA\SIO_git\Forsa\sio_new\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+D:\DESA\SIO_git\Forsa\sio_new\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+D:\DESA\SIO_git\Forsa\sio_new\CapaDatos\obj\Debug\CapaDatos.csproj.Up2Date
+D:\DESA\SIO_git\Forsa\sio_new\CapaDatos\obj\Debug\CapaDatos.dll
+D:\DESA\SIO_git\Forsa\sio_new\CapaDatos\obj\Debug\CapaDatos.pdb

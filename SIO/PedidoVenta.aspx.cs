@@ -3968,11 +3968,26 @@ namespace SIO
             string Nombre = (string)Session["Nombre_Usuario"];
             mensaje = "";
 
-            int insertar = contpv.IngPV(Anho, Tipo, fup, Solic, Ver, tipoPedido, sf, Convert.ToInt32(cboPlanta.SelectedValue));
+            //Validamos de que en caso de que se ejecute varias veces el proceso, si ya hay un registro no cree mas PVs
+            //Aqui uso la misma consulta que se hace despues del Insert
+            reader = contpv.ConsultarNumeroPedidoVentaConFUP(Convert.ToInt32(txtFUP.Text));
+            if (reader.HasRows == true)
+            {
+                reader.Read();
+                string PV = reader.GetValue(0).ToString();
+                mensaje = "El FUP: " + fup + " Ya cuenta con un PV confirmado: " + PV + " Porfavor consulte nuevamente.";
+            }
+            else //Si el reader no trae nada Inserte el PV
+            {
+                int insertar = contpv.IngPV(Anho, Tipo, fup, Solic, Ver, tipoPedido, sf, Convert.ToInt32(cboPlanta.SelectedValue));
+            }
+
+            //Cierre el reader y libere los recursos
             reader.Close();
             reader.Dispose();
             contpv.CerrarConexion();
-           
+            
+            //Consulte el PV recien ingresado
             reader = contpv.ConsultarNumeroPedidoVentaConFUP(Convert.ToInt32(txtFUP.Text));
             if (reader.HasRows == true)
             {

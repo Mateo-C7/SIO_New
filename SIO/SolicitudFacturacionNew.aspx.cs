@@ -1586,6 +1586,8 @@ namespace SIO
             //subtotal = vlrComercial + vlrFlete;
             subtotal = vlrComercial + vlrFlete;
             lblSubtotal.Text = Convert.ToString(subtotal);
+            //Asignamos el IVA en 0, en caso de que se quede quemado algun valor que no deberia ser antes de asignarlo, lo limpia
+            lblIVA.Text = "0";
 
             if (vlrComercial > 0)
             {
@@ -3056,6 +3058,8 @@ namespace SIO
 
                     clienteInterno = lblIdClienteInterno.Text;
 
+                    //Se captura del combo de la SF
+                    string plantaprod = Convert.ToInt32(cboPlantaProd.SelectedItem.Value) > 0 ? cboPlantaProd.SelectedItem.Value.ToString(): "0";
 
                     int IngPV = controlsf.IngPV(Convert.ToInt32(lblfup.Text), Nombre, cboClienteFacturar.SelectedItem.Value,
                         cboClienteDespachar.SelectedItem.Value, cboTipoCliente.SelectedItem.Value, txtFechaDes.Text,
@@ -3063,7 +3067,7 @@ namespace SIO
                         Convert.ToInt32(txtDias.Text), lblnumeropv.Text, DescTipo, cboPaisFactura.SelectedItem.Value,
                         cboPaiDesp.SelectedItem.Value, cboDepfact.SelectedItem.Value, cboDepdesp.SelectedItem.Value,
                         cboCiuFact.SelectedItem.Value, cboCiuDesp.SelectedItem.Value, Convert.ToInt32(cboPlantaFact.SelectedItem.Value)
-                        , Convert.ToInt32(cboPartePv.SelectedItem.Text.Trim()), clienteInterno, "0"
+                        , Convert.ToInt32(cboPartePv.SelectedItem.Text.Trim()), clienteInterno, plantaprod//"0"
                         , txtDireccionDespVentas.Text.Trim(), txtDocumentosEnvioVentas.Text.Trim(), cboVendedor.SelectedItem.Value
                         );
 
@@ -4096,7 +4100,7 @@ namespace SIO
         {
             //rpSF.Visible = false;
             //CONSULTA DATOS DE VENTA
-            ConsultarPedidoVenta(Convert.ToInt32( cboPartePv.SelectedItem.Text.Trim()));
+            ConsultarPedidoVenta(Convert.ToInt32(cboPartePv.SelectedItem.Text.Trim()));
             consultarCompaniaPlanta();
             PoblarParte();            
             this.cboParte_SelectedIndexChanged(sender,e);            

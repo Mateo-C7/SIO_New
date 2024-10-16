@@ -14,16 +14,16 @@
 #pragma warning disable 1591
 
 namespace SIO.wsGerbo {
-    using System;
-    using System.Web.Services;
     using System.Diagnostics;
-    using System.Web.Services.Protocols;
+    using System;
     using System.Xml.Serialization;
     using System.ComponentModel;
+    using System.Web.Services.Protocols;
+    using System.Web.Services;
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="WSInterfaceAppSoap", Namespace="http://tempuri.org/")]
@@ -236,8 +236,8 @@ namespace SIO.wsGerbo {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -249,7 +249,7 @@ namespace SIO.wsGerbo {
         
         private System.Xml.XmlAttribute[] anyAttrField;
         
-        /// <comentarios/>
+        /// <remarks/>
         public string key {
             get {
                 return this.keyField;
@@ -259,7 +259,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlAnyAttributeAttribute()]
         public System.Xml.XmlAttribute[] AnyAttr {
             get {
@@ -271,8 +271,8 @@ namespace SIO.wsGerbo {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -287,7 +287,7 @@ namespace SIO.wsGerbo {
         
         private string dES_MSGRETORNOField;
         
-        /// <comentarios/>
+        /// <remarks/>
         public string COD_EMPRESA {
             get {
                 return this.cOD_EMPRESAField;
@@ -297,7 +297,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string COD_DOCRQ {
             get {
                 return this.cOD_DOCRQField;
@@ -307,7 +307,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NUM_REQMATERIAL {
             get {
                 return this.nUM_REQMATERIALField;
@@ -317,7 +317,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string DES_MSGRETORNO {
             get {
                 return this.dES_MSGRETORNOField;
@@ -328,8 +328,8 @@ namespace SIO.wsGerbo {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -350,7 +350,7 @@ namespace SIO.wsGerbo {
         
         private System.DateTime datNecessariaField;
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodEmpresa {
             get {
                 return this.codEmpresaField;
@@ -360,7 +360,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodDocOP {
             get {
                 return this.codDocOPField;
@@ -370,7 +370,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NumOrdemProd {
             get {
                 return this.numOrdemProdField;
@@ -380,7 +380,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodMaterial {
             get {
                 return this.codMaterialField;
@@ -390,7 +390,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public decimal QtdNecessaria {
             get {
                 return this.qtdNecessariaField;
@@ -400,7 +400,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodCCustoReq {
             get {
                 return this.codCCustoReqField;
@@ -410,7 +410,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public System.DateTime DatNecessaria {
             get {
                 return this.datNecessariaField;
@@ -421,8 +421,8 @@ namespace SIO.wsGerbo {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -437,7 +437,7 @@ namespace SIO.wsGerbo {
         
         private string dES_MSGRETORNOField;
         
-        /// <comentarios/>
+        /// <remarks/>
         public string COD_EMPRESA {
             get {
                 return this.cOD_EMPRESAField;
@@ -447,7 +447,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string COD_DOCOP {
             get {
                 return this.cOD_DOCOPField;
@@ -457,7 +457,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NUM_ORDEMPROD {
             get {
                 return this.nUM_ORDEMPRODField;
@@ -467,7 +467,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string DES_MSGRETORNO {
             get {
                 return this.dES_MSGRETORNOField;
@@ -478,8 +478,8 @@ namespace SIO.wsGerbo {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -506,7 +506,7 @@ namespace SIO.wsGerbo {
         
         private string nomUsuarioRespField;
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodEmpresa {
             get {
                 return this.codEmpresaField;
@@ -516,7 +516,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodDocOP {
             get {
                 return this.codDocOPField;
@@ -526,7 +526,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string TipProduto {
             get {
                 return this.tipProdutoField;
@@ -536,7 +536,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodProduto {
             get {
                 return this.codProdutoField;
@@ -546,7 +546,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public decimal QtdProduzir {
             get {
                 return this.qtdProduzirField;
@@ -556,7 +556,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public System.DateTime DatInicio {
             get {
                 return this.datInicioField;
@@ -566,7 +566,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public System.DateTime DatNecessaria {
             get {
                 return this.datNecessariaField;
@@ -576,7 +576,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodDocOPPai {
             get {
                 return this.codDocOPPaiField;
@@ -586,7 +586,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NumOrdemProdPai {
             get {
                 return this.numOrdemProdPaiField;
@@ -596,7 +596,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NomUsuarioResp {
             get {
                 return this.nomUsuarioRespField;
@@ -607,8 +607,8 @@ namespace SIO.wsGerbo {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -623,7 +623,7 @@ namespace SIO.wsGerbo {
         
         private string dES_MSGRETORNOField;
         
-        /// <comentarios/>
+        /// <remarks/>
         public string COD_EMPRESA {
             get {
                 return this.cOD_EMPRESAField;
@@ -633,7 +633,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string TIP_PRODUTO {
             get {
                 return this.tIP_PRODUTOField;
@@ -643,7 +643,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string COD_PRODUTO {
             get {
                 return this.cOD_PRODUTOField;
@@ -653,7 +653,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string DES_MSGRETORNO {
             get {
                 return this.dES_MSGRETORNOField;
@@ -664,8 +664,8 @@ namespace SIO.wsGerbo {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -720,7 +720,7 @@ namespace SIO.wsGerbo {
         
         private string codTipoItemField;
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodEmpresa {
             get {
                 return this.codEmpresaField;
@@ -730,7 +730,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string TipProduto {
             get {
                 return this.tipProdutoField;
@@ -740,7 +740,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodProduto {
             get {
                 return this.codProdutoField;
@@ -750,7 +750,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string DesProduto {
             get {
                 return this.desProdutoField;
@@ -760,7 +760,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string SigUnidade {
             get {
                 return this.sigUnidadeField;
@@ -770,7 +770,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string TipProcedencia {
             get {
                 return this.tipProcedenciaField;
@@ -780,7 +780,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodLinha {
             get {
                 return this.codLinhaField;
@@ -790,7 +790,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodFamilia {
             get {
                 return this.codFamiliaField;
@@ -800,7 +800,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodSubFamilia {
             get {
                 return this.codSubFamiliaField;
@@ -810,7 +810,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodOriMercad {
             get {
                 return this.codOriMercadField;
@@ -820,7 +820,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string DesComplMat {
             get {
                 return this.desComplMatField;
@@ -830,7 +830,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NumClaFiscal {
             get {
                 return this.numClaFiscalField;
@@ -840,7 +840,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NumCtaEstoque {
             get {
                 return this.numCtaEstoqueField;
@@ -850,7 +850,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NumCtaProducao {
             get {
                 return this.numCtaProducaoField;
@@ -860,7 +860,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string FlgNumLote {
             get {
                 return this.flgNumLoteField;
@@ -870,7 +870,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string FlgSeriado {
             get {
                 return this.flgSeriadoField;
@@ -880,7 +880,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string FlgNatureza {
             get {
                 return this.flgNaturezaField;
@@ -890,7 +890,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public decimal ValPBrutoUni {
             get {
                 return this.valPBrutoUniField;
@@ -900,7 +900,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public decimal ValPliqUni {
             get {
                 return this.valPliqUniField;
@@ -910,7 +910,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NumCtaVenda {
             get {
                 return this.numCtaVendaField;
@@ -920,7 +920,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NumCtaICMS {
             get {
                 return this.numCtaICMSField;
@@ -930,7 +930,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NumCtaIPI {
             get {
                 return this.numCtaIPIField;
@@ -940,7 +940,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NumCtaCustoVenda {
             get {
                 return this.numCtaCustoVendaField;
@@ -950,7 +950,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodTipoItem {
             get {
                 return this.codTipoItemField;
@@ -961,9 +961,9 @@ namespace SIO.wsGerbo {
         }
     }
     
-    /// <comentarios/>
+    /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(UF))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -971,8 +971,8 @@ namespace SIO.wsGerbo {
     public abstract partial class BaseModelOfUF {
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -983,7 +983,7 @@ namespace SIO.wsGerbo {
         
         private string dES_UFField;
         
-        /// <comentarios/>
+        /// <remarks/>
         public string SIG_UF {
             get {
                 return this.sIG_UFField;
@@ -993,7 +993,7 @@ namespace SIO.wsGerbo {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string DES_UF {
             get {
                 return this.dES_UFField;
@@ -1005,11 +1005,11 @@ namespace SIO.wsGerbo {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void TestarWebServiceCompletedEventHandler(object sender, TestarWebServiceCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class TestarWebServiceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1031,11 +1031,11 @@ namespace SIO.wsGerbo {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void IncluirMaterialCompletedEventHandler(object sender, IncluirMaterialCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class IncluirMaterialCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1057,11 +1057,11 @@ namespace SIO.wsGerbo {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void IncluirOrdemProdMatCompletedEventHandler(object sender, IncluirOrdemProdMatCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class IncluirOrdemProdMatCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1083,11 +1083,11 @@ namespace SIO.wsGerbo {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void IncluirReqPlanejadaCompletedEventHandler(object sender, IncluirReqPlanejadaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class IncluirReqPlanejadaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
