@@ -32,21 +32,33 @@ namespace CapaControl
 		public SqlDataReader ConsultarPlanta()
 		{
 			string sql;
-			sql = "SELECT        planta_id, planta_descripcion, planta_ruta_imagen " +
+			sql = "SELECT        planta_id, planta_descripcion, planta_ruta_imagen, planta_cia " +
 					" FROM            planta_forsa "+
 					" WHERE        (planta_activo = 1)";
 			return BdDatos.ConsultarConDataReader(sql);
 		}
 
-		//CONSULTAR LAS PLANTAS ACTIVAS
-		public SqlDataReader ConsultarPlantaProd(int plantafact)
+        //CONSULTAR COMPAÑIA ERP(CIA)
+        public SqlDataReader ConsultarPlantaCIA(int plantFactId)
+        {
+            string sql;
+            sql = "SELECT   planta_cia " +
+                    " FROM            planta_forsa " +
+                    " WHERE        (planta_activo = 1) "+
+					" AND  planta_id = "+ plantFactId;
+
+            return BdDatos.ConsultarConDataReader(sql);
+        }
+
+        //CONSULTAR LAS PLANTAS ACTIVAS
+        public SqlDataReader ConsultarPlantaProd(int plantafact)
 		{
 			string sql;
 			sql = "SELECT        planta_forsa_fact_prod.planta_id_produccion, planta_forsa.planta_descripcion "+
 					" FROM            planta_forsa_fact_prod INNER JOIN "+
 					" planta_forsa ON planta_forsa_fact_prod.planta_id_produccion = planta_forsa.planta_id "+
 					" WHERE        (planta_forsa_fact_prod.activo = 1) AND (planta_forsa_fact_prod.planta_id_facturar ="+ plantafact+")";
-			return BdDatos.ConsultarConDataReader(sql);
+			 return BdDatos.ConsultarConDataReader(sql);
 		}
 
         //CONSULTAR LAS PLANTAS ACTIVAS
@@ -563,20 +575,20 @@ namespace CapaControl
 			sqlString.Append("with ");
 			sqlString.Append("infCia as");
 			sqlString.Append(" (select *");
-			sqlString.Append(" from openquery(FORSA1E,'select * from UNOEE2.T010_MM_COMPANIAS ') )");
+			sqlString.Append(" from openquery(FORSA1E,'select * from T010_MM_COMPANIAS ') )");
 			sqlString.Append(", tasa as");
 			sqlString.Append("(select *");
 			sqlString.Append("from openquery(FORSA1E,'select f018_id_cia, f018_id_moneda, f018_fecha, f018_tasa, ROW_NUMBER ( ) ");
 			sqlString.Append("                OVER (PARTITION BY f018_id_cia, f018_id_moneda ORDER BY f018_id_cia, f018_fecha ) fila ");
-			sqlString.Append("                from UNOEE2.T018_MM_TASAS_CAMBIO where f018_fecha >= trunc(sysdate) order by f018_id_cia, f018_fecha')");
+			sqlString.Append("                from T018_MM_TASAS_CAMBIO where f018_fecha >= CONVERT(DATE,GETDATE()) order by f018_id_cia, f018_fecha')");
 			sqlString.Append(")");
 			sqlString.Append(", cli as");
 			sqlString.Append("(select *");
 
 			sqlString.Append(" from openquery(FORSA1E,'select T.f200_id_cia, T.f200_rowid, T.f200_id, T.f200_nit, T.f200_razon_social, f201_id_sucursal, f201_id_vendedor, f201_id_cond_pago, F215_ID, f215_id_vendedor , V.F200_ID IDVENDEDOR, F201_id_lista_precio lista_precio");
-			sqlString.Append("                from UNOEE2.T200_MM_TERCEROS T inner");
-			sqlString.Append("                join UNOEE2.T201_MM_CLIENTES on f201_rowid_tercero = T.F200_ROWID left outer join UNOEE2.T215_MM_PUNTOS_ENVIO_CLIENTE on f215_rowid_tercero = f201_rowid_tercero and f215_id_sucursal = f201_id_sucursal");
-			sqlString.Append("                LEFT OUTER JOIN UNOEE2.T210_MM_VENDEDORES ON F210_ID = f201_id_vendedor  AND F210_ID_CIA = T.f200_id_cia LEFT OUTER JOIN UNOEE2.T200_MM_TERCEROS V ON F210_ROWID_TERCERO = V.f200_rowid ')");
+			sqlString.Append("                from T200_MM_TERCEROS T inner");
+			sqlString.Append("                join T201_MM_CLIENTES on f201_rowid_tercero = T.F200_ROWID left outer join T215_MM_PUNTOS_ENVIO_CLIENTE on f215_rowid_tercero = f201_rowid_tercero and f215_id_sucursal = f201_id_sucursal");
+			sqlString.Append("                LEFT OUTER JOIN T210_MM_VENDEDORES ON F210_ID = f201_id_vendedor  AND F210_ID_CIA = T.f200_id_cia LEFT OUTER JOIN T200_MM_TERCEROS V ON F210_ROWID_TERCERO = V.f200_rowid ')");
 
 			sqlString.Append("     )");
 			sqlString.Append(" select sf.Sf_id, planta_cia Compania, ISNULL(CONVERT(VARCHAR(200), cli.f200_nit), cl.Nit_1) tercero, ISNULL(f201_id_sucursal, '001') sucursal");
@@ -887,10 +899,6 @@ namespace CapaControl
 			SFDetalle RegSF = null;
 			string Recibe = "";
 			StringBuilder sqlString = new StringBuilder();
-			sqlString.Append("with ");
-			sqlString.Append(" DatAdicional AS (");
-			sqlString.Append(" SELECT * FROM OPENQUERY(FORSA1E,'select * from UNOEE2.T120_MC_ITEMS')");
-			sqlString.Append(" )");
 			sqlString.Append("Select Item_1EE_Abuelo Item , pv.pv_centro_operacion CentroOperacion, pv.pv_unidad_negocio ");
 			sqlString.Append(",convert(varchar(10), SF.fecha_crea, 120) FecHoy");
 			sqlString.Append(",convert(varchar(10), SF.fecha_crea, 120) fecEntrega");
@@ -902,7 +910,7 @@ namespace CapaControl
 			sqlString.Append(" from pedido_venta pv");
 			sqlString.Append(" inner join solicitud_facturacion sf on sf.pv_id = pv.pv_id");
 			sqlString.Append(" inner join Orden_Seg os on os.sf_id = sf.Sf_id");
-			sqlString.Append(" LEFT outer JOIN DatAdicional i ON i.F120_Id = Item_1EE_Abuelo AND i.F120_Id_Cia = " + compania + "");
+			sqlString.Append(" LEFT outer JOIN FORSA1E.FORSA.DBO.T120_MC_ITEMS i ON i.F120_Id = Item_1EE_Abuelo AND i.F120_Id_Cia = " + compania + "");
 			sqlString.Append(" where sf.Sf_id = " + sfId + "");
 			string sqlCadena = sqlString.ToString();
 			sqlCadena.Replace("\r\n", " ");
@@ -1089,7 +1097,7 @@ namespace CapaControl
 			string Resultado = "";
 			StringBuilder sqlString = new StringBuilder();
 			sqlString.Append("SELECT F022_CONS_PROXIMO - 1 UltimoRegistro FROM ");
-			sqlString.Append(" OPENQUERY(FORSA1E,'select * from UNOEE2.T022_MM_Consecutivos ");
+			sqlString.Append(" OPENQUERY(FORSA1E,'select * from T022_MM_Consecutivos ");
 			sqlString.Append(" where F022_ID_CIA = ''" + compania + "'' and F022_ID_CO = ''" + CentroOpera + "'' AND F022_ID_TIPO_DOCTO = ''" + tipodocto + "''')");
 			string sqlCadena = sqlString.ToString();
 			sqlCadena.Replace("\r\n", " ");
@@ -1806,7 +1814,7 @@ namespace CapaControl
                   " Orden_Seg ON sf.Sf_id = Orden_Seg.sf_id " +
                   "WHERE sf.Sf_fup_id = " + FUP + " AND sf.Sf_version = '" + ver + "' AND sf.Sf_parte = " + parte + " AND sf.pv_id =  " + pv_id;
 
-			return BdDatos.ConsultarConDataReader(sql);
+			 return BdDatos.ConsultarConDataReader(sql);
 		}
 
 		//CONSULTA MAXIMO PARTES DE LA SF
@@ -2161,6 +2169,8 @@ namespace CapaControl
 			//	"         solicitud_fact_tipo ON solicitud_facturacion.sf_tipo_id = solicitud_fact_tipo.sf_tipo_id " +
 			//	"WHERE (Sf_fup_id = " + fup + ") AND (Sf_version = '" + ver + "') ORDER BY planta_forsa.planta_id";
 
+
+
 			sql = "SELECT Sf_num, PF.planta_descripcion as planta,			 Sf_parte, " +
 				"CONVERT(decimal(18,2),sf_m2)									 sf_m2," +
 				"CONVERT(VarChar(50),cast(Sf_vlr_venta as money), 1)			 Sf_vlr_venta, " +
@@ -2171,13 +2181,23 @@ namespace CapaControl
 				"CONVERT(VarChar(50),cast(Sf_iva as money), 1)				     Sf_iva," +
 				"CONVERT(VarChar(50),cast(Sf_tltiva as money), 1)				 Sf_tltiva, " +
 				"SFT.sf_tipo_descripcion as										 TipoSf " +
-				"FROM			solicitud_facturacion   SF WITH(NOLOCK) " +
-				"				INNER JOIN planta_forsa PF WITH(NOLOCK) ON PF.planta_id = SF.sf_fac_plantaforsa_id " +
+				"FROM			solicitud_facturacion   SF WITH(NOLOCK) " +       
+						 "				INNER JOIN planta_forsa PF WITH(NOLOCK) ON PF.planta_id = SF.sf_planprod_id  " +
 				"				INNER JOIN solicitud_fact_tipo SFT WITH(NOLOCK) ON SF.sf_tipo_id = SFT.sf_tipo_id " +
 				"WHERE (Sf_fup_id = " + fup + ") AND (Sf_version = '" + ver + "') ORDER BY PF.planta_id";
 			DataSet ds = BdDatos.consultarConDataset(sql);
 			// DataTable dt_temp = cambiarIdioma(ds_idioma.Tables[0]);
 			return ds;
+		}
+		//CONSULTA PLANTAPROD DE LA SF
+		public SqlDataReader ConsultarPlanProdSF(int fup, int parte) 
+		{
+			string sql = "SELECT sf_planprod_id AS PlanProdSF " +
+						 "FROM solicitud_facturacion WITH(NOLOCK) " +
+						 "WHERE " +
+						 "Sf_fup_id    = "+fup+" "+
+						 "AND sf_parte = "+parte;
+			return BdDatos.ConsultarConDataReader(sql);
 		}
 
 		//CONSULTA DE SUMA DE TOTALES

@@ -997,7 +997,14 @@ namespace SIO
                             cargarPlantaProduccion(idPlantaFact);
                             cboPlantaFact.SelectedValue = idPlantaFact.ToString().Trim();
                             //cboPlantaFact.Enabled = false;
-                            cboPlantaProd.SelectedValue = idPlanta.ToString().Trim();
+
+                            //New - Agregamos una funcion para validar la PlantaProd de la SF frente al Pedido de venta
+                            AsignarPlantaProdSF(
+                                Convert.ToInt32(lblfup.Text.Trim()) //fup
+                                , parte //parte SF siempre es 1
+                                , idPlanta //planta de la tabla pedido_venta
+                            );
+                            //cboPlantaProd.SelectedValue = idPlanta.ToString().Trim();
                             cboVendedor.SelectedValue = Vendedor.Trim();
 
                             PoblarNit();
@@ -1006,6 +1013,35 @@ namespace SIO
                         }
                     }
                     con.Close();
+                }
+            }
+        }
+
+        private void AsignarPlantaProdSF(int fup, int parte,int PlantaProdPV) 
+        {
+            reader = controlsf.ConsultarPlanProdSF(fup, parte);
+
+            //Si no trae nada asigne la de pedido_venta
+            if (!reader.HasRows) 
+            {
+                cboPlantaProd.SelectedValue = PlantaProdPV.ToString().Trim();
+                return;
+            }
+
+            
+            if (reader.Read()) 
+            {
+                int plantaProdSF = reader.GetInt32(0);
+
+                //Si son diferentes SF y Pedido_Venta asigne la de SF
+                if (plantaProdSF != PlantaProdPV)
+                {
+                    cboPlantaProd.SelectedValue = plantaProdSF.ToString().Trim();
+                }
+                else 
+                {//Si son iguales asigne la del pedido_venta 
+
+                    cboPlantaProd.SelectedValue = PlantaProdPV.ToString().Trim();
                 }
             }
         }
@@ -4057,7 +4093,7 @@ namespace SIO
         {
             consultarCompaniaPlanta();
             // cia se convierte en planta
-            int cia = Convert.ToInt32( cboPlantaFact.SelectedItem.Value);
+            int cia = Convert.ToInt32(cboPlantaFact.SelectedItem.Value);
            
             CondicionPago(cia);
             CentroOperacion(cia);
@@ -4301,6 +4337,17 @@ namespace SIO
             int xgr = Convert.ToInt32(cboPlantaFact.SelectedItem.Value);
             string cia = "";
 
+
+            reader = controlsf.ConsultarPlantaCIA(xgr);
+
+            if (reader.HasRows == true)
+            {
+                if (reader.Read()) 
+                {
+                    cia = reader.GetInt32(0).ToString();
+                }
+            }
+
             //List<SFEncabezado> RegistroSF = new List<SFEncabezado>();
             SFEncabezado RegistroSF = new SFEncabezado();
             SFDetalle DetalleSF = new SFDetalle();
@@ -4309,8 +4356,8 @@ namespace SIO
             int sfId = Convert.ToInt32(cboParte.SelectedItem.Value);
             //int sfId = Convert.ToInt32(lblfup.Text);
             string listaprecios = "000";
-            RegistroSF =BuscarEncabezado(sfId,ref cia, ref listaprecios);
-            DetalleSF=BuscarDetalle(sfId,ref cia, ref listaprecios);
+            RegistroSF = BuscarEncabezado(sfId,ref cia, ref listaprecios);
+            DetalleSF = BuscarDetalle(sfId,ref cia, ref listaprecios);
 
             string ciacompleto = cia.PadLeft(3, '0');
             ciacompleto = LimitLength(ciacompleto, 3);
@@ -4325,17 +4372,21 @@ namespace SIO
             int puestoac = 0;
             char pad = '0';
             foreach (var prop in props)
+            {
                 if (prop.GetIndexParameters().Length == 0)
                 {
-                    puestoac = puestoac+1;
+                    puestoac = puestoac + 1;
                     Linea = Linea + prop.GetValue(RegistroSF);
-                    if (puestoac == 6) {
+                    if (puestoac == 6)
+                    {
                         cia = Convert.ToString(prop.GetValue(RegistroSF));
                         cia = cia.Trim();
-                        ciacompleto = cia.PadLeft(3,pad);
+                        ciacompleto = cia.PadLeft(3, pad);
                         ciacompleto = LimitLength(ciacompleto, 3);
                     }
                 }
+            }
+
             Linea = "<Linea>" + Linea + "</Linea><Linea>";
             Type s = DetalleSF.GetType();
             Console.WriteLine("Type is: {0}", s.Name);
@@ -4376,13 +4427,13 @@ namespace SIO
             // esta es la conexion real
             string importar = "<?xml version='1.0' encoding='utf-8'?>"
                    + "<Importar>"
-                   + "<NombreConexion>Siif_Unoee</NombreConexion>"
+                   + "<NombreConexion>FORSA_PRUEBAS</NombreConexion>"
                    + "<IdCia>" + cia + "</IdCia>"
                    + "<Usuario>siif</Usuario>"
                    + "<Clave>SiifErp</Clave>"
                    + "<Datos>"
                    + "<Linea>000000100000001" + ciacompleto + "</Linea>"
-                   + "<Linea>000000201200005" + Linea + "</Linea>"
+                   +  Linea 
                    + "<Linea>000000399990001" + ciacompleto + "</Linea>"
                    + "</Datos>"
                    + "</Importar>";
@@ -4390,47 +4441,50 @@ namespace SIO
             string stMsg = "";
             short x = (short)0;
             //WsReal.WSUNOEE WSDL = new WsReal.WSUNOEE();
-            com.siesacloud.wsforsa.WSUNOEE WSDL = new com.siesacloud.wsforsa.WSUNOEE();
+            //ERP Real
+            //com.siesacloud.wsforsa.WSUNOEE WSDL = new com.siesacloud.wsforsa.WSUNOEE();
+            //ERP Pruebas
+            com.siesacloud.wsforsapru.WSUNOEE WSDL = new com.siesacloud.wsforsapru.WSUNOEE();
             System.Data.DataSet nodes = null;
             nodes = WSDL.ImportarXML(importar,  ref x);
             //"Resultado del envio al web service  de item es:" + x;
-                if (x == 0)
-                {
+            if (x == 0)
+            {
                 //Encontrar el último consecutivo generado
-                    string ConsecutivoSalida = "";
-                    ConsecutivoSalida = ResultadoSFxWS(sfId, ref cia, ref coOperacion, ref tiDocumento);
-                    mensaje = "Envío WebService realizado correctamente. Ultimo Consecutivo " + ConsecutivoSalida;
-                    int exito = controlsf.actualizarPedidoERP(Convert.ToInt32(ConsecutivoSalida), Convert.ToInt32(lblfup.Text), LVer.Text.Trim(),
-                        Convert.ToInt32(cboParte.SelectedItem.Text), Convert.ToInt32(cboPartePv.SelectedItem.Value));
+                string ConsecutivoSalida = "";
+                ConsecutivoSalida = ResultadoSFxWS(sfId, ref cia, ref coOperacion, ref tiDocumento);
+                mensaje = "Envío WebService realizado correctamente. Ultimo Consecutivo " + ConsecutivoSalida;
+                int exito = controlsf.actualizarPedidoERP(Convert.ToInt32(ConsecutivoSalida), Convert.ToInt32(lblfup.Text), LVer.Text.Trim(),
+                    Convert.ToInt32(cboParte.SelectedItem.Text), Convert.ToInt32(cboPartePv.SelectedItem.Value));
 
-                    ConsecutivoSalida = "FUP_"+lblfup.Text + LVer.Text.Trim() + "_SF_"+ cboParte.SelectedItem.Value.ToString() + "_PEDERP_"+ ConsecutivoSalida + ".txt";
-                    CreateTextDelimiterFile(ConsecutivoSalida, importar);
+                ConsecutivoSalida = "FUP_" + lblfup.Text + LVer.Text.Trim() + "_SF_" + cboParte.SelectedItem.Value.ToString() + "_PEDERP_" + ConsecutivoSalida + ".txt";
+                CreateTextDelimiterFile(ConsecutivoSalida, importar);
                 // Notificacion 
-                    string usuario = (string)Session["Usuario"];
-                    string CorreoUsuario = (string)Session["rcEmail"];
-                    string Nombre = (string)Session["Nombre_Usuario"];
-                    string correoSistema = (string)Session["CorreoSistema"];
-                    string UsuarioAsunto = Convert.ToString(Session["UsuarioAsunto"]);
-                    String cuerpoCorreo = mensaje + Linea;
+                string usuario = (string)Session["Usuario"];
+                string CorreoUsuario = (string)Session["rcEmail"];
+                string Nombre = (string)Session["Nombre_Usuario"];
+                string correoSistema = (string)Session["CorreoSistema"];
+                string UsuarioAsunto = Convert.ToString(Session["UsuarioAsunto"]);
+                String cuerpoCorreo = mensaje + Linea;
 
-                    enviarCorreo(55, Convert.ToInt32(sfId), usuario, CorreoUsuario, out cuerpoCorreo, CorreoUsuario);
-                    btnprocesarSF.Enabled = false;
-                    btnprocesarSF.Visible = false;
+                enviarCorreo(55, Convert.ToInt32(sfId), usuario, CorreoUsuario, out cuerpoCorreo, CorreoUsuario);
+                btnprocesarSF.Enabled = false;
+                btnprocesarSF.Visible = false;
 
             }
             else
+            {
+                //Recuperar Mensaje del WS
+                if (nodes != null)
                 {
-                    //Recuperar Mensaje del WS
-                    if (nodes != null)
+                    foreach (DataRow fila in nodes.Tables[0].Rows)
                     {
-                        foreach (DataRow fila in nodes.Tables[0].Rows)
-                        {
                         stMsgErp = stMsgErp + " " + fila[6].ToString(); // + Environment.NewLine;
-                        }
                     }
-                    //mensaje = Environment.NewLine
-                    //            + stMsg + Environment.NewLine
-                    //            + stMsgErp + " Código = " + x;
+                }
+                //mensaje = Environment.NewLine
+                //            + stMsg + Environment.NewLine
+                //            + stMsgErp + " Código = " + x;
                 mensaje = stMsg + " " + stMsgErp;
             }
             string mensaje2 = mensaje;

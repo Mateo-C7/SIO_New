@@ -4922,6 +4922,12 @@ function obtenerInformacionFUP(idFup, idVersion, idioma) {
                 if (index == 'listaPlantaOF') {
                     $("#cmbPlantaOrdenes").html(llenarComboId(elem));
                     $("#cmbPlantaOrdenes").val("-1").change();
+                    // Iterar sobre las opciones y asignar atributos desde el JSON
+                    $("#cmbPlantaOrdenes option:gt(0)").each(function (i) {
+                        // Asigna el valor de 'planta_id' del JSON 'elem' correspondiente
+                        $(this).attr("data-planta_id", elem[i].planta_id);
+                    });
+                   
                 };
                 if (index == 'varFlete') {
                     limpiar_flete();
@@ -8675,13 +8681,16 @@ function CargarParteOrden() {
     $("#cmbPlantaOrdenes").change(function () {
 
         var idPedidoVenta = Number($(this).val());
+        var planta_id = Number($("#cmbPlantaOrdenes option:selected").attr("data-planta_id"));
+
         if (idPedidoVenta != -1) {
             mostrarLoad();
             $.ajax({
                 type: "POST",
                 url: "FormFUP.aspx/obtenerPartePorPv",
                 data: JSON.stringify({
-                    PedidoVenta: idPedidoVenta
+                    PedidoVenta: idPedidoVenta,
+                    Plantaid: planta_id 
                 }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
