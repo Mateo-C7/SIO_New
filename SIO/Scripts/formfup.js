@@ -8773,6 +8773,12 @@ function ObtenerOrdenFabricacion() {
                 LlenarParteOF(data[0]);
                 $("#cmbPlantaOrdenes").html(llenarComboId(data[1]));
                 $("#cmbPlantaOrdenes").val("-1").change();
+                // Iterar sobre las opciones y asignar atributos desde el JSON
+                $("#cmbPlantaOrdenes option:gt(0)").each(function (i) {
+                    // Asigna el valor de 'planta_id' del JSON 'elem' correspondiente
+                    $(this).attr("data-planta_id", data[1][i].planta_id);
+                });
+
             }
         },
         error: function () {

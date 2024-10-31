@@ -1838,13 +1838,23 @@ namespace SIO
 
 			List<Orden_Fabricacion> Ordernes = ControlDatos.EjecutarStoreProcedureConParametros<Orden_Fabricacion>("USP_fup_SEL_OrdenesFab", parametros);
 
-			string sql = "SELECT pv.pv_id id, planta_forsa.planta_descripcion descripcion  " +
-						 "FROM pedido_venta AS pv INNER JOIN " +
-						 " planta_forsa AS planta_forsa ON pv.planta_id = planta_forsa.planta_id " +
-						 "WHERE (pv.pv_fup_id = " + @pFupID + ") " +
-						 "ORDER BY planta_forsa.planta_id ";
+			//string sql = "SELECT pv.pv_id id, planta_forsa.planta_descripcion descripcion  " +
+			//			 "FROM pedido_venta AS pv INNER JOIN " +
+			//			 " planta_forsa AS planta_forsa ON pv.planta_id = planta_forsa.planta_id " +
+			//			 "WHERE (pv.pv_fup_id = " + @pFupID + ") " +
+			//			 "ORDER BY planta_forsa.planta_id ";
+            //A nivel de SF
+            string sql = "SELECT DISTINCT pv_id id, planta_id, " +
+                         "planta_forsa.planta_descripcion descripcion, " +
+                         "planta_forsa.planta_descripcion descripcionEN , " +
+                         "planta_forsa.planta_descripcion descripcionPO " +
+                         "FROM solicitud_facturacion AS sf " +
+                         "INNER JOIN planta_forsa AS planta_forsa ON sf.sf_planprod_id = planta_forsa.planta_id " +
+                         "WHERE (sf.sf_fup_id = " + @pFupID + ") " +
+                         "ORDER BY " +
+                         "planta_forsa.planta_id, pv_id, planta_descripcion";
 
-			List<datosCombo2> Plantas = ControlDatos.EjecutarConsulta<datosCombo2>(sql, new Dictionary<string, object>());
+            List<datosCombo2> Plantas = ControlDatos.EjecutarConsulta<datosCombo2>(sql, new Dictionary<string, object>());
 
 			List<object> data = new List<object>();
 
