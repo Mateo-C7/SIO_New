@@ -199,7 +199,7 @@ namespace CapaControl
         {
             string sql;
 
-            sql = "SELECT pais.pai_nombre, pais.pai_id, representantes_comerciales.rc_id, pais.pai_moneda " +
+            sql = "SELECT pais.pai_nombre, pais.pai_id, representantes_comerciales.rc_id, pais.pai_moneda, pai_UsaImperial " +
                 "FROM pais_representante INNER JOIN representantes_comerciales ON " +
                 "pais_representante.pr_id_representante = representantes_comerciales.rc_id INNER JOIN " +
                 "pais ON pais_representante.pr_id_pais = pais.pai_id " +
@@ -213,7 +213,8 @@ namespace CapaControl
                 {
                     Id = (int)row["pai_id"],
                     Nombre = (string)row["pai_nombre"],
-                    IdMoneda = (int)row["pai_moneda"]
+                    IdMoneda = (int)row["pai_moneda"],
+                    UsaImperial = (int)row["pai_UsaImperial"]
                 }).ToList();
             dt.Clear();
             dt.Dispose();
@@ -230,14 +231,15 @@ namespace CapaControl
         public List<Pais> obtenerListaPais()
         {
             string sql;
-            sql = "SELECT pai_id, pai_nombre, pai_moneda FROM pais WHERE  (pai_id <> 74) ORDER BY pai_nombre";
+            sql = "SELECT pai_id, pai_nombre, pai_moneda, pai_UsaImperial FROM pais WHERE  (pai_id <> 74) ORDER BY pai_nombre";
             DataTable dt = BdDatos.CargarTabla(sql);
             List<Pais> lstPais = dt.AsEnumerable()
                 .Select(row => new Pais
                 {
                     Id = (int)row["pai_id"],
                     Nombre = (string)row["pai_nombre"],
-                    IdMoneda = (int)row["pai_moneda"]
+                    IdMoneda = (int)row["pai_moneda"],
+                    UsaImperial = (int)row["pai_UsaImperial"]
                 }).ToList();
             dt.Clear();
             dt.Dispose();

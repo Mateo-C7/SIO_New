@@ -5040,9 +5040,9 @@ namespace SIO
         }
 
         protected void btnGuardar_Click(object sender, ImageClickEventArgs e)         
-        {            
+        {
             int fup = -1;
-            
+
             string mensaje = "";
             string msjMail = "";
             string Nombre = (string)Session["Nombre_Usuario"];
@@ -5053,282 +5053,282 @@ namespace SIO
             int rol = (int)Session["Rol"];
             itemid = Convert.ToInt64(Session["Item"]);
 
-                    if (btnGuardar.ToolTip == "Guardar")
+            if (btnGuardar.ToolTip == "Guardar")
+            {
+                if (cboAccesorio.SelectedItem.Text == "Seleccione el accesorio" || txtCantidad.Text.Trim() == "" || txtCantidad.Text == "0" || LblPrecioUni.Text == "0" || txtPrecio.Text == "0" || LblPrecioUni.Text == "0.00" || txtPrecio.Text == "0.00" || txtPrecio.Text.Trim() == "")
+                {
+                    mensaje = "Debe seleccionar el accesorio, tener precio y digitar la cantidad";
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('" + mensaje + "')", true);
+                }
+
+                else
+                {
+                    if (txtCantidad.Text == "0")
                     {
-                        if (cboAccesorio.SelectedItem.Text == "Seleccione el accesorio" || txtCantidad.Text.Trim() == "" || txtCantidad.Text == "0" || LblPrecioUni.Text == "0" || txtPrecio.Text == "0" || LblPrecioUni.Text == "0.00" || txtPrecio.Text == "0.00" || txtPrecio.Text.Trim() == "")
-                        {
-                            mensaje = "Debe seleccionar el accesorio, tener precio y digitar la cantidad";
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('" + mensaje + "')", true);
-                        }
-                        
-                        else
-                            {
-                                if (txtCantidad.Text == "0")
-                                {
-                                    
-                                        mensaje = "Debe seleccionar la cantidad.";
-                                     
-                                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('" + mensaje + "')", true);
-                                }
-                                else
-                                { 
-                                    int moneda = 0;
-                                    moneda = Convert.ToInt32(Session["MonedaID"]);
-                                    
-                                    if (txtFUP.Text == "")
-                                    {
-                                        //CREAMOS EL FUP DEL ACCESORIO
-                                        int scope = contpv.FUP(FechaCrea, Convert.ToInt32(cboCliente.SelectedItem.Value), moneda,
-                                            Convert.ToInt32(cboContacto.SelectedValue), Convert.ToInt32(cboObra.SelectedValue), "DT",
-                                            Nombre, Convert.ToInt32(cboPlanta.SelectedItem.Value));
 
-                                        txtFUP.Text = Convert.ToString(scope);
+                        mensaje = "Debe seleccionar la cantidad.";
 
-                                        txtIdRecompra.Visible = true;
-                                        lblIdRecompra.Visible = true;
-
-                            string OFA = (string)Session["IDOFA"];
-                                        //ACTUALIZAMOS EL ESTADO EN FUP
-                                        int actualizar = contpv.ActualizarEstadoFUPAccesorio(scope, txtOF.Text);                                        
-                                        
-                                        string usuario = (string)Session["Nombre_Usuario"];
-                                        string correoUsuario = (string)Session["rcEmail"];
-                                        string user = Session["Usuario"].ToString().ToUpper();
-                                        string remitente = Session["CorreoSistema"].ToString();
-
-                                        string version = "A";
-                                        Session["Evento"] = 31;
-                                        this.cargarSesiones();
-                                        // envia correo
-                                        //fup_clase.CorreoFUP(Convert.ToInt32(txtFUP.Text), version, Convert.ToInt32(Session["Evento"]));
-                                        
-                                        //contpv.enviarCorreo(1, Convert.ToInt32(txtFUP.Text), user, remitente, out msjMail, usuario, correoUsuario, cboPais.SelectedItem.Text, 0);
-                                        //if (!String.IsNullOrEmpty(msjMail))
-                                        //    msjMail = "\\n El correo electrónico NO fue enviado \\n";
-                                    }
-
-                                    //CONSULTA CONSECUTIVO ITEM ACCESORIO
-                                    reader = contpv.ConsultarItemAccesorio(Convert.ToInt32(txtFUP.Text));
-                                    if (!reader.HasRows)
-                                    {
-                                        Item = 1;
-                                    }
-                                    else
-                                    {
-                                        reader = contpv.ConsultarMaximoItemAccesorio(Convert.ToInt32(txtFUP.Text));
-                                        if (reader.HasRows == true)
-                                        {
-                                            reader.Read();
-                                            string maximo = reader.GetValue(0).ToString();
-                                            Item = Convert.ToInt32(maximo) + 1;
-                                        }
-                                    }
-                                    reader.Close();
-                                    reader.Dispose();
-                                    contpv.CerrarConexion();
-
-                                    txtObservaciones.Text = txtObservaciones.Text.ToUpperInvariant();
-
-                                    int estado_item = 0;                                    
-                                    estado_item = validarCaracteristicasItem();
-
-                                    //INGRESAMOS LOS DATOS A COTIZAR
-                                    int cotacc = contpv.CotAcc(Convert.ToInt32(cboAccesorio.SelectedValue), Convert.ToInt32(txtCantidad.Text.Replace(",", "")),
-                                        LblPrecioUni.Text, lblPesoUni.Text, "0", Convert.ToInt32(txtFUP.Text), txtObservaciones.Text,
-                                        "0", Item, Nombre, FechaCrea, Convert.ToInt32(cboTipo.SelectedValue), Convert.ToInt32(cboModelo.SelectedValue), estado_item);
-                                                                        
-                                    bool reqParametro = insertarParametros(cotacc);
-                                    if (reqParametro) 
-                                    {
-                                        mensaje = "Para confirmar el pedido de venta se deben llenar los parámetros requeridos";
-                                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('" + mensaje + "')", true);                                        
-                                    }
-
-                                    string parametros = "";
-                                    reader = contpv.cargarParametrosItem(cotacc);
-                                    if (reader.HasRows == true)
-                                    {
-                                        while (reader.Read())
-                                        {
-                                            parametros += reader.GetValue(2).ToString() + ": " + reader.GetValue(1).ToString() + " / ";
-                                        }
-                                    }
-                                    reader.Close();
-                                    reader.Dispose();
-                                    contpv.CerrarConexion();
-
-                                    //Inserto log_pv
-                                    string est = "Cotización Inicial";
-                                    string Usuario = (string)Session["Nombre_Usuario"];
-                                    double total = Convert.ToDouble(LblPrecioUni.Text.Replace(",", "")) * Convert.ToInt32(txtCantidad.Text.Replace(",", ""));
-                                    int tipo_id = 0, modelo_id = 0;
-                                    if (!String.IsNullOrEmpty(cboTipo.SelectedValue))
-                                        tipo_id = Convert.ToInt32(cboTipo.SelectedValue);
-                                    if (!String.IsNullOrEmpty(cboModelo.SelectedValue))
-                                        modelo_id = Convert.ToInt32(cboModelo.SelectedValue);
-
-                                    controlsf.IngresarDatosLOGpv(Convert.ToInt32(txtFUP.Text), Convert.ToInt32(cboAccesorio.SelectedValue), Convert.ToInt32(txtCantidad.Text.Replace(",", "")), LblPrecioUni.Text.Replace(",", ""), total.ToString(), est, Usuario, txtObservaciones.Text, tipo_id, modelo_id, parametros);
-                                    
-                                    mensaje = MensajeItemAccesorio() + msjMail;
-                                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('" + mensaje + "')", true);
-                                    Session["EstadoCom"] = "1";                                    
-                                    this.CargarReporteDetalle();
-                                    this.LimpiarDetalle();
-                                }
-                            }                        
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('" + mensaje + "')", true);
                     }
                     else
                     {
-                        if (btnGuardar.ToolTip == "Eliminar")
+                        int moneda = 0;
+                        moneda = Convert.ToInt32(Session["MonedaID"]);
+
+                        if (txtFUP.Text == "")
                         {
-                            string IdAccesorio = (string)Session["IdAcc"];
-                            txtObservaciones.Text = txtObservaciones.Text.ToUpperInvariant();
-                            Estado = "Eliminado";
+                            //CREAMOS EL FUP DEL ACCESORIO
+                            int scope = contpv.FUP(FechaCrea, Convert.ToInt32(cboCliente.SelectedItem.Value), moneda,
+                                Convert.ToInt32(cboContacto.SelectedValue), Convert.ToInt32(cboObra.SelectedValue), "DT",
+                                Nombre, Convert.ToInt32(cboPlanta.SelectedItem.Value));
 
-                            int estado_item = 0;
-                            estado_item = validarCaracteristicasItem();
+                            txtFUP.Text = Convert.ToString(scope);
 
-                            string parametros = "";
-                            reader = contpv.cargarParametrosItem(Convert.ToInt32(IdAccesorio));
+                            txtIdRecompra.Visible = true;
+                            lblIdRecompra.Visible = true;
+
+                            string OFA = (string)Session["IDOFA"];
+                            //ACTUALIZAMOS EL ESTADO EN FUP
+                            int actualizar = contpv.ActualizarEstadoFUPAccesorio(scope, txtOF.Text);
+
+                            string usuario = (string)Session["Nombre_Usuario"];
+                            string correoUsuario = (string)Session["rcEmail"];
+                            string user = Session["Usuario"].ToString().ToUpper();
+                            string remitente = Session["CorreoSistema"].ToString();
+
+                            string version = "A";
+                            Session["Evento"] = 31;
+                            this.cargarSesiones();
+                            // envia correo
+                            //fup_clase.CorreoFUP(Convert.ToInt32(txtFUP.Text), version, Convert.ToInt32(Session["Evento"]));
+
+                            //contpv.enviarCorreo(1, Convert.ToInt32(txtFUP.Text), user, remitente, out msjMail, usuario, correoUsuario, cboPais.SelectedItem.Text, 0);
+                            //if (!String.IsNullOrEmpty(msjMail))
+                            //    msjMail = "\\n El correo electrónico NO fue enviado \\n";
+                        }
+
+                        //CONSULTA CONSECUTIVO ITEM ACCESORIO
+                        reader = contpv.ConsultarItemAccesorio(Convert.ToInt32(txtFUP.Text));
+                        if (!reader.HasRows)
+                        {
+                            Item = 1;
+                        }
+                        else
+                        {
+                            reader = contpv.ConsultarMaximoItemAccesorio(Convert.ToInt32(txtFUP.Text));
                             if (reader.HasRows == true)
                             {
-                                while (reader.Read())
-                                {
-                                    parametros += reader.GetValue(2).ToString() + ": " + reader.GetValue(1).ToString() + " / ";
-                                }
+                                reader.Read();
+                                string maximo = reader.GetValue(0).ToString();
+                                Item = Convert.ToInt32(maximo) + 1;
                             }
-                            reader.Close();
-                            reader.Dispose();
-                            contpv.CerrarConexion();
-                            //INGRESAMOS LOS DATOS A ELIMINAR
-                            int cotacc = contpv.ActAcc(Convert.ToInt32(IdAccesorio), Convert.ToInt32(txtCantidad.Text.Replace(",", "")),
-                                  LblPrecioUni.Text, lblPesoUni.Text, "0", txtObservaciones.Text, "0",
-                                  Nombre, FechaCrea, Convert.ToInt32(txtFUP.Text), Hora, Estado, Convert.ToInt32(txtCodigo.Text), Convert.ToInt32(cboTipo.SelectedValue), Convert.ToInt32(cboModelo.SelectedValue), estado_item);
+                        }
+                        reader.Close();
+                        reader.Dispose();
+                        contpv.CerrarConexion();
 
-                            //Inserto log_pv
-                            string est = "Eliminado";
-                            string Usuario = (string)Session["Nombre_Usuario"];
-                            double total = Convert.ToDouble(LblPrecioUni.Text.Replace(",", "")) * Convert.ToInt32(txtCantidad.Text.Replace(",", ""));
-                            int tipo_id = 0, modelo_id = 0;
-                            if (!String.IsNullOrEmpty(cboTipo.SelectedValue))
-                                tipo_id = Convert.ToInt32(cboTipo.SelectedValue);
-                            if (!String.IsNullOrEmpty(cboModelo.SelectedValue))
-                                modelo_id = Convert.ToInt32(cboModelo.SelectedValue);
+                        txtObservaciones.Text = txtObservaciones.Text.ToUpperInvariant();
 
-                            controlsf.IngresarDatosLOGpv(Convert.ToInt32(txtFUP.Text), Convert.ToInt32(cboAccesorio.SelectedValue), Convert.ToInt32(txtCantidad.Text.Replace(",", "")), LblPrecioUni.Text.Replace(",", ""), total.ToString(), est, Usuario, txtObservaciones.Text, tipo_id, modelo_id, parametros);
+                        int estado_item = 0;
+                        estado_item = validarCaracteristicasItem();
 
-                            this.LimpiarDetalle();
-                            MensajeItemAccesorio();
+                        //INGRESAMOS LOS DATOS A COTIZAR
+                        int cotacc = contpv.CotAcc(Convert.ToInt32(cboAccesorio.SelectedValue), Convert.ToInt32(txtCantidad.Text.Replace(",", "")),
+                            LblPrecioUni.Text, lblPesoUni.Text, "0", Convert.ToInt32(txtFUP.Text), txtObservaciones.Text,
+                            "0", Item, Nombre, FechaCrea, Convert.ToInt32(cboTipo.SelectedValue), Convert.ToInt32(cboModelo.SelectedValue), estado_item);
 
-                            Session["EstadoCom"] = "1";
-                            this.CargarReporteDetalle();
-
-                            btnGuardar.ToolTip = "Guardar";
-                            btnGuardar.BorderColor = System.Drawing.Color.Transparent;
-                            btnGuardar.BorderStyle = System.Web.UI.WebControls.BorderStyle.Solid;
-                            btnGuardar.BorderWidth = 2;
+                        bool reqParametro = insertarParametros(cotacc);
+                        if (reqParametro)
+                        {
+                            mensaje = "Para confirmar el pedido de venta se deben llenar los parámetros requeridos";
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('" + mensaje + "')", true);
                         }
 
-                        else
+                        string parametros = "";
+                        reader = contpv.cargarParametrosItem(cotacc);
+                        if (reader.HasRows == true)
                         {
-                            if (btnGuardar.ToolTip == "Actualizar")
+                            while (reader.Read())
                             {
-                                if ((contpv.poblarTipoItem(item_planta_id).HasRows && cboTipo.SelectedItem.Text == "Seleccione el tipo") || (contpv.poblarModeloItem(item_planta_id).HasRows && cboModelo.SelectedItem.Text == "Seleccione el modelo"))
-                                {
-                                    mensaje = "Para confirmar el pedido de venta seleccionar el tipo y modelo para este accesorio";
-                                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('" + mensaje + "')", true);
-                                }
-
-                                string IdAccesorio = Session["IdAcc"].ToString();
-                                txtObservaciones.Text = txtObservaciones.Text.ToUpperInvariant();
-                                Estado = "Actualización";
-                                Session["Estado"] = Estado;
-                                int tipo = 0, modelo = 0;
-                                if (!String.IsNullOrEmpty(cboTipo.SelectedValue.ToString()) && cboTipo.SelectedValue.ToString() != "Seleccione el tipo")
-                                    tipo = Convert.ToInt32(cboTipo.SelectedValue);
-
-                                if (!String.IsNullOrEmpty(cboModelo.SelectedValue.ToString()) && cboModelo.SelectedValue.ToString() != "Seleccione el modelo")
-                                    modelo = Convert.ToInt32(cboModelo.SelectedValue);
-
-                                int estado_item = 0;
-                                estado_item = validarCaracteristicasItemActualizacion(IdAccesorio);
-
-                                //INGRESAMOS LOS DATOS A ACTUALIZAR
-                                int cotacc = contpv.ActAcc(Convert.ToInt32(IdAccesorio), Convert.ToInt32(txtCantidad.Text.Replace(",", "")),
-                                    LblPrecioUni.Text, lblPesoUni.Text, "0", txtObservaciones.Text, "0",
-                                    Nombre, FechaCrea, Convert.ToInt32(txtFUP.Text), Hora, Estado, Convert.ToInt32(txtCodigo.Text), tipo, modelo, estado_item);
-
-                                actualizarParametrosAccesorios(Convert.ToInt32(IdAccesorio));
-
-                                string parametros = "";
-                                reader = contpv.cargarParametrosItem(Convert.ToInt32(IdAccesorio));
-                                if (reader.HasRows == true)
-                                {
-                                    while (reader.Read())
-                                    {
-                                        parametros += reader.GetValue(2).ToString() + ": " + reader.GetValue(1).ToString() + " / ";
-                                    }
-                                }
-                                reader.Close();
-                                reader.Dispose();
-                                contpv.CerrarConexion();
-                         
-                                //Inserto log_pv
-                                string est = "Actualización";
-                                string Usuario = (string)Session["Nombre_Usuario"];
-                                double total = Convert.ToDouble(LblPrecioUni.Text.Replace(",", "")) * Convert.ToInt32(txtCantidad.Text.Replace(",", ""));
-                                int tipo_id = 0, modelo_id = 0;
-                                if (!String.IsNullOrEmpty(cboTipo.SelectedValue))
-                                    tipo_id = Convert.ToInt32(cboTipo.SelectedValue);
-                                if (!String.IsNullOrEmpty(cboModelo.SelectedValue))
-                                    modelo_id = Convert.ToInt32(cboModelo.SelectedValue);
-
-                                controlsf.IngresarDatosLOGpv(Convert.ToInt32(txtFUP.Text), Convert.ToInt32(cboAccesorio.SelectedValue), Convert.ToInt32(txtCantidad.Text.Replace(",", "")), LblPrecioUni.Text, total.ToString(), est, Usuario, txtObservaciones.Text, tipo_id, modelo_id, parametros);
-
-                                reader = contpv.cargarParametrosItem(Convert.ToInt32(IdAccesorio));
-                                if (reader.HasRows == true)
-                                {
-                                    while (reader.Read())
-                                    {
-                                        parametros += reader.GetValue(2).ToString() + ": " + reader.GetValue(1).ToString() + " / ";
-                                    }
-                                }
-                                reader.Close();
-                                reader.Dispose();
-                                contpv.CerrarConexion();
-
-                                mensaje = "Item Actualizado exitosamente";
-                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('" + mensaje + "')", true);
-
-                                txtFUP_TextChanged(sender, e);
-                                
-                                MensajeItemAccesorio();
-
-                                Session["EstadoCom"] = "1";
-                                this.CargarReporteDetalle();
-                                this.LimpiarDetalle();
-
-                                btnGuardar.ToolTip = "Guardar";
-                                btnGuardar.BorderColor = System.Drawing.Color.Transparent;
-                                btnGuardar.BorderStyle = System.Web.UI.WebControls.BorderStyle.Solid;
-                                btnGuardar.BorderWidth = 2;                                    
+                                parametros += reader.GetValue(2).ToString() + ": " + reader.GetValue(1).ToString() + " / ";
                             }
-                        }                        
-
-                        if (cboPais.SelectedValue == "8")
-                        {
-                            Session["MONEDA"] = "COP";
                         }
-                        else
+                        reader.Close();
+                        reader.Dispose();
+                        contpv.CerrarConexion();
+
+                        //Inserto log_pv
+                        string est = "Cotización Inicial";
+                        string Usuario = (string)Session["Nombre_Usuario"];
+                        double total = Convert.ToDouble(LblPrecioUni.Text.Replace(",", "")) * Convert.ToInt32(txtCantidad.Text.Replace(",", ""));
+                        int tipo_id = 0, modelo_id = 0;
+                        if (!String.IsNullOrEmpty(cboTipo.SelectedValue))
+                            tipo_id = Convert.ToInt32(cboTipo.SelectedValue);
+                        if (!String.IsNullOrEmpty(cboModelo.SelectedValue))
+                            modelo_id = Convert.ToInt32(cboModelo.SelectedValue);
+
+                        controlsf.IngresarDatosLOGpv(Convert.ToInt32(txtFUP.Text), Convert.ToInt32(cboAccesorio.SelectedValue), Convert.ToInt32(txtCantidad.Text.Replace(",", "")), LblPrecioUni.Text.Replace(",", ""), total.ToString(), est, Usuario, txtObservaciones.Text, tipo_id, modelo_id, parametros);
+
+                        mensaje = MensajeItemAccesorio() + msjMail;
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('" + mensaje + "')", true);
+                        Session["EstadoCom"] = "1";
+                        this.CargarReporteDetalle();
+                        this.LimpiarDetalle();
+                    }
+                }
+            }
+            else
+            {
+                if (btnGuardar.ToolTip == "Eliminar")
+                {
+                    string IdAccesorio = (string)Session["IdAcc"];
+                    txtObservaciones.Text = txtObservaciones.Text.ToUpperInvariant();
+                    Estado = "Eliminado";
+
+                    int estado_item = 0;
+                    estado_item = validarCaracteristicasItem();
+
+                    string parametros = "";
+                    reader = contpv.cargarParametrosItem(Convert.ToInt32(IdAccesorio));
+                    if (reader.HasRows == true)
+                    {
+                        while (reader.Read())
                         {
-                            Session["MONEDA"] = "USD";
+                            parametros += reader.GetValue(2).ToString() + ": " + reader.GetValue(1).ToString() + " / ";
                         }
                     }
+                    reader.Close();
+                    reader.Dispose();
+                    contpv.CerrarConexion();
+                    //INGRESAMOS LOS DATOS A ELIMINAR
+                    int cotacc = contpv.ActAcc(Convert.ToInt32(IdAccesorio), Convert.ToInt32(txtCantidad.Text.Replace(",", "")),
+                          LblPrecioUni.Text, lblPesoUni.Text, "0", txtObservaciones.Text, "0",
+                          Nombre, FechaCrea, Convert.ToInt32(txtFUP.Text), Hora, Estado, Convert.ToInt32(txtCodigo.Text), Convert.ToInt32(cboTipo.SelectedValue), Convert.ToInt32(cboModelo.SelectedValue), estado_item);
 
-                    btnConfVenta.Enabled = true;
-                    btnSolicFatura.Enabled = true;
-                    cargarTipoPedido();
-                    verificarEstadoItems();
+                    //Inserto log_pv
+                    string est = "Eliminado";
+                    string Usuario = (string)Session["Nombre_Usuario"];
+                    double total = Convert.ToDouble(LblPrecioUni.Text.Replace(",", "")) * Convert.ToInt32(txtCantidad.Text.Replace(",", ""));
+                    int tipo_id = 0, modelo_id = 0;
+                    if (!String.IsNullOrEmpty(cboTipo.SelectedValue))
+                        tipo_id = Convert.ToInt32(cboTipo.SelectedValue);
+                    if (!String.IsNullOrEmpty(cboModelo.SelectedValue))
+                        modelo_id = Convert.ToInt32(cboModelo.SelectedValue);
+
+                    controlsf.IngresarDatosLOGpv(Convert.ToInt32(txtFUP.Text), Convert.ToInt32(cboAccesorio.SelectedValue), Convert.ToInt32(txtCantidad.Text.Replace(",", "")), LblPrecioUni.Text.Replace(",", ""), total.ToString(), est, Usuario, txtObservaciones.Text, tipo_id, modelo_id, parametros);
+
+                    this.LimpiarDetalle();
+                    MensajeItemAccesorio();
+
+                    Session["EstadoCom"] = "1";
+                    this.CargarReporteDetalle();
+
+                    btnGuardar.ToolTip = "Guardar";
+                    btnGuardar.BorderColor = System.Drawing.Color.Transparent;
+                    btnGuardar.BorderStyle = System.Web.UI.WebControls.BorderStyle.Solid;
+                    btnGuardar.BorderWidth = 2;
+                }
+
+                else
+                {
+                    if (btnGuardar.ToolTip == "Actualizar")
+                    {
+                        if ((contpv.poblarTipoItem(item_planta_id).HasRows && cboTipo.SelectedItem.Text == "Seleccione el tipo") || (contpv.poblarModeloItem(item_planta_id).HasRows && cboModelo.SelectedItem.Text == "Seleccione el modelo"))
+                        {
+                            mensaje = "Para confirmar el pedido de venta seleccionar el tipo y modelo para este accesorio";
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('" + mensaje + "')", true);
+                        }
+
+                        string IdAccesorio = Session["IdAcc"].ToString();
+                        txtObservaciones.Text = txtObservaciones.Text.ToUpperInvariant();
+                        Estado = "Actualización";
+                        Session["Estado"] = Estado;
+                        int tipo = 0, modelo = 0;
+                        if (!String.IsNullOrEmpty(cboTipo.SelectedValue.ToString()) && cboTipo.SelectedValue.ToString() != "Seleccione el tipo")
+                            tipo = Convert.ToInt32(cboTipo.SelectedValue);
+
+                        if (!String.IsNullOrEmpty(cboModelo.SelectedValue.ToString()) && cboModelo.SelectedValue.ToString() != "Seleccione el modelo")
+                            modelo = Convert.ToInt32(cboModelo.SelectedValue);
+
+                        int estado_item = 0;
+                        estado_item = validarCaracteristicasItemActualizacion(IdAccesorio);
+
+                        //INGRESAMOS LOS DATOS A ACTUALIZAR
+                        int cotacc = contpv.ActAcc(Convert.ToInt32(IdAccesorio), Convert.ToInt32(txtCantidad.Text.Replace(",", "")),
+                            LblPrecioUni.Text, lblPesoUni.Text, "0", txtObservaciones.Text, "0",
+                            Nombre, FechaCrea, Convert.ToInt32(txtFUP.Text), Hora, Estado, Convert.ToInt32(txtCodigo.Text), tipo, modelo, estado_item);
+
+                        actualizarParametrosAccesorios(Convert.ToInt32(IdAccesorio));
+
+                        string parametros = "";
+                        reader = contpv.cargarParametrosItem(Convert.ToInt32(IdAccesorio));
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                parametros += reader.GetValue(2).ToString() + ": " + reader.GetValue(1).ToString() + " / ";
+                            }
+                        }
+                        reader.Close();
+                        reader.Dispose();
+                        contpv.CerrarConexion();
+
+                        //Inserto log_pv
+                        string est = "Actualización";
+                        string Usuario = (string)Session["Nombre_Usuario"];
+                        double total = Convert.ToDouble(LblPrecioUni.Text.Replace(",", "")) * Convert.ToInt32(txtCantidad.Text.Replace(",", ""));
+                        int tipo_id = 0, modelo_id = 0;
+                        if (!String.IsNullOrEmpty(cboTipo.SelectedValue))
+                            tipo_id = Convert.ToInt32(cboTipo.SelectedValue);
+                        if (!String.IsNullOrEmpty(cboModelo.SelectedValue))
+                            modelo_id = Convert.ToInt32(cboModelo.SelectedValue);
+
+                        controlsf.IngresarDatosLOGpv(Convert.ToInt32(txtFUP.Text), Convert.ToInt32(cboAccesorio.SelectedValue), Convert.ToInt32(txtCantidad.Text.Replace(",", "")), LblPrecioUni.Text, total.ToString(), est, Usuario, txtObservaciones.Text, tipo_id, modelo_id, parametros);
+
+                        reader = contpv.cargarParametrosItem(Convert.ToInt32(IdAccesorio));
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                parametros += reader.GetValue(2).ToString() + ": " + reader.GetValue(1).ToString() + " / ";
+                            }
+                        }
+                        reader.Close();
+                        reader.Dispose();
+                        contpv.CerrarConexion();
+
+                        mensaje = "Item Actualizado exitosamente";
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('" + mensaje + "')", true);
+
+                        txtFUP_TextChanged(sender, e);
+
+                        MensajeItemAccesorio();
+
+                        Session["EstadoCom"] = "1";
+                        this.CargarReporteDetalle();
+                        this.LimpiarDetalle();
+
+                        btnGuardar.ToolTip = "Guardar";
+                        btnGuardar.BorderColor = System.Drawing.Color.Transparent;
+                        btnGuardar.BorderStyle = System.Web.UI.WebControls.BorderStyle.Solid;
+                        btnGuardar.BorderWidth = 2;
+                    }
+                }
+
+                if (cboPais.SelectedValue == "8")
+                {
+                    Session["MONEDA"] = "COP";
+                }
+                else
+                {
+                    Session["MONEDA"] = "USD";
+                }
+            }
+
+            btnConfVenta.Enabled = true;
+            btnSolicFatura.Enabled = true;
+            cargarTipoPedido();
+            verificarEstadoItems();
         }
 
         protected void cargarTipoPedido()

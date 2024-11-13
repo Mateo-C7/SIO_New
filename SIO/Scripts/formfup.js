@@ -64,6 +64,8 @@ var ExisteMesaPreventa = 0;
 var vaPreventa = 0;
 var SubirPlanosAutorizado = 1;
 var DescuentoFueraRango = 0;
+var listaUsaImperial = [];
+var UsaImperial = 0;
 
 $(document).on('inserted.bs.tooltip', function (e) {
     var tooltip = $(e.target).data('bs.tooltip');
@@ -120,6 +122,13 @@ $(document).ready(function () {
         cargarVendedorZona($(this).val());
         $("#monedaPaisTracker").val($(this).val()).trigger('change');
         cargarDiasTDN($(this).val());
+        // Cargar el valor de si usa o no Imperial 
+        UsaImperial = 0;
+        var vpais = listaUsaImperial.find((pa) => pa.Id == $(this).val());
+        if (vpais != "undefined") {
+            UsaImperial = vpais.UsaImperial;
+        };
+        $("#cboTipoCotizacion").change();
     });
 
     $("#monedaPaisTracker").change(function () {
@@ -1300,12 +1309,15 @@ function CargarDatosGeneralesNegociacion() {
                     $("#selectProducto").html(llenarComboId(listaProductos));
 
                     // Se debe controlar que Imperial solo aplique para Estados Unidos
-                    if ($("#cboIdPais").val() != 36) {
+                    //if ($("#cboIdPais").val() != 36) {
+                    if (UsaImperial == 0) {
                         $("#selectProducto option[value=23]").attr("disabled", "disabled");
                     }
                     else {
                         $("#selectProducto option[value=23]").removeAttr("disabled");
                     }
+
+          
                 },
                 error: function () {
                     ocultarLoad();
@@ -1344,7 +1356,14 @@ function CargarDatosGeneralesNegociacionLoad(fupConsultado) {
                 $("#selectProducto").html(llenarComboId(data.listaprod));
 
                 // Se debe controlar que Imperial solo aplique para Estados Unidos
-                if ($("#cboIdPais").val() != 36) {
+                //if ($("#cboIdPais").val() != 36) {
+                //    $("#selectProducto option[value=23]").attr("disabled", "disabled");
+                //}
+                //else {
+                //    $("#selectProducto option[value=23]").removeAttr("disabled");
+                //}
+
+                if (UsaImperial == 0) {
                     $("#selectProducto option[value=23]").attr("disabled", "disabled");
                 }
                 else {
@@ -1481,6 +1500,7 @@ function cargarPaises(IdPais) {
         success: function (msg) {
             ocultarLoad();
             var data = JSON.parse(msg.d);
+            listaUsaImperial = data;
 
             llenarComboPais("#cboIdPais", data);
             if (typeof IdPais != "undefined") {
@@ -1489,8 +1509,6 @@ function cargarPaises(IdPais) {
             if (IdPaisCliente != -1) {
                 $("#cboIdPais").val(IdPaisCliente).change();
             }
-
-
         },
         error: function () {
             ocultarLoad();
@@ -4381,6 +4399,14 @@ function TipoNegocio() {
         }
 
         if ($("#cboIdPais").val() != 36) {
+            $("#selectProducto option[value=23]").attr("disabled", "disabled");
+        }
+        else {
+            $("#selectProducto option[value=23]").removeAttr("disabled");
+        }
+
+        //Validacion Imperial
+        if (UsaImperial == 0) {
             $("#selectProducto option[value=23]").attr("disabled", "disabled");
         }
         else {

@@ -8,6 +8,7 @@ using System.Net.Mail;
 using System.IO;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Collections.Generic;
 
 namespace CapaControl
 {
@@ -567,7 +568,7 @@ namespace CapaControl
 		}
 
 		//CONSULTAR ENCABEZADO EN SF
-		public SFEncabezado ConsultarEncabezadoSF(int sfId, ref string compania, ref string listaprecios)
+		public SFEncabezado ConsultarEncabezadoSF(int sfId, ref string compania, ref string listaprecios, string Origen)
 		{
 			SFEncabezado RegSF = null;
 			string Recibe = "";
@@ -610,7 +611,7 @@ namespace CapaControl
 			sqlString.Append(" from pedido_venta pv");
 			sqlString.Append("    inner join solicitud_facturacion sf on sf.pv_id = pv.pv_id");
 			sqlString.Append("    left outer join planta_forsa pf on pv.planta_id_fact = pf.planta_id");
-			sqlString.Append("    left outer join Erp_Cliente cl on cl.IdCliente = CASE WHEN ISNULL(PV.ErpCliente_interno_id,'0') <> '0' THEN PV.ErpCliente_interno_id ELSE pv.pv_cli_fact END ");
+			sqlString.Append("    left outer join Erp_Cliente cl on cl.IdCliente = CASE WHEN ISNULL(PV.ErpCliente_interno_id,'0') <> '0' THEN PV.ErpCliente_interno_id ELSE pv.pv_cli_fact END AND pv.planta_id_fact = CL.planta_id ");
 			sqlString.Append("    left outer join formato_unico fu on fu.fup_id = pv.pv_fup_id");
 			sqlString.Append("    left outer join moneda mo on mo.mon_id = fu.fup_unm_id");
 			sqlString.Append("    left outer join infCia ci on ci.f010_id = planta_cia");
@@ -768,12 +769,14 @@ namespace CapaControl
 				Recibe = row["TasaConversion"].ToString();
 				Recibe = Recibe.PadLeft(13,'0');
 				Recibe = LimitLength(Recibe, 13);
-				RegSF.TasaConversion = Recibe;
+                Recibe = Recibe.Replace(",", ".");
+                RegSF.TasaConversion = Recibe;
 				//TasaLocal
 				Recibe = row["TasaLocal"].ToString();
 				Recibe = Recibe.PadLeft(13,'0');
 				Recibe = LimitLength(Recibe, 13);
-				RegSF.TasaLocal = Recibe;
+                Recibe = Recibe.Replace(",", ".");
+                RegSF.TasaLocal = Recibe;
 				//CondPago
 				Recibe = row["CondPago"].ToString();
 				Recibe = Recibe.PadLeft(3);
@@ -893,206 +896,259 @@ namespace CapaControl
 			return RegSF;
 		}
 
-		//CONSULTAR DETALLES EN SF
-		public SFDetalle ConsultarDetallesSF(int sfId, ref string compania, ref string listaprecios)
-		{
-			SFDetalle RegSF = null;
-			string Recibe = "";
-			StringBuilder sqlString = new StringBuilder();
-			sqlString.Append("Select Item_1EE_Abuelo Item , pv.pv_centro_operacion CentroOperacion, pv.pv_unidad_negocio ");
-			sqlString.Append(",convert(varchar(10), SF.fecha_crea, 120) FecHoy");
-			sqlString.Append(",convert(varchar(10), SF.fecha_crea, 120) fecEntrega");
-			sqlString.Append(",DATEDIFF(DAY, SF.fecha_crea, SF.fecha_crea) diasEntrega");
-			//sqlString.Append("--,s f.sf_m2 Cantidad");
-			sqlString.Append(", FORMAT(1,'000000000000000.0000') Cantidad");
-			sqlString.Append(", FORMAT(sf.Sf_vlr_comercial,'000000000000000.0000') Valor");
-			sqlString.Append(", i.F120_ID_Unidad_Inventario UMedida");
-			sqlString.Append(" from pedido_venta pv");
-			sqlString.Append(" inner join solicitud_facturacion sf on sf.pv_id = pv.pv_id");
-			sqlString.Append(" inner join Orden_Seg os on os.sf_id = sf.Sf_id");
-			sqlString.Append(" LEFT outer JOIN FORSA1E.FORSA.DBO.T120_MC_ITEMS i ON i.F120_Id = Item_1EE_Abuelo AND i.F120_Id_Cia = " + compania + "");
-			sqlString.Append(" where sf.Sf_id = " + sfId + "");
-			string sqlCadena = sqlString.ToString();
-			sqlCadena.Replace("\r\n", " ");
-			DataTable consulta = BdDatos.CargarTabla(sqlCadena);
-			foreach (DataRow row in consulta.Rows)
-			{
-				RegSF = new SFDetalle();
-				//RegSF.ay = int.Parse(row["cedula"].ToString());
-				//Consecutivo
-				Recibe = "3";
-				Recibe = Recibe.PadLeft(7, '0');
-				Recibe = LimitLength(Recibe, 7);
-				RegSF.Consecutivo = Recibe;
-				//Tipo Registro
-				Recibe = "0431";
-				Recibe = Recibe.PadRight(4);
-				Recibe = LimitLength(Recibe, 4);
-				RegSF.TipoReg = Recibe;
-				//Subtipo Registro
-				Recibe = "00";
-				Recibe = Recibe.PadLeft(2);
-				Recibe = LimitLength(Recibe, 2);
-				RegSF.SubTipoReg = Recibe;
-				//Version Registro
-				Recibe = "02";
-				Recibe = Recibe.PadRight(2);
-				Recibe = LimitLength(Recibe, 2);
-				RegSF.VersionReg = Recibe;
-				//Compañia
-				Recibe = compania;
-				Recibe = Recibe.Trim();
-				Recibe = Recibe.PadLeft(3, '0');
-				Recibe = LimitLength(Recibe, 3);
-				RegSF.Compania = Recibe;
-				//Centro de Operación
-				Recibe = "001";
-				Recibe = Recibe.PadLeft(3, '0');
-				Recibe = LimitLength(Recibe, 3);
-				RegSF.CentroOperacion = Recibe;
-				//Tipo de Documento
-				Recibe = "PVC";
-				RegSF.TipoDocumento = Recibe;
-				//ConsecutivoDocumento
-				Recibe = "0";
-				Recibe = Recibe.PadLeft(8,'0');
-				Recibe = LimitLength(Recibe, 8);
-				RegSF.ConsecDocumento = Recibe;
-				//Número de Registro
-				Recibe = "1";
-				Recibe = Recibe.PadLeft(10, '0');
-				Recibe = LimitLength(Recibe, 10);
-				RegSF.NumeroReg = Recibe;
-				//IdItem
-				Recibe = row["Item"].ToString(); ;
-				Recibe = Recibe.PadLeft(7,'0');
-				Recibe = LimitLength(Recibe, 7);
-				RegSF.IdItem = Recibe;
-				//Referencia Item
-				Recibe = " ";
-				Recibe = Recibe.PadLeft(50);
-				Recibe = LimitLength(Recibe, 50);
-				RegSF.ReferenciaItem = Recibe;
-				//Código de Barras
-				Recibe = " ";
-				Recibe = Recibe.PadLeft(20, '0');
-				Recibe = LimitLength(Recibe, 20);
-				RegSF.CodigoBarras = Recibe;
-				//Extensión 1
-				Recibe = " ";
-				Recibe = Recibe.PadLeft(20);
-				Recibe = LimitLength(Recibe, 20);
-				RegSF.Extension1 = Recibe;
-				//Extensión 2
-				Recibe = " ";
-				Recibe = Recibe.PadLeft(20);
-				Recibe = LimitLength(Recibe, 20);
-				RegSF.Extension2 = Recibe;
-				//IdBodega
-				Recibe = "B11";
-				Recibe = Recibe.PadRight(5);
-				Recibe = LimitLength(Recibe, 5);
-				RegSF.Bodega = Recibe;
-				//IdConcepto
-				Recibe = "501";
-				Recibe = Recibe.PadRight(3);
-				Recibe = LimitLength(Recibe, 3);
-				RegSF.Concepto = Recibe;
-				//Motivo
-				Recibe = "01";
-				Recibe = Recibe.PadRight(2);
-				Recibe = LimitLength(Recibe, 2);
-				RegSF.Motivo= Recibe;
-				//Indicador de Obsequio
-				Recibe = "0";
-				Recibe = Recibe.PadLeft(1);
-				Recibe = LimitLength(Recibe, 1);
-				RegSF.IndicadorObsequio = Convert.ToInt32(Recibe);
-				//Centro Operacion Movimiento
-				Recibe = row["CentroOperacion"].ToString(); ;
-				Recibe = Recibe.PadLeft(3);
-				Recibe = LimitLength(Recibe, 3);
-				RegSF.CentroOperacionMovimiento = Recibe;
-				//Unidad de Negocio Movimiento
-				Recibe = row["pv_unidad_negocio"].ToString();
-				Recibe = Recibe.PadRight(20);
-				Recibe = LimitLength(Recibe, 20);
-				RegSF.UnidadNegocioMovimiento = Recibe;
-				//Centro de Costo Movimiento
-				Recibe = " ";
-				Recibe = Recibe.PadLeft(15);
-				Recibe = LimitLength(Recibe, 15);
-				RegSF.CentroCostoMovimiento = Recibe;
-				//Proyecto
-				Recibe = " ";
-				Recibe = Recibe.PadLeft(15);
-				Recibe = LimitLength(Recibe, 15);
-				RegSF.Proyecto = Recibe;
-				//FecEntrega
-				Recibe = row["fecEntrega"].ToString();
-				Recibe = Recibe.PadLeft(8);
-				Recibe = DateTime.Parse(Recibe).ToString("yyyyMMdd");
-				Recibe = LimitLength(Recibe, 8);
-				RegSF.FechaEntregaPedido = Recibe;
-				//Dias Entrega
-				Recibe = row["diasEntrega"].ToString();
-				Recibe = Recibe.PadLeft(3, '0');
-				Recibe = LimitLength(Recibe, 3);
-				RegSF.DiasEntregaPedido = Recibe;
-				//Id Lista Precio
-				Recibe = listaprecios;
-				Recibe = Recibe.PadLeft(3);
-				Recibe = LimitLength(Recibe, 3);
-				RegSF.ListaPrecio = Recibe;
-				//Unidad de Medida
-				Recibe = row["UMedida"].ToString();
-				Recibe = Recibe.PadLeft(4);
-				Recibe = LimitLength(Recibe, 4);
-				RegSF.UnidadMedida = Recibe;
-				//Cantidad Base
-				Recibe = row["Cantidad"].ToString();
-				Recibe = Recibe.Replace(",", ".");
-				Recibe = Recibe.PadLeft(20,'0');
-				Recibe = LimitLength(Recibe, 20);
-				RegSF.CantidadBase = Recibe;
-				//Cantidad Adicional
-				Recibe = "000000000000000.0000";
-				Recibe = Recibe.PadRight(20, '0');
-				Recibe = LimitLength(Recibe, 20);
-				RegSF.CantidadAdicional = Recibe;
-				//Valor Unitario
-				Recibe = row["Valor"].ToString();
-				Recibe = Recibe.Replace(",", ".");
-				Recibe = Recibe.PadLeft(20, '0');
-				Recibe = LimitLength(Recibe, 20);
-				RegSF.PrecioUnitario = Recibe;
-				//Impuestos Asumidos
-				Recibe = "0";
-				Recibe = Recibe.PadRight(1, '0');
-				Recibe = LimitLength(Recibe, 1);
-				RegSF.Impuestos = Recibe;
-				//Notas
-				Recibe = " ";
-				Recibe = Recibe.PadLeft(255);
-				Recibe = LimitLength(Recibe, 255);
-				RegSF.Notas = Recibe;
-				//Detalle
-				Recibe = " ";
-				Recibe = Recibe.PadLeft(2000);
-				Recibe = LimitLength(Recibe, 2000);
-				RegSF.Detalle = Recibe;
-				//Backorder
-				Recibe = "5";
-				RegSF.Backorder = Convert.ToInt32(Recibe);
-				//Indicador de Precio
-				Recibe = "2";
-				RegSF.IndicadorPrecio = Convert.ToInt32(Recibe);
-			}
-			return RegSF;
-		}
+        //CONSULTAR DETALLES EN SF
+        public List<SFDetalle> ConsultarDetallesSF(int sfId, ref string compania, ref string listaprecios, string Origen)
+        {
+            List<SFDetalle> RegSFLista = new List<SFDetalle>();
+            SFDetalle RegSF = new SFDetalle();
+            string Recibe = "";
+            int qRegistros = 2;
+            StringBuilder sqlString = new StringBuilder();
 
-		//CONSULTAR RESULTADO SF POR WS
-		public String ResultadoSFxWS(int sfId, ref string compania, ref string CentroOpera, ref string tipodocto)
+
+            if (Origen == "1")  // Consulta para SF desde FUP por cada parte
+            {
+                sqlString.Append("with ");
+                sqlString.Append(" DatAdicional AS (");
+                sqlString.Append(" SELECT * FROM OPENQUERY(FORSA1E,'select * from UNOEE2.T120_MC_ITEMS')");
+                sqlString.Append(" )");
+                sqlString.Append("Select Item_1EE_Abuelo Item , pv.pv_centro_operacion CentroOperacion, pv.pv_unidad_negocio ");
+                sqlString.Append(",convert(varchar(10), SF.fecha_crea, 120) FecHoy");
+                sqlString.Append(",convert(varchar(10), SF.fecha_crea, 120) fecEntrega");
+                sqlString.Append(",DATEDIFF(DAY, SF.fecha_crea, SF.fecha_crea) diasEntrega");
+                //sqlString.Append("--,s f.sf_m2 Cantidad");
+                sqlString.Append(", FORMAT(1,'000000000000000.0000') Cantidad");
+                sqlString.Append(", FORMAT(sf.Sf_vlr_comercial,'000000000000000.0000') Valor");
+                sqlString.Append(", i.F120_ID_Unidad_Inventario UMedida");
+                sqlString.Append(" from pedido_venta pv");
+                sqlString.Append(" inner join solicitud_facturacion sf on sf.pv_id = pv.pv_id");
+                sqlString.Append(" inner join Orden_Seg os on os.sf_id = sf.Sf_id");
+                sqlString.Append(" LEFT outer JOIN DatAdicional i ON i.F120_Id = Item_1EE_Abuelo AND i.F120_Id_Cia = " + compania + "");
+                sqlString.Append(" where sf.Sf_id = " + sfId + "");
+            }
+            else
+            {
+                sqlString.Append("Select c.cot_acc_id_acc Item , pv.pv_centro_operacion CentroOperacion, pv.pv_unidad_negocio ");
+                sqlString.Append(",convert(varchar(10), SF.fecha_crea, 120) FecHoy");
+                sqlString.Append(",convert(varchar(10), SF.fecha_crea, 120) fecEntrega");
+                sqlString.Append(",DATEDIFF(DAY, SF.fecha_crea, SF.fecha_crea) diasEntrega");
+                //sqlString.Append("--,s f.sf_m2 Cantidad");
+                sqlString.Append(", FORMAT(c.cot_cantidad,'000000000000000.0000') Cantidad");
+                sqlString.Append(", FORMAT(c.cot_acc_precio_unitario,'000000000000000.0000') Valor");
+                sqlString.Append(", ISNULL(i.F120_ID_Unidad_Inventario, item_planta.und_medida_principal) UMedida");
+                sqlString.Append(" from pedido_venta pv");
+                sqlString.Append(" INNER JOIN cotizacion_accesorios c ON c.cot_acc_fup_id = pv.pv_fup_id AND c.cot_acc_activo = 1 ");
+                sqlString.Append(" INNER JOIN item_planta ON c.cot_acc_id_acc = item_planta.cod_erp and item_planta.planta_id = pv.planta_id ");
+                sqlString.Append(" inner join solicitud_facturacion sf on sf.pv_id = pv.pv_id");
+                sqlString.Append(" inner join Orden_Seg os on os.sf_id = sf.Sf_id");
+                sqlString.Append(" LEFT outer JOIN [FORSA1E].forsa.dbo.T120_MC_ITEMS i  ON i.F120_Id = Item_1EE_Abuelo AND i.F120_Id_Cia = " + compania + "");
+                sqlString.Append(" where sf.Sf_id = " + sfId + "");
+            }
+
+            string sqlCadena = sqlString.ToString();
+            sqlCadena.Replace("\r\n", " ");
+            DataTable consulta = BdDatos.CargarTabla(sqlCadena);
+            foreach (DataRow row in consulta.Rows)
+            {
+                qRegistros = qRegistros + 1;
+                RegSF = new SFDetalle();
+                //Consecutivo
+                Recibe = qRegistros.ToString();
+                Recibe = Recibe.PadLeft(7, '0');
+                Recibe = LimitLength(Recibe, 7);
+                RegSF.Consecutivo = Recibe;
+                //Tipo Registro
+                Recibe = "0431";
+                Recibe = Recibe.PadRight(4);
+                Recibe = LimitLength(Recibe, 4);
+                RegSF.TipoReg = Recibe;
+                //Subtipo Registro
+                Recibe = "00";
+                Recibe = Recibe.PadLeft(2);
+                Recibe = LimitLength(Recibe, 2);
+                RegSF.SubTipoReg = Recibe;
+                //Version Registro
+                Recibe = "02";
+                Recibe = Recibe.PadRight(2);
+                Recibe = LimitLength(Recibe, 2);
+                RegSF.VersionReg = Recibe;
+                //Compañia
+                Recibe = compania;
+                Recibe = Recibe.Trim();
+                Recibe = Recibe.PadLeft(3, '0');
+                Recibe = LimitLength(Recibe, 3);
+                RegSF.Compania = Recibe;
+                //Centro de Operación
+                Recibe = "001";
+                Recibe = Recibe.PadLeft(3, '0');
+                Recibe = LimitLength(Recibe, 3);
+                RegSF.CentroOperacion = Recibe;
+                //Tipo de Documento
+                Recibe = "PVC";
+                RegSF.TipoDocumento = Recibe;
+                //ConsecutivoDocumento
+                Recibe = "0";
+                Recibe = Recibe.PadLeft(8, '0');
+                Recibe = LimitLength(Recibe, 8);
+                RegSF.ConsecDocumento = Recibe;
+                //Número de Registro
+                Recibe = "1";
+                Recibe = Recibe.PadLeft(10, '0');
+                Recibe = LimitLength(Recibe, 10);
+                RegSF.NumeroReg = Recibe;
+                //IdItem
+                Recibe = row["Item"].ToString(); ;
+                Recibe = Recibe.PadLeft(7, '0');
+                Recibe = LimitLength(Recibe, 7);
+                RegSF.IdItem = Recibe;
+                //Referencia Item
+                Recibe = " ";
+                Recibe = Recibe.PadLeft(50);
+                Recibe = LimitLength(Recibe, 50);
+                RegSF.ReferenciaItem = Recibe;
+                //Código de Barras
+                Recibe = " ";
+                Recibe = Recibe.PadLeft(20, '0');
+                Recibe = LimitLength(Recibe, 20);
+                RegSF.CodigoBarras = Recibe;
+                //Extensión 1
+                Recibe = " ";
+                Recibe = Recibe.PadLeft(20);
+                Recibe = LimitLength(Recibe, 20);
+                RegSF.Extension1 = Recibe;
+                //Extensión 2
+                Recibe = " ";
+                Recibe = Recibe.PadLeft(20);
+                Recibe = LimitLength(Recibe, 20);
+                RegSF.Extension2 = Recibe;
+                //IdBodega
+                Recibe = "B11";
+                Recibe = Recibe.PadRight(5);
+                Recibe = LimitLength(Recibe, 5);
+                RegSF.Bodega = Recibe;
+                //IdConcepto
+                Recibe = "501";
+                Recibe = Recibe.PadRight(3);
+                Recibe = LimitLength(Recibe, 3);
+                RegSF.Concepto = Recibe;
+                //Motivo
+                Recibe = "01";
+                Recibe = Recibe.PadRight(2);
+                Recibe = LimitLength(Recibe, 2);
+                RegSF.Motivo = Recibe;
+                //Indicador de Obsequio
+                Recibe = "0";
+                Recibe = Recibe.PadLeft(1);
+                Recibe = LimitLength(Recibe, 1);
+                RegSF.IndicadorObsequio = Convert.ToInt32(Recibe);
+                //Centro Operacion Movimiento
+                Recibe = row["CentroOperacion"].ToString(); ;
+                Recibe = Recibe.PadLeft(3);
+                Recibe = LimitLength(Recibe, 3);
+                RegSF.CentroOperacionMovimiento = Recibe;
+                //Unidad de Negocio Movimiento
+                Recibe = row["pv_unidad_negocio"].ToString();
+                Recibe = Recibe.PadRight(20);
+                Recibe = LimitLength(Recibe, 20);
+                RegSF.UnidadNegocioMovimiento = Recibe;
+                //Centro de Costo Movimiento
+                Recibe = " ";
+                Recibe = Recibe.PadLeft(15);
+                Recibe = LimitLength(Recibe, 15);
+                RegSF.CentroCostoMovimiento = Recibe;
+                //Proyecto
+                Recibe = " ";
+                Recibe = Recibe.PadLeft(15);
+                Recibe = LimitLength(Recibe, 15);
+                RegSF.Proyecto = Recibe;
+                //FecEntrega
+                Recibe = row["fecEntrega"].ToString();
+                Recibe = Recibe.PadLeft(8);
+                Recibe = DateTime.Parse(Recibe).ToString("yyyyMMdd");
+                Recibe = LimitLength(Recibe, 8);
+                RegSF.FechaEntregaPedido = Recibe;
+                //Dias Entrega
+                Recibe = row["diasEntrega"].ToString();
+                Recibe = Recibe.PadLeft(3, '0');
+                Recibe = LimitLength(Recibe, 3);
+                RegSF.DiasEntregaPedido = Recibe;
+                //Id Lista Precio
+                Recibe = listaprecios;
+                Recibe = Recibe.PadLeft(3);
+                Recibe = LimitLength(Recibe, 3);
+                RegSF.ListaPrecio = Recibe;
+                //Unidad de Medida
+                Recibe = row["UMedida"].ToString();
+                Recibe = Recibe.PadLeft(4);
+                Recibe = LimitLength(Recibe, 4);
+                RegSF.UnidadMedida = Recibe;
+                //Cantidad Base
+                Recibe = row["Cantidad"].ToString();
+                Recibe = Recibe.Replace(",", ".");
+                Recibe = Recibe.PadLeft(20, '0');
+                Recibe = LimitLength(Recibe, 20);
+                RegSF.CantidadBase = Recibe;
+                //Cantidad Adicional
+                Recibe = "000000000000000.0000";
+                Recibe = Recibe.PadRight(20, '0');
+                Recibe = LimitLength(Recibe, 20);
+                RegSF.CantidadAdicional = Recibe;
+                //Valor Unitario
+                Recibe = row["Valor"].ToString();
+                Recibe = Recibe.Replace(",", ".");
+                Recibe = Recibe.PadLeft(20, '0');
+                Recibe = LimitLength(Recibe, 20);
+                RegSF.PrecioUnitario = Recibe;
+                //Impuestos Asumidos
+                Recibe = "0";
+                Recibe = Recibe.PadRight(1, '0');
+                Recibe = LimitLength(Recibe, 1);
+                RegSF.Impuestos = Recibe;
+                //Notas
+                Recibe = " ";
+                Recibe = Recibe.PadLeft(255);
+                Recibe = LimitLength(Recibe, 255);
+                RegSF.Notas = Recibe;
+                //Detalle
+                Recibe = " ";
+                Recibe = Recibe.PadLeft(2000);
+                Recibe = LimitLength(Recibe, 2000);
+                RegSF.Detalle = Recibe;
+                //Backorder
+                Recibe = "5";
+                RegSF.Backorder = Convert.ToInt32(Recibe);
+                //Indicador de Precio
+                Recibe = "2";
+                RegSF.IndicadorPrecio = Convert.ToInt32(Recibe);
+                RegSFLista.Add(RegSF);
+            }
+            // Total de Registros
+            qRegistros = qRegistros + 1;
+            RegSF = new SFDetalle();
+            //Consecutivo
+            Recibe = qRegistros.ToString();
+            Recibe = Recibe.PadLeft(7, '0');
+            Recibe = LimitLength(Recibe, 7);
+            RegSF.Consecutivo = Recibe;
+            //Tipo Registro
+            Recibe = "99990001";
+            Recibe = Recibe.PadRight(8);
+            Recibe = LimitLength(Recibe, 8);
+            RegSF.TipoReg = Recibe;
+            //Compañia
+            Recibe = compania;
+            Recibe = Recibe.Trim();
+            Recibe = Recibe.PadLeft(3, '0');
+            Recibe = LimitLength(Recibe, 3);
+            RegSF.Compania = Recibe;
+            RegSFLista.Add(RegSF);
+
+
+            return RegSFLista;
+        }
+
+        //CONSULTAR RESULTADO SF POR WS
+        public String ResultadoSFxWS(int sfId, ref string compania, ref string CentroOpera, ref string tipodocto)
 		{
 			string Resultado = "";
 			StringBuilder sqlString = new StringBuilder();

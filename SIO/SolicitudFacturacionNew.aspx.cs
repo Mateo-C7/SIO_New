@@ -3200,15 +3200,15 @@ namespace SIO
             controlsf.CerrarConexion();
         }
 
-        private SFEncabezado BuscarEncabezado(int SFId, ref string compania, ref string listaprecios)
+        private SFEncabezado BuscarEncabezado(int SFId, ref string compania, ref string listaprecios, string Origen)
         {
-            SFEncabezado RegistroSF = controlsf.ConsultarEncabezadoSF(SFId, ref compania, ref listaprecios);
+            SFEncabezado RegistroSF = controlsf.ConsultarEncabezadoSF(SFId, ref compania, ref listaprecios, Origen);
             return RegistroSF;
         }
 
-        private SFDetalle BuscarDetalle(int SFId, ref string compania, ref string listaprecios)
+        private List<SFDetalle> BuscarDetalle(int SFId, ref string compania, ref string listaprecios, string Origen)
         {
-            SFDetalle DetalleSF = controlsf.ConsultarDetallesSF(SFId, ref compania, ref listaprecios);
+            List<SFDetalle> DetalleSF = controlsf.ConsultarDetallesSF(SFId, ref compania, ref listaprecios, Origen);
             return DetalleSF;
         }
 
@@ -4336,28 +4336,21 @@ namespace SIO
             // Se debe buscar la cia que esta relacionada a la planta seleccionada
             int xgr = Convert.ToInt32(cboPlantaFact.SelectedItem.Value);
             string cia = "";
-
-
-            reader = controlsf.ConsultarPlantaCIA(xgr);
-
-            if (reader.HasRows == true)
-            {
-                if (reader.Read()) 
-                {
-                    cia = reader.GetInt32(0).ToString();
-                }
-            }
+            string Origen = Convert.ToString(Session["Bandera"]);
 
             //List<SFEncabezado> RegistroSF = new List<SFEncabezado>();
             SFEncabezado RegistroSF = new SFEncabezado();
+            List<SFDetalle> DetalleSFLista;
             SFDetalle DetalleSF = new SFDetalle();
+            string LineasDetalle;
+            string LDetalle;
             // para consulta es Session["SfId"]
             //int sfId = Convert.ToInt32(Session["SfId"]);
             int sfId = Convert.ToInt32(cboParte.SelectedItem.Value);
             //int sfId = Convert.ToInt32(lblfup.Text);
             string listaprecios = "000";
-            RegistroSF = BuscarEncabezado(sfId,ref cia, ref listaprecios);
-            DetalleSF = BuscarDetalle(sfId,ref cia, ref listaprecios);
+            RegistroSF = BuscarEncabezado(sfId, ref cia, ref listaprecios, Origen);
+            DetalleSFLista = BuscarDetalle(sfId, ref cia, ref listaprecios, Origen);
 
             string ciacompleto = cia.PadLeft(3, '0');
             ciacompleto = LimitLength(ciacompleto, 3);
@@ -4372,7 +4365,6 @@ namespace SIO
             int puestoac = 0;
             char pad = '0';
             foreach (var prop in props)
-            {
                 if (prop.GetIndexParameters().Length == 0)
                 {
                     puestoac = puestoac + 1;
@@ -4385,28 +4377,37 @@ namespace SIO
                         ciacompleto = LimitLength(ciacompleto, 3);
                     }
                 }
-            }
-
-            Linea = "<Linea>" + Linea + "</Linea><Linea>";
-            Type s = DetalleSF.GetType();
-            Console.WriteLine("Type is: {0}", s.Name);
-            props = s.GetProperties();
-            puestoac = 0;
-            pad = '0';
+            Linea = "<Linea>" + Linea + "</Linea>";
             foreach (var prop in props)
                 if (prop.GetIndexParameters().Length == 0)
                 {
                     puestoac = puestoac + 1;
-                    Linea = Linea + prop.GetValue(DetalleSF);
+                    Linea = Linea + prop.GetValue(RegistroSF);
                     if (puestoac == 6)
                     {
-                        cia = Convert.ToString(prop.GetValue(DetalleSF));
+                        cia = Convert.ToString(prop.GetValue(RegistroSF));
                         cia = cia.Trim();
                         ciacompleto = cia.PadLeft(3, pad);
                         ciacompleto = LimitLength(ciacompleto, 3);
                     }
                 }
-            Linea = Linea + "</Linea>";
+            Linea = "<Linea>" + Linea + "</Linea>";
+            LineasDetalle = "";
+
+            foreach (var DetSF in DetalleSFLista)
+            {
+                t = DetSF.GetType();
+                props = t.GetProperties();
+                LDetalle = "";
+                foreach (var prop in props)
+                    if (prop.GetIndexParameters().Length == 0)
+                    {
+                        LDetalle = LDetalle + prop.GetValue(DetSF);
+                    }
+                LineasDetalle = LineasDetalle + "<Linea>" + LDetalle + "</Linea>";
+            }
+
+
             //Linea = ciacompleto + "00000000" + referencia + descripcion + descripcion_corta + grupoimpo + tipoinv + complt1 + Convert.ToInt16(chkListusoIp.Items[0].Selected) + Convert.ToInt16(chkListusoIp.Items[1].Selected) + Convert.ToInt16(chkListusoIp.Items[2].Selected) + complt2 + UndPcpal + "000000.0000000000.0000" + UndAdc + factAdc + PesoAdc + VolAdc + UndOrden + factOrden + PesoOrden + VolOrden + complt3 + fecha + complt4;
 
             //////Se crea el archivo xml que sera enviado para ser importado
@@ -4433,20 +4434,18 @@ namespace SIO
                    + "<Clave>SiifErp</Clave>"
                    + "<Datos>"
                    + "<Linea>000000100000001" + ciacompleto + "</Linea>"
-                   +  Linea 
-                   + "<Linea>000000399990001" + ciacompleto + "</Linea>"
+                   + Linea
+                   + LineasDetalle
                    + "</Datos>"
                    + "</Importar>";
             string stMsgErp = "";
             string stMsg = "";
             short x = (short)0;
             //WsReal.WSUNOEE WSDL = new WsReal.WSUNOEE();
-            //ERP Real
-            //com.siesacloud.wsforsa.WSUNOEE WSDL = new com.siesacloud.wsforsa.WSUNOEE();
-            //ERP Pruebas
-            com.siesacloud.wsforsapru.WSUNOEE WSDL = new com.siesacloud.wsforsapru.WSUNOEE();
+            //com.siesacloud.wsforsa.WSUNOEE WSDL = new com.siesacloud.wsforsa.WSUNOEE(); ERP REAL
+            com.siesacloud.wsforsapru.WSUNOEE WSDL = new com.siesacloud.wsforsapru.WSUNOEE();//ERP PRUEBAS
             System.Data.DataSet nodes = null;
-            nodes = WSDL.ImportarXML(importar,  ref x);
+            nodes = WSDL.ImportarXML(importar, ref x);
             //"Resultado del envio al web service  de item es:" + x;
             if (x == 0)
             {
@@ -4489,7 +4488,7 @@ namespace SIO
             }
             string mensaje2 = mensaje;
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('" + mensaje2 + "')", true);
-                
+
         }
 
         private string LimitLength(string source, int maxLength)
