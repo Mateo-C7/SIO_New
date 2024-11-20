@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="Scripts/jquery.i18n.fallbacks.js"></script>
 	<script type="text/javascript" src="Scripts/jquery.i18n.parser.js"></script>
 	<script type="text/javascript" src="Scripts/jquery.i18n.emitter.js"></script>
-	<script type="text/javascript" src="Scripts/formfup.js?v=20241028A"></script>
+	<script type="text/javascript" src="Scripts/formfup.js?v=20241113A"></script>
 	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="Scripts/select2.min.js"></script>
 	<script type="text/javascript" src="Scripts/toastr.min.js"></script>
@@ -2188,6 +2188,8 @@
 							                <input type="number" step="0.01" min="0" id="txtTotalPropuestaCom" class="NumeroSalcot" disabled="disabled"/>
 						                </th>
                                     </tr>
+                                    <tr>
+                                    </tr>
 								</tbody>
                             </table>
                         </div>
@@ -2205,6 +2207,12 @@
 									</tr>
 						        </thead>
                                 <tbody id="tbodyDetalleSalida">
+                                    <tr></tr>
+                                    <tr></tr>
+                                    <tr></tr>
+                                    <tr></tr>
+                                    <tr></tr>
+                                    <tr></tr>
                                     <tr>
 							            <td class="col-2" data-i18n="[html]FUP_numero_modulaciones">No. Modulaciones</td>
 							            <td class="col-1">
@@ -2321,6 +2329,7 @@
 								</thead>
 								<tbody id="tbodyLinkSC"></tbody>
 								<tfoot>
+										<tr></tr>
 										<tr class="row justify-content-end" colspan="2">
                                             <th>
 											    <button type="button" class="btn btn-primary" data-toggle="modal" onclick="SaveLinks()">
@@ -2328,6 +2337,7 @@
 											    </button>
                                             </th>
 										</tr>
+										<tr></tr>
 								</tfoot>
 							</table>
 						</div>
