@@ -64,6 +64,8 @@ var ExisteMesaPreventa = 0;
 var vaPreventa = 0;
 var SubirPlanosAutorizado = 1;
 var DescuentoFueraRango = 0;
+var listaUsaImperial = [];
+var UsaImperial = 0;
 var CotizacionRapida = 0;
 
 $(document).on('inserted.bs.tooltip', function (e) {
@@ -121,6 +123,13 @@ $(document).ready(function () {
         cargarVendedorZona($(this).val());
         $("#monedaPaisTracker").val($(this).val()).trigger('change');
         cargarDiasTDN($(this).val());
+        // Cargar el valor de si usa o no Imperial 
+        UsaImperial = 0;
+        var vpais = listaUsaImperial.find((pa) => pa.Id == $(this).val());
+        if (vpais != "undefined") {
+            UsaImperial = vpais.UsaImperial;
+        };
+        $("#cboTipoCotizacion").change();
     });
 
     $("#monedaPaisTracker").change(function () {
@@ -1301,12 +1310,15 @@ function CargarDatosGeneralesNegociacion() {
                     $("#selectProducto").html(llenarComboId(listaProductos));
 
                     // Se debe controlar que Imperial solo aplique para Estados Unidos
-                    if ($("#cboIdPais").val() != 36) {
+                    //if ($("#cboIdPais").val() != 36) {
+                    if (UsaImperial == 0) {
                         $("#selectProducto option[value=23]").attr("disabled", "disabled");
                     }
                     else {
                         $("#selectProducto option[value=23]").removeAttr("disabled");
                     }
+
+          
                 },
                 error: function () {
                     ocultarLoad();
@@ -1345,7 +1357,14 @@ function CargarDatosGeneralesNegociacionLoad(fupConsultado) {
                 $("#selectProducto").html(llenarComboId(data.listaprod));
 
                 // Se debe controlar que Imperial solo aplique para Estados Unidos
-                if ($("#cboIdPais").val() != 36) {
+                //if ($("#cboIdPais").val() != 36) {
+                //    $("#selectProducto option[value=23]").attr("disabled", "disabled");
+                //}
+                //else {
+                //    $("#selectProducto option[value=23]").removeAttr("disabled");
+                //}
+
+                if (UsaImperial == 0) {
                     $("#selectProducto option[value=23]").attr("disabled", "disabled");
                 }
                 else {
@@ -1482,6 +1501,7 @@ function cargarPaises(IdPais) {
         success: function (msg) {
             ocultarLoad();
             var data = JSON.parse(msg.d);
+            listaUsaImperial = data;
 
             llenarComboPais("#cboIdPais", data);
             if (typeof IdPais != "undefined") {
@@ -1490,8 +1510,6 @@ function cargarPaises(IdPais) {
             if (IdPaisCliente != -1) {
                 $("#cboIdPais").val(IdPaisCliente).change();
             }
-
-
         },
         error: function () {
             ocultarLoad();
@@ -1552,7 +1570,6 @@ function ObtenerLineasDinamicas() {
                     placement: 'bottom',
                     html: true
                 });
-                ValidarEstado();
             },
             error: function () {
                 ocultarLoad();
@@ -4392,6 +4409,14 @@ function TipoNegocio() {
             $("#selectProducto option[value=23]").removeAttr("disabled");
         }
 
+        //Validacion Imperial
+        if (UsaImperial == 0) {
+            $("#selectProducto option[value=23]").attr("disabled", "disabled");
+        }
+        else {
+            $("#selectProducto option[value=23]").removeAttr("disabled");
+        }
+
         // forsa Pro 
         if (tipo_cotizacion != "1") {
             $("#selectProducto option[value=17]").attr("disabled", "disabled");
@@ -5370,7 +5395,7 @@ function NivelComplejidad() {
         horasCotizacion = result[0].Horas;
     }
 
-//  Nov 2024 Cambio para fecha politica - la base es la fecha dela entrada y no la de aprobacion se toma el campo de Fecha_crea
+//  Nov 2024 Cambio para fecha politica - la base es la fecha dela entrada y no la de aprobacion se toma el campo de Fecha_crea																												   
     fecha = new Date(FecAprobacionFup);
     dias = parseInt(horasCotizacion);
     fecha.setDate(fecha.getDate() + dias);
@@ -8208,7 +8233,6 @@ function MostrarControl() {
 
 
     $(".fupgenenv2").hide();
-
     if ((EstadoFUP == "" || EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion" || EstadoFUP == "Pre-Cierre")
         //        && (["1", "26"].indexOf(RolUsuario) > -1)) {
         && (["1", "2", "3", "9", "30", "33", "34", "40"].indexOf(RolUsuario) > -1)) {
@@ -8289,8 +8313,6 @@ function MostrarControl() {
         $(".fupgenpt4").hide();
         $(".fupgenpt5").hide();
     }
-
-
     if (["1", "2", "9", "26"].indexOf(RolUsuario) > -1) {
         $(".fupborrar").show();
     }
@@ -8646,7 +8668,7 @@ function ValidarEstado() {
                 CotizacionRapida = elem.CotizacionRapida;
 
                 $("#txtFecSimulacion").val(elem.FecSimulacion);
-                if (CotizacionRapida == 1) {
+               if (CotizacionRapida == 1) {
                     $(".fupgenpt0").hide();
                     $(".fupgenpt1").hide();
                     $(".fupgenpt2").hide();
@@ -8654,41 +8676,40 @@ function ValidarEstado() {
                     $(".fupgenpt4").hide();
                     $(".fupgenpt5").hide();
                 }
-                else {
-
-                    if (((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion" || EstadoFUP == "Pre-Cierre") && (["1", "2", "3", "9", "24", "26", "30", "33", "34", "40"].indexOf(RolUsuario) > -1)) ||
-                        //                if (((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion" || EstadoFUP == "Pre-Cierre") && (["1", "26"].indexOf(RolUsuario) > -1)) ||
-                        ((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion") && (["54"].indexOf(RolUsuario) > -1)) ||
-                        ((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion") && (["26"].indexOf(RolUsuario) > -1) && Autogestion == 1)
-                    ) {
-                        switch (OrdParte) {
-                            case 1:
-                                $(".fupgenpt1").show();
-                                if (CantGraba > 0)
-                                    $(".fupgenpt2").show();
-                                break;
-                            case 2:
-                                $(".fupgenpt2").show();
-                                if (CantGraba > 0)
-                                    $(".fupgenpt3").show();
-                                break;
-                            case 3:
-                                $(".fupgenpt3").show();
-                                if (CantGraba > 0)
-                                    $(".fupgenpt4").show();
-                                break;
-                            case 4:
-                                $(".fupgenpt4").show();
-                                if (CantGraba > 0)
-                                    $(".fupgenpt5").show();
-                                break;
-                            case 5:
-                                $(".fupgenpt5").show();
-                                break;
-                        }
-                    }
+                else {											
+					if (((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion" || EstadoFUP == "Pre-Cierre") && (["1", "2", "3", "9", "24", "26", "30", "33", "34", "40"].indexOf(RolUsuario) > -1)) ||
+	//                if (((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion" || EstadoFUP == "Pre-Cierre") && (["1", "26"].indexOf(RolUsuario) > -1)) ||
+						((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion") && (["54"].indexOf(RolUsuario) > -1)) ||
+						((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion") && (["26"].indexOf(RolUsuario) > -1) && Autogestion == 1)
+						) {
+						switch (OrdParte) {
+							case 1:
+								$(".fupgenpt1").show();
+								if (CantGraba > 0)
+									$(".fupgenpt2").show();
+								break;
+							case 2:
+								$(".fupgenpt2").show();
+								if (CantGraba > 0)
+									$(".fupgenpt3").show();
+								break;
+							case 3:
+								$(".fupgenpt3").show();
+								if (CantGraba > 0)
+									$(".fupgenpt4").show();
+								break;
+							case 4:
+								$(".fupgenpt4").show();
+								if (CantGraba > 0)
+									$(".fupgenpt5").show();
+								break;
+							case 5:
+								$(".fupgenpt5").show();
+								break;
+						}
+					}
                 }
-            });
+			});
 
             MostrarControl();
             $("#divEstadoFup").html(EstadoFUP);

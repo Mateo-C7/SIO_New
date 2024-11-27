@@ -276,6 +276,7 @@ namespace CapaControl.Entity
     public class datosCombo2
     {
         public string id { get; set; }
+        public string planta_id { get; set; }
         public string descripcion { get; set; }
         public string descripcionEN { get; set; }
         public string descripcionPO { get; set; }
