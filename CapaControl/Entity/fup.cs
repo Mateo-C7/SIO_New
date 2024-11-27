@@ -75,7 +75,6 @@ namespace CapaControl.Entity
         public string Obra_FecInicio { get; set; }
         public int? VendedorZona { get; set; }
         public int? RecomendacionTecnico { get; set; }
-        public DateTime? FecCreaVersion { get; set; }
 
     }
 
@@ -661,9 +660,7 @@ namespace CapaControl.Entity
         public int ExisteCT { get; set; }
         public int Autogestion { get; set; }
         public string FecSimulacion { get; set; }
-        public int ExisteCI { get; set; }
-        public string FecSimulacionCI { get; set; }
-        public int CotizacionRapida { get; set; }
+
     }
 
     public class NotificaFup
