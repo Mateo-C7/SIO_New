@@ -1231,15 +1231,11 @@ namespace SIO
 
 			List<datosCombo2> TipoCotizacion = ControlDatos.EjecutarConsulta<datosCombo2>(@"SELECT   ftco_id id, ftco_nombre descripcion, ftco_nombre descripcionEN, ftco_nombre descripcionPO
 																						  FROM [dbo].[fup_tipo_cotizacion]
-																						  WHERE ftco_uso_fup = 1 and ftco_grupo_negociacion IN (SELECT ftne_grupo_negociacion
-																																				FROM [dbo].[fup_tipo_negociacion]
-																																				where ftne_id = @neg)", paramCotizacion);
-			List<datosCombo2> TipoProducto = ControlDatos.EjecutarConsulta<datosCombo2>(@"SELECT [fup_tipo_venta_proy_id] id
-																							  ,[descripcion] descripcion ,[descripcion] descripcionEN, [descripcion] descripcionPO
+																						  WHERE ftco_estado = 1 and ftco_uso_fup = 1 
+																							and ftco_grupo_negociacion IN (SELECT ftne_grupo_negociacion FROM [dbo].[fup_tipo_negociacion] where ftne_id = @neg) Order by ftco_grupo_orden_id", paramCotizacion);
+			List<datosCombo2> TipoProducto = ControlDatos.EjecutarConsulta<datosCombo2>(@"SELECT [fup_tipo_venta_proy_id] id ,[descripcion] descripcion ,[descripcion] descripcionEN, [descripcion] descripcionPO
 																						  FROM .[dbo].[fup_tipo_venta_proyecto]
-																						  where [activo] = 1  and Grupo_Negociacion IN (SELECT ftne_grupo_negociacion
-																																				FROM [dbo].[fup_tipo_negociacion]
-																																				where ftne_id = @neg) ", paramCotizacion);
+																						  where [activo] = 1  and ftco_id = 0 ", paramCotizacion);
 
 			var query = new
 			{
@@ -1252,7 +1248,29 @@ namespace SIO
 			return response;
 		}
 
-        [WebMethod(EnableSession = true)]
+		[WebMethod(EnableSession = true)]
+		public static string obtenerInfoGeneralProducto(int tipoNegociacion, int tipoCotizacion)
+		{
+			string response = string.Empty;
+
+			Dictionary<string, object> paramCotizacion = new Dictionary<string, object>() { { "@neg", tipoNegociacion } , { "@Cot", tipoCotizacion } };
+
+			List<datosCombo2> TipoProducto = ControlDatos.EjecutarConsulta<datosCombo2>(@"SELECT a.[fup_tipo_venta_proy_id] id ,[descripcion] descripcion ,[descripcion] descripcionEN, [descripcion] descripcionPO
+																						FROM .[dbo].[fup_tipo_venta_proyecto] a  INNER JOIN fup_Tipo_VentaProy_TipoNeg B ON a.fup_tipo_venta_proy_id = b.fup_tipo_venta_proy_id 
+																						WHERE a.[activo] = 1 and b.[activo]= 1 and b.fup_TipoNegociacion_id = @neg 
+																						  AND CASE WHEN b.fup_TipoCotizacion_id = 0 THEN @Cot ELSE b.fup_TipoCotizacion_id END = @Cot ", paramCotizacion);
+
+			var query = new
+			{
+				listaprod = TipoProducto
+			};
+
+			response = JsonConvert.SerializeObject(query);
+
+			return response;
+		}
+		
+		[WebMethod(EnableSession = true)]
         public static bool RegistrarCartaSolicitudManual(int idFup, string idVersion, int tipo)
         {
             try

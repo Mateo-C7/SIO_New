@@ -2175,7 +2175,7 @@
 						                </th>
                                     </tr>
                                     <tr>
-						                <th class="col-2" data-i18n="[html]sc_otros_productos">Otros Productos</th>
+						                <th class="col-2" data-i18n="[html]sc_otros_productos">Otros Productos / Servicios</th>
 						                <th class="col-2"></th>
 						                <th class="col-2">
 							                <input type="number" step="0.01" min="0" id="txtOtrosProductoSC" class="sumValSalidaCot2 NumeroSalcot" data-modelosc="vlr_otros_productos" />
@@ -2238,14 +2238,16 @@
 										<th class="text-center" width="10%"> </th>
 
                                     </tr>
-                                    <tr><td colspan="3"></td></tr>
                                     <tr>
-                                        <td colspan="3" class="fletenal" ><span style="font-size: 14px; text-decoration:underline; color:red">¡Importante! </span></td>
+                                        <td colspan="3" ><span style="font-size: 14px; text-decoration:underline; color:red">¡Importante! </span></td>
                                     </tr>
+                                    <tr>
+										<td colspan="3" align="justify">**Los valores de salida de Forsa 1Clic son por cantidad de piezas y <b style="font-size: 14px; color:red">NO</b> por cantidad de m2.</td></tr>
+                                    <tr>
+										<td colspan="3" align="justify">** Los valores de Servicio técnico en obra son por días, <b style="font-size: 14px; color:red">NO</b>  por cantidad de m2.</td></tr>
                                     <tr>
                                         <td colspan="3" class="fletenal" align="justify">No olvides dar click en CALCULAR FLETE para las Cotizaciones Nacionales en Colombia.</td>
                                     </tr>
-
                                 </tbody>
                             </table>
                         </div>

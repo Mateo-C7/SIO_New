@@ -64,6 +64,8 @@ var ExisteMesaPreventa = 0;
 var vaPreventa = 0;
 var SubirPlanosAutorizado = 1;
 var DescuentoFueraRango = 0;
+var listaUsaImperial = [];
+var UsaImperial = 0;
 var CotizacionRapida = 0;
 
 $(document).on('inserted.bs.tooltip', function (e) {
@@ -121,6 +123,13 @@ $(document).ready(function () {
         cargarVendedorZona($(this).val());
         $("#monedaPaisTracker").val($(this).val()).trigger('change');
         cargarDiasTDN($(this).val());
+        // Cargar el valor de si usa o no Imperial 
+        UsaImperial = 0;
+        var vpais = listaUsaImperial.find((pa) => pa.Id == $(this).val());
+        if (vpais != "undefined") {
+            UsaImperial = vpais.UsaImperial;
+        };
+        $("#cboTipoCotizacion").change();
     });
 
     $("#monedaPaisTracker").change(function () {
@@ -1278,52 +1287,352 @@ function CargarDatosGenerales() {
 }
 
 function CargarDatosGeneralesNegociacion() {
-    mostrarLoad();
     $("#selectTipoNegociacion").change(function () {
         var idTipoNegociacion = Number($(this).val());
-        if (idTipoNegociacion != -1) {
-            $.ajax({
-                type: "POST",
-                url: "FormFUP.aspx/obtenerInfoGeneralPorNegociacion",
-                data: JSON.stringify({
-                    tipoNegociacion: idTipoNegociacion
-                }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                // async: false,
-                success: function (msg) {
-                    ocultarLoad();
-                    var data = JSON.parse(msg.d);
-                    $("#cboTipoCotizacion").html("");
-                    $("#selectProducto").html("");
-                    listaProductos = data.listaprod;
-                    $("#cboTipoCotizacion").html(llenarComboId(data.listatcot));
-                    $("#selectProducto").html(llenarComboId(listaProductos));
+        if (EstadoFUP == "Elaboracion" || EstadoFUP == "") {
+            CargarDatosGeneralesNegociacionLoad($(this).val());
+        }
 
-                    // Se debe controlar que Imperial solo aplique para Estados Unidos
-                    if ($("#cboIdPais").val() != 36) {
-                        $("#selectProducto option[value=23]").attr("disabled", "disabled");
-                    }
-                    else {
-                        $("#selectProducto option[value=23]").removeAttr("disabled");
-                    }
-                },
-                error: function () {
-                    ocultarLoad();
-                    toastr.error("Failed to general data", "FUP", {
-                        "timeOut": "0",
-                        "extendedTImeout": "0"
-                    });
-                }
-            });
+        //Equipo Nuevo
+        //Se habilita todo de nuevo
+        if (tipo_negociacion == "1" || tipo_negociacion == "2") {
+            //$(".fuparr").removeAttr("disabled");
+            $(".divarrlist").show();
+            //            $(".fuparr").not('select, button').val("");
+        }
+        //Si es arrendatario se pone invisible el div divarrlist
+        else //if (tipo_negociacion == "3" || tipo_negociacion == "4" || tipo_negociacion == "5") 
+        {
+            $(".fuparr").not('select, button').val("");
+            $(".divarrlist").hide();
+            $(".divvarof").hide();
         }
     });
 }
 
-function CargarDatosGeneralesNegociacionLoad(fupConsultado) {
+function TipoNegocio() {
+    $("#cboTipoCotizacion").change(function () {
+        var tipo_cotizacion = $(this).val();
+        if (EstadoFUP == "Elaboracion" || EstadoFUP == "") {
+            CargarDatosProductoLoad(tipo_cotizacion);
+        }
+    });
+    // Tipo Condicion Pago
+    $("#cboCondicionesPago").change(function () {
+        var condicionPago = $(this).val();
+        $(".divarCuotas").hide();
+        $(".divarLeasing").hide();
+
+        // Se esconde el th para mostrar los boletos bancarios
+        //$("#boletosBancarios").hide();
+        //if ($("#columnBoletosBancarios") != undefined) {
+        //    $("#columnBoletosBancarios").remove();
+        //}
+
+        // Esconde el botón para enviar solicitud de boletos bancarios
+        //        $("#btnEnviarSoliBoletosBancarios").hide();
+        //$("#btnEnviarSoliBoletosBancarios").show();
+        //$("#boletosBancarios").show();
+        //$("#encabezadosTablaLeasing").append('<th width="5%" id="columnBoletosBancarios" class="text-center"></th>');
+
+        //Se habilita todo de nuevo
+        if (condicionPago == "2") {
+            $(".divarCuotas").show();
+        }
+        //else if (condicionPago == "3")
+        else {
+            if (condicionPago == "3") {
+                document.getElementById("titulocondiciones").innerHTML = "CONDICIONES LEASING";
+                document.getElementById("titulototalcondiciones").innerHTML = "TOTAL LEASING";
+            } else if (condicionPago == "4") {
+                document.getElementById("titulocondiciones").innerHTML = "CONDICIONES CARTA CREDITO";
+                document.getElementById("titulototalcondiciones").innerHTML = "TOTAL CARTA CREDITO";
+            } else {
+                document.getElementById("titulocondiciones").innerHTML = "CONDICIONES CONTADO";
+                document.getElementById("titulototalcondiciones").innerHTML = "TOTAL CONTADO";
+            }
+            $(".divarLeasing").show();
+        }
+
+        if ($("#cboIdPais").val() == 6) {
+            $("#txTotalLeasing").parent().attr("colspan", "4");
+            $("#NumberTotalCierre3").parent().attr("colspan", "4");
+            $("#txTotalCuotas").parent().attr("colspan", "4");
+            $("#NumberTotalCierre2").parent().attr("colspan", "4");
+            $("#titulocondiciones").attr("colspan", "6");
+            $("#titleTableCondicionesCuotas").attr("colspan", "6");
+            $("#columnBoletosBancarios").show();
+            $("#columnBoletosBancariosCuotas").show();
+        } else {
+            $("#txTotalLeasing").parent().attr("colspan", "3");
+            $("#NumberTotalCierre3").parent().attr("colspan", "3");
+            $("#txTotalCuotas").parent().attr("colspan", "3");
+            $("#NumberTotalCierre2").parent().attr("colspan", "3");
+            $("#titulocondiciones").attr("colspan", "5");
+            $("#titleTableCondicionesCuotas").attr("colspan", "5");
+            $("#columnBoletosBancarios").hide();
+            $("#columnBoletosBancariosCuotas").hide();
+        }
+
+        //LlenarCondicionesPago();
+        ObtenerCondicionesPago(IdFUPGuardado, $('#cboVersion').val());
+        obtenerDetalleCondicionesPago(IdFUPGuardado, $('#cboVersion').val());
+        ocultarLoad();
+    });
+}
+
+function CargarDatosProductoLoad(tipo_cotizacion, fupConsultado) {
+    if (tipo_cotizacion != -1) {
+        $.ajax({
+            type: "POST",
+            url: "FormFUP.aspx/obtenerInfoGeneralProducto",
+            data: JSON.stringify({
+                tipoNegociacion: idTipoNegociacion,
+                tipoCotizacion: tipo_cotizacion
+            }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            // async: false,
+            success: function (msg) {
+                ocultarLoad();
+                var data = JSON.parse(msg.d);
+                $("#selectProducto").html("");
+                listaProductos = data.listaprod;
+                $("#selectProducto").html(llenarComboId(listaProductos));
+
+                if (UsaImperial == 0) {
+                    $("#selectProducto option[value=23]").attr("disabled", "disabled");
+                }
+                else {
+                    $("#selectProducto option[value=23]").removeAttr("disabled");
+                }
+
+                if (typeof fupConsultado != "undefined") {
+
+                    $("#selectProducto").val(fupConsultado.Producto).change();
+
+                    if (fupConsultado.TipoCotizacion == "1") {
+                        $("#selectProducto option[value=1]").attr("disabled", "disabled");
+                    }
+
+                    // FORSA PRO 
+                    if ((fupConsultado.TipoCotizacion == "1") && ($("#selectProducto").val() == "17")) {
+                        // Combo Alineacion Vertical
+                        $("#selectAlineacionVertical option[value=2]").attr("disabled", "disabled");
+                        $("#selectAlineacionVertical option[value=4]").attr("disabled", "disabled");
+                        // Combo Tipo fachada
+                        $("#selectTipoFMFachada option[value=2]").attr("disabled", "disabled");
+                        // Combo Detalle de Union
+                        $("#selectDetalleUnion option[value=2]").attr("disabled", "disabled");
+                        $("#selectDetalleUnion option[value=3]").attr("disabled", "disabled");
+                        // Ocultar Secciones NO Forsa PRO
+                        $(".forsapro").hide();
+                        ComboAlturaLibre(listaAlturaPro);
+                        $('#selectDesnivel').val("3");
+                    }
+                    // Forsa Imperial
+                    if ($("#selectProducto").val() == "23") {
+                        ComboAlturaLibre(listaAlturaImp);
+                    }
+
+                    cargarDatosDependeAlturaLibre(fupConsultado);
+                    cargarDatosDependeTipoFachada(fupConsultado);
+                    $("#selectAlturaLibre").val(fupConsultado.AlturaLibre).change();
+                    llenarGeneral(fupConsultado);
+                }
+
+
+                $(".fupadap").removeAttr("disabled");
+                $(".fuplist").removeAttr("disabled");
+                $("#txtNroEquipos").attr("disabled", "disabled");
+                $(".fupgenlist").hide();
+                //Orden de Referencia Solo para Adaptacion y Listado
+                if (tipo_cotizacion != "2" && tipo_cotizacion != "3") {
+                    if (tipo_cotizacion == "1") {
+                        $(".SeCopia").show();
+                    }
+                    else {
+                        $(".SeCopia").hide();
+
+                    }
+                    if (tipo_cotizacion == "1" && $("#selectCopia").val() == 1) {
+                        $(".divvarof").show();
+                        $(".vaCopia").show();
+                    }
+                    else {
+                        $(".divvarof").hide();
+                        $(".vaCopia").hide();
+                    }
+                }
+                else {
+                    $(".divvarof").show();
+                    $(".SeCopia").hide();
+                }
+
+                //Validacion Imperial
+                if (UsaImperial == 0) {
+                    $("#selectProducto option[value=23]").attr("disabled", "disabled");
+                }
+                else {
+                    $("#selectProducto option[value=23]").removeAttr("disabled");
+                }
+
+                // forsa Pro 
+                if (tipo_cotizacion != "1") {
+                    $("#selectProducto option[value=17]").attr("disabled", "disabled");
+                    $("#selectProducto option[value=1]").removeAttr("disabled");
+                }
+                else {
+                    $("#selectProducto option[value=1]").attr("disabled", "disabled");
+                    $("#selectProducto option[value=17]").removeAttr("disabled");
+                }
+                //adaptacion
+                if (tipo_cotizacion == "2") {
+                    $("#txtNroEquipos").removeAttr("disabled");
+
+                    //$(".fuplist").removeAttr("disabled");
+                    $(".divarrlist").show();
+                    $(".fuplist").not("select, button").val("");
+
+                    $('.fupadap').not("select, button").val("");
+                    $(".fuplist").not('select, button').val("");
+                    $(".fuparr").not('select, button').val("");
+                    //            $(".fupadap").attr("disabled", "disabled").off('click');
+
+                    $("#titleEquipos").text("Adaptaciones")
+                    $("#tbEquipos").attr("style", "display: none")
+
+                    $(".fuplist").removeAttr("disabled");
+                    $(".fuplist").find('input[type="text"]').val("");
+                }
+                //listado
+                else if (tipo_cotizacion == "3" || tipo_cotizacion >= "7") {
+                    $(".fuplist").not('select, button').val("0");
+                    $("#titleEquipos").text("Equipos y Adicionales")
+                    $("#tbEquipos").attr("style", "display: normal")
+
+                    $(".fuplist").removeAttr("disabled");
+                    $(".fupadap").removeAttr("disabled");
+                    $(".fupadap").find('input[type="text"]').val("0");
+                    $('.fupadap').not("select, button").val("0");
+                    $(".fuparr").not('select, button').val("0");
+                    $(".fuparr").find('input[type="select"]').val("-1");
+                    $(".divarrlist").hide();
+                    $(".fupgenlist").show();
+                }
+                else {
+                    var tipo_negociacion = $("#selectTipoNegociacion").val();
+                    if (tipo_negociacion < "3") {
+
+                        $(".fupadap").removeAttr("disabled");
+                        $(".fupadap").not('select, button').val("");
+                        $(".fuparr").not('select, button').val("");
+
+                        //$(".fuplist").removeAttr("disabled");
+                        $(".divarrlist").show();
+                        $(".fuplist").not('select, button').val("");
+                    }
+
+                    $("#titleEquipos").text("Equipos y Adicionales")
+                    $("#tbEquipos").attr("style", "display: normal")
+                }
+
+                if (tipo_cotizacion > 2) {
+                    $("#headerEquipos").attr("style", "display:none");
+                    $(".fupadap").find('input[type="text"]').val("0");
+                    $('.fupadap').not("select, button").val("0");
+                    $(".fuparr").not('select, button').val("0");
+                }
+                else {
+                    $("#headerEquipos").attr("style", "display:normal");
+                }
+
+                if ($("#selectCopia").val() == "1") {
+                    $(".vaCopia").show();
+                }
+                else {
+                    $(".vaCopia").hide();
+                }
+
+            },
+            error: function () {
+                ocultarLoad();
+                toastr.error("Failed to Load Producto from Tipo Cotizacion ", "FUP", {
+                    "timeOut": "0",
+                    "extendedTImeout": "0"
+                });
+            }
+        });
+    }
+
+}
+
+function seleccionTipoProducto() {
+    $("#selectProducto").change(function () {
+        var optionsSG = "";
+        // Combo Sistema de Seguridad
+        if (($(this).val() != "2") && ($(this).val() != "20")) {
+            $("#selectSistemaSeguridad option[value=5]").attr("disabled", "disabled");
+        }
+        else {
+            $("#selectSistemaSeguridad option[value=5]").removeAttr("disabled");
+        }
+
+        if ($(this).val() == "23") {
+            $(".AlturaLibreInches").show();
+            $(".AlturaLibreCm").hide();
+            $(".MedidaEspesores").html("(In):");
+        } else {
+            $(".AlturaLibreInches").hide();
+            $(".AlturaLibreCm").show();
+            $(".MedidaEspesores").html("(cm):");
+        }
+
+        // FORSA PRO 
+        if ($("#cboTipoCotizacion").val() == "1") {
+            if ($(this).val() == "17") {
+                // Combo Alineacion Vertical
+                $("#selectAlineacionVertical option[value=2]").attr("disabled", "disabled");
+                $("#selectAlineacionVertical option[value=4]").attr("disabled", "disabled");
+                // Combo Tipo fachada
+                $("#selectTipoFMFachada option[value=2]").attr("disabled", "disabled");
+                // Combo Detalle de Union
+                $("#selectDetalleUnion option[value=2]").attr("disabled", "disabled");
+                $("#selectDetalleUnion option[value=3]").attr("disabled", "disabled");
+                // Ocultar Secciones NO Forsa PRO
+                $(".forsapro").hide();
+                ComboAlturaLibre(listaAlturaPro);
+                $('#selectDesnivel').val("3");
+            }
+            else {
+                if ($(this).val() == "23") {
+                    ComboAlturaLibre(listaAlturaImp);
+                } else {
+                    ComboAlturaLibre(listaAltura);
+                }
+                // Combo Alineacion Vertical
+                $("#selectAlineacionVertical option[value=2]").removeAttr('disabled');
+                $("#selectAlineacionVertical option[value=4]").removeAttr('disabled');
+                // Combo Tipo fachada
+                $("#selectTipoFMFachada option[value=2]").removeAttr('disabled');
+                // Combo Detalle de Union
+                $("#selectDetalleUnion option[value=2]").removeAttr('disabled');
+                $("#selectDetalleUnion option[value=3]").removeAttr('disabled');
+                // Visible Secciones NO Forsa PRO
+                $(".forsapro").show();
+                //                $('#selectDesnivel').val("-1");
+
+            }
+        }
+
+
+    });
+}
+
+
+function CargarDatosGeneralesNegociacionLoad(idTipoNegociacion, fupConsultado) {
     mostrarLoad();
 
-    var idTipoNegociacion = fupConsultado.TipoNegociacion;
     if (idTipoNegociacion != -1) {
         $.ajax({
             type: "POST",
@@ -1344,8 +1653,7 @@ function CargarDatosGeneralesNegociacionLoad(fupConsultado) {
                 $("#cboTipoCotizacion").html(llenarComboId(data.listatcot));
                 $("#selectProducto").html(llenarComboId(data.listaprod));
 
-                // Se debe controlar que Imperial solo aplique para Estados Unidos
-                if ($("#cboIdPais").val() != 36) {
+                if (UsaImperial == 0) {
                     $("#selectProducto option[value=23]").attr("disabled", "disabled");
                 }
                 else {
@@ -1482,6 +1790,7 @@ function cargarPaises(IdPais) {
         success: function (msg) {
             ocultarLoad();
             var data = JSON.parse(msg.d);
+            listaUsaImperial = data;
 
             llenarComboPais("#cboIdPais", data);
             if (typeof IdPais != "undefined") {
@@ -1490,8 +1799,6 @@ function cargarPaises(IdPais) {
             if (IdPaisCliente != -1) {
                 $("#cboIdPais").val(IdPaisCliente).change();
             }
-
-
         },
         error: function () {
             ocultarLoad();
@@ -1552,7 +1859,6 @@ function ObtenerLineasDinamicas() {
                     placement: 'bottom',
                     html: true
                 });
-                ValidarEstado();
             },
             error: function () {
                 ocultarLoad();
@@ -3893,80 +4199,6 @@ function ocultarLoad() {
     hLoading();
 }
 
-function seleccionTipoProducto() {
-    $("#selectProducto").change(function () {
-        var optionsSG = "";
-        // Combo Sistema de Seguridad
-        if (($(this).val() != "2") && ($(this).val() != "20") ) {
-            $("#selectSistemaSeguridad option[value=5]").attr("disabled", "disabled");
-
-            //$("#selectSistemaSeguridad option[value=2]").attr("disabled", "disabled");
-            //// Cambio de forsa PRO $(this).val() == "17"
-            //if ($(this).val() == "17") {
-            //    $("#selectSistemaSeguridad option[value=4]").attr("disabled", "disabled");
-            //}
-            //else {
-            //    $("#selectSistemaSeguridad option[value=4]").removeAttr('disabled');
-            //}
-
-        }
-        else {
-            $("#selectSistemaSeguridad option[value=5]").removeAttr("disabled");
-            //$("#selectSistemaSeguridad option[value=2]").removeAttr('disabled');
-            //$("#selectSistemaSeguridad option[value=4]").removeAttr('disabled');
-        }
-
-        if($(this).val() == "23") {
-            $(".AlturaLibreInches").show();
-            $(".AlturaLibreCm").hide();
-            $(".MedidaEspesores").html("(In):");
-        } else {
-            $(".AlturaLibreInches").hide();
-            $(".AlturaLibreCm").show();
-            $(".MedidaEspesores").html("(cm):");
-        }
-
-        // FORSA PRO 
-        if ($("#cboTipoCotizacion").val() == "1") {
-            if ($(this).val() == "17") {
-                // Combo Alineacion Vertical
-                $("#selectAlineacionVertical option[value=2]").attr("disabled", "disabled");
-                $("#selectAlineacionVertical option[value=4]").attr("disabled", "disabled");
-                // Combo Tipo fachada
-                $("#selectTipoFMFachada option[value=2]").attr("disabled", "disabled");
-                // Combo Detalle de Union
-                $("#selectDetalleUnion option[value=2]").attr("disabled", "disabled");
-                $("#selectDetalleUnion option[value=3]").attr("disabled", "disabled");
-                // Ocultar Secciones NO Forsa PRO
-                $(".forsapro").hide();
-                ComboAlturaLibre(listaAlturaPro);
-                $('#selectDesnivel').val("3");
-            }
-            else {
-                if ($(this).val() == "23") {
-                    ComboAlturaLibre(listaAlturaImp);
-                } else {
-                    ComboAlturaLibre(listaAltura);
-                }
-                // Combo Alineacion Vertical
-                $("#selectAlineacionVertical option[value=2]").removeAttr('disabled');
-                $("#selectAlineacionVertical option[value=4]").removeAttr('disabled');
-                // Combo Tipo fachada
-                $("#selectTipoFMFachada option[value=2]").removeAttr('disabled');
-                // Combo Detalle de Union
-                $("#selectDetalleUnion option[value=2]").removeAttr('disabled');
-                $("#selectDetalleUnion option[value=3]").removeAttr('disabled');
-                // Visible Secciones NO Forsa PRO
-                $(".forsapro").show();
-                    //                $('#selectDesnivel').val("-1");
-
-            }
-        }
-
-
-    });
-}
-
 function seleccionALturaLibre() {
     $("#txtNroEquipos").val("0");
     $(".divAlturaLibreOtro").hide();
@@ -4329,211 +4561,6 @@ function LlenarOrdenCliente(elem) {
 
 }
 
-function TipoNegocio() {
-    $("#selectTipoNegociacion").change(function () {
-        var tipo_negociacion = $(this).val();
-        //Equipo Nuevo
-        //Se habilita todo de nuevo
-        if (tipo_negociacion == "1" || tipo_negociacion == "2") {
-            //$(".fuparr").removeAttr("disabled");
-            $(".divarrlist").show();
-//            $(".fuparr").not('select, button').val("");
-        }
-            //Si es arrendatario se pone invisible el div divarrlist
-        else //if (tipo_negociacion == "3" || tipo_negociacion == "4" || tipo_negociacion == "5") 
-        {
-            $(".fuparr").not('select, button').val("");
-            $(".divarrlist").hide();
-            $(".divvarof").hide();
-        }
-        /*        else {
-                    //$(".fuparr").removeAttr("disabled");
-                    $(".divarrlist").show();
-                    $(".fuparr").not('select, button').val("");
-                }*/
-    });
-
-    $("#cboTipoCotizacion").change(function () {
-        var tipo_cotizacion = $(this).val();
-        $("#selectProducto").html("");
-        $("#selectProducto").html(llenarComboId(listaProductos));
-
-        $(".fupadap").removeAttr("disabled");
-        $(".fuplist").removeAttr("disabled");
-        $("#txtNroEquipos").attr("disabled", "disabled");
-        $(".fupgenlist").hide();
-        //Orden de Referencia Solo para Adaptacion y Listado
-        if (tipo_cotizacion != "2" && tipo_cotizacion != "3") {
-            if (tipo_cotizacion == "1") {
-                $(".SeCopia").show();
-            }
-            else   {
-                $(".SeCopia").hide();
-
-            }
-            if (tipo_cotizacion == "1" && $("#selectCopia").val() == 1) {
-                $(".divvarof").show();
-                $(".vaCopia").show();
-            }
-            else {
-                $(".divvarof").hide();
-                $(".vaCopia").hide();
-            }
-        }
-        else {
-            $(".divvarof").show();
-            $(".SeCopia").hide();
-        }
-
-        if ($("#cboIdPais").val() != 36) {
-            $("#selectProducto option[value=23]").attr("disabled", "disabled");
-        }
-        else {
-            $("#selectProducto option[value=23]").removeAttr("disabled");
-        }
-
-        // forsa Pro 
-        if (tipo_cotizacion != "1") {
-            $("#selectProducto option[value=17]").attr("disabled", "disabled");
-            $("#selectProducto option[value=1]").removeAttr("disabled");
-        }
-        else {
-            $("#selectProducto option[value=1]").attr("disabled", "disabled");
-            $("#selectProducto option[value=17]").removeAttr("disabled");
-        }
-        //adaptacion
-        if (tipo_cotizacion == "2") {
-            $("#txtNroEquipos").removeAttr("disabled");
-
-            //$(".fuplist").removeAttr("disabled");
-            $(".divarrlist").show();
-            $(".fuplist").not("select, button").val("");
-
-            $('.fupadap').not("select, button").val("");
-            $(".fuplist").not('select, button').val("");
-            $(".fuparr").not('select, button').val("");
-            //            $(".fupadap").attr("disabled", "disabled").off('click');
-
-            $("#titleEquipos").text("Adaptaciones")
-            $("#tbEquipos").attr("style", "display: none")
-
-            $(".fuplist").removeAttr("disabled");
-            $(".fuplist").find('input[type="text"]').val("");
-        }
-            //listado
-        else if (tipo_cotizacion == "3" || tipo_cotizacion >= "7") {
-            $(".fuplist").not('select, button').val("0");
-            $("#titleEquipos").text("Equipos y Adicionales")
-            $("#tbEquipos").attr("style", "display: normal")
-
-            $(".fuplist").removeAttr("disabled");
-            $(".fupadap").removeAttr("disabled");
-            $(".fupadap").find('input[type="text"]').val("0");
-            $('.fupadap').not("select, button").val("0");
-            $(".fuparr").not('select, button').val("0");
-            $(".fuparr").find('input[type="select"]').val("-1");
-            $(".divarrlist").hide();
-            $(".fupgenlist").show();
-        }
-        else {
-            var tipo_negociacion = $("#selectTipoNegociacion").val();
-            if (tipo_negociacion < "3") {
-
-                $(".fupadap").removeAttr("disabled");
-                $(".fupadap").not('select, button').val("");
-                $(".fuparr").not('select, button').val("");
-
-                //$(".fuplist").removeAttr("disabled");
-                $(".divarrlist").show();
-                $(".fuplist").not('select, button').val("");
-            }
-
-            $("#titleEquipos").text("Equipos y Adicionales")
-            $("#tbEquipos").attr("style", "display: normal")
-        }
-
-        if (tipo_cotizacion > 2) {
-            $("#headerEquipos").attr("style", "display:none");
-            $(".fupadap").find('input[type="text"]').val("0");
-            $('.fupadap').not("select, button").val("0");
-            $(".fuparr").not('select, button').val("0");
-        }
-        else {
-            $("#headerEquipos").attr("style", "display:normal");
-        }
-
-        if ($("#selectCopia").val() == "1") {
-            $(".vaCopia").show();
-        }
-        else {
-            $(".vaCopia").hide();
-        }
-
-    });
-    // Tipo Condicion Pago
-    $("#cboCondicionesPago").change(function () {
-        var condicionPago = $(this).val();
-        $(".divarCuotas").hide();
-        $(".divarLeasing").hide();
-
-        // Se esconde el th para mostrar los boletos bancarios
-        //$("#boletosBancarios").hide();
-        //if ($("#columnBoletosBancarios") != undefined) {
-        //    $("#columnBoletosBancarios").remove();
-        //}
-
-        // Esconde el botón para enviar solicitud de boletos bancarios
-//        $("#btnEnviarSoliBoletosBancarios").hide();
-        //$("#btnEnviarSoliBoletosBancarios").show();
-        //$("#boletosBancarios").show();
-        //$("#encabezadosTablaLeasing").append('<th width="5%" id="columnBoletosBancarios" class="text-center"></th>');
-
-        //Se habilita todo de nuevo
-        if (condicionPago == "2") {
-            $(".divarCuotas").show();
-        }
-            //else if (condicionPago == "3")
-        else {
-            if (condicionPago == "3") {
-                document.getElementById("titulocondiciones").innerHTML = "CONDICIONES LEASING";
-                document.getElementById("titulototalcondiciones").innerHTML = "TOTAL LEASING";
-            } else if (condicionPago == "4") {
-                document.getElementById("titulocondiciones").innerHTML = "CONDICIONES CARTA CREDITO";
-                document.getElementById("titulototalcondiciones").innerHTML = "TOTAL CARTA CREDITO";
-            } else {
-                document.getElementById("titulocondiciones").innerHTML = "CONDICIONES CONTADO";
-                document.getElementById("titulototalcondiciones").innerHTML = "TOTAL CONTADO";
-            }
-            $(".divarLeasing").show();
-        }
-
-        if ($("#cboIdPais").val() == 6) {
-            $("#txTotalLeasing").parent().attr("colspan", "4");
-            $("#NumberTotalCierre3").parent().attr("colspan", "4");
-            $("#txTotalCuotas").parent().attr("colspan", "4");
-            $("#NumberTotalCierre2").parent().attr("colspan", "4");
-            $("#titulocondiciones").attr("colspan", "6"); 
-            $("#titleTableCondicionesCuotas").attr("colspan", "6");
-            $("#columnBoletosBancarios").show();
-            $("#columnBoletosBancariosCuotas").show();
-        } else {
-            $("#txTotalLeasing").parent().attr("colspan", "3");
-            $("#NumberTotalCierre3").parent().attr("colspan", "3");
-            $("#txTotalCuotas").parent().attr("colspan", "3");
-            $("#NumberTotalCierre2").parent().attr("colspan", "3");
-            $("#titulocondiciones").attr("colspan", "5");
-            $("#titleTableCondicionesCuotas").attr("colspan", "5");
-            $("#columnBoletosBancarios").hide();
-            $("#columnBoletosBancariosCuotas").hide();
-        }
-
-        //LlenarCondicionesPago();
-        ObtenerCondicionesPago(IdFUPGuardado, $('#cboVersion').val());
-        obtenerDetalleCondicionesPago(IdFUPGuardado, $('#cboVersion').val());
-        ocultarLoad();
-    });
-}
-
 function cargarDatosDependeAlturaLibre(fupConsultado) {
     $("#txtAlturaLibreMinima").val(fupConsultado.AlturaLibreMinima);
     $("#txtAlturaLibreMaxima").val(fupConsultado.AlturaLibreMaxima);
@@ -4832,7 +4859,7 @@ function obtenerInformacionFUP(idFup, idVersion, idioma) {
                     EscaCompleto = elem.ArmadoEscalera;
                     AcceCompleto = elem.ArmadoAccesorio;
 
-                    CargarDatosGeneralesNegociacionLoad(elem);
+                    CargarDatosGeneralesNegociacionLoad(elem.TipoNegociacion,elem);
                     llenarGeneral(elem);
                     cargarClasificaCli(elem.ID_Cliente);
                     FecSolicitaSimulacion = elem.FecSolicitaSimulacion;
@@ -5370,7 +5397,7 @@ function NivelComplejidad() {
         horasCotizacion = result[0].Horas;
     }
 
-//  Nov 2024 Cambio para fecha politica - la base es la fecha dela entrada y no la de aprobacion se toma el campo de Fecha_crea
+//  Nov 2024 Cambio para fecha politica - la base es la fecha dela entrada y no la de aprobacion se toma el campo de Fecha_crea																												   
     fecha = new Date(FecAprobacionFup);
     dias = parseInt(horasCotizacion);
     fecha.setDate(fecha.getDate() + dias);
@@ -8208,7 +8235,6 @@ function MostrarControl() {
 
 
     $(".fupgenenv2").hide();
-
     if ((EstadoFUP == "" || EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion" || EstadoFUP == "Pre-Cierre")
         //        && (["1", "26"].indexOf(RolUsuario) > -1)) {
         && (["1", "2", "3", "9", "30", "33", "34", "40"].indexOf(RolUsuario) > -1)) {
@@ -8289,8 +8315,6 @@ function MostrarControl() {
         $(".fupgenpt4").hide();
         $(".fupgenpt5").hide();
     }
-
-
     if (["1", "2", "9", "26"].indexOf(RolUsuario) > -1) {
         $(".fupborrar").show();
     }
@@ -8646,7 +8670,7 @@ function ValidarEstado() {
                 CotizacionRapida = elem.CotizacionRapida;
 
                 $("#txtFecSimulacion").val(elem.FecSimulacion);
-                if (CotizacionRapida == 1) {
+               if (CotizacionRapida == 1) {
                     $(".fupgenpt0").hide();
                     $(".fupgenpt1").hide();
                     $(".fupgenpt2").hide();
@@ -8654,41 +8678,40 @@ function ValidarEstado() {
                     $(".fupgenpt4").hide();
                     $(".fupgenpt5").hide();
                 }
-                else {
-
-                    if (((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion" || EstadoFUP == "Pre-Cierre") && (["1", "2", "3", "9", "24", "26", "30", "33", "34", "40"].indexOf(RolUsuario) > -1)) ||
-                        //                if (((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion" || EstadoFUP == "Pre-Cierre") && (["1", "26"].indexOf(RolUsuario) > -1)) ||
-                        ((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion") && (["54"].indexOf(RolUsuario) > -1)) ||
-                        ((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion") && (["26"].indexOf(RolUsuario) > -1) && Autogestion == 1)
-                    ) {
-                        switch (OrdParte) {
-                            case 1:
-                                $(".fupgenpt1").show();
-                                if (CantGraba > 0)
-                                    $(".fupgenpt2").show();
-                                break;
-                            case 2:
-                                $(".fupgenpt2").show();
-                                if (CantGraba > 0)
-                                    $(".fupgenpt3").show();
-                                break;
-                            case 3:
-                                $(".fupgenpt3").show();
-                                if (CantGraba > 0)
-                                    $(".fupgenpt4").show();
-                                break;
-                            case 4:
-                                $(".fupgenpt4").show();
-                                if (CantGraba > 0)
-                                    $(".fupgenpt5").show();
-                                break;
-                            case 5:
-                                $(".fupgenpt5").show();
-                                break;
-                        }
-                    }
+                else {											
+					if (((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion" || EstadoFUP == "Pre-Cierre") && (["1", "2", "3", "9", "24", "26", "30", "33", "34", "40"].indexOf(RolUsuario) > -1)) ||
+	//                if (((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion" || EstadoFUP == "Pre-Cierre") && (["1", "26"].indexOf(RolUsuario) > -1)) ||
+						((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion") && (["54"].indexOf(RolUsuario) > -1)) ||
+						((EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion") && (["26"].indexOf(RolUsuario) > -1) && Autogestion == 1)
+						) {
+						switch (OrdParte) {
+							case 1:
+								$(".fupgenpt1").show();
+								if (CantGraba > 0)
+									$(".fupgenpt2").show();
+								break;
+							case 2:
+								$(".fupgenpt2").show();
+								if (CantGraba > 0)
+									$(".fupgenpt3").show();
+								break;
+							case 3:
+								$(".fupgenpt3").show();
+								if (CantGraba > 0)
+									$(".fupgenpt4").show();
+								break;
+							case 4:
+								$(".fupgenpt4").show();
+								if (CantGraba > 0)
+									$(".fupgenpt5").show();
+								break;
+							case 5:
+								$(".fupgenpt5").show();
+								break;
+						}
+					}
                 }
-            });
+			});
 
             MostrarControl();
             $("#divEstadoFup").html(EstadoFUP);
