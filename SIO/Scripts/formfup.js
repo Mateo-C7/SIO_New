@@ -4148,13 +4148,15 @@ function guardarFUP_informacionGeneral() {
                     mensalida = mensalida + " Altura Libre";
                     invalido = true;
                 }
-                if ($('#selectTipoFMFachada').val() == null || $('#selectTipoFMFachada').val() == 0 || $('#selectTipoFMFachada').val() == -1) {
-                    mensalida = mensalida + " Tipo de FM Fachada";
-                    invalido = true;
-                }
-                if ($('#selectDetalleUnion').val() == null || $('#selectDetalleUnion').val() == -1) {
-                    mensalida = mensalida + " Detalle Union";
-                    invalido = true;
+                if ($("#selectProducto").val() == '18' && $("#selectProducto").val() == '24') {
+                    if ($('#selectTipoFMFachada').val() == null || $('#selectTipoFMFachada').val() == 0 || $('#selectTipoFMFachada').val() == -1) {
+                        mensalida = mensalida + " Tipo de FM Fachada";
+                        invalido = true;
+                    }
+                    if ($('#selectDetalleUnion').val() == null || $('#selectDetalleUnion').val() == -1) {
+                        mensalida = mensalida + " Detalle Union";
+                        invalido = true;
+                    }
                 }
                 if ($('#selectFormaConstruccion').val() == null || $('#selectFormaConstruccion').val() == 0 || $('#selectFormaConstruccion').val() == -1) {
                     mensalida = mensalida + " Forma de Construccion";
@@ -4643,6 +4645,7 @@ function cargarDatosDependeAlturaLibre(fupConsultado) {
     $("#txtAlturaLibreMaxima").val(fupConsultado.AlturaLibreMaxima);
     $("#txtAlturaLibreCual").val(fupConsultado.AlturaLibreCual);
     $("#txtAlturaInternaSugerida").val(fupConsultado.AlturaInternaSugerida);
+    $("#selectAlturaInternaSugerida").val(fupConsultado.AlturaInternaSugerida);
     $("#selectTipoFMFachada").val(fupConsultado.TipoFachada);
     $("#txtAlturaUnion").val(fupConsultado.AlturaUnion);
     $("#txtTipoUnion").val(fupConsultado.TipoUnion);
