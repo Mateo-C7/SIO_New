@@ -880,7 +880,17 @@
                                 <span class="MedidaEspesores">(cm):</span>
 							</div>
 							<div class="col-2" style="display: inline-table">
-								<input id="txtAlturaInternaSugerida" style="width: 80% !important;" data-modelo-tecnico="AlturaIntSugerida" class="fuparr form-control" type="text" />
+								<input id="txtAlturaInternaSugerida" style="width: 80% !important;" class="fuparr form-control" type="text" />
+								<select style="width: 80% !important; display: none;" id="selectAlturaInternaSugerida" class="fuparr form-control">
+									<option value="-1" selected>Seleccionar</option>
+									<option value="60">60</option>
+									<option value="90">90</option>
+									<option value="120">120</option>
+									<option value="210">210</option>
+									<option value="240">240</option>
+									<option value="270">270</option>
+									<option value="300">300</option>
+								</select>
 								<button data-tooltip-custom-classes="tooltip-large" type="button" role="button" class="btn  btn-link divAyuda" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<div><img  style='width:70%; height:70%' src='Imagenes//Altura de la FM interna.jpg' /></div>"><i class="fa fa-info-circle fa-lg"></i></button>
 						   </div>
 							<div class="col-1" data-i18n="[html]tipo_fm_fachada">Tipo FM Fachada</div>

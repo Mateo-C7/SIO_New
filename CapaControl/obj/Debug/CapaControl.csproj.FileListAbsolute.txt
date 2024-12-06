@@ -28,3 +28,13 @@ C:\Users\fjsal\Source\Repos\SIO_New\CapaControl\obj\Debug\CapaControl.csproj.Cor
 C:\Users\fjsal\Source\Repos\SIO_New\CapaControl\obj\Debug\CapaControl.csproj.CopyComplete
 C:\Users\fjsal\Source\Repos\SIO_New\CapaControl\obj\Debug\CapaControl.dll
 C:\Users\fjsal\Source\Repos\SIO_New\CapaControl\obj\Debug\CapaControl.pdb
+C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\CapaControl\bin\Debug\CapaControl.dll.config
+C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\CapaControl\bin\Debug\CapaControl.dll
+C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\CapaControl\bin\Debug\CapaControl.pdb
+C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\CapaControl\bin\Debug\CapaDatos.dll
+C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\CapaControl\bin\Debug\CapaDatos.pdb
+C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\CapaControl\obj\Debug\CapaControl.csproj.AssemblyReference.cache
+C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\CapaControl\obj\Debug\CapaControl.csproj.CoreCompileInputs.cache
+C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\CapaControl\obj\Debug\CapaControl.csproj.CopyComplete
+C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\CapaControl\obj\Debug\CapaControl.dll
+C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\CapaControl\obj\Debug\CapaControl.pdb

@@ -1248,6 +1248,8 @@ function CargarDatosGenerales() {
             $("#selectTipoVaciado").html(llenarComboId(data.listavac));
             $("#selectSistemaSeguridad").html(llenarComboId(data.listasg));
             $("#selectAlineacionVertical").html(llenarComboId(data.listaav));
+            // Se oculta Forsa Ply
+            $('#selectAlineacionVertical option[value="7"]').hide();
             $("#selectTipoFMFachada").html(llenarComboId(data.listatf));
             $("#selectTipoFMFachadaCliente").html(llenarComboId(data.listatf));
             $("#selectTipoUnionCliente").html(llenarComboId(data.listatu));
@@ -1382,6 +1384,7 @@ function TipoNegocio() {
 }
 
 function CargarDatosProductoLoad(tipo_cotizacion, fupConsultado) {
+    var idTipoNegociacion = $("#selectTipoNegociacion").val();
     if (tipo_cotizacion != -1) {
         $.ajax({
             type: "POST",
@@ -1399,6 +1402,7 @@ function CargarDatosProductoLoad(tipo_cotizacion, fupConsultado) {
                 $("#selectProducto").html("");
                 listaProductos = data.listaprod;
                 $("#selectProducto").html(llenarComboId(listaProductos));
+                $("#selectProducto").change();
 
                 if (UsaImperial == 0) {
                     $("#selectProducto option[value=23]").attr("disabled", "disabled");
@@ -1569,6 +1573,7 @@ function CargarDatosProductoLoad(tipo_cotizacion, fupConsultado) {
 
 function seleccionTipoProducto() {
     $("#selectProducto").change(function () {
+        var idTipoProducto = $(this).val();
         var optionsSG = "";
         // Combo Sistema de Seguridad
         if (($(this).val() != "2") && ($(this).val() != "20")) {
@@ -1625,7 +1630,63 @@ function seleccionTipoProducto() {
             }
         }
 
-
+        // Forsa Ply
+        if (idTipoProducto == '18' || idTipoProducto == '24') {
+            // Reinicio de campos
+            if ($('#selectTipoVaciado').val() == "1") { $('#selectTipoVaciado').val("-1").change(); }
+            if ($('#selectSistemaSeguridad').val() == "5" || $('#selectSistemaSeguridad').val() == "7" || $('#selectSistemaSeguridad').val() == "8") { $('#selectSistemaSeguridad').val('-1').change() }
+            $('#selectTipoFMFachada').val('-1').change();
+            $('#selectCAPPernado').val('-1').change();
+            $('#selectDetalleUnion').val('-1').change();
+            $('#selectReqCliente').val('-1').change();
+            $('#txtTipoUnion').val('').change();
+            $('#txtAlturaUnion').val('').change();
+            // Fin reinicio de campos
+            // Deshabilitar opciones y campos
+            $('#selectTipoVaciado option[value="1"]').attr("disabled", "disabled");
+            $('#selectSistemaSeguridad option[value="5"]').attr("disabled", "disabled");
+            $('#selectSistemaSeguridad option[value="7"]').attr("disabled", "disabled");
+            $('#selectSistemaSeguridad option[value="8"]').attr("disabled", "disabled");
+            $('#selectTipoFMFachada').attr("disabled", "disabled");
+            $('#selectCAPPernado').attr("disabled", "disabled");
+            $('#selectDetalleUnion').attr("disabled", "disabled");
+            $('#selectReqCliente').attr("disabled", "disabled");
+            $('#txtTipoUnion').attr("disabled", "disabled");
+            $('#txtAlturaUnion').attr("disabled", "disabled");
+            $('#selectAlineacionVertical option[value="7"]').show();
+            $('#selectAlineacionVertical').val('7').change();
+            $('#selectAlineacionVertical option[value="1"]').attr("disabled", "disabled");
+            $('#selectAlineacionVertical option[value="2"]').attr("disabled", "disabled");
+            $('#selectAlineacionVertical option[value="3"]').attr("disabled", "disabled");
+            $('#selectAlineacionVertical option[value="4"]').attr("disabled", "disabled");
+            $('#selectAlineacionVertical option[value="5"]').attr("disabled", "disabled");
+            $('#selectAlineacionVertical option[value="6"]').attr("disabled", "disabled");
+            $('#txtAlturaInternaSugerida').hide();
+            $('#selectAlturaInternaSugerida').show();
+            if ($('#cboIdPais').val() != "6") { $('#selectAlturaInternaSugerida option[value="210"]').attr("disabled", "disabled"); }
+            else { $('#selectAlturaInternaSugerida option[value="210"]').removeAttr("disabled") }
+        } else {
+            $('#selectTipoVaciado option[value="1"]').removeAttr("disabled");
+            $('#selectSistemaSeguridad option[value="5"]').removeAttr("disabled");
+            $('#selectSistemaSeguridad option[value="7"]').removeAttr("disabled");
+            $('#selectSistemaSeguridad option[value="8"]').removeAttr("disabled");
+            $('#selectTipoFMFachada').removeAttr("disabled");
+            $('#selectCAPPernado').removeAttr("disabled");
+            $('#selectDetalleUnion').removeAttr("disabled");
+            $('#selectReqCliente').removeAttr("disabled");
+            $('#txtTipoUnion').removeAttr("disabled");
+            $('#txtAlturaUnion').removeAttr("disabled");
+            $('#selectAlineacionVertical option[value="7"]').hide();
+            $('#selectAlineacionVertical').val('-1').change();
+            $('#selectAlineacionVertical option[value="1"]').removeAttr("disabled");
+            $('#selectAlineacionVertical option[value="2"]').removeAttr("disabled");
+            $('#selectAlineacionVertical option[value="3"]').removeAttr("disabled");
+            $('#selectAlineacionVertical option[value="4"]').removeAttr("disabled");
+            $('#selectAlineacionVertical option[value="5"]').removeAttr("disabled");
+            $('#selectAlineacionVertical option[value="6"]').removeAttr("disabled");
+            $('#txtAlturaInternaSugerida').show();
+            $('#selectAlturaInternaSugerida').hide();
+        }
     });
 }
 
@@ -3948,6 +4009,22 @@ function guardarFUP_informacionGeneral() {
         var thisval = $(this).val();
         objg[prop] = thisval;
     });
+
+    // Trato especial para Altura sugerida en caso de ser el producto = Forsa Ply
+    if ($("#selectProducto").val() == '18' || $("#selectProducto").val() == '24') {
+        if ($('#selectAlturaInternaSugerida').val() == "-1") {
+            mensalida = mensalida + "Falta seleccionar Altura Interna Sugerida";
+            invalido = true;
+        }
+        var prop = 'AlturaIntSugerida';
+        var thisval = $('#selectAlturaInternaSugerida').val();
+        objg[prop] = thisval;
+    } else {
+        var prop = 'AlturaIntSugerida';
+        var thisval = $('#txtAlturaInternaSugerida').val();
+        objg[prop] = thisval;
+    }
+    // Fin trato especial
 
     $("[data-modelo-tecnico]").each(function (index) {
         var prop = $(this).attr("data-modelo-tecnico");
@@ -6576,7 +6653,7 @@ function obtenerDevComercial() {
 
 function ocultarCards() {
     $("#EventoPTF").hide();
-    $("#ParteAlcance").hide();
+    //$("#ParteAlcance").hide();
     $("#ParteAprobacionFUP").hide();
     $("#ParteAnexosFUP").hide();
     $("#ParteSolicitudRecotizacion").hide();
