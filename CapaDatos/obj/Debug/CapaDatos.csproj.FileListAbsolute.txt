@@ -13,10 +13,9 @@ D:\DESA\SIO_git\Forsa\sio_new\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileIn
 D:\DESA\SIO_git\Forsa\sio_new\CapaDatos\obj\Debug\CapaDatos.csproj.Up2Date
 D:\DESA\SIO_git\Forsa\sio_new\CapaDatos\obj\Debug\CapaDatos.dll
 D:\DESA\SIO_git\Forsa\sio_new\CapaDatos\obj\Debug\CapaDatos.pdb
-C:\Users\fjsal\Source\Repos\SIO_New\CapaDatos\bin\Debug\CapaDatos.dll
-C:\Users\fjsal\Source\Repos\SIO_New\CapaDatos\bin\Debug\CapaDatos.pdb
-C:\Users\fjsal\Source\Repos\SIO_New\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
-C:\Users\fjsal\Source\Repos\SIO_New\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
-C:\Users\fjsal\Source\Repos\SIO_New\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
-C:\Users\fjsal\Source\Repos\SIO_New\CapaDatos\obj\Debug\CapaDatos.dll
-C:\Users\fjsal\Source\Repos\SIO_New\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\fjsal\source\repos\SIO_New\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\fjsal\source\repos\SIO_New\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\fjsal\source\repos\SIO_New\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\fjsal\source\repos\SIO_New\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+C:\Users\fjsal\source\repos\SIO_New\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\fjsal\source\repos\SIO_New\CapaDatos\obj\Debug\CapaDatos.pdb

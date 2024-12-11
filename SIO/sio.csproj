@@ -713,7 +713,6 @@
     <Content Include="js\jquery-ui\smoothness\jquery-ui-1.8.1.custom.min.js" />
     <Content Include="js\lib\jshashtable-2.1.js" />
     <Content Include="js\logicaGridPlaneador.js" />
-    <Content Include="js\logicaGridPlaneadorxx.js" />
     <Content Include="LeerPuerto.jar" />
     <Content Include="ListaChequeo.aspx" />
     <Content Include="LogisticaReporteSolicitudDevolucion.aspx" />
