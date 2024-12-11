@@ -1235,7 +1235,7 @@ namespace SIO
 																							and ftco_grupo_negociacion IN (SELECT ftne_grupo_negociacion FROM [dbo].[fup_tipo_negociacion] where ftne_id = @neg) Order by ftco_grupo_orden_id", paramCotizacion);
 			List<datosCombo2> TipoProducto = ControlDatos.EjecutarConsulta<datosCombo2>(@"SELECT [fup_tipo_venta_proy_id] id ,[descripcion] descripcion ,[descripcion] descripcionEN, [descripcion] descripcionPO
 																						  FROM .[dbo].[fup_tipo_venta_proyecto]
-																						  where [activo] = 1  and ftco_id = 0 ", paramCotizacion);
+																						  where [activo] = 1  and t.Grupo_Negociacion = 0 ", paramCotizacion);
 
 			var query = new
 			{
