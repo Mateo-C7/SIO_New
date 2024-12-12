@@ -1402,7 +1402,6 @@ function CargarDatosProductoLoad(tipo_cotizacion, fupConsultado) {
                 $("#selectProducto").html("");
                 listaProductos = data.listaprod;
                 $("#selectProducto").html(llenarComboId(listaProductos));
-                $("#selectProducto").change();
 
                 if (UsaImperial == 0) {
                     $("#selectProducto option[value=23]").attr("disabled", "disabled");
@@ -1413,14 +1412,13 @@ function CargarDatosProductoLoad(tipo_cotizacion, fupConsultado) {
 
                 if (typeof fupConsultado != "undefined") {
 
-                    $("#selectProducto").val(fupConsultado.Producto).change();
 
                     if (fupConsultado.TipoCotizacion == "1") {
                         $("#selectProducto option[value=1]").attr("disabled", "disabled");
                     }
 
                     // FORSA PRO 
-                    if ((fupConsultado.TipoCotizacion == "1") && ($("#selectProducto").val() == "17")) {
+                    if ((fupConsultado.TipoCotizacion == "1") && (fupConsultado.Producto == "17")) {
                         // Combo Alineacion Vertical
                         $("#selectAlineacionVertical option[value=2]").attr("disabled", "disabled");
                         $("#selectAlineacionVertical option[value=4]").attr("disabled", "disabled");
@@ -1435,7 +1433,7 @@ function CargarDatosProductoLoad(tipo_cotizacion, fupConsultado) {
                         $('#selectDesnivel').val("3");
                     }
                     // Forsa Imperial
-                    if ($("#selectProducto").val() == "23") {
+                    if (fupConsultado.Producto == "23") {
                         ComboAlturaLibre(listaAlturaImp);
                     }
 
@@ -1443,121 +1441,123 @@ function CargarDatosProductoLoad(tipo_cotizacion, fupConsultado) {
                     cargarDatosDependeTipoFachada(fupConsultado);
                     $("#selectAlturaLibre").val(fupConsultado.AlturaLibre).change();
                     llenarGeneral(fupConsultado);
-                }
+                    $("#selectProducto").val(fupConsultado.Producto).change();
 
-
-                $(".fupadap").removeAttr("disabled");
-                $(".fuplist").removeAttr("disabled");
-                $("#txtNroEquipos").attr("disabled", "disabled");
-                $(".fupgenlist").hide();
-                //Orden de Referencia Solo para Adaptacion y Listado
-                if (tipo_cotizacion != "2" && tipo_cotizacion != "3") {
-                    if (tipo_cotizacion == "1") {
-                        $(".SeCopia").show();
-                    }
-                    else {
-                        $(".SeCopia").hide();
-
-                    }
-                    if (tipo_cotizacion == "1" && $("#selectCopia").val() == 1) {
-                        $(".divvarof").show();
-                        $(".vaCopia").show();
-                    }
-                    else {
-                        $(".divvarof").hide();
-                        $(".vaCopia").hide();
-                    }
                 }
                 else {
-                    $(".divvarof").show();
-                    $(".SeCopia").hide();
-                }
 
-                //Validacion Imperial
-                if (UsaImperial == 0) {
-                    $("#selectProducto option[value=23]").attr("disabled", "disabled");
-                }
-                else {
-                    $("#selectProducto option[value=23]").removeAttr("disabled");
-                }
-
-                // forsa Pro 
-                if (tipo_cotizacion != "1") {
-                    $("#selectProducto option[value=17]").attr("disabled", "disabled");
-                    $("#selectProducto option[value=1]").removeAttr("disabled");
-                }
-                else {
-                    $("#selectProducto option[value=1]").attr("disabled", "disabled");
-                    $("#selectProducto option[value=17]").removeAttr("disabled");
-                }
-                //adaptacion
-                if (tipo_cotizacion == "2") {
-                    $("#txtNroEquipos").removeAttr("disabled");
-
-                    //$(".fuplist").removeAttr("disabled");
-                    $(".divarrlist").show();
-                    $(".fuplist").not("select, button").val("");
-
-                    $('.fupadap').not("select, button").val("");
-                    $(".fuplist").not('select, button').val("");
-                    $(".fuparr").not('select, button').val("");
-                    //            $(".fupadap").attr("disabled", "disabled").off('click');
-
-                    $("#titleEquipos").text("Adaptaciones")
-                    $("#tbEquipos").attr("style", "display: none")
-
-                    $(".fuplist").removeAttr("disabled");
-                    $(".fuplist").find('input[type="text"]').val("");
-                }
-                //listado
-                else if (tipo_cotizacion == "3" || tipo_cotizacion >= "7") {
-                    $(".fuplist").not('select, button').val("0");
-                    $("#titleEquipos").text("Equipos y Adicionales")
-                    $("#tbEquipos").attr("style", "display: normal")
-
-                    $(".fuplist").removeAttr("disabled");
                     $(".fupadap").removeAttr("disabled");
-                    $(".fupadap").find('input[type="text"]').val("0");
-                    $('.fupadap').not("select, button").val("0");
-                    $(".fuparr").not('select, button').val("0");
-                    $(".fuparr").find('input[type="select"]').val("-1");
-                    $(".divarrlist").hide();
-                    $(".fupgenlist").show();
-                }
-                else {
-                    var tipo_negociacion = $("#selectTipoNegociacion").val();
-                    if (tipo_negociacion < "3") {
+                    $(".fuplist").removeAttr("disabled");
+                    $("#txtNroEquipos").attr("disabled", "disabled");
+                    $(".fupgenlist").hide();
+                    //Orden de Referencia Solo para Adaptacion y Listado
+                    if (tipo_cotizacion != "2" && tipo_cotizacion != "3") {
+                        if (tipo_cotizacion == "1") {
+                            $(".SeCopia").show();
+                        }
+                        else {
+                            $(".SeCopia").hide();
 
-                        $(".fupadap").removeAttr("disabled");
-                        $(".fupadap").not('select, button').val("");
-                        $(".fuparr").not('select, button').val("");
+                        }
+                        if (tipo_cotizacion == "1" && $("#selectCopia").val() == 1) {
+                            $(".divvarof").show();
+                            $(".vaCopia").show();
+                        }
+                        else {
+                            $(".divvarof").hide();
+                            $(".vaCopia").hide();
+                        }
+                    }
+                    else {
+                        $(".divvarof").show();
+                        $(".SeCopia").hide();
+                    }
+
+                    //Validacion Imperial
+                    if (UsaImperial == 0) {
+                        $("#selectProducto option[value=23]").attr("disabled", "disabled");
+                    }
+                    else {
+                        $("#selectProducto option[value=23]").removeAttr("disabled");
+                    }
+
+                    // forsa Pro 
+                    if (tipo_cotizacion != "1") {
+                        $("#selectProducto option[value=17]").attr("disabled", "disabled");
+                        $("#selectProducto option[value=1]").removeAttr("disabled");
+                    }
+                    else {
+                        $("#selectProducto option[value=1]").attr("disabled", "disabled");
+                        $("#selectProducto option[value=17]").removeAttr("disabled");
+                    }
+                    //adaptacion
+                    if (tipo_cotizacion == "2") {
+                        $("#txtNroEquipos").removeAttr("disabled");
 
                         //$(".fuplist").removeAttr("disabled");
                         $(".divarrlist").show();
+                        $(".fuplist").not("select, button").val("");
+
+                        $('.fupadap').not("select, button").val("");
                         $(".fuplist").not('select, button').val("");
+                        $(".fuparr").not('select, button').val("");
+                        //            $(".fupadap").attr("disabled", "disabled").off('click');
+
+                        $("#titleEquipos").text("Adaptaciones")
+                        $("#tbEquipos").attr("style", "display: none")
+
+                        $(".fuplist").removeAttr("disabled");
+                        $(".fuplist").find('input[type="text"]').val("");
+                    }
+                    //listado
+                    else if (tipo_cotizacion == "3" || tipo_cotizacion >= "7") {
+                        $(".fuplist").not('select, button').val("0");
+                        $("#titleEquipos").text("Equipos y Adicionales")
+                        $("#tbEquipos").attr("style", "display: normal")
+
+                        $(".fuplist").removeAttr("disabled");
+                        $(".fupadap").removeAttr("disabled");
+                        $(".fupadap").find('input[type="text"]').val("0");
+                        $('.fupadap').not("select, button").val("0");
+                        $(".fuparr").not('select, button').val("0");
+                        $(".fuparr").find('input[type="select"]').val("-1");
+                        $(".divarrlist").hide();
+                        $(".fupgenlist").show();
+                    }
+                    else {
+                        var tipo_negociacion = $("#selectTipoNegociacion").val();
+                        if (tipo_negociacion < "3") {
+
+                            $(".fupadap").removeAttr("disabled");
+                            $(".fupadap").not('select, button').val("");
+                            $(".fuparr").not('select, button').val("");
+
+                            //$(".fuplist").removeAttr("disabled");
+                            $(".divarrlist").show();
+                            $(".fuplist").not('select, button').val("");
+                        }
+
+                        $("#titleEquipos").text("Equipos y Adicionales")
+                        $("#tbEquipos").attr("style", "display: normal")
                     }
 
-                    $("#titleEquipos").text("Equipos y Adicionales")
-                    $("#tbEquipos").attr("style", "display: normal")
-                }
+                    if (tipo_cotizacion > 2) {
+                        $("#headerEquipos").attr("style", "display:none");
+                        $(".fupadap").find('input[type="text"]').val("0");
+                        $('.fupadap').not("select, button").val("0");
+                        $(".fuparr").not('select, button').val("0");
+                    }
+                    else {
+                        $("#headerEquipos").attr("style", "display:normal");
+                    }
 
-                if (tipo_cotizacion > 2) {
-                    $("#headerEquipos").attr("style", "display:none");
-                    $(".fupadap").find('input[type="text"]').val("0");
-                    $('.fupadap').not("select, button").val("0");
-                    $(".fuparr").not('select, button').val("0");
+                    if ($("#selectCopia").val() == "1") {
+                        $(".vaCopia").show();
+                    }
+                    else {
+                        $(".vaCopia").hide();
+                    }
                 }
-                else {
-                    $("#headerEquipos").attr("style", "display:normal");
-                }
-
-                if ($("#selectCopia").val() == "1") {
-                    $(".vaCopia").show();
-                }
-                else {
-                    $(".vaCopia").hide();
-                }
-
             },
             error: function () {
                 ocultarLoad();
@@ -1712,48 +1712,11 @@ function CargarDatosGeneralesNegociacionLoad(idTipoNegociacion, fupConsultado) {
                 $("#selectProducto").html("");
                 listaProductos = data.listaprod;
                 $("#cboTipoCotizacion").html(llenarComboId(data.listatcot));
-                $("#selectProducto").html(llenarComboId(data.listaprod));
-
-                if (UsaImperial == 0) {
-                    $("#selectProducto option[value=23]").attr("disabled", "disabled");
-                }
-                else {
-                    $("#selectProducto option[value=23]").removeAttr("disabled");
-                }
 
                 if (typeof fupConsultado != "undefined") {
 
-                    $("#cboTipoCotizacion").val(fupConsultado.TipoCotizacion).change();
-                    $("#selectProducto").val(fupConsultado.Producto).change();
-
-                    if (fupConsultado.TipoCotizacion == "1") {
-                        $("#selectProducto option[value=1]").attr("disabled", "disabled");
-                    }
-
-                    // FORSA PRO 
-                    if ((fupConsultado.TipoCotizacion == "1") && ($("#selectProducto").val() == "17")) {
-                        // Combo Alineacion Vertical
-                        $("#selectAlineacionVertical option[value=2]").attr("disabled", "disabled");
-                        $("#selectAlineacionVertical option[value=4]").attr("disabled", "disabled");
-                        // Combo Tipo fachada
-                        $("#selectTipoFMFachada option[value=2]").attr("disabled", "disabled");
-                        // Combo Detalle de Union
-                        $("#selectDetalleUnion option[value=2]").attr("disabled", "disabled");
-                        $("#selectDetalleUnion option[value=3]").attr("disabled", "disabled");
-                        // Ocultar Secciones NO Forsa PRO
-                        $(".forsapro").hide();
-                        ComboAlturaLibre(listaAlturaPro);
-                        $('#selectDesnivel').val("3");
-                    }
-                    // Forsa Imperial
-                    if ($("#selectProducto").val() == "23") {
-                        ComboAlturaLibre(listaAlturaImp);
-                    }
-
-                    cargarDatosDependeAlturaLibre(fupConsultado);
-                    cargarDatosDependeTipoFachada(fupConsultado);
-                    $("#selectAlturaLibre").val(fupConsultado.AlturaLibre).change();
-                    llenarGeneral(fupConsultado);
+                    $("#cboTipoCotizacion").val(fupConsultado.TipoCotizacion);
+                    CargarDatosProductoLoad(fupConsultado.TipoCotizacion, fupConsultado);
                 }
             },
             error: function () {
@@ -4939,8 +4902,7 @@ function obtenerInformacionFUP(idFup, idVersion, idioma) {
                     EscaCompleto = elem.ArmadoEscalera;
                     AcceCompleto = elem.ArmadoAccesorio;
 
-                    CargarDatosGeneralesNegociacionLoad(elem.TipoNegociacion,elem);
-                    llenarGeneral(elem);
+                    CargarDatosGeneralesNegociacionLoad(elem.TipoNegociacion, elem);
                     cargarClasificaCli(elem.ID_Cliente);
                     FecSolicitaSimulacion = elem.FecSolicitaSimulacion;
 
