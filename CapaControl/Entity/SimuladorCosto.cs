@@ -78,6 +78,7 @@ namespace CapaControl.Entity
 
     public class listamargen : guardarmargen
     {
+        public int Id { get; set; }
         public string Nivel { get; set; }
         public string GrupoPais { get; set; }
         public string Pais { get; set; }
