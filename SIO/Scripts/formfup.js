@@ -1297,7 +1297,7 @@ function CargarDatosGeneralesNegociacion() {
 
         //Equipo Nuevo
         //Se habilita todo de nuevo
-        if (tipo_negociacion == "1" || tipo_negociacion == "2") {
+        if (idTipoNegociacion == "1" || idTipoNegociacion == "2") {
             //$(".fuparr").removeAttr("disabled");
             $(".divarrlist").show();
             //            $(".fuparr").not('select, button').val("");
@@ -4745,15 +4745,15 @@ function llenarGeneral(elem) {
         fupAprobado = false;
     }
 
-    if (elem.TipoNegociacion == 1 || elem.TipoNegociacion == 2) {
+    if (elem.TipoNegociacion == 1 || elem.TipoNegociacion == 2 || elem.TipoNegociacion == 6) {
         $(".divarrlist").show();
     }
     else if (elem.TipoNegociacion >= 3) {
-        $(".divarrlist").hide();
-    }
-    else {
-        $(".divarrlist").show();
-    }
+            $(".divarrlist").hide();
+        }
+        else {
+            $(".divarrlist").show();
+        }
 
     //Orden de Referencia Solo para Adaptacion y Listado
     if (elem.TipoNegociacion != "2" && elem.TipoNegociacion != "3") {
@@ -4778,7 +4778,7 @@ function llenarGeneral(elem) {
         $("#titleEquipos").text("Adaptaciones")
         $("#tbEquipos").attr("style", "display: none")
     }
-    else if (elem.TipoCotizacion >= 3) {
+    else if (elem.TipoCotizacion >= 3 && elem.TipoNegociacion != 6) {
         $(".divvarof").show();
         $(".fupadap").removeAttr("disabled");
         $(".divarrlist").hide();
@@ -4799,7 +4799,7 @@ function llenarGeneral(elem) {
         // $(".fupadap").find('input[type="text"]').val("");
     }
 
-    if (elem.TipoCotizacion > 2) {
+    if (elem.TipoCotizacion > 2 && elem.TipoCotizacion != 15 && elem.TipoCotizacion != 16) {
         $("#headerEquipos").attr("style", "display:none");
     }
     else {
@@ -8365,12 +8365,12 @@ function MostrarControl() {
     }
 
     // Activa o desactiva el botón para guardar información general al técnico, rol temporal
-    //if ((EstadoFUP == "" || EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion")
-    //    && (["1", "26"].indexOf(RolUsuario) > -1)) {
-    //    $("#btnGuardarInformacionGeneral").removeAttr("disabled");
-    //} else {
-    //    $("#btnGuardarInformacionGeneral").attr("disabled", "disabled");
-    //}
+    if ((EstadoFUP == "" || EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion")
+        && (["1", "26"].indexOf(RolUsuario) > -1)) {
+        $("#btnGuardarInformacionGeneral").removeAttr("disabled");
+    } else {
+        $("#btnGuardarInformacionGeneral").attr("disabled", "disabled");
+    }
 
 
     if ((EstadoFUP == "" || EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion")
@@ -10793,7 +10793,8 @@ function exportarListaAsistida() {
 }
 
 function VerificarCondicionesAcordeonCotrap(Clasificacion) {
-    let version = $("#cboVersion").val().trim();
+    let version = $("#cboVersion").val();
+    if (version == null) { version = versionFupDefecto; } else { version = version.trim();}
 //    let clasificaciones_disponibles = ["SILVER", "BRONZE", "COPPER", "STANDARD"];
     if ($("#cboTipoCotizacion").val() == 1 && ($("#cboIdTipoVivienda").val() == "1" || $("#cboIdTipoVivienda").val() == "2")
 //        && (clasificaciones_disponibles.includes(clasificacion)
