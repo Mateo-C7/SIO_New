@@ -1297,7 +1297,7 @@ function CargarDatosGeneralesNegociacion() {
 
         //Equipo Nuevo
         //Se habilita todo de nuevo
-        if (idTipoNegociacion == "1" || idTipoNegociacion == "2") {
+        if (idTipoNegociacion == "1" || idTipoNegociacion == "2" || idTipoNegociacion == "6") {
             //$(".fuparr").removeAttr("disabled");
             $(".divarrlist").show();
             //            $(".fuparr").not('select, button').val("");
@@ -3920,6 +3920,7 @@ function guardarFUP_datosGenerales() {
                         $('#cboVersion').get(0).options[0] = new Option(versionFupDefecto, versionFupDefecto);
                     }
                     if (data.TipoCotizacion == 3) { getListaPrecios(); }
+
                     ObtenerLineasDinamicas();
                     EstadoFUP = data.EstadoProceso;
                     $("#divEstadoFup").html(data.EstadoProceso);
@@ -6618,7 +6619,7 @@ function obtenerDevComercial() {
 
 function ocultarCards() {
     $("#EventoPTF").hide();
-    //$("#ParteAlcance").hide();
+    $("#ParteAlcance").hide();
     $("#ParteAprobacionFUP").hide();
     $("#ParteAnexosFUP").hide();
     $("#ParteSolicitudRecotizacion").hide();
@@ -8327,12 +8328,12 @@ function MostrarControl() {
     }
 
     // Activa o desactiva el botón para guardar información general al técnico, rol temporal
-    if ((EstadoFUP == "" || EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion")
-        && (["1", "26"].indexOf(RolUsuario) > -1)) {
-        $("#btnGuardarInformacionGeneral").removeAttr("disabled");
-    } else {
-        $("#btnGuardarInformacionGeneral").attr("disabled", "disabled");
-    }
+    //if ((EstadoFUP == "" || EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion")
+    //    && (["1", "26"].indexOf(RolUsuario) > -1)) {
+    //    $("#btnGuardarInformacionGeneral").removeAttr("disabled");
+    //} else {
+    //    $("#btnGuardarInformacionGeneral").attr("disabled", "disabled");
+    //}
 
 
     if ((EstadoFUP == "" || EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion")
