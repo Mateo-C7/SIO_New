@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="Scripts/jquery.i18n.fallbacks.js"></script>
 	<script type="text/javascript" src="Scripts/jquery.i18n.parser.js"></script>
 	<script type="text/javascript" src="Scripts/jquery.i18n.emitter.js"></script>
-	<script type="text/javascript" src="Scripts/formfup.js?v=20241113A"></script>
+	<script type="text/javascript" src="Scripts/formfup.js?v=202412133A"></script>
 	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="Scripts/select2.min.js"></script>
 	<script type="text/javascript" src="Scripts/toastr.min.js"></script>
@@ -1262,7 +1262,7 @@
     							    <button type="button"  style="align-self: flex-start" class="btn btn-info fupgenlist ml-3" data-toggle="modal" onclick="window.location = 'Imagenes/ListaAsistida/PLANTILLA LISTA ASISTIDA-Final.xlsm';" >
 									    <i class="fa fa-list-alt" style="padding-right: inherit;">  </i><span class="ml-2">Plantilla Lista Asistida</span>
 								    </button>
-                                    <button type="button"  style="align-self: flex-start" class="btn btn-info  ml-3" data-toggle="modal" onclick="exportarListaAsistida()" >
+                                    <button type="button"  style="align-self: flex-start" class="btn btn-info fupgenlist ml-3" data-toggle="modal" onclick="exportarListaAsistida()" >
 									    <i class="fa fa-download" style="padding-right: inherit;">  </i><span class="ml-2">Exportar Lista Asistida</span>
 								    </button>
 <%--                                    <button type="button" onclick="APIForline()" class="btn btn-info ml-3 verforline" >

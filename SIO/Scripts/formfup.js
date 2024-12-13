@@ -1522,7 +1522,8 @@ function CargarDatosProductoLoad(tipo_cotizacion, fupConsultado) {
                         $(".fuparr").not('select, button').val("0");
                         $(".fuparr").find('input[type="select"]').val("-1");
                         $(".divarrlist").hide();
-                        $(".fupgenlist").show();
+                        if (tipo_cotizacion == "3") { $(".fupgenlist").show(); }
+                        else { $(".fupgenlist").hide(); }
                     }
                     else {
                         var tipo_negociacion = $("#selectTipoNegociacion").val();
@@ -4748,7 +4749,8 @@ function llenarGeneral(elem) {
         $(".divarrlist").hide();
         $("#titleEquipos").text("Equipos y Adicionales")
         $("#tbEquipos").attr("style", "display: normal")
-        $(".fupgenlist").show();
+        if (elem.TipoCotizacion == 3) { $(".fupgenlist").show(); }
+        else { $(".fupgenlist").hide(); }
     }
     else {
         $("#titleEquipos").text("Equipos y Adicionales")
@@ -8285,7 +8287,8 @@ function MostrarControl() {
         (SubirPlanosAutorizado) ? $(".fupgenenv2").show() : $(".fupgenenv2").hide()
         if (EstadoFUP == "Pre-Cierre") {
             if ($("#cboTipoCotizacion").val() == 3 || $("#cboTipoCotizacion").val() >= 7) {
-                $(".fupgenlist").show();
+                if ($("#cboTipoCotizacion").val() == 3) { $(".fupgenlist").show(); }
+                else { $(".fupgenlist").hide(); }
                 $(".fupgenenv2").hide();
             }
         }
@@ -8298,7 +8301,9 @@ function MostrarControl() {
         && (["1", "24", "26"].indexOf(RolUsuario) > -1)) {
         $(".fupgenpt0").show();
         if ($("#cboTipoCotizacion").val() == 3 || $("#cboTipoCotizacion").val() >= 7) {
-            $(".fupgenlist").show();
+            if ($("#cboTipoCotizacion").val() == 3) { $(".fupgenlist").show(); }
+            else { $(".fupgenlist").show(); }
+
             $(".fupgenenv2").hide();
         }
         if (RequiereEnviar <= CantGraba) {
