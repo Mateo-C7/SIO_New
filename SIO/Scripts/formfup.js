@@ -1405,9 +1405,11 @@ function CargarDatosProductoLoad(tipo_cotizacion, fupConsultado) {
 
                 if (UsaImperial == 0) {
                     $("#selectProducto option[value=23]").attr("disabled", "disabled");
+                    $("#selectProducto option[value=24]").attr("disabled", "disabled");
                 }
                 else {
                     $("#selectProducto option[value=23]").removeAttr("disabled");
+                    $("#selectProducto option[value=24]").removeAttr("disabled");
                 }
 
                 if (typeof fupConsultado != "undefined") {
@@ -1476,9 +1478,11 @@ function CargarDatosProductoLoad(tipo_cotizacion, fupConsultado) {
                     //Validacion Imperial
                     if (UsaImperial == 0) {
                         $("#selectProducto option[value=23]").attr("disabled", "disabled");
+                        $("#selectProducto option[value=24]").attr("disabled", "disabled");
                     }
                     else {
                         $("#selectProducto option[value=23]").removeAttr("disabled");
+                        $("#selectProducto option[value=24]").removeAttr("disabled");
                     }
 
                     // forsa Pro 
