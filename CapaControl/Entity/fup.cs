@@ -281,6 +281,14 @@ namespace CapaControl.Entity
         public string descripcionPO { get; set; }
     }
 
+    public class datosCombo3
+    {
+        public string id { get; set; }
+        public string descripcion { get; set; }
+        public string descripcionEN { get; set; }
+        public string descripcionPO { get; set; }
+        public bool usoAlcance { get; set; }
+    }
     public class datosProducto
     {
         public string id { get; set; }

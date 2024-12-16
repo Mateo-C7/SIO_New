@@ -67,6 +67,8 @@ var DescuentoFueraRango = 0;
 var listaUsaImperial = [];
 var UsaImperial = 0;
 var CotizacionRapida = 0;
+var listaUsoAlcance = [];
+var usoAlcance = 0;
 
 $(document).on('inserted.bs.tooltip', function (e) {
     var tooltip = $(e.target).data('bs.tooltip');
@@ -1315,6 +1317,11 @@ function CargarDatosGeneralesNegociacion() {
 function TipoNegocio() {
     $("#cboTipoCotizacion").change(function () {
         var tipo_cotizacion = $(this).val();
+        var vAlcance = listaUsoAlcance.find((pa) => pa.Id == tipo_cotizacion);
+        if (vAlcance != "undefined") {
+            usoAlcance = vAlcance.usoAlcance;
+        };
+
         if (EstadoFUP == "Elaboracion" || EstadoFUP == "") {
             CargarDatosProductoLoad(tipo_cotizacion);
         }
@@ -1514,7 +1521,7 @@ function CargarDatosProductoLoad(tipo_cotizacion, fupConsultado) {
                         $(".fuplist").find('input[type="text"]').val("");
                     }
                     //listado
-                    else if (tipo_cotizacion == "3" || tipo_cotizacion >= "7") {
+                    else if (tipo_cotizacion == "3" || (tipo_cotizacion >= "7" && tipo_cotizacion != "15" && tipo_cotizacion != "16")) {
                         $(".fuplist").not('select, button').val("0");
                         $("#titleEquipos").text("Equipos y Adicionales")
                         $("#tbEquipos").attr("style", "display: normal")
@@ -1717,10 +1724,16 @@ function CargarDatosGeneralesNegociacionLoad(idTipoNegociacion, fupConsultado) {
                 $("#selectProducto").html("");
                 listaProductos = data.listaprod;
                 $("#cboTipoCotizacion").html(llenarComboId(data.listatcot));
+                listaUsoAlcance = data.listatcot;
 
                 if (typeof fupConsultado != "undefined") {
 
                     $("#cboTipoCotizacion").val(fupConsultado.TipoCotizacion);
+                    var vAlcance = listaUsoAlcance.find((pa) => pa.id == fupConsultado.TipoCotizacion);
+                    if (vAlcance != "undefined") {
+                        usoAlcance = vAlcance.usoAlcance;
+                    };
+                    MostrarCards();
                     CargarDatosProductoLoad(fupConsultado.TipoCotizacion, fupConsultado);
                 }
             },
@@ -4747,7 +4760,7 @@ function llenarGeneral(elem) {
         $("#titleEquipos").text("Adaptaciones")
         $("#tbEquipos").attr("style", "display: none")
     }
-    else if (elem.TipoCotizacion >= 3 && elem.TipoNegociacion != 6) {
+    else if (elem.TipoCotizacion == "3" || (elem.TipoCotizacion >= "7" && elem.TipoCotizacion != "15" && elem.TipoCotizacion != "16")) {
         $(".divvarof").show();
         $(".fupadap").removeAttr("disabled");
         $(".divarrlist").hide();
@@ -6650,7 +6663,9 @@ function ocultarCards() {
 }
 
 function MostrarCards() {
-    $("#ParteAlcance").show();
+    if (usoAlcance == 1) {
+        $("#ParteAlcance").show();
+    }
     $("#ParteAlcanceOferta").attr("style", "display:normal");
     $("#ParteAnexosFUP").show();
     $("#ParteSolicitudRecotizacion").show();

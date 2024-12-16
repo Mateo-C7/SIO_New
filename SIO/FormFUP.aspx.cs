@@ -1229,7 +1229,7 @@ namespace SIO
 
 			Dictionary<string, object> paramCotizacion = new Dictionary<string, object>() { { "@neg", tipoNegociacion } };
 
-			List<datosCombo2> TipoCotizacion = ControlDatos.EjecutarConsulta<datosCombo2>(@"SELECT   ftco_id id, ftco_nombre descripcion, ftco_nombre descripcionEN, ftco_nombre descripcionPO
+			List<datosCombo3> TipoCotizacion = ControlDatos.EjecutarConsulta<datosCombo3>(@"SELECT   ftco_id id, ftco_nombre descripcion, ftco_nombre descripcionEN, ftco_nombre descripcionPO, ftco_Uso_Alcance UsoAlcance
 																						  FROM [dbo].[fup_tipo_cotizacion]
 																						  WHERE ftco_estado = 1 and ftco_uso_fup = 1 
 																							and ftco_grupo_negociacion IN (SELECT ftne_grupo_negociacion FROM [dbo].[fup_tipo_negociacion] where ftne_id = @neg) Order by ftco_grupo_orden_id", paramCotizacion);

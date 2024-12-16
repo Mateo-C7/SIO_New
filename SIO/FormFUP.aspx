@@ -2208,7 +2208,7 @@
 					        <table id="tab_DatosNumCambios" class="table table-sm table-borderless">
 						        <thead>
 							        <tr  class="thead-light">
-								        <th class="text-center" colspan ="6"># CAMBIOS</th>
+								        <th class="text-center" colspan ="3"># CAMBIOS</th>
 							        </tr>
 									<tr>
 										<th class="text-center" width="40%"> </th>
@@ -2217,12 +2217,6 @@
 									</tr>
 						        </thead>
                                 <tbody id="tbodyDetalleSalida">
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
                                     <tr>
 							            <td class="col-2" data-i18n="[html]FUP_numero_modulaciones">No. Modulaciones</td>
 							            <td class="col-1">
@@ -2248,8 +2242,20 @@
 										<th class="text-center" width="10%"> </th>
 
                                     </tr>
+                                    <tr><td colspan="3" ></td></tr>
+                                    <tr><td colspan="3" ></td></tr>
+							        <tr  class="thead-light servAdapta">
+								        <th class="text-center" colspan ="6">SERVICIOS DE ADAPTACIÓN</th>
+							        </tr>
+                                    <tr class="servAdapta">
+							            <td class="col-2">Servicio de Adaptación Finalizado</td>
+							            <td class="col-1">
+								            <input id="txtSerAdaptacion" type="checkbox" value="" />
+							            </td>
+                                    </tr>
+                                    <tr><td colspan="3" ></td></tr>
                                     <tr>
-                                        <td colspan="3" ><span style="font-size: 14px; text-decoration:underline; color:red">¡Importante! </span></td>
+                                        <td colspan="3" class="text-center"><span style="font-size: 16px; text-decoration:underline; color:red">¡ IMPORTANTE ! </span></td>
                                     </tr>
                                     <tr>
 										<td colspan="3" align="justify">**Los valores de salida de Forsa 1Clic son por cantidad de piezas y <b style="font-size: 14px; color:red">NO</b> por cantidad de m2.</td></tr>
