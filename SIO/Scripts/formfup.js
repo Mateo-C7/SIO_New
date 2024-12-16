@@ -1319,7 +1319,7 @@ function TipoNegocio() {
         var tipo_cotizacion = $(this).val();
         if (tipo_cotizacion != -1) {
             var vAlcance = listaUsoAlcance.find((pa) => pa.Id == tipo_cotizacion);
-            if (vAlcance != "undefined") {
+            if (typeof vAlcance != "undefined") {
                 usoAlcance = vAlcance.usoAlcance;
             };
         }
@@ -1731,7 +1731,7 @@ function CargarDatosGeneralesNegociacionLoad(idTipoNegociacion, fupConsultado) {
 
                     $("#cboTipoCotizacion").val(fupConsultado.TipoCotizacion);
                     var vAlcance = listaUsoAlcance.find((pa) => pa.id == fupConsultado.TipoCotizacion);
-                    if (vAlcance != "undefined") {
+                    if (typeof  vAlcance != "undefined") {
                         usoAlcance = vAlcance.usoAlcance;
                     };
                     MostrarCards();
