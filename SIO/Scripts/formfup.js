@@ -1672,8 +1672,9 @@ function seleccionTipoProducto() {
             $('#selectAlineacionVertical option[value="2"]').attr("disabled", "disabled");
             $('#selectAlineacionVertical option[value="3"]').attr("disabled", "disabled");
             $('#selectAlineacionVertical option[value="4"]').attr("disabled", "disabled");
-            $('#selectAlineacionVertical option[value="5"]').attr("disabled", "disabled");
             $('#selectAlineacionVertical option[value="6"]').attr("disabled", "disabled");
+            $('#selectAlineacionVertical option[value="7"]').removeAttr("disabled");
+            $('#selectAlineacionVertical option[value="8"]').removeAttr("disabled");
             $('#txtAlturaInternaSugerida').hide();
             $('#selectAlturaInternaSugerida').show();
             if ($('#cboIdPais').val() != "6") { $('#selectAlturaInternaSugerida option[value="210"]').attr("disabled", "disabled"); }
@@ -1695,8 +1696,9 @@ function seleccionTipoProducto() {
             $('#selectAlineacionVertical option[value="2"]').removeAttr("disabled");
             $('#selectAlineacionVertical option[value="3"]').removeAttr("disabled");
             $('#selectAlineacionVertical option[value="4"]').removeAttr("disabled");
-            $('#selectAlineacionVertical option[value="5"]').removeAttr("disabled");
             $('#selectAlineacionVertical option[value="6"]').removeAttr("disabled");
+            $('#selectAlineacionVertical option[value="7"]').attr("disabled", "disabled");
+            $('#selectAlineacionVertical option[value="8"]').attr("disabled", "disabled");
             $('#txtAlturaInternaSugerida').show();
             $('#selectAlturaInternaSugerida').hide();
         }
@@ -8159,6 +8161,7 @@ function ObtenerAvalesFabricacion(idFup, idVersion) {
     });
 }
 
+
 function ActualizarEstado(pEvento) {
 
     if (pEvento == 2 && EstadoFUP == "Pre-Cierre")
@@ -8184,6 +8187,7 @@ function ActualizarEstado(pEvento) {
             ocultarLoad();
             toastr.success("Enviado correctamente");
             ValidarEstado();
+            MostrarCards();
         },
         error: function (e) {
             ocultarLoad();
