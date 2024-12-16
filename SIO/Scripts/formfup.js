@@ -1317,11 +1317,12 @@ function CargarDatosGeneralesNegociacion() {
 function TipoNegocio() {
     $("#cboTipoCotizacion").change(function () {
         var tipo_cotizacion = $(this).val();
-        var vAlcance = listaUsoAlcance.find((pa) => pa.Id == tipo_cotizacion);
-        if (vAlcance != "undefined") {
-            usoAlcance = vAlcance.usoAlcance;
-        };
-
+        if (tipo_cotizacion != -1) {
+            var vAlcance = listaUsoAlcance.find((pa) => pa.Id == tipo_cotizacion);
+            if (vAlcance != "undefined") {
+                usoAlcance = vAlcance.usoAlcance;
+            };
+        }
         if (EstadoFUP == "Elaboracion" || EstadoFUP == "") {
             CargarDatosProductoLoad(tipo_cotizacion);
         }
