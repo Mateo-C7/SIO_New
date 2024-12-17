@@ -3385,7 +3385,7 @@
 													<th class="text-center" ><input type="number" class="NumeroSalcot" id="VlrDcto3CuentaB" onblur="calculardescto(2, 2, 3)" /></th>
 												</tr>
 												<tr>
-													<th >Vlr Nivel 4</th>
+													<th >Vlr Nivel 4 / Servicios </th>
 													<th class="text-center" ></th>
 													<th class="text-center" ><input type="number" class="NumeroSalcot sumDescVlrNDTto" disabled="disabled" id="VlrNoDcto4Cuenta" /></th>
 													<th class="text-center" ><input type="number" class="NumeroSalcot" id="VlrDcto4" value="0" onblur="calculardescto(1, 1, 4)" /></th>
@@ -3396,7 +3396,7 @@
 													<th class="text-center" ><input type="number" class="NumeroSalcot" id="VlrDcto4CuentaB" onblur="calculardescto(2, 2, 4)" /></th>
 												</tr>
 												<tr>
-													<th >Vlr Nivel 5</th>
+													<th >Vlr Nivel 5 </th>
 													<th class="text-center" ></th>
 													<th class="text-center" ><input type="number" class="NumeroSalcot" disabled="disabled" id="VlrNoDcto5Cuenta" /></th>
 													<th class="text-center" ><input type="number" class="NumeroSalcot" id="VlrDcto5" value="0" onblur="calculardescto(1, 1, 5)" /></th>
@@ -3406,6 +3406,7 @@
 													<th class="text-center" ><input type="number" class="NumeroSalcot" id="VlrDcto5B" value="0" onblur="calculardescto(1, 2, 5)" /></th>
 													<th class="text-center" ><input type="number" class="NumeroSalcot" id="VlrDcto5CuentaB" onblur="calculardescto(2, 2, 5)" /></th>
 												</tr>
+												<tr> <th colspan ="5"> Para el Tipo de Negocio: Servicios, Incluya el valor de Cierre en la casilla Vlr Nivel 4 / Servicios</th></tr>
 												<tr>
 													<th >Total Después Descuentos</th>
 													<th class="text-center" ><input type="number" class="NumeroSalcot " disabled="disabled" id="VlrTotalm2s1" /></th>
