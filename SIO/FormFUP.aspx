@@ -2512,7 +2512,7 @@
 
 					<div class="row justify-content-center">
 						<div class="" style="margin-top: 15px; margin-left: 15px;">
-							<button type="button" class="btn btn-primary  fupsalco " onclick="guardar_salida_cot(1)">
+							<button type="button" class="btn btn-primary  fupsalco fupsalcoServicio " onclick="guardar_salida_cot(1)">
 								<i class="fa fa-save"></i> <span data-i18n="[html]FUP_guardar" > guardar</span>
 							</button>
 						</div>
