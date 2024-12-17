@@ -8293,6 +8293,8 @@ function MostrarControl() {
     $("#selectTipoNegociacion").prop("disabled", true);
     $("#cboTipoCotizacion").prop("disabled", true);
     $("#selectProducto").prop("disabled", true);
+    let TipoCotizacion = $("#cboTipoCotizacion").val();
+
     var vers = $('#cboVersion').val();
 
     if (vers == null) {
@@ -8406,6 +8408,19 @@ function MostrarControl() {
         $("#SiNoPreventa").prop("disabled", false);
     }
 
+    $(".fupServiciosOcultar").show();
+
+    if (EstadoFUP == "Guardado") {
+        if (typeof TipoCotizacion != "undefined") {
+            if ((["1", "2", "26", "38"].indexOf(RolUsuario) > -1)
+                && (["6", "7", "17", "18", "19", "20"].indexOf(TipoCotizacion) > -1)){
+                $(".fupapro").show();
+                $("#SiNoPreventa").prop("disabled", false);
+                $(".fupServiciosOcultar").hide();
+            }
+        }
+    }
+
 
     // Botones Salida Cotizacion
     if ((EstadoFUP == "Aprobado" || EstadoFUP == "Cierre Comercial")
@@ -8429,7 +8444,6 @@ function MostrarControl() {
     }
 
     // Botones Salida Cotizacion Servicios
-    let TipoCotizacion = $("#cboTipoCotizacion").val();
     if (typeof TipoCotizacion != "undefined") {
         if ((EstadoFUP == "Aprobado")
             && (["1", "2", "26", "38"].indexOf(RolUsuario) > -1)

@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="Scripts/jquery.i18n.fallbacks.js"></script>
 	<script type="text/javascript" src="Scripts/jquery.i18n.parser.js"></script>
 	<script type="text/javascript" src="Scripts/jquery.i18n.emitter.js"></script>
-	<script type="text/javascript" src="Scripts/formfup.js?v=20241217A"></script>
+	<script type="text/javascript" src="Scripts/formfup.js?v=20241217B"></script>
 	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="Scripts/select2.min.js"></script>
 	<script type="text/javascript" src="Scripts/toastr.min.js"></script>
@@ -1326,8 +1326,8 @@
                                             <td width="8%" class ="NoComercial">No. Ordenes Referencia</td>
                                             <td width="9%" class ="NoComercial"><input type="number" id="txtOrdenRefAproba" style="width: 80% !important;" disabled /></td>
                                         </tr>
-										<tr>
-                                            <td>Fec Solicitud Cleinte</td>
+										<tr class ="fupServiciosOcultar">
+                                            <td>Fec Solicitud Cliente</td>
                                             <td><input type="date" id="txtFecsolcliAproba" disabled/></td>
                                             <td>Fec Aprobacion</td>
                                             <td><input type="text" id="txtFecAprAproba" disabled/></td>
@@ -1347,15 +1347,15 @@
                                             <td >Fecha Planeada x SCI</td>
                                             <td><input type="date" id="txtFecConfirmSCI" disabled/></td>
 										</tr>
-										<tr>
+										<tr class ="fupServiciosOcultar">
                                             <td >Tipo Sistema Seguridad</td>
                                             <td colspan="7"><textarea id="txtTipoSisSeg" class="form-control" rows="2" disabled ></textarea> </td>
 										</tr>
-										<tr>
+										<tr class ="fupServiciosOcultar">
                                             <td >Detalles Arquitectonicos</td>
                                             <td colspan="7"><textarea id="txtDetallesAproba" class="form-control" rows="2" disabled ></textarea></td>
 										</tr>
-										<tr>
+										<tr class ="fupServiciosOcultar">
                                             <td ></td>
 							                <td  colspan="3"  data-i18n="[html]FUP_LinkObra">
 								                Link Obra: 
@@ -1364,7 +1364,7 @@
                                                 <input id="txtLinkObraApr" disabled type="text" class="form-control"/>
                                             </td>
 										</tr>
-										<tr>
+										<tr class ="fupServiciosOcultar">
                                             <td></td>
                                             <th colspan="6">
                                                 <table id="tbAprob2" class="table table-sm table-bordered">
@@ -1442,7 +1442,7 @@
                                                 </table>
                                             </td>
 										</tr>
-										<tr>
+										<tr class ="fupServiciosOcultar">
                                             <td ></td>
 							                <td colspan="2">Tipo de Proyectos  (Calidad de los planos)</td>
                                             <td colspan="2">
@@ -1456,7 +1456,7 @@
 										<tr>
                                             <td colspan="5"></td>
 										</tr>
-										<tr>
+										<tr class ="fupServiciosOcultar">
                                             <td ></td>
                                             <td colspan="3">
 							                    <table class="table table-sm table-hover" id="tab_rfichaPrev">
@@ -1558,10 +1558,10 @@
                                 
 						</div>
 
-						<div class="row">
+						<div class="row fupServiciosOcultar">
 							<div class="col-12  medium font-weight-bold " >Simulador Cotizaciones</div>
 						</div>
-						<div class="row">
+						<div class="row fupServiciosOcultar">
 							<div class="col-2" >No. Orden Cotizacion</div>
 							<div class="col-2">
 								<input id="txtOrdenCotizacion" type="text" disabled style="width: 80% !important;" />
@@ -1600,7 +1600,7 @@
                             <div class="col-4 msjSimu"> <h5 style="color:red"> Falta Explosionar CT </h5></div>
 
 					    </div>
-						<div class="row">
+						<div class="row fupServiciosOcultar">
                             <div class="col-2"></div>
 						   <div class="col-8">
 								<button id="btnGenerarOrdenCotizacion" type="button" class="btn btn-primary fupapro fupOrdcot2 controlarDisponibilidadAprobacion" value="Generar Orden Cotizacion" onclick="guardarOrdenCotizacion();">
@@ -1957,7 +1957,7 @@
 
                         <%-- EII --%>
 						<hr />
-                        <div class="row">
+                        <div class="row fupServiciosOcultar">
                             <div class="col-2">
                                 <table id="tbContratomrv" class="table table-sm table-borderless Solomrv">
                                     <thead>                   
@@ -1973,7 +1973,7 @@
                                     </thead>
                                 </table>
                             </div>
-							<div class="col-8 medium font-weight-bold">
+							<div class="col-8 medium font-weight-bold ">
 								<table id="tbSegCotizacion" class="table table-sm">
                                     <thead>
                                             <tr class="thead-light" align="center">
