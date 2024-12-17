@@ -2449,8 +2449,9 @@ function GuardadoDinamico(id) {
                 toastr.success('Guardado Correctamente.');
                 ValidarEstado();
             },
-            error: function () {
-                toastr.warning('Guardado con Errores.');
+            error: function (e) {
+                ocultarLoad();
+                toastr.warning('Guardado con Errores.' + e.responseText);
             }
         });
     }
