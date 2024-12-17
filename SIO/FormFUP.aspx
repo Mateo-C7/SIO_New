@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="Scripts/jquery.i18n.fallbacks.js"></script>
 	<script type="text/javascript" src="Scripts/jquery.i18n.parser.js"></script>
 	<script type="text/javascript" src="Scripts/jquery.i18n.emitter.js"></script>
-	<script type="text/javascript" src="Scripts/formfup.js?v=202412133A"></script>
+	<script type="text/javascript" src="Scripts/formfup.js?v=20241217A"></script>
 	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="Scripts/select2.min.js"></script>
 	<script type="text/javascript" src="Scripts/toastr.min.js"></script>
@@ -491,7 +491,7 @@
 
 							</div>
 							<div class="col-1" data-i18n="[html]tipo_cotizacion">Tipo de Cotizacion</div>
-							<div class="col-2 form-inline">
+							<div class="col-4 form-inline">
 								<select id="cboTipoCotizacion" data-modelo="TipoCotizacion" style="width: 80% !important;" class="form-control">
 									<option value="-1">Tipo Cotizacion</option>
 									<option value="1">Equipo Nuevo</option>
@@ -2430,7 +2430,7 @@
 								<tfoot>
 										<th></th>
 										<th class="row justify-content-end">
-											<button type="button" class="btn btn-primary fupsalco " data-toggle="modal" onclick="GuardarComentario(1)">
+											<button type="button" class="btn btn-primary fupsalco fupsalcoServicio" data-toggle="modal" onclick="GuardarComentario(1)">
 											<i class="fa fa-save"></i> <span> Guardar Comentario</span>
 											</button>
 										</th>
@@ -2442,7 +2442,7 @@
 					<%--Botón Subir Carta Cotización--%>
 					<div class="row">
 						<div class="justify-content-start" style="margin-top: 15px; margin-left: 15px;">
-							<button type="button" class="btn btn-default fupsalcoManual " data-toggle="modal" onclick="UploadFielModalShow('Subir Carta Cotizacion',6,'Salida Cotizacion')">
+							<button type="button" class="btn btn-default fupsalcoManual fupsalcoServicio" data-toggle="modal" onclick="UploadFielModalShow('Subir Carta Cotizacion',6,'Salida Cotizacion')">
 								Subir Carta  
 							</button>
 						</div>

@@ -8426,6 +8426,17 @@ function MostrarControl() {
 
     }
 
+    // Botones Salida Cotizacion Servicios
+    let TipoCotizacion = $("#cboTipoCotizacion").val();
+    if (typeof TipoCotizacion != "undefined") {
+        if ((EstadoFUP == "Aprobado")
+            && (["1", "2", "26", "38"].indexOf(RolUsuario) > -1)
+            && (["6", "7", "17", "18", "19", "20"].indexOf(TipoCotizacion) > -1)
+            ) {
+            $(".fupOrdcot2").show();
+            $(".fupsalcoServicio").show();
+        }
+    }
     if ((["1", "26"].indexOf(RolUsuario) > -1)) {
         $(".fupOrdcot2").show();
     }
