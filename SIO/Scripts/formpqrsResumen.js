@@ -878,7 +878,7 @@ const app = VueModule.createApp({
             }
         },
 
-        DescargarArchivo: function (NombreArchivo, Ruta) {
+        DescargarArchivo: function (NombreArchivo, Ruta, vaNombre = 1) {
             if (vaNombre == 1) {
                 if (NombreArchivo != null) {
                     var test = new FormData();

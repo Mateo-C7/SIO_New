@@ -9,7 +9,7 @@
             }
 		</script>
 
-		<script type="module" src="Scripts/formpqrsResumen.js?v=20240408A"></script>
+		<script type="module" src="Scripts/formpqrsResumen.js?v=20241003A"></script>
 
 		<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
 		<script type="text/javascript" src="Scripts/select2.min.js"></script>
@@ -2554,7 +2554,7 @@
                                             <tr v-for="ane in bitacora.Anexos">
                                                 <td width="10%" >Anexo</td>
                                                 <td width="80%">{{ane.nombre}}</td>
-                                                <td><button type="button" class="fa fa-download" data-toggle="tooltip" title="Descargar" @click="DescargarArchivo(ane.nombre, ane.ruta)"> </button></td>
+                                                <td><button type="button" class="fa fa-download" data-toggle="tooltip" title="Descargar" @click="DescargarArchivo(ane.nombre, ane.ruta, 2)"> </button></td>
                                             </tr>
                                         </table>
                                     </div>
