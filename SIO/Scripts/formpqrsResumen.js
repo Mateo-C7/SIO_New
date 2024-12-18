@@ -879,9 +879,17 @@ const app = VueModule.createApp({
         },
 
         DescargarArchivo: function (NombreArchivo, Ruta) {
-            if (NombreArchivo != null) {
-                var test = new FormData();
-                window.location = "DownloadHandler.ashx?NombreArchivo=&Ruta=" + Ruta;
+            if (vaNombre == 1) {
+                if (NombreArchivo != null) {
+                    var test = new FormData();
+                    window.location = "DownloadHandler.ashx?NombreArchivo=&Ruta=" + Ruta;
+                }
+            }
+            else {
+                if (NombreArchivo != null) {
+                    var test = new FormData();
+                    window.location = "DownloadHandler.ashx?NombreArchivo=" + NombreArchivo + "&Ruta=" + Ruta;
+                }
             }
         },
 
