@@ -111,6 +111,8 @@ namespace CapaControl.Entity
         public DateTime desde { get; set; }
 
         public DateTime hasta { get; set; }
+
+        public string PlantaFabricacion { get; set; }
     }
 
     public class PQRSDTOConsulta

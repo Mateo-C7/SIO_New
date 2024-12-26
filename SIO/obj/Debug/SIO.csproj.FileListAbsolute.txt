@@ -340,7 +340,6 @@ C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\SIO\bin\Microsof
 C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\SIO\bin\Microsoft.PowerBI.AspNet.WebForms.dll
 C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\SIO\bin\Microsoft.Rest.ClientRuntime.dll
 C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\SIO\bin\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\SIO\bin\System.Web.Mvc.dll
 C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\SIO\bin\CapaControl.pdb
 C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\SIO\bin\CapaControl.dll.config
 C:\Users\Giova\OneDrive\Documentos\GlobalBI\Forsa\Repos\SIO_New\SIO\bin\CapaDatos.pdb

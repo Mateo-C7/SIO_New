@@ -6,7 +6,8 @@
     "hasta": "Date To",
     "fuente": "Source",
     "tipo": "Type",
-    "idpqrs":"PQRS ID"
+    "idpqrs": "PQRS ID",
+    "planta_fabricacion": "Manufacturing Plant"
   },
   "Whatsapp": "Whatsapp",
   "tipo": "type",
