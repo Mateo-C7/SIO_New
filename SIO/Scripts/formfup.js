@@ -1326,6 +1326,12 @@ function TipoNegocio() {
         if (EstadoFUP == "Elaboracion" || EstadoFUP == "") {
             CargarDatosProductoLoad(tipo_cotizacion);
         }
+
+        $("#fup_ref_servicios_container").hide();
+        if (($("#selectTipoNegociacion").val() == '1' && ['2', '3'].indexOf(tipo_cotizacion) != -1) ||
+            ($("#selectTipoNegociacion").val() == '6' && ['16', '14'].indexOf(tipo_cotizacion) != -1)) {
+            $("#fup_ref_servicios_container").show();
+        }
     });
     // Tipo Condicion Pago
     $("#cboCondicionesPago").change(function () {

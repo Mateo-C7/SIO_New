@@ -606,7 +606,7 @@
 						    </div>
                         </div>
 
-						<div class="row">
+						<div class="row" style="display: none;" id="fup_ref_servicios_container">
 							<div class="col-2">
 								Fup de Referencia servicios
 							</div>
