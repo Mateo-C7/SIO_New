@@ -76,7 +76,7 @@ namespace CapaControl.Entity
         public int? VendedorZona { get; set; }
         public int? RecomendacionTecnico { get; set; }
         public DateTime? FecCreaVersion { get; set; }
-
+        public int? FupRefServicios { get; set; }
     }
 
     public class fup_tablas
@@ -264,7 +264,6 @@ namespace CapaControl.Entity
         public string EstrellaMes { get; set; }
         public bool AutorizaSubirPlanos { get; set; }
         public int VersionCarta { get; set; }
-
     }
 
     public class datosCombo

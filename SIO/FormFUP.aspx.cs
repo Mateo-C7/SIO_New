@@ -515,6 +515,7 @@ namespace SIO
             parametros.Add("@pObra_FecInicio", string.IsNullOrEmpty(fup.Obra_FecInicio) ? (DateTime?)null : Convert.ToDateTime(fup.Obra_FecInicio));
             parametros.Add("@pVendedorZona", fup.VendedorZona);
             parametros.Add("@pRecomendacionTecnico", fup.RecomendacionTecnico);
+			parametros.Add("@pFupRefServicios", fup.FupRefServicios);
 
             int id = 0;
 
@@ -571,6 +572,16 @@ namespace SIO
                 if (Origen == 1)
                 {
                     response = CorreoFUP(id, fup.Version, 107);
+					if(fup.TipoNegociacion == 7)
+                    {
+						int evento_servicios = 0;
+						if (fup.TipoCotizacion == 17) evento_servicios = 111;
+						if (fup.TipoCotizacion == 6) evento_servicios = 112;
+						if (fup.TipoCotizacion == 18) evento_servicios = 113;
+						if (fup.TipoCotizacion == 19) evento_servicios = 114;
+						if (fup.TipoCotizacion == 20) evento_servicios = 115;
+						CorreoFUP(id, fup.Version, evento_servicios);
+					}
                 }
 
                 if (dataInfoGeneral.Count > 0)

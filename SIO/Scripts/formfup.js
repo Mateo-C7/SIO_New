@@ -4921,6 +4921,7 @@ function obtenerInformacionFUP(idFup, idVersion, idioma) {
 
                     $("#cboIdMoneda").val(elem.ID_Moneda).change();
                     $("#selectTipoNegociacion").val(elem.TipoNegociacion);
+                    $("#fup_ref_servicios").val(elem.FupRefServicios);
 
                     // Actualizar Informacion Planos de Armado
                     AlumCompleto = elem.ArmadoAluminio;
@@ -8409,6 +8410,14 @@ function MostrarControl() {
     }
 
     $(".fupServiciosOcultar").show();
+    if ($('#selectTipoNegociacion').val() == '7') {
+        $(".fupServiciosOcultar").hide();
+    }
+
+    /*$(".fupServiciosSalCotOcultar").show(); PENDIENTE POR HABILITAR POR FALTA DE CONOCIMIENTO DEL NEGOCIO
+    if ($('#selectTipoNegociacion').val() == '7') {
+        $(".fupServiciosSalCotOcultar").hide();
+    }*/
 
     if (EstadoFUP == "Guardado") {
         if (typeof TipoCotizacion != "undefined") {
@@ -8416,7 +8425,7 @@ function MostrarControl() {
                 && (["6", "7", "17", "18", "19", "20"].indexOf(TipoCotizacion) > -1)){
                 $(".fupapro").show();
                 $("#SiNoPreventa").prop("disabled", false);
-                $(".fupServiciosOcultar").hide();
+                
             }
         }
     }

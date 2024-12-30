@@ -606,6 +606,15 @@
 						    </div>
                         </div>
 
+						<div class="row">
+							<div class="col-2">
+								Fup de Referencia servicios
+							</div>
+							<div class="col-2">
+								<input type="number" min="0" step="1" class="form-control" id="fup_ref_servicios" data-modelo="FupRefServicios"/>
+							</div>
+						</div>
+
                         <div class="row">
                             <div class="col-2">
                                 <button class="btn btn-info btn-sm SolSimu" id="btnSolicitarSimulacion" style="display:none;" type="button" onclick="SolicitarSimulacion()">
@@ -2270,7 +2279,7 @@
                     </div>
 					<div class="row">
 					</div>
-					<div class="row">
+					<div class="row fupServiciosSalCotOcultar">
                         <!-- Cambio pedido el 21/07 -->
                         <table class="table table-sm table-borderless">
                             <tbody>
@@ -2298,12 +2307,12 @@
                         </table>
                         <!-- -->						
 					</div>
-                    <div class="row">
+                    <div class="row fupServiciosSalCotOcultar">
                         <div class="offset-2" id="divMsgRegistroSolicitudCartaManual" style="font-size: 18px; text-decoration:underline">
 
                         </div>
                     </div>
-					<div class="row">
+					<div class="row fupServiciosSalCotOcultar">
 						<div class="col-2">
                             <div class="col-2"><button id="btnCartaCotizacion" type="button" class="btn btn-primary" value="Reporte Carta Cotizacion" onclick="LlamarCartaCot();">
 								<i class="fa fa-print" style="padding-right: inherit;"></i> <span> Ir a Carta Cotización</span>
@@ -2329,7 +2338,7 @@
                         </div>
 					</div>
 
-                    <div class="row">
+                    <div class="row fupServiciosSalCotOcultar">
                         <div class="col-7">
 							<table id="tbLinks" class="table table-sm">
 								<thead>
@@ -2363,7 +2372,7 @@
                     </div>
 
 					<%--Contenedores--%>
-					<div class="row">
+					<div class="row fupServiciosSalCotOcultar">
 						<div class="col-6">
 							<table class="table table-sm table-hover" id="tab_Contenedores">
 								<thead class="thead-light">
@@ -2440,7 +2449,7 @@
 						</div>
 					</div>
 					<%--Botón Subir Carta Cotización--%>
-					<div class="row">
+					<div class="row fupServiciosSalCotOcultar">
 						<div class="justify-content-start" style="margin-top: 15px; margin-left: 15px;">
 							<button type="button" class="btn btn-default fupsalcoManual fupsalcoServicio" data-toggle="modal" onclick="UploadFielModalShow('Subir Carta Cotizacion',6,'Salida Cotizacion')">
 								Subir Carta  
