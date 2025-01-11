@@ -766,6 +766,8 @@ namespace CapaControl
 			string sqlwere = " Where ";
 			if (!string.IsNullOrEmpty(pqrs.nombre) && !string.IsNullOrWhiteSpace(pqrs.nombre))
 				sqlwere = sqlwere + " [NombreRespuesta] like '%" + pqrs.nombre + "%' AND ";
+			if (!string.IsNullOrEmpty(pqrs.PlantaFabricacion) && !string.IsNullOrWhiteSpace(pqrs.PlantaFabricacion))
+				sqlwere = sqlwere + " [OrdenGarantiaOMejora] = '" + pqrs.PlantaFabricacion + "' AND ";
 			if (!string.IsNullOrEmpty(pqrs.orden) && !string.IsNullOrWhiteSpace(pqrs.orden))
 				sqlwere = sqlwere + " [NroOrden] like '%" + pqrs.orden + "%' AND ";
 			if (!string.IsNullOrEmpty(pqrs.idpqrs) && !string.IsNullOrWhiteSpace(pqrs.idpqrs))

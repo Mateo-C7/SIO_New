@@ -75,7 +75,8 @@ namespace CapaControl.Entity
         public string Obra_FecInicio { get; set; }
         public int? VendedorZona { get; set; }
         public int? RecomendacionTecnico { get; set; }
-
+        public DateTime? FecCreaVersion { get; set; }
+        public int? FupRefServicios { get; set; }
     }
 
     public class fup_tablas
@@ -263,7 +264,6 @@ namespace CapaControl.Entity
         public string EstrellaMes { get; set; }
         public bool AutorizaSubirPlanos { get; set; }
         public int VersionCarta { get; set; }
-
     }
 
     public class datosCombo
@@ -281,6 +281,14 @@ namespace CapaControl.Entity
         public string descripcionPO { get; set; }
     }
 
+    public class datosCombo3
+    {
+        public string id { get; set; }
+        public string descripcion { get; set; }
+        public string descripcionEN { get; set; }
+        public string descripcionPO { get; set; }
+        public bool usoAlcance { get; set; }
+    }
     public class datosProducto
     {
         public string id { get; set; }
@@ -660,7 +668,9 @@ namespace CapaControl.Entity
         public int ExisteCT { get; set; }
         public int Autogestion { get; set; }
         public string FecSimulacion { get; set; }
-
+        public int ExisteCI { get; set; }
+        public string FecSimulacionCI { get; set; }
+        public int CotizacionRapida { get; set; }
     }
 
     public class NotificaFup

@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="Scripts/jquery.i18n.fallbacks.js"></script>
 	<script type="text/javascript" src="Scripts/jquery.i18n.parser.js"></script>
 	<script type="text/javascript" src="Scripts/jquery.i18n.emitter.js"></script>
-	<script type="text/javascript" src="Scripts/formfup.js?v=20241113A"></script>
+	<script type="text/javascript" src="Scripts/formfup.js?v=20241217B"></script>
 	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="Scripts/select2.min.js"></script>
 	<script type="text/javascript" src="Scripts/toastr.min.js"></script>
@@ -491,7 +491,7 @@
 
 							</div>
 							<div class="col-1" data-i18n="[html]tipo_cotizacion">Tipo de Cotizacion</div>
-							<div class="col-2 form-inline">
+							<div class="col-4 form-inline">
 								<select id="cboTipoCotizacion" data-modelo="TipoCotizacion" style="width: 80% !important;" class="form-control">
 									<option value="-1">Tipo Cotizacion</option>
 									<option value="1">Equipo Nuevo</option>
@@ -605,6 +605,15 @@
     						    </div>
 						    </div>
                         </div>
+
+						<div class="row" style="display: none;" id="fup_ref_servicios_container">
+							<div class="col-2">
+								Fup de Referencia servicios
+							</div>
+							<div class="col-2">
+								<input type="number" min="0" step="1" class="form-control" id="fup_ref_servicios" data-modelo="FupRefServicios"/>
+							</div>
+						</div>
 
                         <div class="row">
                             <div class="col-2">
@@ -880,7 +889,17 @@
                                 <span class="MedidaEspesores">(cm):</span>
 							</div>
 							<div class="col-2" style="display: inline-table">
-								<input id="txtAlturaInternaSugerida" style="width: 80% !important;" data-modelo-tecnico="AlturaIntSugerida" class="fuparr form-control" type="text" />
+								<input id="txtAlturaInternaSugerida" style="width: 80% !important;" class="fuparr form-control" type="text" />
+								<select style="width: 80% !important; display: none;" id="selectAlturaInternaSugerida" class="fuparr form-control">
+									<option value="-1" selected>Seleccionar</option>
+									<option value="60">60</option>
+									<option value="90">90</option>
+									<option value="120">120</option>
+									<option value="210">210</option>
+									<option value="240">240</option>
+									<option value="270">270</option>
+									<option value="300">300</option>
+								</select>
 								<button data-tooltip-custom-classes="tooltip-large" type="button" role="button" class="btn  btn-link divAyuda" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<div><img  style='width:70%; height:70%' src='Imagenes//Altura de la FM interna.jpg' /></div>"><i class="fa fa-info-circle fa-lg"></i></button>
 						   </div>
 							<div class="col-1" data-i18n="[html]tipo_fm_fachada">Tipo FM Fachada</div>
@@ -1252,7 +1271,7 @@
     							    <button type="button"  style="align-self: flex-start" class="btn btn-info fupgenlist ml-3" data-toggle="modal" onclick="window.location = 'Imagenes/ListaAsistida/PLANTILLA LISTA ASISTIDA-Final.xlsm';" >
 									    <i class="fa fa-list-alt" style="padding-right: inherit;">  </i><span class="ml-2">Plantilla Lista Asistida</span>
 								    </button>
-                                    <button type="button"  style="align-self: flex-start" class="btn btn-info  ml-3" data-toggle="modal" onclick="exportarListaAsistida()" >
+                                    <button type="button"  style="align-self: flex-start" class="btn btn-info fupgenlist ml-3" data-toggle="modal" onclick="exportarListaAsistida()" >
 									    <i class="fa fa-download" style="padding-right: inherit;">  </i><span class="ml-2">Exportar Lista Asistida</span>
 								    </button>
 <%--                                    <button type="button" onclick="APIForline()" class="btn btn-info ml-3 verforline" >
@@ -1316,8 +1335,8 @@
                                             <td width="8%" class ="NoComercial">No. Ordenes Referencia</td>
                                             <td width="9%" class ="NoComercial"><input type="number" id="txtOrdenRefAproba" style="width: 80% !important;" disabled /></td>
                                         </tr>
-										<tr>
-                                            <td>Fec Solicitud Cleinte</td>
+										<tr class ="fupServiciosOcultar">
+                                            <td>Fec Solicitud Cliente</td>
                                             <td><input type="date" id="txtFecsolcliAproba" disabled/></td>
                                             <td>Fec Aprobacion</td>
                                             <td><input type="text" id="txtFecAprAproba" disabled/></td>
@@ -1337,15 +1356,15 @@
                                             <td >Fecha Planeada x SCI</td>
                                             <td><input type="date" id="txtFecConfirmSCI" disabled/></td>
 										</tr>
-										<tr>
+										<tr class ="fupServiciosOcultar">
                                             <td >Tipo Sistema Seguridad</td>
                                             <td colspan="7"><textarea id="txtTipoSisSeg" class="form-control" rows="2" disabled ></textarea> </td>
 										</tr>
-										<tr>
+										<tr class ="fupServiciosOcultar">
                                             <td >Detalles Arquitectonicos</td>
                                             <td colspan="7"><textarea id="txtDetallesAproba" class="form-control" rows="2" disabled ></textarea></td>
 										</tr>
-										<tr>
+										<tr class ="fupServiciosOcultar">
                                             <td ></td>
 							                <td  colspan="3"  data-i18n="[html]FUP_LinkObra">
 								                Link Obra: 
@@ -1354,7 +1373,7 @@
                                                 <input id="txtLinkObraApr" disabled type="text" class="form-control"/>
                                             </td>
 										</tr>
-										<tr>
+										<tr class ="fupServiciosOcultar">
                                             <td></td>
                                             <th colspan="6">
                                                 <table id="tbAprob2" class="table table-sm table-bordered">
@@ -1432,7 +1451,7 @@
                                                 </table>
                                             </td>
 										</tr>
-										<tr>
+										<tr class ="fupServiciosOcultar">
                                             <td ></td>
 							                <td colspan="2">Tipo de Proyectos  (Calidad de los planos)</td>
                                             <td colspan="2">
@@ -1446,7 +1465,7 @@
 										<tr>
                                             <td colspan="5"></td>
 										</tr>
-										<tr>
+										<tr class ="fupServiciosOcultar">
                                             <td ></td>
                                             <td colspan="3">
 							                    <table class="table table-sm table-hover" id="tab_rfichaPrev">
@@ -1548,10 +1567,10 @@
                                 
 						</div>
 
-						<div class="row">
+						<div class="row fupServiciosOcultar">
 							<div class="col-12  medium font-weight-bold " >Simulador Cotizaciones</div>
 						</div>
-						<div class="row">
+						<div class="row fupServiciosOcultar">
 							<div class="col-2" >No. Orden Cotizacion</div>
 							<div class="col-2">
 								<input id="txtOrdenCotizacion" type="text" disabled style="width: 80% !important;" />
@@ -1590,7 +1609,7 @@
                             <div class="col-4 msjSimu"> <h5 style="color:red"> Falta Explosionar CT </h5></div>
 
 					    </div>
-						<div class="row">
+						<div class="row fupServiciosOcultar">
                             <div class="col-2"></div>
 						   <div class="col-8">
 								<button id="btnGenerarOrdenCotizacion" type="button" class="btn btn-primary fupapro fupOrdcot2 controlarDisponibilidadAprobacion" value="Generar Orden Cotizacion" onclick="guardarOrdenCotizacion();">
@@ -1947,7 +1966,7 @@
 
                         <%-- EII --%>
 						<hr />
-                        <div class="row">
+                        <div class="row fupServiciosOcultar">
                             <div class="col-2">
                                 <table id="tbContratomrv" class="table table-sm table-borderless Solomrv">
                                     <thead>                   
@@ -1963,7 +1982,7 @@
                                     </thead>
                                 </table>
                             </div>
-							<div class="col-8 medium font-weight-bold">
+							<div class="col-8 medium font-weight-bold ">
 								<table id="tbSegCotizacion" class="table table-sm">
                                     <thead>
                                             <tr class="thead-light" align="center">
@@ -2175,7 +2194,7 @@
 						                </th>
                                     </tr>
                                     <tr>
-						                <th class="col-2" data-i18n="[html]sc_otros_productos">Otros Productos</th>
+						                <th class="col-2" data-i18n="[html]sc_otros_productos">Otros Productos / Servicios</th>
 						                <th class="col-2"></th>
 						                <th class="col-2">
 							                <input type="number" step="0.01" min="0" id="txtOtrosProductoSC" class="sumValSalidaCot2 NumeroSalcot" data-modelosc="vlr_otros_productos" />
@@ -2198,7 +2217,7 @@
 					        <table id="tab_DatosNumCambios" class="table table-sm table-borderless">
 						        <thead>
 							        <tr  class="thead-light">
-								        <th class="text-center" colspan ="6"># CAMBIOS</th>
+								        <th class="text-center" colspan ="3"># CAMBIOS</th>
 							        </tr>
 									<tr>
 										<th class="text-center" width="40%"> </th>
@@ -2207,12 +2226,6 @@
 									</tr>
 						        </thead>
                                 <tbody id="tbodyDetalleSalida">
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
                                     <tr>
 							            <td class="col-2" data-i18n="[html]FUP_numero_modulaciones">No. Modulaciones</td>
 							            <td class="col-1">
@@ -2238,21 +2251,35 @@
 										<th class="text-center" width="10%"> </th>
 
                                     </tr>
-                                    <tr><td colspan="3"></td></tr>
-                                    <tr>
-                                        <td colspan="3" class="fletenal" ><span style="font-size: 14px; text-decoration:underline; color:red">¡Importante! </span></td>
+                                    <tr><td colspan="3" ></td></tr>
+                                    <tr><td colspan="3" ></td></tr>
+							        <tr  class="thead-light servAdapta">
+								        <th class="text-center" colspan ="6">SERVICIOS DE ADAPTACIÓN</th>
+							        </tr>
+                                    <tr class="servAdapta">
+							            <td class="col-2">Servicio de Adaptación Finalizado</td>
+							            <td class="col-1">
+								            <input id="txtSerAdaptacion" type="checkbox" value="" />
+							            </td>
                                     </tr>
+                                    <tr><td colspan="3" ></td></tr>
+                                    <tr>
+                                        <td colspan="3" class="text-center"><span style="font-size: 16px; text-decoration:underline; color:red">¡ IMPORTANTE ! </span></td>
+                                    </tr>
+                                    <tr>
+										<td colspan="3" align="justify">**Los valores de salida de Forsa 1Clic son por cantidad de piezas y <b style="font-size: 14px; color:red">NO</b> por cantidad de m2.</td></tr>
+                                    <tr>
+										<td colspan="3" align="justify">** Los valores de Servicio técnico en obra son por días, <b style="font-size: 14px; color:red">NO</b>  por cantidad de m2.</td></tr>
                                     <tr>
                                         <td colspan="3" class="fletenal" align="justify">No olvides dar click en CALCULAR FLETE para las Cotizaciones Nacionales en Colombia.</td>
                                     </tr>
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
 					<div class="row">
 					</div>
-					<div class="row">
+					<div class="row fupServiciosSalCotOcultar">
                         <!-- Cambio pedido el 21/07 -->
                         <table class="table table-sm table-borderless">
                             <tbody>
@@ -2280,12 +2307,12 @@
                         </table>
                         <!-- -->						
 					</div>
-                    <div class="row">
+                    <div class="row fupServiciosSalCotOcultar">
                         <div class="offset-2" id="divMsgRegistroSolicitudCartaManual" style="font-size: 18px; text-decoration:underline">
 
                         </div>
                     </div>
-					<div class="row">
+					<div class="row fupServiciosSalCotOcultar">
 						<div class="col-2">
                             <div class="col-2"><button id="btnCartaCotizacion" type="button" class="btn btn-primary" value="Reporte Carta Cotizacion" onclick="LlamarCartaCot();">
 								<i class="fa fa-print" style="padding-right: inherit;"></i> <span> Ir a Carta Cotización</span>
@@ -2311,7 +2338,7 @@
                         </div>
 					</div>
 
-                    <div class="row">
+                    <div class="row fupServiciosSalCotOcultar">
                         <div class="col-7">
 							<table id="tbLinks" class="table table-sm">
 								<thead>
@@ -2345,7 +2372,7 @@
                     </div>
 
 					<%--Contenedores--%>
-					<div class="row">
+					<div class="row fupServiciosSalCotOcultar">
 						<div class="col-6">
 							<table class="table table-sm table-hover" id="tab_Contenedores">
 								<thead class="thead-light">
@@ -2412,7 +2439,7 @@
 								<tfoot>
 										<th></th>
 										<th class="row justify-content-end">
-											<button type="button" class="btn btn-primary fupsalco " data-toggle="modal" onclick="GuardarComentario(1)">
+											<button type="button" class="btn btn-primary fupsalco fupsalcoServicio" data-toggle="modal" onclick="GuardarComentario(1)">
 											<i class="fa fa-save"></i> <span> Guardar Comentario</span>
 											</button>
 										</th>
@@ -2422,9 +2449,9 @@
 						</div>
 					</div>
 					<%--Botón Subir Carta Cotización--%>
-					<div class="row">
+					<div class="row fupServiciosSalCotOcultar">
 						<div class="justify-content-start" style="margin-top: 15px; margin-left: 15px;">
-							<button type="button" class="btn btn-default fupsalcoManual " data-toggle="modal" onclick="UploadFielModalShow('Subir Carta Cotizacion',6,'Salida Cotizacion')">
+							<button type="button" class="btn btn-default fupsalcoManual fupsalcoServicio" data-toggle="modal" onclick="UploadFielModalShow('Subir Carta Cotizacion',6,'Salida Cotizacion')">
 								Subir Carta  
 							</button>
 						</div>
@@ -2494,7 +2521,7 @@
 
 					<div class="row justify-content-center">
 						<div class="" style="margin-top: 15px; margin-left: 15px;">
-							<button type="button" class="btn btn-primary  fupsalco " onclick="guardar_salida_cot(1)">
+							<button type="button" class="btn btn-primary  fupsalco fupsalcoServicio " onclick="guardar_salida_cot(1)">
 								<i class="fa fa-save"></i> <span data-i18n="[html]FUP_guardar" > guardar</span>
 							</button>
 						</div>
@@ -3367,7 +3394,7 @@
 													<th class="text-center" ><input type="number" class="NumeroSalcot" id="VlrDcto3CuentaB" onblur="calculardescto(2, 2, 3)" /></th>
 												</tr>
 												<tr>
-													<th >Vlr Nivel 4</th>
+													<th >Vlr Nivel 4 / Servicios </th>
 													<th class="text-center" ></th>
 													<th class="text-center" ><input type="number" class="NumeroSalcot sumDescVlrNDTto" disabled="disabled" id="VlrNoDcto4Cuenta" /></th>
 													<th class="text-center" ><input type="number" class="NumeroSalcot" id="VlrDcto4" value="0" onblur="calculardescto(1, 1, 4)" /></th>
@@ -3378,7 +3405,7 @@
 													<th class="text-center" ><input type="number" class="NumeroSalcot" id="VlrDcto4CuentaB" onblur="calculardescto(2, 2, 4)" /></th>
 												</tr>
 												<tr>
-													<th >Vlr Nivel 5</th>
+													<th >Vlr Nivel 5 </th>
 													<th class="text-center" ></th>
 													<th class="text-center" ><input type="number" class="NumeroSalcot" disabled="disabled" id="VlrNoDcto5Cuenta" /></th>
 													<th class="text-center" ><input type="number" class="NumeroSalcot" id="VlrDcto5" value="0" onblur="calculardescto(1, 1, 5)" /></th>
@@ -3388,6 +3415,7 @@
 													<th class="text-center" ><input type="number" class="NumeroSalcot" id="VlrDcto5B" value="0" onblur="calculardescto(1, 2, 5)" /></th>
 													<th class="text-center" ><input type="number" class="NumeroSalcot" id="VlrDcto5CuentaB" onblur="calculardescto(2, 2, 5)" /></th>
 												</tr>
+												<tr> <th colspan ="5"> Para el Tipo de Negocio: Servicios, Incluya el valor de Cierre en la casilla Vlr Nivel 4 / Servicios</th></tr>
 												<tr>
 													<th >Total Después Descuentos</th>
 													<th class="text-center" ><input type="number" class="NumeroSalcot " disabled="disabled" id="VlrTotalm2s1" /></th>
