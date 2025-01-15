@@ -8325,7 +8325,9 @@ function MostrarControl() {
             $(".fupgenenv").show();
         }
     }
+
     $(".fupgenlist").hide();
+
     if ((EstadoFUP == "" || EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion" || EstadoFUP == "Pre-Cierre")
         && (["1", "24", "26"].indexOf(RolUsuario) > -1)) {
         $(".fupgenpt0").show();
