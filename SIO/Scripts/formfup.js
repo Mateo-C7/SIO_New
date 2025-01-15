@@ -8361,6 +8361,12 @@ function MostrarControl() {
         }
     }
 
+    if (($('#selectTipoNegociacion').val() == '1')) {
+        $(".fup_servicios_ocultar").hide();
+    } else {
+        $(".fup_servicios_ocultar").show();
+    }
+
     // Activa o desactiva el botón para guardar información general al técnico, rol temporal
     //if ((EstadoFUP == "" || EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion")
     //    && (["1", "26"].indexOf(RolUsuario) > -1)) {
