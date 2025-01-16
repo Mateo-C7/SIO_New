@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="Scripts/jquery.i18n.fallbacks.js"></script>
 	<script type="text/javascript" src="Scripts/jquery.i18n.parser.js"></script>
 	<script type="text/javascript" src="Scripts/jquery.i18n.emitter.js"></script>
-	<script type="text/javascript" src="Scripts/formfup.js?v=20250116A"></script>
+	<script type="text/javascript" src="Scripts/formfup.js?v=20250116B"></script>
 	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="Scripts/select2.min.js"></script>
 	<script type="text/javascript" src="Scripts/toastr.min.js"></script>
