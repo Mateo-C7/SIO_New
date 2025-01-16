@@ -1452,6 +1452,8 @@ function CargarDatosProductoLoad(tipo_cotizacion, fupConsultado) {
                     $("#selectAlturaLibre").val(fupConsultado.AlturaLibre).change();
                     llenarGeneral(fupConsultado);
                     $("#selectProducto").val(fupConsultado.Producto).change();
+                    if (fupConsultado.TipoCotizacion == "3") { $(".fupgenlist").show(); }
+                    else { $(".fupgenlist").hide(); }
                     MostrarControl();
 
                 }
