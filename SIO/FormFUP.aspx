@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="Scripts/jquery.i18n.fallbacks.js"></script>
 	<script type="text/javascript" src="Scripts/jquery.i18n.parser.js"></script>
 	<script type="text/javascript" src="Scripts/jquery.i18n.emitter.js"></script>
-	<script type="text/javascript" src="Scripts/formfup.js?v=20241217B"></script>
+	<script type="text/javascript" src="Scripts/formfup.js?v=20250116B"></script>
 	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="Scripts/select2.min.js"></script>
 	<script type="text/javascript" src="Scripts/toastr.min.js"></script>
@@ -2104,7 +2104,7 @@
                     <div class="row msjSimu">
                         <div class="col-12 "> <h5 style="color:red"> PROYECTO SIN SIMULACION DE COSTO NO SE PUEDE DAR SALIDA </h5></div>
                     </div>
-                    <div class="row">
+                    <div class="row fup_servicios_ocultar">
 <%--                        <div class="col-2"></div>--%>
                         <div class="col-6">
 					        <table id="tab_DatosSalidaCoti" class="table table-sm table-borderless">
@@ -2279,7 +2279,7 @@
                     </div>
 					<div class="row">
 					</div>
-					<div class="row fupServiciosSalCotOcultar">
+					<div class="row">
                         <!-- Cambio pedido el 21/07 -->
                         <table class="table table-sm table-borderless">
                             <tbody>
@@ -2307,12 +2307,12 @@
                         </table>
                         <!-- -->						
 					</div>
-                    <div class="row fupServiciosSalCotOcultar">
+                    <div class="row">
                         <div class="offset-2" id="divMsgRegistroSolicitudCartaManual" style="font-size: 18px; text-decoration:underline">
 
                         </div>
                     </div>
-					<div class="row fupServiciosSalCotOcultar">
+					<div class="row">
 						<div class="col-2">
                             <div class="col-2"><button id="btnCartaCotizacion" type="button" class="btn btn-primary" value="Reporte Carta Cotizacion" onclick="LlamarCartaCot();">
 								<i class="fa fa-print" style="padding-right: inherit;"></i> <span> Ir a Carta Cotización</span>
@@ -2338,7 +2338,7 @@
                         </div>
 					</div>
 
-                    <div class="row fupServiciosSalCotOcultar">
+                    <div class="row">
                         <div class="col-7">
 							<table id="tbLinks" class="table table-sm">
 								<thead>
@@ -2372,7 +2372,7 @@
                     </div>
 
 					<%--Contenedores--%>
-					<div class="row fupServiciosSalCotOcultar">
+					<div class="row">
 						<div class="col-6">
 							<table class="table table-sm table-hover" id="tab_Contenedores">
 								<thead class="thead-light">
@@ -2449,7 +2449,7 @@
 						</div>
 					</div>
 					<%--Botón Subir Carta Cotización--%>
-					<div class="row fupServiciosSalCotOcultar">
+					<div class="row">
 						<div class="justify-content-start" style="margin-top: 15px; margin-left: 15px;">
 							<button type="button" class="btn btn-default fupsalcoManual fupsalcoServicio" data-toggle="modal" onclick="UploadFielModalShow('Subir Carta Cotizacion',6,'Salida Cotizacion')">
 								Subir Carta  
@@ -2457,7 +2457,7 @@
 						</div>
 					</div>
 					<%--Botón Carta Cotización--%>
-					<div class="row">
+					<div class="row fup_servicios_ocultar">
 						<div class="col-4">
 							<table class="table table-sm table-hover" id="tab_anexos_salidaCot">
 								<thead class="thead-light">
@@ -2535,7 +2535,7 @@
 					</div>
 
 					<%--Devolución de Cotización--%>
-					<div class="col-md-12 " style="padding-top: 15px;" id="ParteAprobacion">
+					<div class="col-md-12 fup_servicios_ocultar" style="padding-top: 15px;" id="ParteAprobacion">
 						<div id="headerAprobacion" class="box box-primary">
 							<div class="box-header border-bottom border-primary" style="z-index: 3;">
 								<table class="col-md-12 table-sm">

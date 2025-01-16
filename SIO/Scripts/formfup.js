@@ -1326,12 +1326,6 @@ function TipoNegocio() {
         if (EstadoFUP == "Elaboracion" || EstadoFUP == "") {
             CargarDatosProductoLoad(tipo_cotizacion);
         }
-
-        $("#fup_ref_servicios_container").hide();
-        if (($("#selectTipoNegociacion").val() == '1' && ['2', '3'].indexOf(tipo_cotizacion) != -1) ||
-            ($("#selectTipoNegociacion").val() == '6' && ['16', '14'].indexOf(tipo_cotizacion) != -1)) {
-            $("#fup_ref_servicios_container").show();
-        }
     });
     // Tipo Condicion Pago
     $("#cboCondicionesPago").change(function () {
@@ -1459,6 +1453,8 @@ function CargarDatosProductoLoad(tipo_cotizacion, fupConsultado) {
                     llenarGeneral(fupConsultado);
                     $("#selectProducto").val(fupConsultado.Producto).change();
                     MostrarControl();
+                    if (fupConsultado.TipoCotizacion == "3") { $(".fupgenlist").show(); }
+                    else { $(".fupgenlist").hide(); }
 
                 }
                 else {
@@ -3965,6 +3961,7 @@ function guardarFUP_datosGenerales() {
                     var dataPais = $('#cboIdPais').select2('data')[0].text;
                     $(".divPaisSC").html(dataPais);
                     ValidarEstado();
+                    MostrarControl();
                     $(".SoloUpd").show();
                 }
                 else {
@@ -4927,7 +4924,6 @@ function obtenerInformacionFUP(idFup, idVersion, idioma) {
 
                     $("#cboIdMoneda").val(elem.ID_Moneda).change();
                     $("#selectTipoNegociacion").val(elem.TipoNegociacion);
-                    $("#fup_ref_servicios").val(elem.FupRefServicios);
 
                     // Actualizar Informacion Planos de Armado
                     AlumCompleto = elem.ArmadoAluminio;
@@ -8332,12 +8328,14 @@ function MostrarControl() {
         }
     }
 
+    $(".fupgenlist").hide();
+
     if ((EstadoFUP == "" || EstadoFUP == "Elaboracion" || EstadoFUP == "Devolucion" || EstadoFUP == "Pre-Cierre")
         && (["1", "24", "26"].indexOf(RolUsuario) > -1)) {
         $(".fupgenpt0").show();
         if ($("#cboTipoCotizacion").val() == 3 || $("#cboTipoCotizacion").val() >= 7) {
             if ($("#cboTipoCotizacion").val() == 3) { $(".fupgenlist").show(); }
-            else { $(".fupgenlist").show(); }
+            else { $(".fupgenlist").hide(); }
 
             $(".fupgenenv2").hide();
         }
@@ -8365,6 +8363,12 @@ function MostrarControl() {
                 (SubirPlanosAutorizado) ? $(".fupgenenv2").show() : $(".fupgenenv2").hide()
             }
         }
+    }
+
+    if (($('#selectTipoNegociacion').val() == '7')) {
+        $(".fup_servicios_ocultar").hide();
+    } else {
+        $(".fup_servicios_ocultar").show();
     }
 
     // Activa o desactiva el botón para guardar información general al técnico, rol temporal
@@ -8416,14 +8420,6 @@ function MostrarControl() {
     }
 
     $(".fupServiciosOcultar").show();
-    if ($('#selectTipoNegociacion').val() == '7') {
-        $(".fupServiciosOcultar").hide();
-    }
-
-    /*$(".fupServiciosSalCotOcultar").show(); PENDIENTE POR HABILITAR POR FALTA DE CONOCIMIENTO DEL NEGOCIO
-    if ($('#selectTipoNegociacion').val() == '7') {
-        $(".fupServiciosSalCotOcultar").hide();
-    }*/
 
     if (EstadoFUP == "Guardado") {
         if (typeof TipoCotizacion != "undefined") {
@@ -8431,7 +8427,7 @@ function MostrarControl() {
                 && (["6", "7", "17", "18", "19", "20"].indexOf(TipoCotizacion) > -1)){
                 $(".fupapro").show();
                 $("#SiNoPreventa").prop("disabled", false);
-                
+                $(".fupServiciosOcultar").hide();
             }
         }
     }
