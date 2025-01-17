@@ -8365,8 +8365,9 @@ function MostrarControl() {
         }
     }
 
+    //Servicio
     if (($('#selectTipoNegociacion').val() == '7')) {
-        $(".fup_servicios_ocultar").hide();
+        //$(".fup_servicios_ocultar").hide();
     } else {
         $(".fup_servicios_ocultar").show();
     }
